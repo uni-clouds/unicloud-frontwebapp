@@ -1,5 +1,7 @@
+import { Footer } from './components/Footer'
+
 const App: React.FC = () => {
-  return <h1>E lá vamos nós 💃</h1>
+  return <Footer />
 }
 
 export default App
