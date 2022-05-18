@@ -9,18 +9,16 @@
 <h1 align="center">Unicloud App</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/uni-clouds/unicloud-frontwebapp?color=7604FF">
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/uni-clouds/unicloud-frontwebapp?color=7604FF">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/uni-clouds/unicloud-frontwebapp?color=7604FF">
-  <img alt="License" src="https://img.shields.io/github/license/uni-clouds/unicloud-frontwebapp?color=7604FF">
-<img alt="Github issues" src="https://img.shields.io/github/issues/uni-clouds/unicloud-frontwebapp?color=7604FF" />
-<img alt="Github forks" src="https://img.shields.io/github/forks/uni-clouds/unicloud-frontwebapp?color=7604FF" />
-
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/uni-clouds/unicloud-frontwebapp?color=854FFF">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/uni-clouds/unicloud-frontwebapp?color=854FFF">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/uni-clouds/unicloud-frontwebapp?color=854FFF">
+  <img alt="License" src="https://img.shields.io/github/license/uni-clouds/unicloud-frontwebapp?color=854FFF">
+<img alt="Github issues" src="https://img.shields.io/github/issues/uni-clouds/unicloud-frontwebapp?color=854FFF" />
+<img alt="Github forks" src="https://img.shields.io/github/forks/uni-clouds/unicloud-frontwebapp?color=854FFF" />
 </p>
 
-Status
-
 <h4 align="center">
+<strong>Status</strong>: 
 	🚧  Unicloud App 🚀 Under construction...  🚧
 </h4>
 
@@ -84,7 +82,7 @@ $ yarn start or npm run preview
 
 This project is under private license from. For more details, see the [LICENSE](LICENSE.md) file.
 
-Made with :heart: by <a href="https://github.com/uni-clouds" target="_blank">Uni.Cloud</a>
+Made by <a href="https://github.com/uni-clouds" target="_blank">Uni.Cloud</a>
 
 &#xa0;
 
