@@ -1,0 +1,7 @@
+@tailwind base; /* preflight is injected here*/
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-light-100 text-base-500;
+}
