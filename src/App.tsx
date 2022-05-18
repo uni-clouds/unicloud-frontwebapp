@@ -1,8 +1,4 @@
-import { useState } from 'react'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return <h1>E lá vamos nós 💃</h1>
 }
 
