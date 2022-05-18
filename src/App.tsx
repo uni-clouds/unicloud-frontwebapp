@@ -1,7 +1,12 @@
-import { Footer } from './components/Footer'
+import { Layout } from './components/Layout'
+import MainRoutes from './routes'
 
 const App: React.FC = () => {
-  return <Footer />
+  return (
+    <Layout>
+      <MainRoutes />
+    </Layout>
+  )
 }
 
 export default App

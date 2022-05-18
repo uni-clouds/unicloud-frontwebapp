@@ -1,4 +1,4 @@
-import { NavLinksFooter } from '../Nav/NavLinksFooter'
+import { NavLinksFooter } from '../Navigations/NavLinksFooter'
 
 export const Footer: React.FC = () => {
   return (
