@@ -1,3 +1,6 @@
+import { ReactNode } from 'react'
+
 export interface SubmitButtonProps {
-  text: string
+  children: ReactNode
+  isDisabled: boolean
 }

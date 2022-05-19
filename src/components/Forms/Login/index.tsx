@@ -4,24 +4,27 @@ import { SubmitButton } from '../../Buttons/SubmitButton'
 import { Input } from './LoginInput'
 import { LoginFormProps } from './types'
 import { schemaLogin } from './validation'
+import { Loading } from '../../Elements/Loading'
 
 export const Login: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { errors, isSubmitting }
   } = useForm<LoginFormProps>({
     resolver: yupResolver(schemaLogin)
   })
 
   const onSubmit: SubmitHandler<LoginFormProps> = (data) => {
     console.log('data submitada', data)
+    reset()
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='w-full flex-column gap-4'
+      className='w-full flex-col flex gap-4'
     >
       <Input
         type='text'
@@ -37,7 +40,9 @@ export const Login: React.FC = () => {
         {...register('password')}
         error={errors?.password}
       />
-      <SubmitButton text='Entrar' />
+      <SubmitButton isDisabled={isSubmitting}>
+        {!!isSubmitting ? <Loading /> : 'Entrar'}
+      </SubmitButton>
     </form>
   )
 }
