@@ -13,7 +13,7 @@ const Error404: React.FC = () => {
               Sentimos muito pelo inconveniente, mas parece que você está
               tentando acessar uma página que não existe.
             </p>
-            <Link to={`${import.meta.env.VITE_PUBLIC_URL}/`}>
+            <Link to={'/'}>
               <button className='mt-2'>Voltar para página principal</button>
             </Link>
           </div>

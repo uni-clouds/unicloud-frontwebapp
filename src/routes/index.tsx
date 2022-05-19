@@ -1,69 +1,51 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
-
 import App from '../App'
-const Page404 = lazy(() => import('../pages/Error'))
+import AuthPage from '../pages/Auth'
 
 export default function MainRoutes() {
+  const Page404 = lazy(() => import('../pages/Error'))
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={'/'} element={<App />} />
-        <Route path={'*'} element={<Page404 />} />
-
-        {/* Auth Pages */}
+        <Route path='/' element={<App />} />
         <Route
-          path={`${import.meta.env.PUBLIC_URL}/auth-success`}
-          element={<>...</>}
-        />
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/auth-reset`}
-          element={<>...</>}
-        />
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/auth-register`}
-          element={<>...</>}
-        />
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/auth-login`}
-          element={<>...</>}
+          path='error'
+          element={
+            <Suspense fallback={<>...</>}>
+              <Page404 />
+            </Suspense>
+          }
         />
 
-        {/* Print Pages */}
+        <Route path='auth' element={<AuthPage />} />
+
+        {/*header routes */}
         <Route
-          path={`${import.meta.env.PUBLIC_URL}/invoice-print/:id`}
-          element={<>...</>}
+          path='terms'
+          element={
+            <Suspense fallback={<>...</>}>
+              <Page404 />
+            </Suspense>
+          }
         />
-
-        {/* Helper pages */}
         <Route
-          path={`${import.meta.env.PUBLIC_URL}/auths/terms`}
-          element={<>...</>}
+          path='help'
+          element={
+            <Suspense fallback={<>...</>}>
+              <Page404 />
+            </Suspense>
+          }
         />
         <Route
-          path={`${import.meta.env.PUBLIC_URL}/auths/faq`}
-          element={<>...</>}
+          path='policitys'
+          element={
+            <Suspense fallback={<>...</>}>
+              <Page404 />
+            </Suspense>
+          }
         />
-
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/invoice-print`}
-          element={<>...</>}
-        ></Route>
-
-        {/*Error Pages*/}
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/errors/504-modern`}
-          element={<>...</>}
-        ></Route>
-        <Route
-          path={`${import.meta.env.PUBLIC_URL}/errors/404-modern`}
-          element={<Page404 />}
-        ></Route>
-
-        {/*Main Routes*/}
-        <Route path='' element={<>...</>}></Route>
-        <Route element={<>redirect</>}></Route>
       </Routes>
     </BrowserRouter>
   )

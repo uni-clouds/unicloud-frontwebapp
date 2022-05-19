@@ -2,8 +2,11 @@ import { BsSearch } from 'react-icons/bs'
 
 export const SearchBar: React.FC = () => {
   return (
-    <form onSubmit={() => {}} className='flex max-w-max text-light-500 text-sm'>
-      <label>
+    <form
+      onSubmit={() => {}}
+      className='flex flex-1 text-light-500 text-sm items-center'
+    >
+      <label className='mr-2'>
         <BsSearch />
       </label>
       <input

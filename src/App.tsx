@@ -1,11 +1,14 @@
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 import { Layout } from './components/Layout'
 import MainRoutes from './routes'
 
 const App: React.FC = () => {
   return (
-    <Layout>
-      <MainRoutes />
-    </Layout>
+    <main>
+      <Header />
+      <Footer />
+    </main>
   )
 }
 
