@@ -1,27 +1,40 @@
-import { useForm } from 'react-hook-form'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { LoginInputProps } from './types'
 
-export const LoginInput: React.FC<LoginInputProps> = ({
-  placeholder,
-  label,
-  type
-}) => {
-  const {
-    formState: { errors }
-  } = useForm()
-
+const LoginInput: ForwardRefRenderFunction<
+  HTMLInputElement,
+  LoginInputProps
+> = ({ placeholder, label, type, error, ...rest }, ref) => {
   return (
-    <div className='flex flex-col gap-4 mb-5'>
-      <label aria-label={`input ${label}`} className='font-bold'>
+    <div className='group flex flex-col mb-5'>
+      <label
+        aria-label={`input ${label}`}
+        className='font-bold mb-2'
+        htmlFor={label}
+      >
         {label}
       </label>
       <input
         type={type}
         placeholder={placeholder}
         role={label}
-        className='py-3 px-4 placeholder:text-base-300 rounded-md border border-light-200 placeholder-neutral-50 bg-transparent focus:border-brand-600 focus:ring-brand-600 focus:ring-1 focus:outline-none focus:ring-offset-1 focus:ring-offset-brand-800'
+        {...rest}
+        ref={ref}
+        id={label}
+        className={`py-3 px-4 placeholder:text-base-300 rounded-md border border-light-200 placeholder-neutral-50 focus:placeholder-transparent bg-transparent focus:ring-1 focus:outline-none focus:ring-offset-1 ${
+          error
+            ? 'focus:border-red-custom focus:ring-red-custom focus:ring-offset-red-custom'
+            : 'focus:border-brand-800 focus:ring-brand-800 focus:ring-offset-brand-600'
+        }`}
       />
-      {errors.message}
+      <p
+        className={`text-red-custom text-xs py-1.5 ${
+          error ? 'visible' : 'invisible'
+        }`}
+      >
+        {error?.message}
+      </p>
     </div>
   )
 }
+export const Input = forwardRef(LoginInput)

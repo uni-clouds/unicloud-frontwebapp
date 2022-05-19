@@ -22,7 +22,7 @@ const AuthPage: React.FC = () => {
   return (
     <>
       <main className='h-screen grid place-items-center'>
-        <section className='flex-col justify-center align-center mb-10'>
+        <section className='flex-col justify-center align-center'>
           <Logo />
           <div className='gap-6 flex flex-col align-center w-[30rem] rounded-sm bg-neutral-50 p-10 justify-center border border-light-200 shadow-sm'>
             <div>
