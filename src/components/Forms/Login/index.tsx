@@ -30,10 +30,7 @@ export const Login: React.FC = () => {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className='w-full flex-col flex gap-4'
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className='w-full flex-col flex'>
       <EmailField
         placeholder='Digite seu endereço de e-mail'
         label='E-mail'

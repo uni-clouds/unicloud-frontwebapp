@@ -23,8 +23,8 @@ const LoginInput: ForwardRefRenderFunction<
         id={label}
         className={`peer relative py-3 px-4 placeholder:text-base-300 rounded-md border border-light-200 placeholder-neutral-50 bg-transparent focus:ring-1 focus:outline-none focus:ring-offset-1 ${
           error
-            ? 'focus-within:border-red-custom focus-within:ring-red-custom focus-within:ring-offset-rose-400'
-            : 'focus-within:border-brand-800 focus-within:ring-brand-800 focus-within:ring-offset-brand-600'
+            ? 'focus:border-rose-400 focus:ring-rose-400 focus:ring-offset-red-custom'
+            : 'focus:border-brand-800 focus:ring-brand-800 focus:ring-offset-brand-600'
         }`}
       />
       <p

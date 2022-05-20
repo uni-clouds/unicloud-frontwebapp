@@ -12,7 +12,7 @@ const PasswordInput: ForwardRefRenderFunction<
   ref
 ) => {
   return (
-    <div className='group flex flex-col mb-6 relative gap-3.5'>
+    <div className='group flex flex-col mb-7 relative gap-3.5'>
       <Input
         placeholder={placeholder}
         label={label}
@@ -31,7 +31,7 @@ const PasswordInput: ForwardRefRenderFunction<
         className='absolute inset-y-[3.5rem] right-2.5'
         onClick={showVisibilityIcon}
       >
-        {<VisibilityIcon isVisible={isVisible} />}
+        {<VisibilityIcon isVisible={isVisible} isError={!!error} />}
       </label>
     </div>
   )

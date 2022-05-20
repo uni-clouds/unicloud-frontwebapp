@@ -17,4 +17,5 @@ export interface LoginInputProps {
 
 export interface VisibilityIconProps {
   isVisible?: boolean
+  isError: boolean
 }
