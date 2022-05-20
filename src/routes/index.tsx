@@ -3,14 +3,16 @@ import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
 import App from '../App'
 import AuthPage from '../pages/Auth'
+import ProtectedRoute from './ProtectedRoute'
 
 export default function MainRoutes() {
   const Page404 = lazy(() => import('../pages/Error'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
+  const Home = lazy(() => import('../pages/Home'))
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App />} />
+        <Route path='#' element={<App />} />
         <Route
           path='error'
           element={
@@ -52,6 +54,19 @@ export default function MainRoutes() {
           element={
             <Suspense fallback={<>...</>}>
               <Page404 />
+            </Suspense>
+          }
+        />
+
+        {/*private routes*/}
+
+        <Route
+          path='/'
+          element={
+            <Suspense fallback={<>...</>}>
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
             </Suspense>
           }
         />

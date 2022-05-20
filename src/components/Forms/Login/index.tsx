@@ -7,9 +7,11 @@ import { schemaLogin } from './validation'
 import { Loading } from '../../Elements/Loading'
 import { FormEvent, useState } from 'react'
 import { PasswordField } from './PasswordField'
+import { api } from '../../../services/api'
+import { useAuth } from '../../../hooks/useAuth'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export const Login: React.FC = () => {
-  const [passwordIsShow, setPasswordIsShow] = useState(false)
   const {
     register,
     handleSubmit,
@@ -18,10 +20,30 @@ export const Login: React.FC = () => {
   } = useForm<LoginFormProps>({
     resolver: yupResolver(schemaLogin)
   })
+  const [passwordIsShow, setPasswordIsShow] = useState(false)
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const { state } = useLocation()
 
-  const onSubmit: SubmitHandler<LoginFormProps> = (data) => {
-    console.log('data submitada', data)
-    reset()
+  let from = state?.from?.pathname || '/'
+
+  const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
+    //*set Loading state true/search
+    // * confirmar rotas no backend && username
+
+    try {
+      await auth.authenticate(data.email, data.password)
+      navigate(from, { replace: true })
+    } catch (err) {
+      console.error('form login error', err)
+      //exibir o erro do backend
+
+      setTimeout(() => {
+        navigate('/auth', { replace: true })
+      }, 1000)
+    } finally {
+      reset()
+    }
   }
 
   function showPassword(event: FormEvent) {
@@ -30,7 +52,10 @@ export const Login: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='w-full flex-col flex'>
+    <form
+      onSubmit={handleSubmit(onLoginSubmit)}
+      className='w-full flex-col flex'
+    >
       <EmailField
         placeholder='Digite seu endereço de e-mail'
         label='E-mail'
