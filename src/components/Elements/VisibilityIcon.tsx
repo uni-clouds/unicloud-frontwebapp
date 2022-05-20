@@ -4,7 +4,6 @@ import { VisibilityIconProps } from '../Forms/Login/types'
 export const VisibilityIcon: React.FC<VisibilityIconProps> = ({
   isVisible
 }) => {
-  console.log('pensa ao contrário', isVisible)
   return (
     <button
       type='button'
