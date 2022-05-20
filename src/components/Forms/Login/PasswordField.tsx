@@ -22,7 +22,7 @@ const PasswordInput: ForwardRefRenderFunction<
         ref={ref}
       />
       <Link
-        to={'auth-reset'}
+        to={'reset'}
         className='absolute inset-y-0 right-0 text-xs text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out'
       >
         Esqueceu a senha?

@@ -6,6 +6,7 @@ import AuthPage from '../pages/Auth'
 
 export default function MainRoutes() {
   const Page404 = lazy(() => import('../pages/Error'))
+  const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
   return (
     <BrowserRouter>
       <Routes>
@@ -18,8 +19,16 @@ export default function MainRoutes() {
             </Suspense>
           }
         />
-
+        {/*Auth routes */}
         <Route path='auth' element={<AuthPage />} />
+        <Route
+          path='auth/reset'
+          element={
+            <Suspense fallback={<>...</>}>
+              <ForgotPassword />
+            </Suspense>
+          }
+        />
 
         {/*header routes */}
         <Route
