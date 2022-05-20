@@ -1,3 +1,4 @@
+import { FormEvent } from 'react'
 import { FieldError } from 'react-hook-form'
 
 export interface LoginFormProps {
@@ -10,4 +11,10 @@ export interface LoginInputProps {
   label: string
   type: string
   error?: FieldError
+  showVisibilityIcon?: (event: FormEvent) => void
+  isVisible?: boolean
+}
+
+export interface VisibilityIconProps {
+  isVisible?: boolean
 }
