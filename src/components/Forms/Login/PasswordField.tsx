@@ -21,12 +21,11 @@ const PasswordInput: ForwardRefRenderFunction<
         {...rest}
         ref={ref}
       />
-      <Link
-        to={'reset'}
-        className='absolute inset-y-0 right-0 text-xs text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out'
-      >
-        Esqueceu a senha?
-      </Link>
+      <label className='absolute inset-y-0 right-0 text-xs text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out pointer-events-none'>
+        <Link className='pointer-events-auto p-2' to={'reset'}>
+          Esqueceu a senha?
+        </Link>
+      </label>
       <label
         className='absolute inset-y-[3.5rem] right-2.5'
         onClick={showVisibilityIcon}
