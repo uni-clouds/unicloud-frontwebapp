@@ -17,15 +17,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  //verificar e atulizar o state na inicializacao
+  //verifica e atualiza o state na inicializacão
 
   useEffect(() => {
     setLoading(true)
 
-    const user = parseCookies()
-    if (user) {
-      console.log('passei aqui!')
-      setUser(user)
+    const cookie = parseCookies()
+    if (cookie.hasOwnProperty('user')) {
+      setUser(cookie)
       setAuthenticated(true)
       setLoading(false)
     }
@@ -46,10 +45,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   function logout() {
-    //verificar se preciso remover o item
     setUser(null)
     removeUserLocalStorage()
     setAuthenticated(false)
+    navigate('/auth')
   }
 
   return (

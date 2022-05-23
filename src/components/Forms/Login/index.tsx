@@ -1,14 +1,15 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitButton } from '../../Buttons/SubmitButton'
+import { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { EmailField } from './EmailField'
-import { LoginFormProps } from './types'
 import { schemaLogin } from './validation'
 import { Loading } from '../../Elements/Loading'
-import { FormEvent, useState } from 'react'
+import { ToastError } from '../../Elements/ToastError'
 import { PasswordField } from './PasswordField'
 import { useAuth } from '../../../hooks/useAuth'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { LoginFormProps } from './types'
 
 export const Login: React.FC = () => {
   const {
@@ -22,7 +23,6 @@ export const Login: React.FC = () => {
   const [passwordIsShow, setPasswordIsShow] = useState(false)
   const { authenticate } = useAuth()
   const navigate = useNavigate()
-  const { state } = useLocation()
 
   const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
     //*set Loading state true/search
@@ -31,6 +31,8 @@ export const Login: React.FC = () => {
       await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
+      err && ToastError('E-mail ou senha inválido!')
+
       //exibir o erro do backend
 
       setTimeout(() => {

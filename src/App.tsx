@@ -1,13 +1,13 @@
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
-import { Layout } from './components/Layout'
+import { ToastContainer } from 'react-toastify'
 import MainRoutes from './routes'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 const App: React.FC = () => {
   return (
     <main>
-      <Header />
-      <Footer />
+      <MainRoutes />
+      <ToastContainer />
     </main>
   )
 }

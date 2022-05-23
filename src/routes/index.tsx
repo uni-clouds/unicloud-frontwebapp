@@ -1,18 +1,16 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import App from '../App'
+
 import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
-import HomePage from '../pages/Home'
 
 export default function MainRoutes() {
   const Page404 = lazy(() => import('../pages/Error'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
-  //const Home = lazy(() => import('../pages/Home'))
+  const Home = lazy(() => import('../pages/Home'))
 
   return (
     <Routes>
-      <Route path='#' element={<App />} />
       <Route
         path='error'
         element={
@@ -64,7 +62,7 @@ export default function MainRoutes() {
         path='/'
         element={
           <ProtectedRoute>
-            <HomePage />
+            <Home />
           </ProtectedRoute>
         }
       />
