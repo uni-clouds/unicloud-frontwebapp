@@ -7,7 +7,7 @@
 </div>
 -->
 <h1 align="center">Unicloud App</h1>
-
+<!-- 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/uni-clouds/unicloud-frontwebapp?color=854FFF">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/uni-clouds/unicloud-frontwebapp?color=854FFF">
@@ -16,7 +16,7 @@
 <img alt="Github issues" src="https://img.shields.io/github/issues/uni-clouds/unicloud-frontwebapp?color=854FFF" />
 <img alt="Github forks" src="https://img.shields.io/github/forks/uni-clouds/unicloud-frontwebapp?color=854FFF" />
 </p>
-
+-->
 <h4 align="center">
 <strong>Status</strong>: 
 	🚧  Unicloud App 🚀 Under construction...  🚧
@@ -53,7 +53,7 @@ The following tools were used in this project:
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [React Router](https://v5.reactrouter.com/web/guides/quick-start)
+- [React Router](https://v6.reactrouter.com/)
 - [Tailwindcss](https://tailwindcss.com)
 
 ## :white_check_mark: Requirements
