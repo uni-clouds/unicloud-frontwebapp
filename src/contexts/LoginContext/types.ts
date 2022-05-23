@@ -1,13 +1,14 @@
-import { ReactNode, SetStateAction } from 'react'
-
 export interface UserType {
   email?: string
-  token?: string
+  password?: string
+  access?: string
+  refresh?: string
 }
 
 export interface ContextType extends UserType {
   authenticate: (email: string, password: string) => Promise<void>
   logout: () => void
+  authenticated: boolean
 }
 
 export interface AuthProviderProps {

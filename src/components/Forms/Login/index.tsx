@@ -7,7 +7,6 @@ import { schemaLogin } from './validation'
 import { Loading } from '../../Elements/Loading'
 import { FormEvent, useState } from 'react'
 import { PasswordField } from './PasswordField'
-import { api } from '../../../services/api'
 import { useAuth } from '../../../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -25,15 +24,11 @@ export const Login: React.FC = () => {
   const navigate = useNavigate()
   const { state } = useLocation()
 
-  let from = state?.from?.pathname || '/'
-
   const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
     //*set Loading state true/search
-    // * confirmar rotas no backend && username
-
+    // * confirmar rotas no backend && username =email
     try {
       await auth.authenticate(data.email, data.password)
-      navigate(from, { replace: true })
     } catch (err) {
       console.error('form login error', err)
       //exibir o erro do backend

@@ -1,12 +1,16 @@
-import { AxiosRequestConfig } from 'axios'
 import { api } from '../../services/api'
 import { UserType } from './types'
+import { setCookie, parseCookies } from 'nookies'
 
-export async function LoginRequest(email: string, password: string) {
+const MAX_AGE = 7 * 24 * 60 * 60 //7 days
+
+export async function LoginRequest(username: string, password: string) {
   try {
-    const request = await api.post('/login', { email, password })
+    const request = await api.post('/login/', { username, password })
 
-    //token vem da request.data
+    //token = request.data.access
+    //refresh token = request.data.refresh
+
     return request.data
   } catch (err) {
     console.error(err)
@@ -15,18 +19,17 @@ export async function LoginRequest(email: string, password: string) {
 }
 
 export function setUserLocalStorage(user: UserType | null) {
-  localStorage.setItem('key', JSON.stringify(user))
+  setCookie(null, 'user', JSON.stringify(user), {
+    path: '/',
+    maxAge: MAX_AGE,
+    sameSite: true
+  })
 }
 
 export function getTokenLocalStorage() {
-  const json = localStorage.getItem('key')
-
-  if (!json) {
+  const token = parseCookies()
+  if (!token.hasOwnProperty('user')) {
     return null
   }
-
-  const user = JSON.parse(json)
-  //verificar se o retorno está no formato válido ou retornar null
-
-  return user ?? null
+  return token ?? null
 }
