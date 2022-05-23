@@ -1,6 +1,11 @@
 import { createContext, useEffect, useState } from 'react'
 import { AuthProviderProps, UserType, ContextType } from './types'
-import { getTokenLocalStorage, LoginRequest, setUserLocalStorage } from './util'
+import {
+  getTokenLocalStorage,
+  LoginRequest,
+  removeUserLocalStorage,
+  setUserLocalStorage
+} from './util'
 import { setCookie, parseCookies } from 'nookies'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,7 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   function logout() {
     //verificar se preciso remover o item
     setUser(null)
-    setUserLocalStorage(null)
+    removeUserLocalStorage()
     setAuthenticated(false)
   }
 

@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
     resolver: yupResolver(schemaLogin)
   })
   const [passwordIsShow, setPasswordIsShow] = useState(false)
-  const auth = useAuth()
+  const { authenticate } = useAuth()
   const navigate = useNavigate()
   const { state } = useLocation()
 
@@ -28,7 +28,7 @@ export const Login: React.FC = () => {
     //*set Loading state true/search
     // * confirmar rotas no backend && username =email
     try {
-      await auth.authenticate(data.email, data.password)
+      await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
       //exibir o erro do backend

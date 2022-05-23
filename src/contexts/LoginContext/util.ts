@@ -1,6 +1,6 @@
 import { api } from '../../services/api'
 import { UserType } from './types'
-import { setCookie, parseCookies } from 'nookies'
+import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
 const MAX_AGE = 7 * 24 * 60 * 60 //7 days
 
@@ -24,6 +24,10 @@ export function setUserLocalStorage(user: UserType | null) {
     maxAge: MAX_AGE,
     sameSite: true
   })
+}
+
+export function removeUserLocalStorage() {
+  destroyCookie(null, 'user')
 }
 
 export function getTokenLocalStorage() {
