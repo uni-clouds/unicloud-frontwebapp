@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { getTokenLocalStorage } from '../contexts/LoginContext/util'
+import { parseCookies } from 'nookies'
+
+const token = parseCookies()
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL
@@ -8,9 +10,7 @@ export const api = axios.create({
 //verificar se o usuário está logado e revalidar token
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = getTokenLocalStorage()
-
-    if (token) {
+    if (token.access) {
       config.headers = {
         Authorization: `Bearer ${token}`
       }

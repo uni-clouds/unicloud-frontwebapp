@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from 'react'
 import { AuthProviderProps, UserType, ContextType } from './types'
 import {
-  getTokenLocalStorage,
   LoginRequest,
+  refreshToken,
   removeUserLocalStorage,
   setUserLocalStorage
 } from './util'
-import { setCookie, parseCookies } from 'nookies'
+import { parseCookies } from 'nookies'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext<ContextType>({} as ContextType)
@@ -19,11 +19,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   //verifica e atualiza o state na inicializacão
 
+  const cookie = parseCookies()
   useEffect(() => {
     setLoading(true)
 
-    const cookie = parseCookies()
     if (cookie.hasOwnProperty('user')) {
+      sessionValidation(cookie.refresh)
       setUser(cookie)
       setAuthenticated(true)
       setLoading(false)
@@ -49,6 +50,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     removeUserLocalStorage()
     setAuthenticated(false)
     navigate('/auth')
+  }
+
+  async function sessionValidation(token: string) {
+    authenticated && refreshToken(token)
   }
 
   return (
