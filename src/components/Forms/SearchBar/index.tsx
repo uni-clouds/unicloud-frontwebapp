@@ -4,14 +4,14 @@ export const SearchBar: React.FC = () => {
   return (
     <form
       onSubmit={() => {}}
-      className='flex flex-1 text-light-500 text-sm items-center'
+      className='flex flex-row items-center w-full text-base-500 text-sm '
     >
-      <label className='mr-2'>
+      <label className='mr-2 absolute p-4' aria-label='search' role='search'>
         <BsSearch />
       </label>
       <input
         type='text'
-        className='py-2 px-4 w-100 outline-0'
+        className='basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent placeholder:text-base-500 placeholder-neutral-50 bg-transparent focus:outline-0'
         placeholder='Buscar'
       />
     </form>
