@@ -24,11 +24,18 @@ export async function LoginRequest(username: string, password: string) {
 }
 
 export function setUserLocalStorage(user: UserType | null) {
-  setCookie(null, 'user', JSON.stringify(user), {
-    path: '/',
-    maxAge: MAX_AGE_TOKEN,
-    sameSite: true
-  })
+  if (user) {
+    setCookie(null, 'user', String(user.email), {
+      path: '/',
+      maxAge: MAX_AGE_REFRESH_TOKEN,
+      sameSite: true
+    })
+    setCookie(null, 'token', String(user.token), {
+      path: '/',
+      maxAge: MAX_AGE_TOKEN,
+      sameSite: true
+    })
+  }
 }
 
 export function removeUserLocalStorage() {
@@ -64,3 +71,10 @@ export function refreshToken(refreshToken: string) {
     }
   }, SESSION_VALIDATE)
 }
+
+// *logo partner
+
+// export async function getLogo() {
+//   const request = await api.get('/get-organization/')
+//   console.log('response', request.data)
+// }

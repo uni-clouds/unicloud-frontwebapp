@@ -5,10 +5,11 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const cookies = parseCookies()
 
   //if loading...
-  if (!cookies.hasOwnProperty('user')) {
-    return <Navigate to='/auth' />
+  console.log('renderizou?')
+  if (cookies.token) {
+    return children
   }
-  return children
+  return <Navigate to='/auth' replace />
 }
 
 export default ProtectedRoute

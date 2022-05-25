@@ -11,7 +11,7 @@ export const SearchBar: React.FC = () => {
       </label>
       <input
         type='text'
-        className='basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent placeholder:text-base-500 placeholder-neutral-50 bg-transparent focus:outline-0'
+        className='form-input basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent placeholder:text-base-500 placeholder-slate-50 bg-transparent focus:outline-0 border-0  focus:ring-0'
         placeholder='Buscar'
       />
     </form>
