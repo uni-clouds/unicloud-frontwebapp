@@ -7,7 +7,7 @@ export const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL
 })
 
-//verificar se o usuário está logado e revalidar token
+//verificar se o usuário está logado e revalida token
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     if (cookies.token) {

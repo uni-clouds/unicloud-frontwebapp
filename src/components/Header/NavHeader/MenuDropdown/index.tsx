@@ -6,12 +6,13 @@ import {
 } from 'react-icons/ri'
 import { HiOutlineUserCircle } from 'react-icons/hi'
 import { FiActivity } from 'react-icons/fi'
-import { useAuth } from '../../hooks/useAuth'
-import { UnstyledButton } from '../Buttons/Unstyled'
-import { Avatar } from '../Avatar'
+import { useAuth } from '../../../../hooks/useAuth'
+import { UnstyledButton } from '../../../Buttons/Unstyled'
+import { Avatar } from '../../../Avatar'
 import { parseCookies } from 'nookies'
+import { Divider } from '../../../Elements/Divider'
 
-export const MenuDropdown: React.FC = () => {
+export const MenuDropdown = () => {
   const { logout } = useAuth()
   const cookies = parseCookies()
 
@@ -19,10 +20,10 @@ export const MenuDropdown: React.FC = () => {
     <div className='dropdown dropdown-end'>
       <label
         tabIndex={0}
-        className='btn w-60 btn-ghost text-base text-brand-600 flex flex-row  hover:bg-transparent hover:text-brand-700 transition-colors delay-75'
+        className=' flex flex-row btn min-w-max btn-ghost text-base text-brand-600 hover:bg-transparent hover:text-brand-700 transition-colors delay-75'
       >
-        <span className='capitalize '> Role</span>
-        <RiArrowDropDownLine className='text-2xl ml-2' />
+        <span className='peer capitalize '>Partner</span>
+        <RiArrowDropDownLine className='text-2xl ml-2 peer-hover:translate-y-px peer-hover:transition-transform peer-hover:ease-in-out peer-hover:delay-75' />
       </label>
       <ul
         tabIndex={0}
@@ -32,7 +33,7 @@ export const MenuDropdown: React.FC = () => {
           <Avatar />
           <span className='text-xs'>{cookies.user}</span>
         </div>
-        <div className='divider'></div>
+        <Divider />
         <li>
           <Link to='#'>
             <HiOutlineUserCircle />
@@ -51,7 +52,7 @@ export const MenuDropdown: React.FC = () => {
             <span>Atividade</span>
           </Link>
         </li>
-        <div className='divider'></div>
+        <Divider />
         <li>
           <UnstyledButton onclick={() => logout()}>
             <RiLogoutBoxRLine />

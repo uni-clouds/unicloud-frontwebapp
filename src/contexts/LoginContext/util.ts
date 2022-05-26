@@ -41,6 +41,7 @@ export function setUserLocalStorage(user: UserType | null) {
 export function removeUserLocalStorage() {
   destroyCookie(null, 'user')
   destroyCookie(null, 'refresh')
+  destroyCookie(null, 'token')
 }
 
 export function getTokenLocalStorage() {
@@ -74,7 +75,9 @@ export function refreshToken(refreshToken: string) {
 
 // *logo partner
 
-// export async function getLogo() {
-//   const request = await api.get('/get-organization/')
-//   console.log('response', request.data)
-// }
+export async function getLogo() {
+  const request = await api.get('/customer-type/')
+  console.log('response', request.data)
+}
+
+getLogo()

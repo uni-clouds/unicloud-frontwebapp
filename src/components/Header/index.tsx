@@ -1,5 +1,5 @@
 import { SearchBar } from '../Forms/SearchBar'
-import { NavHeader } from '../Nav/NavHeader'
+import { NavHeader } from './NavHeader'
 
 export const Header: React.FC = () => {
   return (
