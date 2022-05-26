@@ -22,13 +22,14 @@ module.exports = {
           100: '#e3e7fe', //dim
           200: '#e7dcff',
           300: '#d4c2ff', //accent-light
-          400: '#b695ff',
+          400: '#00b2ce',
+          450: '#3ab2f2', //accent-dark
+          480: '#b695ff',
           500: '#9d72ff',
           600: '#7500ff', //main-color
-          700: '#3a2272',
+          700: '#5f00cc', //main +1
           800: '#b13df4',
-          900: '#00b2ce',
-          950: '#3ab2f2', //accent-dark
+          900: '#3a2272',
           bitcoin: '#f9841e',
           ethereum: '#6174b9',
           facebook: '#3b5998',

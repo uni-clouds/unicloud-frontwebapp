@@ -79,5 +79,3 @@ export async function getLogo() {
   const request = await api.get('/customer-type/')
   console.log('response', request.data)
 }
-
-getLogo()

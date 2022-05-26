@@ -1,6 +1,6 @@
 import { Layout } from '../../components/Layout'
 
-import emptyStateImg from '../../assets/empty-state.png'
+import emptyStateImg from '../../assets/under-construction.png'
 import { useNavigate } from 'react-router-dom'
 
 const Notifications: React.FC = () => {

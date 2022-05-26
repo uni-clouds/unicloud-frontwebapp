@@ -4,11 +4,12 @@ import { Routes, Route } from 'react-router-dom'
 import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
-import Notifications from '../pages/Notifications'
+import PlaceholderPage from '../pages/Placeholder'
 
 export default function MainRoutes() {
-  const Page404 = lazy(() => import('../pages/Error'))
+  const Error = lazy(() => import('../pages/Error'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
+  //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
     <Routes>
@@ -16,7 +17,7 @@ export default function MainRoutes() {
         path='error'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <Error />
           </Suspense>
         }
       />
@@ -36,7 +37,7 @@ export default function MainRoutes() {
         path='terms'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -44,7 +45,7 @@ export default function MainRoutes() {
         path='help'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -52,7 +53,7 @@ export default function MainRoutes() {
         path='policitys'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -67,11 +68,12 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path='/notifications'
         element={
           <ProtectedRoute>
-            <Notifications />
+            <PlaceholderPage />
           </ProtectedRoute>
         }
       />
