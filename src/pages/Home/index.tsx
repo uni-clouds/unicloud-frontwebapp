@@ -12,15 +12,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout>
-      <div className='grid place-items-center py-6'>
-        <button
-          onClick={getLogo}
-          type='button'
-          className='btn btn-accent rounded-full px-10'
-        >
-          click here
-        </button>
-      </div>
+      <></>
     </Layout>
   )
 }
