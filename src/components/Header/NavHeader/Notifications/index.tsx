@@ -1,10 +1,13 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { UnstyledButton } from '../../../Buttons/Unstyled'
+import { Divider } from '../../../Elements/Divider'
 import { NotificationIcon } from '../../../Elements/NotificationIcon'
 
 //! incluir map com notification content
 export const Notifications = () => {
   const [haveNotifications, setHasNotifications] = useState(true)
+  const navigate = useNavigate()
 
   return (
     <div className='dropdown'>
@@ -35,6 +38,10 @@ export const Notifications = () => {
             <span>notificação 3</span>
           </Link>
         </li>
+        <Divider />
+        <UnstyledButton onclick={() => navigate('/notifications')}>
+          Veja todas
+        </UnstyledButton>
       </ul>
     </div>
   )

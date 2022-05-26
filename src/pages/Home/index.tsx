@@ -16,9 +16,9 @@ const HomePage: React.FC = () => {
         <button
           onClick={getLogo}
           type='button'
-          className='p-6 bg-brand-600 text-neutral-50'
+          className='btn btn-accent rounded-full px-10'
         >
-          Sair
+          click here
         </button>
       </div>
     </Layout>

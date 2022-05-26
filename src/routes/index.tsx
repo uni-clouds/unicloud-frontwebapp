@@ -4,11 +4,11 @@ import { Routes, Route } from 'react-router-dom'
 import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
+import Notifications from '../pages/Notifications'
 
 export default function MainRoutes() {
   const Page404 = lazy(() => import('../pages/Error'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
-  const Home = lazy(() => import('../pages/Home'))
 
   return (
     <Routes>
@@ -64,6 +64,14 @@ export default function MainRoutes() {
         element={
           <ProtectedRoute>
             <HomePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/notifications'
+        element={
+          <ProtectedRoute>
+            <Notifications />
           </ProtectedRoute>
         }
       />
