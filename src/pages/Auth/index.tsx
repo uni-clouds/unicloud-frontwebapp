@@ -36,7 +36,7 @@ const AuthPage: React.FC = () => {
                 <LinkInternal name='Contate nossa equipe' href='#' />
               </span>
             </p>
-            <Divider />
+            <Divider text='ou' />
             <NavLinksHelpers items={navItems} />
           </div>
         </section>

@@ -1,3 +1,11 @@
-export interface ChatIconPros {
-  message: boolean
+export interface DividerProps {
+  text?: string
+}
+
+export interface NotificationIconProps {
+  isNotification?: boolean
+}
+
+export interface AvatarNameProps {
+  name?: string
 }

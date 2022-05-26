@@ -26,14 +26,12 @@ export const Login: React.FC = () => {
 
   const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
     //*set Loading state true/search
-    // * confirmar rotas no backend && username =email
+
     try {
       await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
       err && ToastError('E-mail ou senha inválido!')
-
-      //exibir o erro do backend
 
       setTimeout(() => {
         navigate('/auth', { replace: true })

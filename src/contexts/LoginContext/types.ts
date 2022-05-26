@@ -1,8 +1,7 @@
 export interface UserType {
   email?: string
   password?: string
-  access?: string
-  refresh?: string
+  token?: string
 }
 
 export interface ContextType extends UserType {
