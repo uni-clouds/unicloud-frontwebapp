@@ -1,11 +1,9 @@
-import { createContext, useEffect, useState } from 'react'
-import { parseCookies } from 'nookies'
+import { createContext, useMemo, useState } from 'react'
 import { api } from '../../services/api'
 import {
   UserProviderProps,
   ContextType,
   CustomerType,
-  CustomerDataType,
   ContextData
 } from './types'
 
@@ -15,13 +13,9 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerData, setCustomerData] = useState<ContextData>()
   const [customerType, setCustomerType] = useState<CustomerType>()
 
-  useEffect(() => {
-    const cookies = parseCookies()
-
-    if (cookies.token) {
-      getData()
-      getCustomerType()
-    }
+  useMemo(() => {
+    getData()
+    getCustomerType()
   }, [])
 
   async function getData() {
@@ -38,7 +32,9 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
     return request.data
   }
   return (
-    <UserContext.Provider value={{ ...customerData, customerType }}>
+    <UserContext.Provider
+      value={{ ...customerData, customerType, getData, getCustomerType }}
+    >
       {children}
     </UserContext.Provider>
   )

@@ -40,7 +40,10 @@ export interface ContextData {
   type?: string
   customerType?: CustomerType
 }
-export interface ContextType extends ContextData {}
+export interface ContextType extends ContextData {
+  getData: () => Promise<void>
+  getCustomerType: () => Promise<void>
+}
 
 export interface UserProviderProps {
   children: JSX.Element
