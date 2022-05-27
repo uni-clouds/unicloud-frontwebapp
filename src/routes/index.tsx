@@ -8,11 +8,14 @@ import PlaceholderPage from '../pages/Placeholder'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
+  const NotFound = lazy(() => import('../pages/NotFound'))
+  const Timeout = lazy(() => import('../pages/Error/GatewayTimeout'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
   //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
     <Routes>
+      {/*error pages*/}
       <Route
         path='error'
         element={
@@ -21,6 +24,23 @@ export default function MainRoutes() {
           </Suspense>
         }
       />
+      <Route
+        path='*'
+        element={
+          <Suspense fallback={<>...</>}>
+            <NotFound />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/error504'
+        element={
+          <Suspense fallback={<>...</>}>
+            <Timeout />
+          </Suspense>
+        }
+      />
+
       {/*Auth routes */}
       <Route path='auth' element={<AuthPage />} />
       <Route

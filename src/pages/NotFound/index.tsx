@@ -1,25 +1,34 @@
-import { Link } from 'react-router-dom'
-import ErrorImage from '../../assets/error.svg'
+import { useNavigate } from 'react-router-dom'
+import { NavigateButton } from '../../components/Elements/Buttons/NavigateButton'
 
-const Error404: React.FC = () => {
+import NotFoundImage from '../../assets/error-404.svg'
+
+const NotFound: React.FC = () => {
+  document.title = 'Uni.Cloud | Not Found'
+  const navigate = useNavigate()
   return (
-    <section>
-      <div className='nk-block nk-block-middle wide-md mx-auto'>
-        <div className='nk-block-content nk-error-ld text-center'>
-          <img className='nk-error-gfx' src={ErrorImage} alt='error image' />
-          <div className='wide-xs mx-auto'>
-            <h3 className='nk-error-title'>Oops! Como você chegou aqui?</h3>
-            <p className='nk-error-text'>
-              Sentimos muito pelo inconveniente, mas parece que você está
-              tentando acessar uma página que não existe.
-            </p>
-            <Link to={'/'}>
-              <button className='mt-2'>Voltar para página principal</button>
-            </Link>
-          </div>
+    <section className='hero h-screen '>
+      <div className='hero-content flex-col text-lg text-center gap-4'>
+        <img
+          className='w-auto h-[30rem]'
+          src={NotFoundImage}
+          alt='error image'
+        />
+        <div>
+          <h3 className='font-semibold text-xl leading-10'>
+            Oops! Como você chegou aqui?
+          </h3>
+          <p className='my-2'>
+            Sentimos muito pelo inconveniente, mas parece que você está tentando
+            acessar uma página que não existe.
+          </p>
         </div>
+        <NavigateButton
+          text='Voltar para página principal'
+          onclick={() => navigate('/')}
+        />
       </div>
     </section>
   )
 }
-export default Error404
+export default NotFound

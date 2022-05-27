@@ -23,25 +23,27 @@ export const Notifications = () => {
         tabIndex={0}
         className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 '
       >
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <span>notificação 1</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <span>notificação 2</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <span>notificação 3</span>
           </Link>
         </li>
         <Divider />
-        <UnstyledButton onclick={() => navigate('/notifications')}>
-          Veja todas
-        </UnstyledButton>
+        <span className='hover:text-brand-600 mx-auto'>
+          <UnstyledButton onclick={() => navigate('/notifications')}>
+            Veja todas
+          </UnstyledButton>
+        </span>
       </ul>
     </div>
   )

@@ -27,33 +27,33 @@ export const MenuDropdown = () => {
       </label>
       <ul
         tabIndex={0}
-        className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 '
+        className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2'
       >
         <div className='px-2 flex flex-row gap-2 items-center'>
           <Avatar />
           <span className='text-xs'>{email}</span>
         </div>
         <Divider />
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <HiOutlineUserCircle />
             <span>Perfil</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <RiUserSettingsLine />
             <span>Preferências</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <FiActivity />
             <span>Atividade</span>
           </Link>
         </li>
         <Divider />
-        <li>
+        <li className='hover:text-brand-600'>
           <UnstyledButton onclick={() => logout()}>
             <RiLogoutBoxRLine />
             <span>Sair</span>
