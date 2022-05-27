@@ -55,16 +55,19 @@ export function getTokenLocalStorage() {
 export function refreshToken(refreshToken: string) {
   setInterval(async () => {
     try {
-      const request = await api.post('/token-refresh/', { refreshToken })
+      const request = await api.post('/api/token/refresh/', {
+        refresh: refreshToken
+      })
 
       const data = request.data
-      console.log('refresh route', data)
-
-      setCookie(null, 'user', data, {
-        path: '/',
-        maxAge: MAX_AGE_TOKEN,
-        sameSite: true
-      })
+      console.log('refresh token', data)
+      if (request.status === 200) {
+        setCookie(null, 'token', String(data), {
+          path: '/',
+          maxAge: MAX_AGE_TOKEN,
+          sameSite: true
+        })
+      }
       return data
     } catch (err) {
       console.error(err)
@@ -72,12 +75,3 @@ export function refreshToken(refreshToken: string) {
     }
   }, SESSION_VALIDATE)
 }
-
-// *logo partner
-
-export async function getLogo() {
-  const request = await api.get('/customer-type/')
-  console.log('response', request.data)
-}
-
-getLogo()
