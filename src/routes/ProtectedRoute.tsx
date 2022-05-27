@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const cookies = parseCookies()
 
   //if loading...
-  console.log('renderizou?')
+
   if (cookies.token) {
     return children
   }

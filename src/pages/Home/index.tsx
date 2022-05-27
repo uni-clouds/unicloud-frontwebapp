@@ -1,29 +1,25 @@
 import { Layout } from '../../components/Layout'
-import { useAuth } from '../../hooks/useAuth'
-import { api } from '../../services/api'
+import { useUserData } from '../../hooks/useUserData'
 
 const HomePage: React.FC = () => {
-  const { logout, token } = useAuth()
+  const user = useUserData()
 
-  async function getLogo() {
-    try {
-      const request = await api.get('/customers/')
-      console.log('response', request.data)
-    } catch (err) {
-      console.error('erro chamada no clique', err)
-    }
-  }
+  console.log('context na home =>', user)
 
   return (
     <Layout>
-      <div className='hero h-screen'>
-        <button
-          className='btn btn-primary hero-content'
-          onClick={() => getLogo()}
-        >
-          teste
-        </button>
-      </div>
+      <section className='hero h-screen '>
+        <div className='hero-content flex-col gap-6'>
+          <p>{user.telefone}</p>
+          <button
+            className=' btn btn-primary btn-square px-12'
+            type='button'
+            onClick={() => window.location.reload()}
+          >
+            click
+          </button>
+        </div>
+      </section>
     </Layout>
   )
 }
