@@ -4,8 +4,6 @@ import { useUserData } from '../../hooks/useUserData'
 const HomePage: React.FC = () => {
   const user = useUserData()
 
-  console.log('context na home =>', user)
-
   return (
     <Layout>
       <section className='hero h-screen '>
