@@ -3,7 +3,6 @@ import { useUserData } from '../../hooks/useUserData'
 
 const HomePage: React.FC = () => {
   const user = useUserData()
-  document.title = 'Uni.Cloud | Home'
 
   return (
     <Layout>
@@ -17,6 +16,9 @@ const HomePage: React.FC = () => {
           >
             click
           </button>
+          <label htmlFor='my-drawer' className='btn btn-primary drawer-button'>
+            Open drawer
+          </label>
         </div>
       </section>
     </Layout>

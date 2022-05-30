@@ -40,7 +40,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         tabIndex={0}
         className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 mr-2 border-t-2 border-brand-600 rounded-t-md'
       >
-        <div className='px-2 flex flex-row gap-2 items-center'>
+        <div className='px-2 flex flex-row gap-4 items-center py-2'>
           <Avatar firstName={firstName} lastName={lastName} />
           <span className='text-xs'>{email}</span>
         </div>
