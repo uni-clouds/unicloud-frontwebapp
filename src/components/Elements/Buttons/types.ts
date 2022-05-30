@@ -9,3 +9,8 @@ export interface UnstyledButtonProps {
   children: ReactNode
   onclick: () => void
 }
+
+export interface NavigateButtonProps {
+  text: string
+  onclick: () => void
+}

@@ -4,22 +4,43 @@ import { Routes, Route } from 'react-router-dom'
 import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
-import Notifications from '../pages/Notifications'
+import PlaceholderPage from '../pages/Placeholder'
 
 export default function MainRoutes() {
-  const Page404 = lazy(() => import('../pages/Error'))
+  const Error = lazy(() => import('../pages/Error'))
+  const NotFound = lazy(() => import('../pages/NotFound'))
+  const Timeout = lazy(() => import('../pages/Error/GatewayTimeout'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
+  //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
     <Routes>
+      {/*error pages*/}
       <Route
         path='error'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <Error />
           </Suspense>
         }
       />
+      <Route
+        path='*'
+        element={
+          <Suspense fallback={<>...</>}>
+            <NotFound />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/error504'
+        element={
+          <Suspense fallback={<>...</>}>
+            <Timeout />
+          </Suspense>
+        }
+      />
+
       {/*Auth routes */}
       <Route path='auth' element={<AuthPage />} />
       <Route
@@ -36,7 +57,7 @@ export default function MainRoutes() {
         path='terms'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -44,7 +65,7 @@ export default function MainRoutes() {
         path='help'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -52,7 +73,7 @@ export default function MainRoutes() {
         path='policitys'
         element={
           <Suspense fallback={<>...</>}>
-            <Page404 />
+            <PlaceholderPage />
           </Suspense>
         }
       />
@@ -67,11 +88,12 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path='/notifications'
         element={
           <ProtectedRoute>
-            <Notifications />
+            <PlaceholderPage />
           </ProtectedRoute>
         }
       />

@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { SubmitButton } from '../../Buttons/SubmitButton'
+import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { EmailField } from './EmailField'

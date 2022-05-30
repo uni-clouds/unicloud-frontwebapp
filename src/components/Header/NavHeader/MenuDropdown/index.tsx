@@ -7,7 +7,7 @@ import {
   RiLogoutBoxRLine
 } from 'react-icons/ri'
 import { useAuth } from '../../../../hooks/useAuth'
-import { UnstyledButton } from '../../../Buttons/Unstyled'
+import { UnstyledButton } from '../../../Elements/Buttons/Unstyled'
 import { Avatar } from '../../../Avatar'
 import { Divider } from '../../../Elements/Divider'
 import { DropdownProps } from './types'
@@ -45,26 +45,26 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
           <span className='text-xs'>{email}</span>
         </div>
         <Divider />
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <HiOutlineUserCircle />
             <span>Perfil</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <RiUserSettingsLine />
             <span>Preferências</span>
           </Link>
         </li>
-        <li>
+        <li className='hover:text-brand-600'>
           <Link to='#'>
             <FiActivity />
             <span>Atividade</span>
           </Link>
         </li>
         <Divider />
-        <li>
+        <li className='hover:text-brand-600'>
           <UnstyledButton onclick={() => logout()}>
             <RiLogoutBoxRLine />
             <span>Sair</span>
