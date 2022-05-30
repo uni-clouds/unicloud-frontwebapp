@@ -1,19 +1,24 @@
-import { useAuth } from '../../hooks/useAuth'
+import { Layout } from '../../components/Layout'
+import { useUserData } from '../../hooks/useUserData'
 
 const HomePage: React.FC = () => {
-  const { logout } = useAuth()
+  const user = useUserData()
 
   return (
-    <>
-      <h1>home page uhull</h1>
-      <button
-        onClick={() => logout()}
-        type='button'
-        className='p-6 bg-brand-600 text-neutral-50'
-      >
-        Sair
-      </button>
-    </>
+    <Layout>
+      <section className='hero h-screen '>
+        <div className='hero-content flex-col gap-6'>
+          <p>{user.telefone}</p>
+          <button
+            className=' btn btn-primary btn-square px-12'
+            type='button'
+            onClick={() => window.location.reload()}
+          >
+            click
+          </button>
+        </div>
+      </section>
+    </Layout>
   )
 }
 

@@ -1,18 +1,36 @@
+import { SubmitErrorHandler, useForm } from 'react-hook-form'
 import { BsSearch } from 'react-icons/bs'
+import { SearchBarProps } from './types'
 
 export const SearchBar: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm()
+
+  const onSearch: SubmitErrorHandler<SearchBarProps> = (data) => {
+    console.log(data)
+    reset()
+  }
   return (
     <form
-      onSubmit={() => {}}
-      className='flex flex-1 text-light-500 text-sm items-center'
+      onSubmit={handleSubmit(onSearch)}
+      className='flex flex-row items-center w-full text-base-500 text-sm '
     >
-      <label className='mr-2'>
+      <label className='mr-2 absolute p-4' aria-label='search' role='search'>
         <BsSearch />
       </label>
       <input
         type='text'
-        className='py-2 px-4 w-100 outline-0'
+        className={`${
+          errors?.search
+            ? 'focus:outline-rose-400 border-rose-400 focus:ring-offset-1 focus:ring-red-custom focus:ring-offset-rose-400 rounded-md'
+            : 'focus:outline-0 border-0 focus:ring-0'
+        } form-input basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent placeholder:text-base-500 placeholder-slate-50 bg-transparent`}
         placeholder='Buscar'
+        {...register('search', { required: true })}
       />
     </form>
   )

@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(() => {
     setLoading(true)
 
-    if (cookie.hasOwnProperty('user')) {
+    if (cookie.token) {
       sessionValidation(cookie.refresh)
       setUser(cookie)
       setAuthenticated(true)
@@ -39,7 +39,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (payload) {
       navigate('/')
     }
-
     setUser(payload)
     setUserLocalStorage(payload)
     setAuthenticated(true)
