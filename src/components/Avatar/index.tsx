@@ -1,17 +1,18 @@
-import { AvatarFallback } from '../Elements/AvatarFallback'
+import { useState } from 'react'
 import { AvatarProps } from './types'
+import { AvatarFallback } from '../Elements/AvatarFallback'
 import { AvatarName } from '../Elements/AvatarName'
-import { parseCookies } from 'nookies'
 
 import sampleImage from '../../../public/assets/logo-light.png'
-import { useState } from 'react'
 
 //! alterar para imagem dinâmica vinda do backend
 
-export const Avatar: React.FC<AvatarProps> = () => {
-  const cookies = parseCookies()
-  const username = cookies.user?.slice(0, 2)
+export const Avatar: React.FC<AvatarProps> = ({ firstName, lastName }) => {
   const [getLogo, setGetLogo] = useState(false)
+  const getInitials = []
+  getInitials.push(firstName?.charAt(0))
+  getInitials.push(lastName?.charAt(0))
+  const initials = getInitials?.join(' ')
 
   if (getLogo) {
     return (
@@ -28,8 +29,8 @@ export const Avatar: React.FC<AvatarProps> = () => {
     )
   }
 
-  if (cookies.user?.length !== 0) {
-    return <AvatarName name={username} />
+  if (firstName?.length !== 0) {
+    return <AvatarName name={initials} />
   }
 
   return <AvatarFallback />

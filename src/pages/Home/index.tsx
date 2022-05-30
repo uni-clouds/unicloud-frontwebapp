@@ -3,7 +3,6 @@ import { useUserData } from '../../hooks/useUserData'
 
 const HomePage: React.FC = () => {
   const user = useUserData()
-  document.title = 'Uni.Cloud | Home'
 
   return (
     <Layout>

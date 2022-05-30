@@ -1,4 +1,5 @@
 import { createContext, useMemo, useState } from 'react'
+import { useAuth } from '../../hooks/useAuth'
 import { api } from '../../services/api'
 import {
   UserProviderProps,
@@ -12,10 +13,12 @@ export const UserContext = createContext<ContextType>({} as ContextType)
 export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerData, setCustomerData] = useState<ContextData>()
   const [customerType, setCustomerType] = useState<CustomerType>()
-
+  const { token } = useAuth()
   useMemo(() => {
-    getData()
-    getCustomerType()
+    if (token) {
+      getData()
+      getCustomerType()
+    }
   }, [])
 
   async function getData() {
