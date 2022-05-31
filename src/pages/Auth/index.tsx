@@ -2,8 +2,8 @@ import { Divider } from '../../components/Elements/Divider'
 import { Footer } from '../../components/Footer'
 import { Login } from '../../components/Forms/Login'
 import { Logo } from '../../components/Logo'
-import { LinkInternal } from '../../components/Nav/LinkInternal'
-import { NavLinksHelpers } from '../../components/Nav/NavLinksHelpers'
+import { LinkInternal } from '../../components/Elements/Nav/LinkInternal'
+import { NavLinksHelpers } from '../../components/Elements/Nav/NavLinksHelpers'
 
 const AuthPage: React.FC = () => {
   //! cofirmar se será rota ou link interno
