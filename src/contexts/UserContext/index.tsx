@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { api } from '../../services/api'
 import {
@@ -14,7 +14,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerData, setCustomerData] = useState<ContextData>()
   const [customerType, setCustomerType] = useState<CustomerType>()
   const { token } = useAuth()
-  useMemo(() => {
+  useEffect(() => {
     if (token) {
       getData()
       getCustomerType()
@@ -34,6 +34,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
     setCustomerType(data)
     return request.data
   }
+
   return (
     <UserContext.Provider
       value={{ ...customerData, customerType, getData, getCustomerType }}

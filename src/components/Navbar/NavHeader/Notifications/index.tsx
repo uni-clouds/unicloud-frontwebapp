@@ -1,7 +1,7 @@
+import { Divider } from '@mui/material'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UnstyledButton } from '../../../Elements/Buttons/Unstyled'
-import { Divider } from '../../../Elements/Divider'
 import { NotificationIcon } from '../../../Elements/NotificationIcon'
 
 //! incluir map com notification content
@@ -21,7 +21,7 @@ export const Notifications = () => {
       </label>
       <ul
         tabIndex={0}
-        className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 '
+        className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 border-t-2 border-brand-600 rounded-t-md'
       >
         <li className='hover:text-brand-600'>
           <Link to='#'>

@@ -10,3 +10,10 @@ export interface SidebarProps {
   closeDrawer: () => void
   children: ReactNode
 }
+
+export interface MenuDataProp {
+  heading: string
+  icon: string
+  link: string
+  text: string
+}
