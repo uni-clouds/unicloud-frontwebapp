@@ -1,4 +1,4 @@
-import { NavLinksHelpers } from '../Nav/NavLinksHelpers'
+import { NavLinksHelpers } from '../Elements/Nav/NavLinksHelpers'
 
 export const Footer: React.FC = () => {
   const navItems = [

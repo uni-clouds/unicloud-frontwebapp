@@ -7,9 +7,9 @@ const GlobalContext: React.FC<AuthProviderProps> = ({ children }) => {
   return (
     <>
       <AuthProvider>
-        <DecodeTokenContextProvider>
-          <UserContextProvider>{children}</UserContextProvider>
-        </DecodeTokenContextProvider>
+        <UserContextProvider>
+          <DecodeTokenContextProvider>{children}</DecodeTokenContextProvider>
+        </UserContextProvider>
       </AuthProvider>
     </>
   )

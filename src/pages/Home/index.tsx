@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
     <Layout>
       <section className='hero h-screen '>
         <div className='hero-content flex-col gap-6'>
-          <p>{user.telefone}</p>
+          <p className='mb-6 text-brand-google'>{user.type}</p>
           <button
             className=' btn btn-primary btn-square px-12'
             type='button'

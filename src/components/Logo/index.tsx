@@ -6,11 +6,10 @@ export const Logo: React.FC = () => {
     <Link to='/'>
       <img
         src={LogoImg}
-        alt='Logo
-        unicloud'
+        alt='Logo unicloud'
         width='300'
         height='300'
-        className='mx-auto mb-6 w-[13.125rem]'
+        className='mx-auto w-[13.125rem]'
       />
     </Link>
   )
