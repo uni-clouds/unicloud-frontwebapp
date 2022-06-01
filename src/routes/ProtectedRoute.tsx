@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 
   //if loading...
 
-  if (cookies.token) {
+  if (cookies.token !== undefined && cookies.token !== null) {
     return children
   }
   return <Navigate to='/auth' replace />

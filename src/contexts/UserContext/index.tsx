@@ -1,3 +1,4 @@
+import { parseCookies } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { api } from '../../services/api'
@@ -5,27 +6,32 @@ import {
   UserProviderProps,
   ContextType,
   CustomerType,
-  ContextData
+  ContextData,
+  CustomerDataType
 } from './types'
 
 export const UserContext = createContext<ContextType>({} as ContextType)
 
 export const UserContextProvider = ({ children }: UserProviderProps) => {
-  const [customerData, setCustomerData] = useState<ContextData>()
+  const [customerData, setCustomerData] = useState<CustomerDataType>()
   const [customerType, setCustomerType] = useState<CustomerType>()
-  const { token } = useAuth()
+  const { token } = parseCookies()
   useEffect(() => {
-    if (token) {
+    if (token !== undefined) {
       getData()
       getCustomerType()
     }
   }, [])
 
   async function getData() {
-    Promise.all([
-      await api.get('/get-organization/')
-      //await api.get('/organization-logo/')
-    ]).then((response) => response.map((res) => setCustomerData(res.data)))
+    try {
+      Promise.all([
+        await api.get('/get-organization/')
+        //await api.get('/organization-logo/')
+      ]).then((response) => response.map((res) => setCustomerData(res.data)))
+    } catch (err) {
+      console.error('getData', err)
+    }
   }
 
   async function getCustomerType() {
@@ -36,9 +42,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   }
 
   return (
-    <UserContext.Provider
-      value={{ ...customerData, customerType, getData, getCustomerType }}
-    >
+    <UserContext.Provider value={{ customerData, customerType }}>
       {children}
     </UserContext.Provider>
   )

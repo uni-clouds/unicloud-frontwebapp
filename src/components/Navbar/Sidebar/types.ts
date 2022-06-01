@@ -12,5 +12,11 @@ export interface SidebarProps {
 }
 
 export interface MenuDataProp {
-  menu: [{ heading: string }, { icon: string; link: string; text: string }]
+  menu: Array<DataProp>
+}
+type DataProp = {
+  heading: string
+  icon: string
+  link: string
+  text: string
 }

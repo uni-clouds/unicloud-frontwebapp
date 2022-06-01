@@ -2,12 +2,12 @@ import { createContext, useEffect, useState } from 'react'
 import { AuthProviderProps, UserType, ContextType } from './types'
 import {
   LoginRequest,
-  refreshToken,
   removeUserLocalStorage,
   setUserLocalStorage
 } from './util'
 import { parseCookies } from 'nookies'
 import { useNavigate } from 'react-router-dom'
+import { api } from '../../services/api'
 
 export const AuthContext = createContext<ContextType>({} as ContextType)
 
@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setLoading(true)
 
     if (cookie.token) {
-      sessionValidation(cookie.refresh)
       setUser(cookie)
       setAuthenticated(true)
       setLoading(false)
@@ -35,7 +34,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const response = await LoginRequest(email, password)
 
     const payload = { token: response.access, email }
-
+    api.defaults.headers.common['Authorization'] = `Bearer ${payload.token}`
     if (payload) {
       navigate('/')
     }
@@ -49,10 +48,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     removeUserLocalStorage()
     setAuthenticated(false)
     navigate('/auth')
-  }
-
-  async function sessionValidation(token: string) {
-    authenticated && refreshToken(token)
   }
 
   return (

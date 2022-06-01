@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 import { useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -22,6 +22,9 @@ import { Drawer, DrawerHeader } from './variants'
 import { MenuDataProp, SidebarProps } from './types'
 
 import { Logo } from '../../Logo'
+import { parseCookies } from 'nookies'
+import { useUserData } from '../../../hooks/useUserData'
+import { UserContext } from '../../../contexts/UserContext'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -30,9 +33,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [menuData, setMenuData] = useState<MenuDataProp>()
   const theme = useTheme()
+  const { token } = parseCookies()
 
   useEffect(() => {
-    getMenuData()
+    if (token !== undefined) {
+      getMenuData()
+    }
   }, [])
 
   async function getMenuData() {

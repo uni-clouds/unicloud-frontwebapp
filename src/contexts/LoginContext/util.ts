@@ -11,11 +11,13 @@ export async function LoginRequest(username: string, password: string) {
     const request = await api.post('/login/', { username, password })
 
     const data = request.data
-    setCookie(null, 'refresh', data.refresh, {
-      path: '/',
-      maxAge: MAX_AGE_REFRESH_TOKEN,
-      sameSite: true
-    })
+    if (data.refresh !== undefined && data.refresh !== null) {
+      setCookie(null, 'refresh', data.refresh, {
+        path: '/',
+        maxAge: MAX_AGE_REFRESH_TOKEN,
+        sameSite: true
+      })
+    }
     return data
   } catch (err) {
     console.error(err)
@@ -24,7 +26,7 @@ export async function LoginRequest(username: string, password: string) {
 }
 
 export function setUserLocalStorage(user: UserType | null) {
-  if (user) {
+  if (user?.token !== undefined && user?.token !== null) {
     setCookie(null, 'user', String(user.email), {
       path: '/',
       maxAge: MAX_AGE_REFRESH_TOKEN,
