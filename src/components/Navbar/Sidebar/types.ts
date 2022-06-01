@@ -12,8 +12,5 @@ export interface SidebarProps {
 }
 
 export interface MenuDataProp {
-  heading: string
-  icon: string
-  link: string
-  text: string
+  menu: [{ heading: string }, { icon: string; link: string; text: string }]
 }

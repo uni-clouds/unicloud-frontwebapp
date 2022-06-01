@@ -18,7 +18,7 @@ import {
   RiGroup2Line
 } from 'react-icons/ri'
 
-import { Drawer, DrawerHeader, NavItem } from './variants'
+import { Drawer, DrawerHeader } from './variants'
 import { MenuDataProp, SidebarProps } from './types'
 
 import { Logo } from '../../Logo'
@@ -28,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   closeDrawer,
   children
 }) => {
-  const [menuData, setMenuData] = useState('')
+  const [menuData, setMenuData] = useState<MenuDataProp>()
   const theme = useTheme()
 
   useEffect(() => {
@@ -43,9 +43,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         setMenuData(response)
       }
     } catch (err) {
-      console.error(err)
+      // console.error(err)
     }
   }
+
+  const role = menuData?.menu.find((data) => data.heading === 'Administração')
 
   return (
     <aside className='text-lg'>
@@ -60,7 +62,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </DrawerHeader>
         <Divider />
         <List>
-          {menuData.indexOf('Administração') !== -1 && (
+          {!!role && (
             <>
               <ListItem
                 disablePadding
