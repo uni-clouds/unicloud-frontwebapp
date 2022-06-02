@@ -7,7 +7,13 @@ const App: React.FC = () => {
   return (
     <>
       <MainRoutes />
-      <ToastContainer style={{ width: '450px' }} role='alert' />
+      <ToastContainer
+        style={{
+          width: '450px',
+          marginBottom: '40px'
+        }}
+        role='alert'
+      />
     </>
   )
 }

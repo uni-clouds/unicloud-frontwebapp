@@ -56,7 +56,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const role = menuData?.menu.find((data) => data.heading === 'Administração')
 
   return (
-    <aside className='text-lg'>
+    <div className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
@@ -193,6 +193,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <DrawerHeader />
         {children}
       </Box>
-    </aside>
+    </div>
   )
 }

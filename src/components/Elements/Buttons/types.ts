@@ -14,3 +14,7 @@ export interface NavigateButtonProps {
   text: string
   onclick: () => void
 }
+
+export interface PurpleButtonProps extends UnstyledButtonProps {
+  name: string
+}

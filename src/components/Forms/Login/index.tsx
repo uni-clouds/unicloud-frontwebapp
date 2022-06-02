@@ -25,13 +25,11 @@ export const Login: React.FC = () => {
   const navigate = useNavigate()
 
   const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
-    //*set Loading state true/search
-
     try {
       await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
-      err && ToastError('E-mail ou senha inválido!')
+      err && ToastError('Credenciais inválidas, tente novamente.')
 
       setTimeout(() => {
         navigate('/auth', { replace: true })
