@@ -40,6 +40,9 @@ const AuthPage: React.FC = () => {
             <NavLinksHelpers items={navItems} />
           </div>
         </section>
+        <p className='alert alert-warning font-semibold mt-4'>
+          Sou a VITE_BASE_URL: {import.meta.env.VITE_BASE_URL}
+        </p>
       </main>
       <Footer />
     </>
