@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { IoArrowUpOutline, IoArrowDownOutline } from 'react-icons/io5'
+import { LineSimple } from './Charts/LineSimple'
 import { CardLineProps } from './types'
 
 export const CardLineChart: React.FC<CardLineProps> = ({
@@ -46,7 +47,9 @@ export const CardLineChart: React.FC<CardLineProps> = ({
           <span> vs. last week</span>
         </div>
       </div>
-      <div className='col-span-2'>Chart Component</div>
+      <div className='col-span-2'>
+        <LineSimple />
+      </div>
     </div>
   )
 }

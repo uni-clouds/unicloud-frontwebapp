@@ -24,14 +24,16 @@ export const CardListStore: React.FC = () => {
     }
   ]
   return (
-    <div className='grid place-content-center bg-white p-4 text-base-700 rounded-md shadow'>
-      <h3 className='font-semibold text-lg'>Store Statistics</h3>
+    <div className='lg:w-[20rem] md:w-[15rem] flex flex-col items-start bg-white py-4 px-6 text-base-700 rounded-md shadow w-60'>
+      <h3 className='font-semibold text-xl mb-2 py-2'>Store Statistics</h3>
       <ul>
         {mockData.map((data) => (
-          <li className='' key={uuidv4()}>
-            <div>
-              <span>
-                <p>{data.title}</p>
+          <li className='capitalize' key={uuidv4()}>
+            <div className='lg:w-[16.5rem] md:w-[10rem] max-w-xs flex flex-row justify-between items-center py-2'>
+              <span className='text-lg font-semibold'>
+                <p className='text-sm text-base-400 font-normal'>
+                  {data.title}
+                </p>
                 {data.value}
               </span>
               <span>
