@@ -4,9 +4,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'chart.js'
 
 import { Line } from 'react-chartjs-2'
@@ -17,10 +15,10 @@ export const LineSimple: React.FC = () => {
     LinearScale,
     PointElement,
     LineElement,
-    Title,
     Tooltip
   )
 
+  ChartJS.defaults.scale.display = false
   const options = {
     responsive: true,
     plugins: {
@@ -29,23 +27,20 @@ export const LineSimple: React.FC = () => {
       },
       title: {
         display: false
-      },
-      fillStyle: '#000'
-    }
+      }
+    },
+    borderColor: '#3ab2f2',
+    borderWidth: 2,
+    fill: false,
+    pointRadius: 1,
+    tension: 0.4
   }
-
   const data = {
-    labels: ['', ' ', ' ', ' '],
+    labels: ['jan', 'mar', 'jun', 'set', 'dez'],
     datasets: [
       {
         label: 'rating',
-        data: [5, 30, 10, 20],
-        borderColor: '#3ab2f2',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        borderWidth: 2,
-        fill: false,
-        pointRadius: 0,
-        tension: 0.5,
+        data: [5, 30, 10, 45, 20],
         scales: {
           beginAtZero: true
         }

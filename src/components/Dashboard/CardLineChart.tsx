@@ -9,7 +9,7 @@ export const CardLineChart: React.FC<CardLineProps> = ({
   index,
   type
 }) => {
-  const [isPositive, setIsPositive] = useState(false)
+  const [isPositive, setIsPositive] = useState(true)
 
   let currency
   if (type === 'number') {
@@ -47,7 +47,7 @@ export const CardLineChart: React.FC<CardLineProps> = ({
           <span> vs. last week</span>
         </div>
       </div>
-      <div className='col-span-2'>
+      <div className='col-span-2 h-[8rem] flex items-center'>
         <LineSimple />
       </div>
     </div>
