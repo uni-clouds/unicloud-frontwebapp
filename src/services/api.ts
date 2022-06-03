@@ -5,6 +5,8 @@ let cookies = parseCookies()
 let isRefreshing = false
 let failedRequestQueue: any = []
 
+let URL_BACKEND = 'https://unicloudbr.azurewebsites.net'
+
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL
 })

@@ -26,8 +26,8 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   async function getData() {
     try {
       Promise.all([
-        await api.get('/get-organization/')
-        //await api.get('/organization-logo/')
+        await api.get('/get-organization/'),
+        await api.get('/organization-logo/')
       ]).then((response) => response.map((res) => setCustomerData(res.data)))
     } catch (err) {
       console.error('getData', err)
@@ -40,6 +40,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
     setCustomerType(data)
     return request.data
   }
+  console.log('context', customerData)
 
   return (
     <UserContext.Provider value={{ customerData, customerType }}>

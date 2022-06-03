@@ -18,7 +18,7 @@ import {
   RiGroup2Line
 } from 'react-icons/ri'
 
-import { Drawer, DrawerHeader } from './variants'
+import { Drawer, DrawerHeader, Main } from './variants'
 import { MenuDataProp, SidebarProps } from './types'
 
 import { Logo } from '../../Logo'
@@ -32,12 +32,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
   children
 }) => {
   const [menuData, setMenuData] = useState<MenuDataProp>()
+  const [logo, setLogo] = useState()
+  const { customerData } = useUserData()
   const theme = useTheme()
   const { token } = parseCookies()
-
   useEffect(() => {
     if (token !== undefined) {
       getMenuData()
+      getLogo()
     }
   }, [])
 
@@ -53,14 +55,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }
   }
 
-  const role = menuData?.menu.find((data) => data.heading === 'Administração')
+  async function getLogo() {
+    try {
+      const request = await api.get('/organization-logo/')
+      if (request.status === 200 && request.data !== undefined) {
+        const response = request.data
+        setMenuData(response)
+      }
+    } catch (err) {
+      // console.error(err)
+    }
+  }
 
+  const role = menuData?.menu.find((data) => data.heading === 'Administração')
+  console.log('logo', logo)
   return (
     <div className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
-            <Logo />
+            {!!logo ? (
+              <img src={logo} alt={`logo ${customerData?.razao_social}`} />
+            ) : (
+              <Logo />
+            )}
           </span>
           <IconButton onClick={closeDrawer}>
             {theme.direction === 'rtl' ? <BsChevronRight /> : <BsChevronLeft />}
@@ -189,10 +207,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </ListItem>
         </List>
       </Drawer>
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+      <Main open={isOpen}>
         <DrawerHeader />
         {children}
-      </Box>
+      </Main>
     </div>
   )
 }
