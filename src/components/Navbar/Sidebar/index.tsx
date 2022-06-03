@@ -32,12 +32,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
   children
 }) => {
   const [menuData, setMenuData] = useState<MenuDataProp>()
+  const [logo, setLogo] = useState()
+  const { customerData } = useUserData()
   const theme = useTheme()
   const { token } = parseCookies()
-
   useEffect(() => {
     if (token !== undefined) {
       getMenuData()
+      getLogo()
     }
   }, [])
 
@@ -53,14 +55,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }
   }
 
-  const role = menuData?.menu.find((data) => data.heading === 'Administração')
+  async function getLogo() {
+    try {
+      const request = await api.get('/organization-logo/')
+      if (request.status === 200 && request.data !== undefined) {
+        const response = request.data
+        setMenuData(response)
+      }
+    } catch (err) {
+      // console.error(err)
+    }
+  }
 
+  const role = menuData?.menu.find((data) => data.heading === 'Administração')
+  console.log('logo', logo)
   return (
     <aside className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
-            <Logo />
+            {!!logo ? (
+              <img src={logo} alt={`logo ${customerData?.razao_social}`} />
+            ) : (
+              <Logo />
+            )}
           </span>
           <IconButton onClick={closeDrawer}>
             {theme.direction === 'rtl' ? <BsChevronRight /> : <BsChevronLeft />}
