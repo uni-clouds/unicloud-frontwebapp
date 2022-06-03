@@ -17,9 +17,9 @@ export const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className='w-full flex items-center justify-evenly mx-auto p-4 border border-light-200 bg-slate-50 fixed inset-x-0 bottom-0'>
+    <footer className='w-full flex items-center justify-evenly mx-auto p-4 border border-light-200 bg-slate-50'>
       <div className='text-base-400 text-sm'>
-        © 2022 Uni.Cloud. Todos os direitos reservados.
+        &copy; 2022 Uni.Cloud. Todos os direitos reservados.
       </div>
       <nav>
         <NavLinksHelpers items={navItems} />

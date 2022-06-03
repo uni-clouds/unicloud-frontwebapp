@@ -3,6 +3,7 @@ import { CardLineChart } from './CardLineChart'
 import { CardListStore } from './CardListStore'
 import { CardOrdersChart } from './CardOrdersChart'
 import { CardSalesChart } from './CardSalesChart'
+import { Table } from './Table'
 
 export const Dashboard: React.FC = () => {
   const mockData = [
@@ -33,7 +34,7 @@ export const Dashboard: React.FC = () => {
   ]
   return (
     <section className='flex flex-col gap-6'>
-      <div className='flex flex-row gap-4 justify-between items-center'>
+      <div className='flex flex-row gap-4 items-center'>
         {mockData.map((data) => (
           <CardLineChart
             title={data.title}
@@ -44,11 +45,15 @@ export const Dashboard: React.FC = () => {
           />
         ))}
       </div>
-      <div className='flex flex-row gap-4 justify-between items-center'>
+      <div className='flex flex-row gap-4 justify-between items-center lg:h-[30rem]'>
         <CardSalesChart />
         <CardOrdersChart />
         <CardListStore />
       </div>
+      <section className='flex justify-between'>
+        <Table />
+        <CardListStore />
+      </section>
     </section>
   )
 }

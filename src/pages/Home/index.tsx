@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout>
-      <section className='h-full pl-14 pr-6'>
+      <section className='h-full pl-16 pr-4'>
         <div className='flex flex-row justify-between gap-6 py-4 items-center'>
           <h1 className='font-bold text-4xl py-2 leading-10 tracking-tight text-base-600'>
             Dashboard

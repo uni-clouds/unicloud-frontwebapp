@@ -3,6 +3,7 @@ import { AiOutlineShopping } from 'react-icons/ai'
 import { HiOutlineUsers } from 'react-icons/hi'
 import { FiBox } from 'react-icons/fi'
 import { BiCategory } from 'react-icons/bi'
+import { Title } from '../Elements/TitleDashboard'
 
 export const CardListStore: React.FC = () => {
   const mockData = [
@@ -24,9 +25,9 @@ export const CardListStore: React.FC = () => {
     }
   ]
   return (
-    <div className='lg:w-[20rem] md:w-[15rem] flex flex-col items-start bg-white py-4 px-6 text-base-700 rounded-md shadow w-60'>
-      <h3 className='font-semibold text-xl mb-2 py-2'>Store Statistics</h3>
-      <ul>
+    <div className='lg:w-[20rem] md:w-[15rem] h-full flex flex-col items-start bg-white py-4 px-6 text-base-700 rounded-md shadow w-60'>
+      <Title text='Store Statistics' />
+      <ul className='mt-8 flex flex-col gap-4'>
         {mockData.map((data) => (
           <li className='capitalize' key={uuidv4()}>
             <div className='lg:w-[16.5rem] md:w-[10rem] max-w-xs flex flex-row justify-between items-center py-2'>

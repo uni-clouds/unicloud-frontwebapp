@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { IoArrowUpOutline, IoArrowDownOutline } from 'react-icons/io5'
-import { LineSimple } from './Charts/LineSimple'
+import { SingleLineChart } from './Charts/SingleLineChart'
 import { CardLineProps } from './types'
 
 export const CardLineChart: React.FC<CardLineProps> = ({
@@ -48,7 +48,7 @@ export const CardLineChart: React.FC<CardLineProps> = ({
         </div>
       </div>
       <div className='col-span-2 h-[8rem] flex items-center'>
-        <LineSimple />
+        <SingleLineChart />
       </div>
     </div>
   )

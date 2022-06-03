@@ -9,3 +9,6 @@ export interface NotificationIconProps {
 export interface AvatarNameProps {
   name?: string
 }
+export interface TitleDashboardProps {
+  text: string
+}

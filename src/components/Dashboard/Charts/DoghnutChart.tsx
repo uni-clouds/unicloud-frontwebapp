@@ -14,6 +14,11 @@ export const DoughnutChart: React.FC = () => {
           boxWidth: 20,
           padding: 10
         }
+      },
+      layout: {
+        padding: {
+          bottom: 10
+        }
       }
     },
     hoverOffSet: 4,

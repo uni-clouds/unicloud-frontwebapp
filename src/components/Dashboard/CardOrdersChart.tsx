@@ -1,10 +1,15 @@
+import { Title } from '../Elements/TitleDashboard'
 import { DoughnutChart } from './Charts/DoghnutChart'
 
 export const CardOrdersChart: React.FC = () => {
   return (
-    <div className=' grid place-content-center bg-white p-4 text-base-700 rounded-md shadow'>
-      <h3 className='font-semibold text-xl mb-2 py-2'>Order Statistics</h3>
-      <DoughnutChart />
+    <div className='w-1/3 flex flex-col bg-white p-4 text-base-700 rounded-md shadow h-full'>
+      <div>
+        <Title text='Order Statistics' />
+      </div>
+      <div className='w-[350px] h-60 mx-auto'>
+        <DoughnutChart />
+      </div>
     </div>
   )
 }

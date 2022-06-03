@@ -1,3 +1,4 @@
+import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,9 +8,7 @@ import {
   Tooltip
 } from 'chart.js'
 
-import { Line } from 'react-chartjs-2'
-
-export const LineSimple: React.FC = () => {
+export const SingleLineChart: React.FC = () => {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -18,7 +17,7 @@ export const LineSimple: React.FC = () => {
     Tooltip
   )
 
-  ChartJS.defaults.scale.display = false
+  // ChartJS.defaults.scale.display = false
   const options = {
     responsive: true,
     plugins: {
@@ -26,6 +25,14 @@ export const LineSimple: React.FC = () => {
         display: false
       },
       title: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        display: false
+      },
+      y: {
         display: false
       }
     },
