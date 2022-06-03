@@ -5,9 +5,17 @@ let cookies = parseCookies()
 let isRefreshing = false
 let failedRequestQueue: any = []
 
+let URL_BACKEND
+
+import.meta.env.VITE_BASE_URL !== '' || undefined
+  ? (URL_BACKEND = import.meta.env.VITE_BASE_URL)
+  : (URL_BACKEND = 'https://unicloudbr.azurewebsites.net')
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL
+  baseURL: URL_BACKEND
 })
+
+console.log('endpoint backend', URL_BACKEND)
 
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
