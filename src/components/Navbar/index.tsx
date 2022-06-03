@@ -4,7 +4,7 @@ import { Sidebar } from './Sidebar'
 import { NavbarProps } from './types'
 
 const Navbar: React.FC<NavbarProps> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     <>

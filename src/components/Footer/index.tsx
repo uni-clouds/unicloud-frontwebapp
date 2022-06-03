@@ -1,6 +1,6 @@
 import { NavLinksHelpers } from '../Elements/Nav/NavLinksHelpers'
 
-export const Footer: React.FC = () => {
+export const Footer = ({ local }: { local: string }) => {
   const navItems = [
     {
       name: 'Termos & Condições',
@@ -17,7 +17,10 @@ export const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className='w-full flex items-center justify-evenly mx-auto p-4 border border-light-200 bg-slate-50'>
+    <footer
+      className={`w-full flex items-center justify-evenly mx-auto p-4 border border-light-200 bg-slate-50 
+      ${local === 'auth' ? 'fixed inset-x-0 bottom-0' : ''}`}
+    >
       <div className='text-base-400 text-sm'>
         &copy; 2022 Uni.Cloud. Todos os direitos reservados.
       </div>

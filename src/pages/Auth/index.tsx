@@ -42,7 +42,7 @@ const AuthPage: React.FC = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer local='auth' />
     </>
   )
 }
