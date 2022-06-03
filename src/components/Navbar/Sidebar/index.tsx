@@ -18,7 +18,7 @@ import {
   RiGroup2Line
 } from 'react-icons/ri'
 
-import { Drawer, DrawerHeader } from './variants'
+import { Drawer, DrawerHeader, Main } from './variants'
 import { MenuDataProp, SidebarProps } from './types'
 
 import { Logo } from '../../Logo'
@@ -207,10 +207,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </ListItem>
         </List>
       </Drawer>
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+      <Main open={isOpen}>
         <DrawerHeader />
         {children}
-      </Box>
+      </Main>
     </aside>
   )
 }
