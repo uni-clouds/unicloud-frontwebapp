@@ -21,6 +21,7 @@ export const Login: React.FC = () => {
     resolver: yupResolver(schemaLogin)
   })
   const [passwordIsShow, setPasswordIsShow] = useState(false)
+  const [isError, setIsError] = useState(false)
   const { authenticate } = useAuth()
   const navigate = useNavigate()
 
@@ -29,8 +30,7 @@ export const Login: React.FC = () => {
       await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
-      err && ToastError('Credenciais inválidas, tente novamente.')
-
+      setIsError(true)
       setTimeout(() => {
         navigate('/auth', { replace: true })
       }, 1000)
@@ -44,30 +44,47 @@ export const Login: React.FC = () => {
     setPasswordIsShow(!passwordIsShow)
   }
 
+  const handleOnClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    setIsError(false)
+  }
   return (
-    <form
-      onSubmit={handleSubmit(onLoginSubmit)}
-      className='w-full flex-col flex'
-    >
-      <EmailField
-        placeholder='Digite seu endereço de e-mail'
-        label='E-mail'
-        type='text'
-        {...register('email')}
-        error={errors?.email}
-      />
-      <PasswordField
-        placeholder='Digite sua senha'
-        label='Senha'
-        type={!!passwordIsShow ? 'text' : 'password'}
-        isVisible={passwordIsShow}
-        showVisibilityIcon={showPassword}
-        {...register('password')}
-        error={errors?.password}
-      />
-      <SubmitButton isDisabled={isSubmitting}>
-        {!!isSubmitting ? <Loading /> : 'Entrar'}
-      </SubmitButton>
-    </form>
+    <>
+      {!!isError && (
+        <ToastError
+          isError={!!isError}
+          variant='standard'
+          elevation={1}
+          message='Credenciais inválidas, tente novamente.'
+          handleClose={handleOnClose}
+        />
+      )}
+      <form
+        onSubmit={handleSubmit(onLoginSubmit)}
+        className='w-full flex-col flex'
+      >
+        <EmailField
+          placeholder='Digite seu endereço de e-mail'
+          label='E-mail'
+          type='text'
+          {...register('email')}
+          error={errors?.email}
+        />
+        <PasswordField
+          placeholder='Digite sua senha'
+          label='Senha'
+          type={!!passwordIsShow ? 'text' : 'password'}
+          isVisible={passwordIsShow}
+          showVisibilityIcon={showPassword}
+          {...register('password')}
+          error={errors?.password}
+        />
+        <SubmitButton isDisabled={isSubmitting}>
+          {!!isSubmitting ? <Loading /> : 'Entrar'}
+        </SubmitButton>
+      </form>
+    </>
   )
 }

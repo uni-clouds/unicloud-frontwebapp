@@ -1,3 +1,5 @@
+import { AlertProps } from '@mui/material'
+
 export interface DividerProps {
   text?: string
 }
@@ -11,4 +13,10 @@ export interface AvatarNameProps {
 }
 export interface TitleDashboardProps {
   text: string
+}
+
+export interface ToastErrorProps extends AlertProps {
+  message: string
+  isError: boolean
+  handleClose: () => void
 }
