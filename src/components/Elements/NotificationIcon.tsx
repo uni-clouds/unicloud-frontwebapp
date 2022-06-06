@@ -9,7 +9,7 @@ export const NotificationIcon: React.FC<NotificationIconProps> = ({
     <span
       className={`${
         !!isNotification ? 'after:bg-teal-custom' : 'after:transparent'
-      } relative after:content-[" "] after:w-3 after:h-3  after:absolute after:rounded-full after:top-0 after:left-0`}
+      } relative after:content-[" "] after:w-2.5 after:h-2.5  after:absolute after:rounded-full after:top-0 after:left-1`}
     >
       <IoIosNotificationsOutline />
     </span>

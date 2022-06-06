@@ -49,16 +49,6 @@ export const Drawer = styled(MuiDrawer, {
     '& .MuiDrawer-paper': closedMixin(theme)
   })
 }))
-export const NavItem = styled(ListItem)<ListItemProps>(({ theme }) => ({
-  '&.MuiListItem-root': {
-    '&:hover, &.Mui-focusVisible': {
-      color: '#7500ff'
-    }
-  },
-  '&.Mui-active': {
-    color: '#7500ff'
-  }
-}))
 
 export const closedMixin = (theme: Theme): CSSObject => ({
   transition: theme.transitions.create('width', {

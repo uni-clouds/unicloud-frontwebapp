@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom'
-import { HiOutlineUserCircle } from 'react-icons/hi'
-import { FiActivity } from 'react-icons/fi'
+import { useState } from 'react'
+import { Divider, Menu, MenuItem } from '@mui/material'
 import {
   RiArrowDropDownLine,
   RiUserSettingsLine,
   RiLogoutBoxRLine
 } from 'react-icons/ri'
-import { useAuth } from '../../../../hooks/useAuth'
-import { UnstyledButton } from '../../../Elements/Buttons/Unstyled'
+import { HiOutlineUserCircle } from 'react-icons/hi'
+import { FiActivity } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import { Avatar } from '../../../Avatar'
+
+import { useAuth } from '../../../../hooks/useAuth'
+
 import { DropdownProps } from './types'
-import { Divider } from '@mui/material'
 
 export const MenuDropdown: React.FC<DropdownProps> = ({
   email,
@@ -22,10 +24,26 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   const { logout } = useAuth()
   const superUser = isSuperUser ? 'Super Administrador' : 'Staff'
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
-    <div className='dropdown dropdown-end'>
-      <label
-        tabIndex={0}
+    <>
+      <button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        type='button'
+        role='menu'
         className=' peer flex flex-row capitalize items-start btn min-w-max btn-ghost text-base text-brand-600 hover:bg-transparent hover:text-brand-700 transition-colors delay-75'
       >
         <div className='flex-col'>
@@ -35,42 +53,65 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
             <RiArrowDropDownLine className='text-2xl ml-2 peer-hover:translate-y-px peer-hover:transition-transform peer-hover:ease-in-out peer-hover:delay-75' />
           </span>
         </div>
-      </label>
-      <ul
-        tabIndex={0}
-        className='dropdown-content menu p-2 shadow bg-slate-50 w-60 mt-2 mr-2 border-t-2 border-brand-600 rounded-t-md'
+      </button>
+      <Menu
+        id='menu-dropdown'
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'menu list'
+        }}
       >
         <div className='px-2 flex flex-row gap-4 items-center py-2 mb-2'>
           <Avatar firstName={firstName} lastName={lastName} />
           <span className='text-xs'>{email}</span>
         </div>
         <Divider />
-        <li className='hover:text-brand-600'>
-          <Link to='#'>
+        <MenuItem
+          sx={{
+            mt: '8px',
+            '&:hover': { color: '#7500ff' }
+          }}
+        >
+          <Link to='/policitys' className='flex flex-row gap-2'>
             <HiOutlineUserCircle />
             <span>Perfil</span>
           </Link>
-        </li>
-        <li className='hover:text-brand-600'>
-          <Link to='#'>
+        </MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          sx={{
+            '&:hover': { color: '#7500ff' }
+          }}
+        >
+          <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
             <span>Preferências</span>
           </Link>
-        </li>
-        <li className='hover:text-brand-600'>
-          <Link to='#'>
+        </MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          sx={{
+            '&:hover': { color: '#7500ff' }
+          }}
+        >
+          <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
             <span>Atividade</span>
           </Link>
-        </li>
+        </MenuItem>
         <Divider />
-        <li className='hover:text-brand-600'>
-          <UnstyledButton onclick={() => logout()}>
-            <RiLogoutBoxRLine />
-            <span>Sair</span>
-          </UnstyledButton>
-        </li>
-      </ul>
-    </div>
+        <MenuItem
+          onClick={() => logout()}
+          sx={{
+            '&:hover': { color: '#7500ff' }
+          }}
+        >
+          <RiLogoutBoxRLine />
+          <span className='ml-2'>Sair</span>
+        </MenuItem>
+      </Menu>
+    </>
   )
 }
