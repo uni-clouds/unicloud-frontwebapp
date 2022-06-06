@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
@@ -17,14 +16,12 @@ import {
   RiNumbersLine,
   RiGroup2Line
 } from 'react-icons/ri'
-
-import { Drawer, DrawerHeader, Main } from './variants'
-import { MenuDataProp, SidebarProps } from './types'
-
 import { Logo } from '../../Logo'
 import { parseCookies } from 'nookies'
 import { useUserData } from '../../../hooks/useUserData'
-import { UserContext } from '../../../contexts/UserContext'
+
+import { Drawer, DrawerHeader, Main } from './variants'
+import { MenuDataProp, SidebarProps } from './types'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -32,14 +29,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   children
 }) => {
   const [menuData, setMenuData] = useState<MenuDataProp>()
-  const [logo, setLogo] = useState()
-  const { customerData } = useUserData()
+
+  const { customerData, organizationLogo } = useUserData()
   const theme = useTheme()
   const { token } = parseCookies()
   useEffect(() => {
     if (token !== undefined) {
       getMenuData()
-      getLogo()
     }
   }, [])
 
@@ -55,27 +51,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }
   }
 
-  async function getLogo() {
-    try {
-      const request = await api.get('/organization-logo/')
-      if (request.status === 200 && request.data !== undefined) {
-        const response = request.data
-        setMenuData(response)
-      }
-    } catch (err) {
-      // console.error(err)
-    }
-  }
-
   const role = menuData?.menu.find((data) => data.heading === 'Administração')
-  console.log('logo', logo)
+
+  //console.log('logo', organizationLogo?.logo)
+  console.log('menu', menuData)
   return (
-    <aside className='text-lg'>
+    <div className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
-            {!!logo ? (
-              <img src={logo} alt={`logo ${customerData?.razao_social}`} />
+            {!!organizationLogo ? (
+              <img
+                src={organizationLogo?.logo}
+                alt={`logo de ${customerData?.razao_social}`}
+              />
             ) : (
               <Logo />
             )}
@@ -211,6 +200,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <DrawerHeader />
         {children}
       </Main>
-    </aside>
+    </div>
   )
 }
