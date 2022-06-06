@@ -7,12 +7,12 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout>
-      <section className='hero h-screen '>
-        <div className='hero-content flex-col gap-6'>
+      <section className='h-screen '>
+        <div className='flex-col gap-6 items-center justify-center'>
           <Logo />
           <p className='mb-6 text-brand-google'>{customerType?.type}</p>
           <button
-            className=' btn btn-primary btn-square px-12'
+            className='py-4 bg-brand-600 px-10 text-slate-100 font-semibold text-lg rounded-2xl border-brand-800 hover:bg-brand-700 focus:outline-brand-800 focus:ring-offset-brand-800 focus:ring-1 focus:ring-brand-800'
             type='button'
             onClick={() => window.location.reload()}
           >

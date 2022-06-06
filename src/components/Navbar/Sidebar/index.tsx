@@ -53,8 +53,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const role = menuData?.menu.find((data) => data.heading === 'Administração')
 
-  //console.log('logo', organizationLogo?.logo)
-  console.log('menu', menuData)
+  console.log('logo', organizationLogo?.logo)
+
   return (
     <div className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>

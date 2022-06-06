@@ -7,8 +7,8 @@ const Notifications: React.FC = () => {
   const navigate = useNavigate()
   return (
     <Layout>
-      <section className='hero min-h-screen'>
-        <div className='hero-content text-center flex-col'>
+      <section className='h-screen flex flex-col justify-center items-center'>
+        <div className='text-center flex-col'>
           <img
             src={emptyStateImg}
             alt='empty state image'
