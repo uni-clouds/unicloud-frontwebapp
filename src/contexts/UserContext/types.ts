@@ -18,12 +18,16 @@ export interface CustomerDataType {
 }
 
 export interface CustomerType {
-  type?: string
+  type: string
 }
 
+export interface OrganizationLogoType {
+  logo: string
+}
 export interface ContextData {
   customerData?: CustomerDataType
   customerType?: CustomerType
+  organizationLogo?: OrganizationLogoType
 }
 export interface ContextType extends ContextData {}
 

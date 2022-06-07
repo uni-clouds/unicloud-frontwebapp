@@ -9,3 +9,9 @@ export interface NotificationIconProps {
 export interface AvatarNameProps {
   name?: string
 }
+
+export interface ToastErrorProps {
+  message: string
+  isError: boolean
+  handleClose: () => void
+}

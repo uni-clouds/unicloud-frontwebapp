@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from '../../../services/api'
 import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
@@ -17,14 +16,12 @@ import {
   RiNumbersLine,
   RiGroup2Line
 } from 'react-icons/ri'
-
-import { Drawer, DrawerHeader } from './variants'
-import { MenuDataProp, SidebarProps } from './types'
-
 import { Logo } from '../../Logo'
 import { parseCookies } from 'nookies'
 import { useUserData } from '../../../hooks/useUserData'
-import { UserContext } from '../../../contexts/UserContext'
+
+import { Drawer, DrawerHeader, Main } from './variants'
+import { MenuDataProp, SidebarProps } from './types'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -32,9 +29,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   children
 }) => {
   const [menuData, setMenuData] = useState<MenuDataProp>()
+
+  const { customerData, organizationLogo } = useUserData()
   const theme = useTheme()
   const { token } = parseCookies()
-
   useEffect(() => {
     if (token !== undefined) {
       getMenuData()
@@ -55,12 +53,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const role = menuData?.menu.find((data) => data.heading === 'Administração')
 
+  console.log('logo', organizationLogo?.logo)
+
   return (
-    <aside className='text-lg'>
+    <div className='text-lg'>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
-            <Logo />
+            {!!organizationLogo ? (
+              <img
+                src={organizationLogo?.logo}
+                alt={`logo de ${customerData?.razao_social}`}
+              />
+            ) : (
+              <Logo />
+            )}
           </span>
           <IconButton onClick={closeDrawer}>
             {theme.direction === 'rtl' ? <BsChevronRight /> : <BsChevronLeft />}
@@ -189,10 +196,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </ListItem>
         </List>
       </Drawer>
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+      <Main open={isOpen}>
         <DrawerHeader />
         {children}
-      </Box>
-    </aside>
+      </Main>
+    </div>
   )
 }

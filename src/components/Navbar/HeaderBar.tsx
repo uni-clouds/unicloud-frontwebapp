@@ -7,7 +7,7 @@ import { HeaderProps } from './types'
 
 export const HeaderBar: React.FC<HeaderProps> = ({ openDrawer, isOpen }) => {
   return (
-    <AppBar position='fixed' open={isOpen} color='inherit'>
+    <AppBar position='relative' open={isOpen} color='inherit'>
       <Toolbar>
         <IconButton
           color='inherit'
