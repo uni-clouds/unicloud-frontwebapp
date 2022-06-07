@@ -1,7 +1,6 @@
 import { styled, Theme, CSSObject } from '@mui/material/styles'
 import MuiDrawer from '@mui/material/Drawer'
 import MuiAppBar from '@mui/material/AppBar'
-import ListItem, { ListItemProps } from '@mui/material/ListItem'
 import { AppBarProps } from './types'
 
 export const DRAWER_WIDTH = 240

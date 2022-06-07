@@ -22,6 +22,7 @@ import { useUserData } from '../../../hooks/useUserData'
 
 import { Drawer, DrawerHeader, Main } from './variants'
 import { MenuDataProp, SidebarProps } from './types'
+import { Footer } from '../../Footer'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -197,6 +198,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <Main open={isOpen}>
         <DrawerHeader />
         {children}
+        <Footer local='auth' />
       </Main>
     </>
   )

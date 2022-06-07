@@ -1,43 +1,37 @@
 import { v4 as uuidv4 } from 'uuid'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { PurpleButton } from '../Elements/Buttons/PurpleButton'
-import { CardLineChart } from './CardLineChart'
 import { CardListStore } from './CardListStore'
-import { CardOrdersChart } from './CardOrdersChart'
-import { CardSalesChart } from './CardSalesChart'
-import { Table } from './Table'
+import { CardDefault } from './CardDefault'
+import { ClientTable } from '../Tables'
 
 export const Dashboard: React.FC = () => {
   const mockData = [
     {
-      title: "Today's order",
-      total: 1975,
-      index: 4.63,
-      type: 'string'
+      title: 'POD',
+      description: 'Pods ativos',
+      amount: 3
     },
     {
-      title: "Today's revenue",
-      total: 2.293,
-      index: 2.63,
-      type: 'number'
+      title: 'vCPU',
+      description: 'Quantidade de vCPU',
+      amount: 67
     },
     {
-      title: "Today's customers",
-      total: 847,
-      index: 4.63,
-      type: 'string'
+      title: 'Memória',
+      description: 'Memória em uso',
+      amount: 34567
     },
     {
-      title: "Today's visitors",
-      total: '23,485',
-      index: 3.6,
-      type: 'string'
+      title: 'Armazenamento',
+      description: 'Espaço em utilização',
+      amount: 987654
     }
   ]
   return (
-    <section className='flex flex-col gap-6 '>
-      <div className='flex flex-row justify-between items-center p-2'>
-        <h1 className='font-bold leading-10 text-3xl text-base-700 '>
+    <section className='flex flex-col gap-12'>
+      <div className='flex flex-row justify-between items-center p-2 '>
+        <h1 className='font-bold leading-10 text-3xl text-base-700 drop-shadow-xl'>
           Dashboard
         </h1>
         <PurpleButton onclick={() => {}} name='reports'>
@@ -45,26 +39,20 @@ export const Dashboard: React.FC = () => {
           Reports
         </PurpleButton>
       </div>
-      <div className='flex flex-row gap-4 items-center'>
+      <div className='flex flex-row gap-24 items-center'>
         {mockData.map((data) => (
-          <CardLineChart
+          <CardDefault
             title={data.title}
-            total={data.total}
-            index={data.index}
-            type={data.type}
+            description={data.description}
+            amount={data.amount}
             key={uuidv4()}
           />
         ))}
       </div>
-      <div className='flex flex-row gap-4 justify-between items-center lg:h-[30rem]'>
-        <CardSalesChart />
-        <CardOrdersChart />
+      <div className='flex flex-row gap-14 justify-between items-center '>
+        <ClientTable />
         <CardListStore />
       </div>
-      <section className='flex justify-between'>
-        <Table />
-        <CardListStore />
-      </section>
     </section>
   )
 }

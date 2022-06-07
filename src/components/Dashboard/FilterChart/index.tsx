@@ -1,31 +1,34 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FormControl, MenuItem, Select } from '@mui/material'
 
 export const FilterChart: React.FC = () => {
   const [period, setPeriod] = useState('')
 
   return (
-    <FormControl sx={{ width: 125 }}>
-      <InputLabel
-        id='filter-sales-chart'
-        aria-describedby='filter sales chart'
-        role='select'
-      >
-        Período
-      </InputLabel>
+    <FormControl sx={{ width: 150 }}>
       <Select
         id='filter-sales-chart'
         value={period}
         onChange={(event) => setPeriod(event.target.value)}
         label='Período'
-        displayEmpty={true}
-        variant='outlined'
-        className={`focus:outline-none focus:ring-0 ring-black`}
+        displayEmpty
+        variant='filled'
+        sx={{
+          padding: 0,
+          background: '#fff'
+        }}
       >
-        <MenuItem value={10}>Weekly</MenuItem>
-        <MenuItem value={20}>Monthly</MenuItem>
-        <MenuItem value={30}>Yearly</MenuItem>
+        <MenuItem value=''>Selecione</MenuItem>
+        <MenuItem value={10}>
+          <Link to='#'>Weekly</Link>
+        </MenuItem>
+        <MenuItem value={20}>
+          <Link to='#'>Monthly</Link>{' '}
+        </MenuItem>
+        <MenuItem value={30}>
+          <Link to='#'>Yearly</Link>
+        </MenuItem>
       </Select>
     </FormControl>
   )

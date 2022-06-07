@@ -10,7 +10,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar>
         <section className='ml-[240px] px-16 pb-6'>{children}</section>
       </Navbar>
-      <Footer local='base' />
+
       <Outlet />
     </>
   )

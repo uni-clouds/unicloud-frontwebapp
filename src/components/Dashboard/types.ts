@@ -4,3 +4,9 @@ export interface CardLineProps {
   index: number
   type: string | number
 }
+
+export interface CardDefaultProps {
+  title: string
+  description: string
+  amount: number
+}
