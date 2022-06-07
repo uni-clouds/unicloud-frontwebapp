@@ -48,15 +48,17 @@ export const Login: React.FC = () => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
+    if (reason === 'clickaway') {
+      return
+    }
     setIsError(false)
   }
+
   return (
     <>
       {!!isError && (
         <ToastError
           isError={!!isError}
-          variant='standard'
-          elevation={1}
           message='Credenciais inválidas, tente novamente.'
           handleClose={handleOnClose}
         />

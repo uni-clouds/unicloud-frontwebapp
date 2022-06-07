@@ -1,13 +1,12 @@
 import { parseCookies } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
-import { useAuth } from '../../hooks/useAuth'
 import { api } from '../../services/api'
 import {
   UserProviderProps,
   ContextType,
   CustomerType,
-  ContextData,
-  CustomerDataType
+  CustomerDataType,
+  OrganizationLogoType
 } from './types'
 
 export const UserContext = createContext<ContextType>({} as ContextType)
@@ -15,22 +14,33 @@ export const UserContext = createContext<ContextType>({} as ContextType)
 export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerData, setCustomerData] = useState<CustomerDataType>()
   const [customerType, setCustomerType] = useState<CustomerType>()
+  const [organizationLogo, setOrganizationLogo] =
+    useState<OrganizationLogoType>()
+
   const { token } = parseCookies()
   useEffect(() => {
     if (token !== undefined) {
-      getData()
+      getCustomerData()
       getCustomerType()
+      getOrganizationLogo()
     }
   }, [])
 
-  async function getData() {
+  async function getCustomerData() {
     try {
-      Promise.all([
-        await api.get('/get-organization/'),
-        await api.get('/organization-logo/')
-      ]).then((response) => response.map((res) => setCustomerData(res.data)))
+      const request = await api.get('/get-organization/')
+      setCustomerData(request.data)
     } catch (err) {
-      console.error('getData', err)
+      console.error('getCustomerData', err)
+    }
+  }
+
+  async function getOrganizationLogo() {
+    try {
+      const request = await api.get('/organization-logo/')
+      setOrganizationLogo(request.data)
+    } catch (err) {
+      console.error('getLogo', err)
     }
   }
 
@@ -40,10 +50,11 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
     setCustomerType(data)
     return request.data
   }
-  console.log('context', customerData)
 
   return (
-    <UserContext.Provider value={{ customerData, customerType }}>
+    <UserContext.Provider
+      value={{ customerData, customerType, organizationLogo }}
+    >
       {children}
     </UserContext.Provider>
   )

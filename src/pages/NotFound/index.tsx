@@ -7,8 +7,8 @@ const NotFound: React.FC = () => {
   document.title = 'Uni.Cloud | Not Found'
   const navigate = useNavigate()
   return (
-    <section className='hero h-screen '>
-      <div className='hero-content flex-col text-lg text-center gap-4'>
+    <section className='h-screen flex flex-col justify-center items-center'>
+      <div className='flex-col text-lg text-center gap-4'>
         <img
           className='w-auto h-[30rem]'
           src={NotFoundImage}

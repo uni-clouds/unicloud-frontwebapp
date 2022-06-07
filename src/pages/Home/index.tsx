@@ -11,15 +11,17 @@ const HomePage: React.FC = () => {
 
   return (
     <Layout>
-      <section className='h-full pl-16 pr-4'>
-        <div className='flex flex-row justify-between gap-6 py-4 items-center'>
-          <h1 className='font-bold text-4xl py-2 leading-10 tracking-tight text-base-600'>
-            Dashboard
-          </h1>
-          <PurpleButton onclick={() => {}} name='reports'>
-            <HiOutlineDocumentReport />
-            <span>reports</span>
-          </PurpleButton>
+      <section className='h-screen '>
+        <div className='flex-col gap-6 items-center justify-center'>
+          <Logo />
+          <p className='mb-6 text-brand-google'>{customerType?.type}</p>
+          <button
+            className='py-4 bg-brand-600 px-10 text-slate-100 font-semibold text-lg rounded-2xl border-brand-800 hover:bg-brand-700 focus:outline-brand-800 focus:ring-offset-brand-800 focus:ring-1 focus:ring-brand-800'
+            type='button'
+            onClick={() => window.location.reload()}
+          >
+            click
+          </button>
         </div>
         <Dashboard />
       </section>

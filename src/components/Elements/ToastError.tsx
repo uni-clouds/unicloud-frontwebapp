@@ -1,11 +1,6 @@
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import MuiAlert from '@mui/material/Alert'
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  useEffect,
-  useState
-} from 'react'
 import { ToastErrorProps } from './types'
 
 const Alert: ForwardRefRenderFunction<HTMLDivElement, ToastErrorProps> = (
@@ -21,7 +16,8 @@ const Alert: ForwardRefRenderFunction<HTMLDivElement, ToastErrorProps> = (
     >
       <MuiAlert
         severity='error'
-        sx={{ width: '100%', marginBottom: '50px' }}
+        sx={{ width: '100%', marginBottom: '60px' }}
+        elevation={1}
         ref={ref}
         {...rest}
       >
