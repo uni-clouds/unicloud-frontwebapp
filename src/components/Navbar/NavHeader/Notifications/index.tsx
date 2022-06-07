@@ -36,6 +36,10 @@ export const Notifications = () => {
       <Menu
         id='menu-dropdown'
         anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
         open={open}
         onClose={handleClose}
         MenuListProps={{

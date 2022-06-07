@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-zinc-100 text-base-500 antialiased relative;
+  @apply bg-slate-50 text-base-500 antialiased relative;
 }

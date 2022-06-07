@@ -7,8 +7,10 @@ import { LayoutProps } from './types'
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Navbar>{children}</Navbar>
-      <Footer />
+      <Navbar>
+        <section className='ml-[240px] px-16'>{children}</section>
+      </Navbar>
+      <Footer local='base' />
       <Outlet />
     </>
   )

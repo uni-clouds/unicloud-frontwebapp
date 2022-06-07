@@ -97,6 +97,41 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path='/customers'
+        element={
+          <ProtectedRoute>
+            <PlaceholderPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/unicloud-pods'
+        element={
+          <ProtectedRoute>
+            <PlaceholderPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/monitor'
+        element={
+          <ProtectedRoute>
+            <PlaceholderPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/user-list-default'
+        element={
+          <ProtectedRoute>
+            <PlaceholderPage />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   )
 }

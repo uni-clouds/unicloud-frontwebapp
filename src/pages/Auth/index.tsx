@@ -6,6 +6,7 @@ import { NavLinksHelpers } from '../../components/Elements/Nav/NavLinksHelpers'
 import { Divider } from '@mui/material'
 
 const AuthPage: React.FC = () => {
+  document.title = 'Uni.Cloud | Login'
   //! cofirmar se será rota ou link interno
 
   const navItems = [

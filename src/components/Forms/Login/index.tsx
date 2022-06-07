@@ -26,14 +26,11 @@ export const Login: React.FC = () => {
   const navigate = useNavigate()
 
   const onLoginSubmit: SubmitHandler<LoginFormProps> = async (data) => {
-    //*set Loading state true/search
-
     try {
       await authenticate(data.email, data.password)
     } catch (err) {
       console.error('form login error', err)
       setIsError(true)
-
       setTimeout(() => {
         navigate('/auth', { replace: true })
       }, 1000)
