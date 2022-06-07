@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
+import { HiOutlineDocumentReport } from 'react-icons/hi'
+import { PurpleButton } from '../Elements/Buttons/PurpleButton'
 import { CardLineChart } from './CardLineChart'
 import { CardListStore } from './CardListStore'
 import { CardOrdersChart } from './CardOrdersChart'
@@ -34,6 +36,13 @@ export const Dashboard: React.FC = () => {
   ]
   return (
     <section className='flex flex-col gap-6'>
+      <div className='flex flex-row justify-between items-center p-2'>
+        <h1 className='font-bold leading-10 text-2xl'>Dashboard</h1>
+        <PurpleButton onclick={() => {}} name='reports'>
+          <HiOutlineDocumentReport />
+          Reports
+        </PurpleButton>
+      </div>
       <div className='flex flex-row gap-4 items-center'>
         {mockData.map((data) => (
           <CardLineChart
