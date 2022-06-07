@@ -54,7 +54,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const role = menuData?.menu.find((data) => data.heading === 'Administração')
 
   return (
-    <div className='text-lg'>
+    <>
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto'>
@@ -95,7 +95,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: '#7500ff' }
                       }}
                     >
-                      <RiGroup2Line />
+                      <RiGroup2Line className='text-xl' />
                     </ListItemIcon>
                     <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
                       Clientes
@@ -124,7 +124,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: '#7500ff' }
                       }}
                     >
-                      <RiDashboardLine />
+                      <RiDashboardLine className='text-xl' />
                     </ListItemIcon>
                     <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
                       Pods
@@ -153,7 +153,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: '#7500ff' }
                       }}
                     >
-                      <RiNumbersLine />
+                      <RiNumbersLine className='text-xl' />
                     </ListItemIcon>
                     <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
                       Monitoramento
@@ -184,7 +184,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     '&:hover': { color: '#7500ff' }
                   }}
                 >
-                  <RiTeamLine />
+                  <RiTeamLine className='text-xl' />
                 </ListItemIcon>
                 <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
                   Usuários
@@ -198,6 +198,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <DrawerHeader />
         {children}
       </Main>
-    </div>
+    </>
   )
 }

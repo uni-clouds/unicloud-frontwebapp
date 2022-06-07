@@ -35,9 +35,11 @@ export const Dashboard: React.FC = () => {
     }
   ]
   return (
-    <section className='flex flex-col gap-6'>
+    <section className='flex flex-col gap-6 '>
       <div className='flex flex-row justify-between items-center p-2'>
-        <h1 className='font-bold leading-10 text-2xl'>Dashboard</h1>
+        <h1 className='font-bold leading-10 text-3xl text-base-700 '>
+          Dashboard
+        </h1>
         <PurpleButton onclick={() => {}} name='reports'>
           <HiOutlineDocumentReport />
           Reports

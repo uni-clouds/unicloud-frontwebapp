@@ -9,7 +9,7 @@ export const CardLineChart: React.FC<CardLineProps> = ({
   index,
   type
 }) => {
-  const [isPositive, setIsPositive] = useState(true)
+  const [isPositive, setIsPositive] = useState(false)
 
   let currency
   if (type === 'number') {

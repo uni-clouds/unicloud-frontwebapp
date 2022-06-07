@@ -66,7 +66,7 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  padding: theme.spacing(1, 1),
+  padding: theme.spacing(1),
 
   ...theme.mixins.toolbar
 }))
@@ -75,7 +75,7 @@ export const Main = styled('main', {
   shouldForwardProp: (prop) => prop !== 'open'
 })<{ open?: boolean }>(({ theme, open }) => ({
   flexGrow: 1,
-  padding: theme.spacing(3),
+  paddingLeft: theme.spacing(4),
   transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
@@ -86,6 +86,7 @@ export const Main = styled('main', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     }),
+    padding: theme.spacing(0, 1),
     marginLeft: 0
   })
 }))

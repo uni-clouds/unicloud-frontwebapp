@@ -22,7 +22,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <>
-      <main className='h-screen flex flex-col items-center pt-10'>
+      <main className='h-screen flex flex-col items-center justify-center'>
         <section className='flex-col justify-center align-center'>
           <Logo />
           <div className='mt-6 flex flex-col align-center w-[30rem] rounded-sm bg-neutral-50 p-10 justify-center border border-light-200 shadow-sm'>
@@ -42,7 +42,7 @@ const AuthPage: React.FC = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer local='auth' />
     </>
   )
 }
