@@ -3,13 +3,15 @@ import { useState } from 'react'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 
 import { columns, rows } from './data'
+import { styled } from '@mui/material/styles'
+import { Title } from '../Elements/TitleDashboard'
 
 export const ClientTable: React.FC = () => {
   const [page, setPage] = useState(0)
@@ -27,16 +29,35 @@ export const ClientTable: React.FC = () => {
   }
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: '100%' }}>
-        <Table stickyHeader aria-label='client-table'>
+    <Paper
+      sx={{
+        width: '100%',
+        overflow: 'hidden',
+        boxShadow: 1,
+        borderRadius: 2
+      }}
+    >
+      <TableContainer
+        sx={{ maxHeight: '500px' }}
+        className='scrollbar-thumb-brand-200 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200'
+      >
+        <div className='p-4'>
+          <Title text='Clientes' />
+        </div>
+        <Table stickyHeader aria-label='client list table' role='table'>
+          <caption>Lista de clientes</caption>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{
+                    minWidth: column.minWidth,
+                    color: '#8091a7',
+                    borderBottomColor: '#d4c2ff',
+                    borderBottomWidth: 2
+                  }}
                 >
                   {column.label}
                 </TableCell>
@@ -48,11 +69,27 @@ export const ClientTable: React.FC = () => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
+                  <TableRow
+                    role='table-row'
+                    tabIndex={-1}
+                    key={row.code}
+                    sx={{
+                      '&:hover': {
+                        backgroundColor: '#e7dcff'
+                      }
+                    }}
+                  >
                     {columns.map((column) => {
                       const value = row[column.id]
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          sx={{
+                            borderColor: '#d4c2ff',
+                            color: '#3c4d62'
+                          }}
+                        >
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}
@@ -73,6 +110,9 @@ export const ClientTable: React.FC = () => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        sx={{
+          color: '#3c4d62'
+        }}
       />
     </Paper>
   )

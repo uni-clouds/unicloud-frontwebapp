@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import GlobalContext from './contexts'
 import * as Sentry from '@sentry/react'
 import { BrowserTracing } from '@sentry/tracing'
+import GlobalContext from './contexts'
 import App from './App'
-
+import Error from './pages/Error'
 import './styles/global.css'
 
 if (import.meta.env.PROD) {
@@ -22,10 +22,12 @@ if (import.meta.env.PROD) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <GlobalContext>
-        <App />
-      </GlobalContext>
-    </BrowserRouter>
+    <Sentry.ErrorBoundary fallback={<Error />}>
+      <BrowserRouter>
+        <GlobalContext>
+          <App />
+        </GlobalContext>
+      </BrowserRouter>
+    </Sentry.ErrorBoundary>
   </React.StrictMode>
 )

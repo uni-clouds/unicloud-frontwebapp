@@ -198,7 +198,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <Main open={isOpen}>
         <DrawerHeader />
         {children}
-        <Footer local='auth' />
+        <Footer local='pages' />
       </Main>
     </>
   )

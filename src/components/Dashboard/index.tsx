@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { PurpleButton } from '../Elements/Buttons/PurpleButton'
-import { CardListStore } from './CardListStore'
-import { CardDefault } from './CardDefault'
+import { CardDefault } from './Cards/CardDefault'
 import { ClientTable } from '../Tables'
+import { CardListClient } from './Cards/CardListClient'
 
 export const Dashboard: React.FC = () => {
   const mockData = [
@@ -19,12 +19,12 @@ export const Dashboard: React.FC = () => {
     },
     {
       title: 'Memória',
-      description: 'Memória em uso',
+      description: 'Memória disponível',
       amount: 34567
     },
     {
       title: 'Armazenamento',
-      description: 'Espaço em utilização',
+      description: 'Capacidade de armazentamento',
       amount: 987654
     }
   ]
@@ -49,9 +49,9 @@ export const Dashboard: React.FC = () => {
           />
         ))}
       </div>
-      <div className='flex flex-row gap-14 justify-between items-center '>
+      <div className='flex flex-row gap-14 justify-between items-center lg:h-[550px]'>
         <ClientTable />
-        <CardListStore />
+        <CardListClient />
       </div>
     </section>
   )

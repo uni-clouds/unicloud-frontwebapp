@@ -15,7 +15,7 @@ const NotFound: React.FC = () => {
           alt='error image'
         />
         <div>
-          <h3 className='font-semibold text-xl leading-10'>
+          <h3 className='font-medium text-xl leading-10'>
             Oops! Como você chegou aqui?
           </h3>
           <p className='my-2'>

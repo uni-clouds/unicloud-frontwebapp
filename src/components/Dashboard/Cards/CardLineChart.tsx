@@ -29,17 +29,17 @@ export const CardLineChart: React.FC<CardLineProps> = ({
   return (
     <div className='grid grid-flow-col-dense grid-cols-2 w-full gap-2 place-content-center bg-white p-4 text-base-700 rounded-md shadow'>
       <div className='flex flex-col justify-center gap-2'>
-        <h3 className='capitalize font-semibold text-normal'>{title}</h3>
+        <h3 className='capitalize font-medium text-normal'>{title}</h3>
         <p className='font-bold text-2xl'>
           {type === 'number' ? currency : total}
         </p>
         <div className='text-sm flex-row gap-1 flex items-center'>
           {!!isPositive ? (
-            <span className='text-green-custom font-semibold flex flex-row items-center'>
+            <span className='text-green-custom font-medium flex flex-row items-center'>
               <IoArrowUpOutline /> {percentage}
             </span>
           ) : (
-            <div className='text-red-custom font-semibold flex flex-row items-center'>
+            <div className='text-red-custom font-medium flex flex-row items-center'>
               <IoArrowDownOutline />
               {percentage}
             </div>

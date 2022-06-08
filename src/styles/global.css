@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-50 text-base-500 antialiased relative;
+  @apply bg-neutral-50 text-base-500 antialiased relative scrollbar-thumb-scroll scrollbar-track-neutral-50 scrollbar-thin;
 }

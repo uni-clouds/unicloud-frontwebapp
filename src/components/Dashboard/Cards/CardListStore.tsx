@@ -31,7 +31,7 @@ export const CardListStore: React.FC = () => {
         {mockData.map((data) => (
           <li className='capitalize' key={uuidv4()}>
             <div className='lg:w-[16.5rem] md:w-[10rem] max-w-xs flex flex-row justify-between items-center py-2'>
-              <span className='text-lg font-semibold'>
+              <span className='text-lg font-medium'>
                 <p className='text-sm text-base-400 font-normal'>
                   {data.title}
                 </p>

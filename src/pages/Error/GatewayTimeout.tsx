@@ -14,7 +14,7 @@ const GatewayTimeout: React.FC = () => {
           alt='error image'
         />
         <div>
-          <h3 className='font-semibold text-xl leading-10'>Oops!</h3>
+          <h3 className='font-medium text-xl leading-10'>Oops!</h3>
           <p className='my-2'>
             Sentimos muito pelo inconveniente, mas parece que nossos servidores
             estão sobrecarregados.

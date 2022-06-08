@@ -6,6 +6,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        scroll: 'rgba(161, 161, 170, 0.6)',
         //text-default
         base: {
           100: '#ecf2ff',
@@ -83,5 +84,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar')]
 }
