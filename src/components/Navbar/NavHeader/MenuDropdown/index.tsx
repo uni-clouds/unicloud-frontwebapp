@@ -71,45 +71,49 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         <MenuItem
           sx={{
             mt: '8px',
-            '&:hover': { color: '#7500ff' }
+            '&:hover': { color: '#7500ff' },
+            color: '#526484'
           }}
         >
-          <Link to='/policitys' className='flex flex-row gap-2'>
+          <Link to='/user-profile' className='flex flex-row gap-2'>
             <HiOutlineUserCircle />
-            <span>Perfil</span>
+            <span className='text-sm'>Perfil</span>
           </Link>
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{
-            '&:hover': { color: '#7500ff' }
+            '&:hover': { color: '#7500ff' },
+            color: '#526484'
           }}
         >
           <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
-            <span>Preferências</span>
+            <span className='text-sm'>Preferências</span>
           </Link>
         </MenuItem>
         <MenuItem
           onClick={handleClose}
           sx={{
-            '&:hover': { color: '#7500ff' }
+            '&:hover': { color: '#7500ff' },
+            color: '#526484'
           }}
         >
           <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
-            <span>Atividade</span>
+            <span className='text-sm'>Atividade</span>
           </Link>
         </MenuItem>
         <Divider />
         <MenuItem
           onClick={() => logout()}
           sx={{
-            '&:hover': { color: '#7500ff' }
+            '&:hover': { color: '#7500ff' },
+            color: '#526484'
           }}
         >
           <RiLogoutBoxRLine />
-          <span className='ml-2'>Sair</span>
+          <span className='ml-2  text-sm'>Sair</span>
         </MenuItem>
       </Menu>
     </>

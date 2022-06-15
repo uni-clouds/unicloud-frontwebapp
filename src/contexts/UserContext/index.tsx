@@ -1,12 +1,11 @@
 import { parseCookies } from 'nookies'
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import { api } from '../../services/api'
 import {
   UserProviderProps,
   ContextType,
   CustomerType,
-  CustomerDataType,
-  OrganizationLogoType
+  CustomerDataType
 } from './types'
 
 export const UserContext = createContext<ContextType>({} as ContextType)
@@ -14,15 +13,12 @@ export const UserContext = createContext<ContextType>({} as ContextType)
 export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerData, setCustomerData] = useState<CustomerDataType>()
   const [customerType, setCustomerType] = useState<CustomerType>()
-  const [organizationLogo, setOrganizationLogo] =
-    useState<OrganizationLogoType>()
 
   const { token } = parseCookies()
-  useEffect(() => {
+  useMemo(() => {
     if (token !== undefined) {
       getCustomerData()
       getCustomerType()
-      getOrganizationLogo()
     }
   }, [])
 
@@ -35,15 +31,6 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
     }
   }
 
-  async function getOrganizationLogo() {
-    try {
-      const request = await api.get('/organization-logo/')
-      setOrganizationLogo(request.data)
-    } catch (err) {
-      console.error('getLogo', err)
-    }
-  }
-
   async function getCustomerType() {
     const request = await api.get('/customer-type/')
     const data = request.data
@@ -52,9 +39,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   }
 
   return (
-    <UserContext.Provider
-      value={{ customerData, customerType, organizationLogo }}
-    >
+    <UserContext.Provider value={{ customerData, customerType }}>
       {children}
     </UserContext.Provider>
   )

@@ -1,11 +1,19 @@
+import { useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
+import { api } from '../../services/api'
 import { PurpleButton } from '../Elements/Buttons/PurpleButton'
-import { CardDefault } from './Cards/CardDefault'
-import { ClientTable } from '../Tables'
 import { CardListClient } from './Cards/CardListClient'
+import { CardDefault } from './Cards/CardDefault'
+import { CardPodsLocation } from './Cards/CardPodsLocation'
+import { ClientTable } from '../Tables'
+import { DashboardDataType } from './types'
+import { useQuery } from 'react-query'
 
+const REVALIDATE_TIME = 60 * 60 //60 min
+const CACHE_TIME = 60 * 10 //10min
 export const Dashboard: React.FC = () => {
+
   const mockData = [
     {
       title: 'POD',
@@ -28,6 +36,18 @@ export const Dashboard: React.FC = () => {
       amount: 987654
     }
   ]
+  async function getDashboardData():Promise<DashboardDataType>{
+    const { data } = await api.get('/dashboard/')
+    return data
+  }
+
+  const query = useQuery('dashboard', getDashboardData, {
+    staleTime: REVALIDATE_TIME,
+    cacheTime: CACHE_TIME,
+    refetchOnWindowFocus: true
+  })
+
+
   return (
     <section className='flex flex-col gap-12'>
       <div className='flex flex-row justify-between items-center p-2 '>
@@ -49,9 +69,10 @@ export const Dashboard: React.FC = () => {
           />
         ))}
       </div>
-      <div className='flex flex-row gap-14 justify-between items-center lg:h-[550px]'>
-        <ClientTable />
-        <CardListClient />
+      <div className='flex flex-row gap-4 justify-between items-center lg:h-[550px]'>
+        <ClientTable data={query.data?.customers} isLoading={query.isLoading}/>
+        <CardPodsLocation locations={query.data?.locations} isLoading={query.isLoading}/>
+        <CardListClient partners={query.data?.partners} isLoading={query.isLoading}/>
       </div>
     </section>
   )

@@ -19,6 +19,7 @@ module.exports = {
         },
         //accent
         brand: {
+          30: 'rgba(255, 255, 255, 0.1)',
           50: '#f0eaff',
           100: '#e3e7fe', //dim
           200: '#e7dcff',
