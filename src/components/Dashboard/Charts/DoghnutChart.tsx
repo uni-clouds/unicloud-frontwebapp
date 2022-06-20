@@ -9,7 +9,7 @@ export const DoughnutChart: React.FC = () => {
     plugins: {
       legend: {
         display: true,
-        position: 'bottom',
+        // position: 'bottom',
         labels: {
           boxWidth: 20,
           padding: 10

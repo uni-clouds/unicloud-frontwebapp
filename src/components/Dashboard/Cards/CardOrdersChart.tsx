@@ -1,5 +1,6 @@
-import { Title } from '../Elements/TitleDashboard'
-import { DoughnutChart } from './Charts/DoghnutChart'
+import { Title } from "../../Elements/TitleDashboard"
+import { DoughnutChart } from "../Charts/DoghnutChart"
+
 
 export const CardOrdersChart: React.FC = () => {
   return (

@@ -1,5 +1,6 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['DM Sans', 'sans-serif']
@@ -81,6 +82,9 @@ module.exports = {
         },
         yellow: {
           custom: '#f4bd0e'
+        },
+        zinc: {
+          800: '#121212'
         }
       }
     }

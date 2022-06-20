@@ -7,7 +7,7 @@ export const NotificationIcon: React.FC<NotificationIconProps> = ({
 }) => {
   //
   return (
-    <span className={`text-base-500 text-3xl`}>
+    <span className={`text-base-500 dark:text-inherit text-3xl`}>
       <Badge
         badgeContent={quantity}
         max={99}

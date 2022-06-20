@@ -1,8 +1,8 @@
 import { RiDashboardLine } from 'react-icons/ri'
 import { BsCpu } from 'react-icons/bs'
-import { GrMemory } from 'react-icons/gr'
-import { MdOutlineStorage } from 'react-icons/md'
-import { CardDefaultProps } from '../types'
+import { MdOutlineStorage, MdOutlineSdStorage } from 'react-icons/md'
+import { CardDefaultProps } from '../../../Templates/Dashboard/types'
+
 
 export const CardDefault: React.FC<CardDefaultProps> = ({
   title,
@@ -10,18 +10,18 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
   amount
 }) => {
   return (
-    <div className='w-full h-[10rem] bg-white p-6 text-base-600 rounded-md shadow'>
+    <div className='w-full h-[10rem] bg-white custom-dark  p-6 text-base-600 dark:text-neutral-200 rounded-md shadow'>
       <div className='flex flex-col gap-3'>
         <div className='flex flex-row gap-2 items-center'>
-          <h3 className='font-medium text-xl text-base-700'>{title}</h3>
+          <h3 className='font-medium text-xl text-base-700 dark:text-slate-100'>{title}</h3>
           {title === 'POD' ? (
-            <RiDashboardLine className='text-2xl drop-shadow-md' />
+            <RiDashboardLine className='text-2xl' />
           ) : title === 'vCPU' ? (
-            <BsCpu className='text-2xl drop-shadow-md' />
+            <BsCpu className='text-2xl' />
           ) : title === 'Memória' ? (
-            <GrMemory className='text-2xl drop-shadow-md' />
+            <MdOutlineSdStorage className='text-2xl dark:text-slate-100'  />
           ) : (
-            <MdOutlineStorage className='text-2xl drop-shadow-md' />
+            <MdOutlineStorage className='text-2xl ' />
           )}
         </div>
         <div>

@@ -1,12 +1,11 @@
-import { useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { api } from '../../services/api'
-import { PurpleButton } from '../Elements/Buttons/PurpleButton'
-import { CardListClient } from './Cards/CardListClient'
-import { CardDefault } from './Cards/CardDefault'
-import { CardPodsLocation } from './Cards/CardPodsLocation'
-import { ClientTable } from '../Tables'
+import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
+import { CardListClient } from '../../components/Dashboard/Cards/CardListClient'
+import { CardDefault } from '../../components/Dashboard/Cards/CardDefault'
+import { CardPodsLocation } from '../../components/Dashboard/Cards/CardPodsLocation'
+import { ClientTable } from '../../components/Tables'
 import { DashboardDataType } from './types'
 import { useQuery } from 'react-query'
 
@@ -44,17 +43,19 @@ export const Dashboard: React.FC = () => {
   const query = useQuery('dashboard', getDashboardData, {
     staleTime: REVALIDATE_TIME,
     cacheTime: CACHE_TIME,
-    refetchOnWindowFocus: true
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchIntervalInBackground: true
   })
-
 
   return (
     <section className='flex flex-col gap-12'>
       <div className='flex flex-row justify-between items-center p-2 '>
-        <h1 className='font-bold leading-10 text-3xl text-base-700 drop-shadow-xl'>
+        <h1 className='font-bold leading-10 text-3xl text-base-700 dark:text-base-100 drop-shadow-xl'>
           Dashboard
         </h1>
-        <PurpleButton onclick={() => {}} name='reports'>
+        <PurpleButton onclick={() =>{}} name='reports'>
           <HiOutlineDocumentReport />
           Reports
         </PurpleButton>
@@ -69,9 +70,9 @@ export const Dashboard: React.FC = () => {
           />
         ))}
       </div>
-      <div className='flex flex-row gap-4 justify-between items-center lg:h-[550px]'>
+      <div className='flex flex-row gap-8 justify-between items-center lg:h-[550px]'>
         <ClientTable data={query.data?.customers} isLoading={query.isLoading}/>
-        <CardPodsLocation locations={query.data?.locations} isLoading={query.isLoading}/>
+        <CardPodsLocation coordinates={query.data?.locations} isLoading={query.isLoading}/>
         <CardListClient partners={query.data?.partners} isLoading={query.isLoading}/>
       </div>
     </section>

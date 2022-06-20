@@ -39,6 +39,9 @@ export const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
+  display: 'flex',
+  justifyContent: 'space-between',
+ position: 'relative',
   ...(open && {
     ...openedMixin(theme),
     '& .MuiDrawer-paper': openedMixin(theme)

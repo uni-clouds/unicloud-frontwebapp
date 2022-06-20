@@ -1,6 +1,7 @@
-import { MultiLineChart } from './Charts/MultiLineChart'
-import { Title } from '../Elements/TitleDashboard'
-import { FilterChart } from './FilterChart'
+import { Title } from "../../Elements/TitleDashboard"
+import { MultiLineChart } from "../Charts/MultiLineChart"
+import { FilterChart } from "../FilterChart"
+
 
 export const CardSalesChart: React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import { LinkInternalProps } from './types'
 export const LinkInternal: React.FC<LinkInternalProps> = ({ name, href }) => {
   return (
     <a
-      className='text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out'
+      className='text-brand-600 dark:text-brand-500 dark:hover:text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out'
       href={href}
       aria-label={`link to ${name}`}
       role='link'

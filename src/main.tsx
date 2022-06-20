@@ -10,6 +10,7 @@ import App from './App'
 import Error from './pages/Error'
 import './styles/global.css'
 
+
 if (import.meta.env.PROD) {
   Sentry.init({
     dsn: 'https://cc6dfff4f9e24d08bcf9ad8a239a57a7@o1235247.ingest.sentry.io/6440654',
@@ -22,16 +23,18 @@ if (import.meta.env.PROD) {
   })
 }
 
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={<Error />}>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>import * as Sentry from '@sentry/react'
-        <GlobalContext>
-          <App />
-        </GlobalContext>
-      </BrowserRouter>
-    </QueryClientProvider>
+          <BrowserRouter>
+            <QueryClientProvider client={queryClient}>
+                <GlobalContext>
+                    <App />
+                </GlobalContext>
+            </QueryClientProvider>
+          </BrowserRouter>
     </Sentry.ErrorBoundary>
   </React.StrictMode>
 )

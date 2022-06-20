@@ -24,13 +24,13 @@ export const Notifications = () => {
   return (
     <>
       <IconButton
-        aria-controls={open ? 'basic-menu' : undefined}
+        aria-controls={open ? 'notification-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         type='button'
         role='menu'
-        className='btn w-10 h-10 btn-ghost hover:bg-transparent hover:text-brand-600 hover:rounded-full transition-colors delay-75 ease-in-out text-3xl '
+        className=' w-10 h-10 text-3xl '
       >
         <NotificationIcon quantity={fakeQuantity} />
       </IconButton>
@@ -54,7 +54,6 @@ export const Notifications = () => {
             justifyContent: 'start',
             padding: 1,
             marginLeft: 1,
-            fontSize: 14
           }}
         >
           Notificações

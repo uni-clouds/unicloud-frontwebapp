@@ -2,9 +2,9 @@ import { api } from '../../services/api'
 import { UserType } from './types'
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
-const MAX_AGE_TOKEN = 60 * 60 //60 minutes = 3600 seconds
-const MAX_AGE_REFRESH_TOKEN = 60 * 60 * 24 * 7 //7 days in seconds
-const SESSION_VALIDATE = 60 * 1000 * 59 //59 minutes = 3540000 ms
+const MAX_AGE_TOKEN = 60 * 60 * 24 //24h
+const MAX_AGE_REFRESH_TOKEN = 60 * 60 * 24 * 7 //7 days
+const SESSION_VALIDATE = 60 * 1000 * 45 //45 min
 
 export async function LoginRequest(username: string, password: string) {
   try {
@@ -55,7 +55,7 @@ export function getTokenLocalStorage() {
 }
 
 export function refreshToken(refreshToken: string) {
-  const refreshAuth = setInterval(async () => {
+  setInterval(async () => {
     try {
       const request = await api.post('/api/token/refresh/', {
         refresh: refreshToken,
@@ -76,8 +76,6 @@ export function refreshToken(refreshToken: string) {
     } catch (err) {
       console.error(err)
       return null
-    } finally {
-      clearInterval(refreshAuth)
     }
   }, SESSION_VALIDATE)
 }

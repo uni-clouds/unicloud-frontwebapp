@@ -6,8 +6,10 @@ import * as geoUrl from './Map.json'
 
 import { MapProps } from './types'
 
-const PodsLocation: React.FC<MapProps> = ({ coordinates, names }) => {
+const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
   const [tooltipContent, setTooltipContent] = useState('')
+  const locations =  coordinates?.map((coordinate) => Object.entries(coordinate))
+
 
   return (
     <ComposableMap
@@ -34,21 +36,21 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates, names }) => {
                   strokeWidth={1}
                   style={{
                     hover: {
-                      fill: '#3ab2f2',
-                      fillOpacity: 0.3,
+                      fill: '#8094ae',
+                      fillOpacity: 0.5,
                     },
                   }}
                 />
               ))
           }
         </Geographies>
-        {coordinates?.map((location) => (
-          <>
+        {locations?.map((location) => (
+         <>
             <Marker
-              coordinates={location}
+              coordinates={location[0][1]}
               key={uuidv4()}
               onMouseEnter={() => {
-                setTooltipContent('uma cidade')
+                setTooltipContent(location[0][0])
               }}
               onMouseLeave={() => {
                 setTooltipContent('')
@@ -64,7 +66,7 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates, names }) => {
                   strokeLinejoin='bevel'
                   pointerEvents='auto'
                   cursor='pointer'
-                  transform='translate(-13, -22)'
+                  transform='translate(-17, -22)'
                 >
                   <path d='M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z' />
                 </g>
@@ -78,3 +80,4 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates, names }) => {
 }
 
 export default memo(PodsLocation)
+

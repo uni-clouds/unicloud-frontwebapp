@@ -11,12 +11,13 @@ import TableRow from '@mui/material/TableRow'
 import Skeleton from '@mui/material/Skeleton'
 import { Title } from '../Elements/TitleDashboard'
 import { TableDataProps } from './types'
+import { useTheme } from '@mui/system'
 
 export const ClientTable: React.FC<TableDataProps> = ({ data, isLoading }) => {
+  const {palette} = useTheme()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  // const format = (value: number) =>
-  //   new Intl.DateTimeFormat('pt-BR').format(value)
+  const textColor = palette.mode === 'dark' ? 'inherit': '#526484'
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage)
@@ -38,15 +39,16 @@ export const ClientTable: React.FC<TableDataProps> = ({ data, isLoading }) => {
       }}
     >
       <TableContainer
-        sx={{ maxHeight: '500px' }}
-        className='scrollbar-thumb-brand-200 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200'
+        sx={{ height: '500px' }}
+        className='scrollbar-thumb-brand-200 dark:scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200 dark:hover:scrollbar-thumb-zinc-600'
       >
 
         {isLoading ?
-        <div className='p-6 flex flex-col gap-2'>
+        <div className='p-6 flex flex-col gap-3'>
          <Skeleton variant='text' animation='wave' width={150}/>
-          <Skeleton  animation='wave' variant='rectangular' height={200} width={500}/>
-          <Skeleton  animation='wave' variant='rectangular' height={200} width={500}/>
+         <Skeleton  animation='wave' variant='rectangular' height={100} width={500}/>
+          <Skeleton  animation='wave' variant='rectangular' height={100} width={500}/>
+          <Skeleton  animation='wave' variant='rectangular' height={100} width={500}/>
           <Skeleton variant='text' animation='wave' width={100}/>
         </div>
         :
@@ -61,9 +63,11 @@ export const ClientTable: React.FC<TableDataProps> = ({ data, isLoading }) => {
               <TableCell
                 style={{
                   minWidth: 170,
-                  color: '#8091a7',
+                  color: 'inherit',
+                  fontSize: 16,
                   borderBottomColor: '#d4c2ff',
                   borderBottomWidth: 2,
+                  backgroundColor: 'inherit'
                 }}
               >
                 Nome
@@ -77,7 +81,7 @@ export const ClientTable: React.FC<TableDataProps> = ({ data, isLoading }) => {
                 <TableCell
                   sx={{
                     borderColor: '#d4c2ff',
-                    color: '#3c4d62',
+                    color: textColor
                   }}
                 >
                   {client}
@@ -100,7 +104,7 @@ export const ClientTable: React.FC<TableDataProps> = ({ data, isLoading }) => {
     onPageChange={handleChangePage}
     onRowsPerPageChange={handleChangeRowsPerPage}
     sx={{
-      color: '#3c4d62',
+      color: textColor
     }}
   />}
     </Paper>

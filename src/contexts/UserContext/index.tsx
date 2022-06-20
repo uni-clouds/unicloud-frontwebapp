@@ -15,7 +15,7 @@ export const UserContextProvider = ({ children }: UserProviderProps) => {
   const [customerType, setCustomerType] = useState<CustomerType>()
 
   const { token } = parseCookies()
-  useMemo(() => {
+  useEffect(() => {
     if (token !== undefined) {
       getCustomerData()
       getCustomerType()

@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-50 text-base-500 antialiased relative scrollbar-thumb-scroll scrollbar-track-neutral-50 scrollbar-thin;
+  @apply bg-neutral-50 dark:bg-zinc-800 text-base-500 dark:text-base-100 antialiased relative dark:scrollbar-thumb-black scrollbar-thumb-scroll scrollbar-track-neutral-50 scrollbar-thin dark:scrollbar-track-zinc-700;
+}
+
+.custom-dark {
+  @apply dark:bg-zinc-800 dark:bg-gradient-to-l from-[rgba(255,255,255,0.05)] to-[rgba(255,255,255,0.05)]
 }

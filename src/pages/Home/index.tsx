@@ -1,6 +1,4 @@
-import { HiOutlineDocumentReport } from 'react-icons/hi'
-import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
-import { Dashboard } from '../../components/Dashboard'
+import { Dashboard } from '../../Templates/Dashboard'
 import { Layout } from '../../components/Layout'
 
 const HomePage: React.FC = () => {

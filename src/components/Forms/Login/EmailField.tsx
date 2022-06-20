@@ -7,7 +7,7 @@ const EmailInput: ForwardRefRenderFunction<
   LoginInputProps
 > = ({ error, label, placeholder, type, ...rest }, ref) => {
   return (
-    <div className='group flex flex-col mb-6 relative gap-3.5'>
+    <div className='group flex flex-col mb-6 relative gap-3.5 mt-3'>
       <Input
         placeholder={placeholder}
         label={label}
