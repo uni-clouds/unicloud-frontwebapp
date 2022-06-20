@@ -6,10 +6,10 @@ const Error: React.FC = () => {
   const navigate = useNavigate()
   return (
     <section className='h-screen flex flex-col justify-center items-center'>
-      <div className='flex-col text-lg text-center gap-4'>
+      <div className='flex flex-col text-lg text-center gap-6 items-center'>
         <img className='w-auto h-[30rem]' src={ErrorImage} alt='error image' />
         <div>
-          <h3 className='font-semibold text-xl leading-10'>
+          <h3 className='font-medium text-xl leading-10'>
             Oops! Algo inesperado ocorreu!
           </h3>
           <p className='my-2'>

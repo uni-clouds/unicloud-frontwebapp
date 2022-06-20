@@ -1,11 +1,13 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['DM Sans', 'sans-serif']
     },
     extend: {
       colors: {
+        scroll: 'rgba(161, 161, 170, 0.6)',
         //text-default
         base: {
           100: '#ecf2ff',
@@ -18,6 +20,7 @@ module.exports = {
         },
         //accent
         brand: {
+          30: 'rgba(255, 255, 255, 0.1)',
           50: '#f0eaff',
           100: '#e3e7fe', //dim
           200: '#e7dcff',
@@ -79,9 +82,12 @@ module.exports = {
         },
         yellow: {
           custom: '#f4bd0e'
+        },
+        zinc: {
+          800: '#121212'
         }
       }
     }
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar')]
 }

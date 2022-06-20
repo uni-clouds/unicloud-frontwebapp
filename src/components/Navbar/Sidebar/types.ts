@@ -20,3 +20,7 @@ type DataProp = {
   link: string
   text: string
 }
+
+export interface OrganizationLogoProps {
+  logo?: string
+}

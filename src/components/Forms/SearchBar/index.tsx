@@ -17,7 +17,7 @@ export const SearchBar: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSearch)}
-      className='flex flex-row items-center w-full text-base-500 text-sm '
+      className='flex flex-row items-center w-full text-base-500 dark:text-base-100 text-sm '
     >
       <label className='mr-2 absolute p-4' aria-label='search' role='search'>
         <BsSearch />
@@ -28,7 +28,7 @@ export const SearchBar: React.FC = () => {
           errors?.search
             ? 'focus:outline-rose-400 border-rose-400 focus:ring-offset-1 focus:ring-red-custom focus:ring-offset-rose-400 rounded-md'
             : 'focus:outline-0 border-0 focus:ring-0'
-        } form-input basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent placeholder:text-base-500 placeholder-slate-50 bg-transparent`}
+        } form-input basis-full relative py-3 pl-10 pr-4 focus-within:placeholder-transparent dark:placeholder:text-base-100 dark:placeholder-slate-800 placeholder:text-base-500 placeholder-slate-50 bg-transparent`}
         placeholder='Buscar'
         {...register('search', { required: true })}
       />

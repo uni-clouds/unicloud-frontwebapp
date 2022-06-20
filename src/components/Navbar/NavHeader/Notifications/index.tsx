@@ -1,14 +1,15 @@
-import { Divider, Menu, MenuItem } from '@mui/material'
+import { Box, Divider, IconButton, Menu } from '@mui/material'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { UnstyledButton } from '../../../Elements/Buttons/Unstyled'
+import { useNavigate } from 'react-router-dom'
 import { NotificationIcon } from '../../../Elements/NotificationIcon'
+import { NotificationsContent } from '../../../NotificationsContent'
+import { mockData } from '../../../NotificationsContent/data'
 
-//! incluir map com notification content
 export const Notifications = () => {
-  const [haveNotifications, setHasNotifications] = useState(true)
+  const [hasNotifications, setHasNotifications] = useState(false)
   const navigate = useNavigate()
 
+  const fakeQuantity = mockData.length
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
@@ -22,65 +23,57 @@ export const Notifications = () => {
 
   return (
     <>
-      <button
-        aria-controls={open ? 'basic-menu' : undefined}
+      <IconButton
+        aria-controls={open ? 'notification-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         type='button'
         role='menu'
-        className='btn w-10 btn-ghost hover:bg-transparent hover:text-brand-600 hover:rounded-full transition-colors delay-75 ease-in-out text-3xl '
+        className=' w-10 h-10 text-3xl '
       >
-        <NotificationIcon isNotification={haveNotifications} />
-      </button>
+        <NotificationIcon quantity={fakeQuantity} />
+      </IconButton>
       <Menu
         id='menu-dropdown'
         anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
         open={open}
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'menu list'
         }}
       >
-        <MenuItem
-          sx={{
-            mt: '8px',
-            '&:hover': { color: '#7500ff' }
-          }}
-        >
-          <Link to='/policitys' className='flex flex-row gap-2'>
-            <span>notificação 1</span>
-          </Link>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: '#7500ff' }
-          }}
-        >
-          <Link to='#' className='flex flex-row gap-2'>
-            <span>notificação 2</span>
-          </Link>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: '#7500ff' }
-          }}
-        >
-          <Link to='#' className='flex flex-row gap-2'>
-            <span>notificação 3</span>
-          </Link>
-        </MenuItem>
-        <Divider />
-        <MenuItem
+        <Box
           onClick={() => navigate('/notifications')}
           sx={{
-            '&:hover': { color: '#7500ff' }
+            display: 'flex',
+            justifyContent: 'start',
+            padding: 1,
+            marginLeft: 1,
           }}
         >
-          <span className='hover:text-brand-600 mx-auto'>Veja todas</span>
-        </MenuItem>
+          Notificações
+        </Box>
+        <Divider />
+        <NotificationsContent />
+        <Divider />
+        <Box
+          onClick={() => navigate('/notifications')}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: 1,
+            cursor: 'pointer'
+          }}
+        >
+          <span className='hover:text-brand-600 mx-auto text-sm'>
+            Veja todas
+          </span>
+        </Box>
       </Menu>
     </>
   )

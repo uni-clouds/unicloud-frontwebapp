@@ -11,12 +11,12 @@ const Alert: ForwardRefRenderFunction<HTMLDivElement, ToastErrorProps> = (
     <Snackbar
       open={isError}
       autoHideDuration={4000}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       onClose={handleClose}
     >
       <MuiAlert
         severity='error'
-        sx={{ width: '100%', marginBottom: '60px' }}
+        sx={{ width: '100%' }}
         elevation={1}
         ref={ref}
         {...rest}

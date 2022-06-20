@@ -8,7 +8,7 @@ export const NavLinksHelpers: React.FC<NavLinksProps> = ({ items }) => {
         <li
           role='menuitem'
           key={item.name}
-          className='py-2 px-4 text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out'
+          className='py-2 px-4 text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out dark:text-brand-500 dark:hover:text-brand-600'
         >
           <Link to={item.path}> {item.name}</Link>
         </li>

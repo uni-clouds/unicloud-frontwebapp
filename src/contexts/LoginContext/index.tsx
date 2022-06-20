@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import { AuthProviderProps, UserType, ContextType } from './types'
 import {
   LoginRequest,
+  refreshToken,
   removeUserLocalStorage,
   setUserLocalStorage
 } from './util'
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(cookie)
       setAuthenticated(true)
       setLoading(false)
+      refreshToken(cookie.refresh)
     }
   }, [])
 

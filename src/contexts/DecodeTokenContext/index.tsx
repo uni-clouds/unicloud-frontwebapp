@@ -19,7 +19,6 @@ export const DecodeTokenContextProvider = ({
     const token = cookies.token
     if (token) {
       const decode = jwtDecode<DecodeTokenType>(token)
-
       setDecodeToken({
         email: decode.email,
         first_name: decode.first_name,
@@ -31,7 +30,6 @@ export const DecodeTokenContextProvider = ({
       })
     }
   }, [])
-
   return (
     <DecodeTokenContext.Provider value={{ ...decodeToken }}>
       {children}

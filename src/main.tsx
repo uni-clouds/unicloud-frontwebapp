@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import GlobalContext from './contexts'
 import * as Sentry from '@sentry/react'
+import { QueryClientProvider } from 'react-query'
+import { BrowserRouter } from 'react-router-dom'
 import { BrowserTracing } from '@sentry/tracing'
+import GlobalContext from './contexts'
+import queryClient from './services/queryClient'
 import App from './App'
-
+import Error from './pages/Error'
 import './styles/global.css'
+
 
 if (import.meta.env.PROD) {
   Sentry.init({
@@ -20,12 +23,18 @@ if (import.meta.env.PROD) {
   })
 }
 
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <GlobalContext>
-        <App />
-      </GlobalContext>
-    </BrowserRouter>
+    <Sentry.ErrorBoundary fallback={<Error />}>
+          <BrowserRouter>
+            <QueryClientProvider client={queryClient}>
+                <GlobalContext>
+                    <App />
+                </GlobalContext>
+            </QueryClientProvider>
+          </BrowserRouter>
+    </Sentry.ErrorBoundary>
   </React.StrictMode>
 )

@@ -1,17 +1,27 @@
+import { Badge } from '@mui/material'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { NotificationIconProps } from './types'
 
-//criar o método para inserir o sinal de novas menssagens
 export const NotificationIcon: React.FC<NotificationIconProps> = ({
-  isNotification
+  quantity
 }) => {
+  //
   return (
-    <span
-      className={`${
-        !!isNotification ? 'after:bg-teal-custom' : 'after:transparent'
-      } relative after:content-[" "] after:w-2.5 after:h-2.5  after:absolute after:rounded-full after:bottom-4 after:left-1`}
-    >
-      <IoIosNotificationsOutline />
+    <span className={`text-base-500 dark:text-inherit text-3xl`}>
+      <Badge
+        badgeContent={quantity}
+        max={99}
+        color='default'
+        overlap='circular'
+        sx={{
+          '.MuiBadge-badge': {
+            backgroundColor: '#20c997',
+            color: 'inherit'
+          }
+        }}
+      >
+        <IoIosNotificationsOutline />
+      </Badge>
     </span>
   )
 }
