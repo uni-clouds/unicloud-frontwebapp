@@ -20,7 +20,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         })
       }}
     >
-      {numSelected > 0 ? (
+      {numSelected > 0 && (
         <Typography
           sx={{ flex: '1 1 100%' }}
           color='inherit'
@@ -28,15 +28,6 @@ export const TableToolbar = (props: TableToolbarProps) => {
           component='div'
         >
           {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant='h6'
-          id='tableTitle'
-          component='div'
-        >
-          Usuários
         </Typography>
       )}
       {numSelected > 0 ? (
@@ -47,7 +38,13 @@ export const TableToolbar = (props: TableToolbarProps) => {
         </Tooltip>
       ) : (
         <Tooltip title='Filtrar'>
-          <IconButton>
+          <IconButton
+            sx={{
+              '& . MuiToolbar-root': {
+                justifyContent: 'fex-end'
+              }
+            }}
+          >
             <MdFilterList />
           </IconButton>
         </Tooltip>

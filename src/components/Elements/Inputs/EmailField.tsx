@@ -1,11 +1,11 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
-import { Input } from './LoginInput'
-import { LoginInputProps } from './types'
+import { Input } from './Input'
+import { InputProps } from './types'
 
-const EmailInput: ForwardRefRenderFunction<
-  HTMLInputElement,
-  LoginInputProps
-> = ({ error, label, placeholder, type, ...rest }, ref) => {
+const EmailInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { error, label, placeholder, type, ...rest },
+  ref
+) => {
   return (
     <div className='group flex flex-col mb-6 relative gap-3.5 mt-3'>
       <Input

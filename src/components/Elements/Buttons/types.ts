@@ -3,11 +3,16 @@ import { ReactNode } from 'react'
 export interface SubmitButtonProps {
   children: ReactNode
   isDisabled: boolean
+  isLogin: boolean
 }
 
 export interface UnstyledButtonProps {
   children: ReactNode
   onclick: () => void
+}
+
+export interface OutlineButtonProps extends PurpleButtonProps {
+  fullWidth?: boolean
 }
 
 export interface NavigateButtonProps {

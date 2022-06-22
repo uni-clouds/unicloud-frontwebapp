@@ -20,3 +20,9 @@ export interface ToastErrorProps {
   isError: boolean
   handleClose: () => void
 }
+
+export interface ToastSuccessProps {
+  message: string
+  isSuccess: boolean
+  handleClose: () => void
+}

@@ -1,11 +1,7 @@
-import { Layout } from '../../components/Layout'
 import { UsersList } from '../../Templates/UsersList'
 const Users: React.FC = () => {
-  return (
-    <Layout>
-      <UsersList />
-    </Layout>
-  )
+  document.title = 'Uni.Cloud | Usuários'
+  return <UsersList />
 }
 
 export default Users

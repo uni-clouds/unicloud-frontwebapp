@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
 import PlaceholderPage from '../pages/Placeholder'
 import Users from '../pages/Users'
+import Register from '../pages/Auth/Register'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -79,6 +80,8 @@ export default function MainRoutes() {
           </Suspense>
         }
       />
+
+      <Route path='/auth-register' element={<Register />} />
 
       {/*private routes*/}
 

@@ -3,13 +3,14 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { EmailField } from './EmailField'
+import { EmailField } from '../../Elements/Inputs/EmailField'
 import { schemaLogin } from './validation'
 import { Loading } from '../../Elements/Loading'
 import { ToastError } from '../../Elements/ToastError'
-import { PasswordField } from './PasswordField'
+
 import { useAuth } from '../../../hooks/useAuth'
 import { LoginFormProps } from './types'
+import { PasswordField } from '../../Elements/Inputs/PasswordField'
 
 export const Login: React.FC = () => {
   const {
@@ -83,7 +84,7 @@ export const Login: React.FC = () => {
           {...register('password')}
           error={errors?.password}
         />
-        <SubmitButton isDisabled={isSubmitting}>
+        <SubmitButton isDisabled={isSubmitting} isLogin>
           {!!isSubmitting ? <Loading /> : 'Entrar'}
         </SubmitButton>
       </form>

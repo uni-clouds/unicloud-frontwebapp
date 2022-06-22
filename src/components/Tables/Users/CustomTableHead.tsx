@@ -9,7 +9,7 @@ import {
 import { visuallyHidden } from '@mui/utils'
 import { headCells } from './data'
 import { Data, TableProps } from './types'
-import colorBrand from '../../../styles/colors'
+import { colors } from '../../../styles/colors'
 
 export function CustomTableHead(props: TableProps) {
   const {
@@ -37,12 +37,11 @@ export function CustomTableHead(props: TableProps) {
               'aria-label': 'select all users'
             }}
             sx={{
-              color: 'secondary',
               '&.Mui-checked': {
-                color: colorBrand
+                color: colors.brand[600]
               },
               '&.MuiCheckbox-indeterminate': {
-                color: colorBrand
+                color: colors.brand[600]
               }
             }}
           />
@@ -54,6 +53,7 @@ export function CustomTableHead(props: TableProps) {
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
             style={{ minWidth: headCell.minWidth }}
+            sx={{ color: colors.base[500] }}
           >
             <TableSortLabel
               active={orderBy === headCell.id}

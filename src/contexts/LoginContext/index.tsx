@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { AuthProviderProps, UserType, ContextType } from './types'
 import {
+  checkToken,
   LoginRequest,
   refreshToken,
   removeUserLocalStorage,
@@ -15,19 +16,16 @@ export const AuthContext = createContext<ContextType>({} as ContextType)
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserType | null>()
   const [authenticated, setAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   //verifica e atualiza o state na inicializacão
 
   const cookie = parseCookies()
   useEffect(() => {
-    setLoading(true)
-
-    if (cookie.token) {
+    if (cookie.token && cookie.token !== undefined) {
+      checkToken(cookie.token)
       setUser(cookie)
       setAuthenticated(true)
-      setLoading(false)
       refreshToken(cookie.refresh)
     }
   }, [])

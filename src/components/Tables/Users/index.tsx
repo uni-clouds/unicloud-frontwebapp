@@ -14,7 +14,7 @@ import { getComparator, stableSort } from './utils'
 import { TableToolbar } from './TableToolbar'
 import { Data, Order } from './types'
 import { rows } from './data'
-import colorBrand from '../../../styles/colors'
+import { colors } from '../../../styles/colors'
 
 export const UsersTable: React.FC = () => {
   const [order, setOrder] = useState<Order>('asc')
@@ -96,7 +96,10 @@ export const UsersTable: React.FC = () => {
               borderCollapse: 'separate !important',
               borderSpacing: '0px 16px !important',
               '& .Mui-selected': {
-                backgroundColor: 'lavender'
+                backgroundColor: 'lavender',
+                ':hover': {
+                  backgroundColor: 'lavender'
+                }
               }
             }}
             aria-labelledby='tableTitle'
@@ -116,7 +119,7 @@ export const UsersTable: React.FC = () => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name)
-                  const labelId = `enhanced-table-checkbox-${index}`
+                  const labelId = `user-list-table-${index}`
                   return (
                     <TableRow
                       hover
@@ -145,12 +148,16 @@ export const UsersTable: React.FC = () => {
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{
-                            'aria-labelledby': labelId
+                            'aria-labelledby': labelId,
+                            'aria-label': labelId
                           }}
                           sx={{
                             color: 'secondary',
                             '&.Mui-checked': {
-                              color: colorBrand
+                              color: colors.brand[600],
+                              ':hover': {
+                                backgroundColor: 'lavender'
+                              }
                             }
                           }}
                         />
