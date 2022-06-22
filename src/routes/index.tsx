@@ -5,12 +5,14 @@ import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
 import PlaceholderPage from '../pages/Placeholder'
+import Users from '../pages/Users'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
   const NotFound = lazy(() => import('../pages/NotFound'))
   const Timeout = lazy(() => import('../pages/Error/GatewayTimeout'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
+  const UsersPanel = lazy(() => import('../pages/Users'))
   //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
@@ -128,7 +130,7 @@ export default function MainRoutes() {
         path='/user-list-default'
         element={
           <ProtectedRoute>
-            <PlaceholderPage />
+            <Users />
           </ProtectedRoute>
         }
       />

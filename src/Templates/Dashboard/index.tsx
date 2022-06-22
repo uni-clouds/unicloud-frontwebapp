@@ -5,14 +5,13 @@ import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
 import { CardListClient } from '../../components/Dashboard/Cards/CardListClient'
 import { CardDefault } from '../../components/Dashboard/Cards/CardDefault'
 import { CardPodsLocation } from '../../components/Dashboard/Cards/CardPodsLocation'
-import { ClientTable } from '../../components/Tables'
+import { ClientTable } from '../../components/Tables/Clients'
 import { DashboardDataType } from './types'
 import { useQuery } from 'react-query'
 
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
 export const Dashboard: React.FC = () => {
-
   const mockData = [
     {
       title: 'POD',
@@ -35,7 +34,7 @@ export const Dashboard: React.FC = () => {
       amount: 987654
     }
   ]
-  async function getDashboardData():Promise<DashboardDataType>{
+  async function getDashboardData(): Promise<DashboardDataType> {
     const { data } = await api.get('/dashboard/')
     return data
   }
@@ -55,7 +54,7 @@ export const Dashboard: React.FC = () => {
         <h1 className='font-bold leading-10 text-3xl text-base-700 dark:text-base-100 drop-shadow-xl'>
           Dashboard
         </h1>
-        <PurpleButton onclick={() =>{}} name='reports'>
+        <PurpleButton onclick={() => {}} name='reports'>
           <HiOutlineDocumentReport />
           Reports
         </PurpleButton>
@@ -71,9 +70,17 @@ export const Dashboard: React.FC = () => {
         ))}
       </div>
       <div className='flex flex-row gap-8 justify-between items-center lg:h-[550px]'>
-        <ClientTable data={query.data?.customers} isLoading={query.isLoading}/>
-        <CardPodsLocation coordinates={query.data?.locations} isLoading={query.isLoading}/>
-        <CardListClient partners={query.data?.partners} isLoading={query.isLoading}/>
+        <ClientTable
+          data={query.data?.customers}
+          isLoading={query.isLoading}
+          isError={query.status}
+        />
+        <CardPodsLocation coordinates={query.data?.locations} />
+        <CardListClient
+          partners={query.data?.partners}
+          isLoading={query.isLoading}
+          isError={query.status}
+        />
       </div>
     </section>
   )

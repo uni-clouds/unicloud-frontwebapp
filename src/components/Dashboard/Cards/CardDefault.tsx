@@ -27,7 +27,7 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
         <div>
           <p className='text-lg leading-4 '>
             {description}:
-            <span className='text-xl font-bold text-brand-450 align-middle'>
+            <span className='text-xl font-bold text-brand-bitcoin align-middle'>
               {' '}
               {amount}
             </span>

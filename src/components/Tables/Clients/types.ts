@@ -12,6 +12,7 @@ export interface Data {
 }
 
 export interface TableDataProps {
-  data?: string[],
+  data?: string[]
   isLoading: boolean
+  isError: string
 }

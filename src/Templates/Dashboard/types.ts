@@ -1,4 +1,4 @@
-import { MapProps } from "../../components/Dashboard/Charts/Maps/types"
+import { MapProps } from '../../components/Dashboard/Charts/Maps/types'
 
 export interface CardLineProps {
   title: string
@@ -20,9 +20,11 @@ export interface DashboardDataType {
 }
 
 export interface PartnersProps {
-  partners?: string[],
+  partners?: string[]
   isLoading: boolean
+  isError: string
 }
-export interface PodsLocationsProps  extends MapProps{
-  isLoading: boolean
+export interface PodsLocationsProps extends MapProps {
+  isError?: string
+  isLoading?: boolean
 }
