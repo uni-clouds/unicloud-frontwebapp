@@ -28,12 +28,10 @@ export const RegisterUser: React.FC = () => {
   const navigate = useNavigate()
 
   const onRegisterSubmit: SubmitHandler<RegisterFormProps> = async (data) => {
-    //console.log('DATA 🎉', data)
     try {
       const request = await api.post('/user-register/', data)
 
       if (request.status === 200 && request.data.id) {
-        // console.log('registrou com sucesso? 🏁', request.data.id)
         setIsSuccess(true)
         setTimeout(() => navigate('/auth', { replace: true }), 3000)
       }

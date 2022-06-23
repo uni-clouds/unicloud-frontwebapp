@@ -26,3 +26,9 @@ export interface ToastSuccessProps {
   isSuccess: boolean
   handleClose: () => void
 }
+
+export interface ToastWarningProps {
+  message: string
+  isWarning: boolean
+  handleClose: () => void
+}

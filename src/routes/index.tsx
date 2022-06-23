@@ -7,6 +7,7 @@ import HomePage from '../pages/Home'
 import PlaceholderPage from '../pages/Placeholder'
 import Users from '../pages/Users'
 import Register from '../pages/Auth/Register'
+import InvitesPage from '../pages/Users/Invites'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -134,6 +135,14 @@ export default function MainRoutes() {
         element={
           <ProtectedRoute>
             <Users />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/user-list-default/invite'
+        element={
+          <ProtectedRoute>
+            <InvitesPage />
           </ProtectedRoute>
         }
       />

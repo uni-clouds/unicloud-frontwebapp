@@ -5,10 +5,12 @@ import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
 import { OutlineButton } from '../../components/Elements/Buttons/OutlineButton'
 import { UserModal } from './UserModal'
 import { HeaderProps } from './types'
+import { useNavigate } from 'react-router-dom'
 
-export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
+export const Header: React.FC<HeaderProps> = ({ totalUsers, invites }) => {
   const [openModal, setOpenModal] = useState(false)
-  const isInvite = true
+  const navigate = useNavigate()
+  const isInvite = !!invites
   return (
     <div className='w-full flex flex-row justify-between px-4'>
       <div className='flex flex-col gap-2 justify-start'>
@@ -20,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
       <div className='flex flex-row gap-4'>
         {!!isInvite && (
           <OutlineButton
-            onclick={() => console.log('clikou nos convites 🎉')}
+            onclick={() => navigate('/user-list-default/invite')}
             name='convites'
           >
             <FcInvite fontSize={20} />

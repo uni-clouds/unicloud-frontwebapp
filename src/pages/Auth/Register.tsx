@@ -1,33 +1,28 @@
-import { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { lazy, useEffect, useState } from 'react'
 import { ToastError } from '../../components/Elements/ToastError'
+import { ToastWarning } from '../../components/Elements/ToastWarning'
 import { api } from '../../services/api'
 import { AuthRegister } from '../../Templates/AuthRegister'
 import { LoadingValidation } from '../../Templates/AuthRegister/LoadingValidation'
-import GatewayTimeout from '../Error/GatewayTimeout'
 
-//todo lazy enquanto faz a chamada -> depois o componente
-//todo ao final redirecionar para o login
-//mensagem de envio com sucesso -> OK
-//mensagem de erro -> OK
-//? problema de carregar no início
-//todo caso o não tenha token -> apresentar tela de erro
-//todo caso token seja inválido apresentar mensagem
+const NotValid = lazy(() => import('../Error/GatewayTimeout'))
 
 const Register: React.FC = () => {
   document.title = 'Unicloud | Registro'
-  const navigate = useNavigate()
+
   const [isValid, setIsValid] = useState(true)
   const [isNotValid, setIsNotValid] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [isExpired, setIsExpired] = useState(false)
 
-  // useEffect(() => {
-  //   const query = window.location.search
-  //   const urlParams = new URLSearchParams(query)
-  //   const token = urlParams.get('token')
-  //   validateInvite(token)
-  //   console.log('query', token)
-  // }, [])
+  useEffect(() => {
+    const query = window.location.search
+    const urlParams = new URLSearchParams(query)
+    const token = urlParams.get('token')
+    if (!!token) {
+      validateInvite(token)
+    }
+  }, [])
 
   async function validateInvite(token: string | null) {
     try {
@@ -38,9 +33,17 @@ const Register: React.FC = () => {
       if (request.status === 200 && request.data.is_valid === false) {
         setIsNotValid(true)
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      setIsError(true)
+      if (error?.response.status === 404) {
+        setIsNotValid(true)
+      }
+      if (error?.response.status !== 404 && error?.response.status !== 410) {
+        setIsError(true)
+      }
+      if (error?.response.status === 410) {
+        setIsExpired(true)
+      }
     }
   }
 
@@ -63,10 +66,17 @@ const Register: React.FC = () => {
           handleClose={handleOnClose}
         />
       )}
+      {!!isExpired && (
+        <ToastWarning
+          message='Convite expirado, solicite um novo!'
+          isWarning={isExpired}
+          handleClose={handleOnClose}
+        />
+      )}
       {isValid ? (
         <AuthRegister />
       ) : isNotValid ? (
-        <GatewayTimeout />
+        <NotValid />
       ) : (
         <LoadingValidation />
       )}
