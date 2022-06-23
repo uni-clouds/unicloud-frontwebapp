@@ -30,7 +30,7 @@ export async function checkToken(token: string) {
     const request = await api.post('/api/token/verify/', {
       token: token
     })
-    console.log('token verificado 🏁', request.data)
+
     if (request.status === 200 && request.data !== undefined) {
       setCookie(null, 'token', String(request.data.access), {
         path: '/',
@@ -38,10 +38,13 @@ export async function checkToken(token: string) {
         sameSite: true
       })
     }
+    if (request.status === 200 && request.data.code === 'token_not_valid') {
+      return
+    }
     return request.data
   } catch (err) {
     console.error(err)
-    return null
+    return err
   }
 }
 

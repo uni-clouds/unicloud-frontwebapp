@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
+import { checkToken } from '../contexts/LoginContext/util'
 
 let cookies = parseCookies()
 let isRefreshing = false

@@ -1,6 +1,12 @@
 import { memo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps'
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker,
+  ZoomableGroup
+} from 'react-simple-maps'
 import Tooltip from '@mui/material/Tooltip'
 import * as geoUrl from './Map.json'
 
@@ -8,8 +14,7 @@ import { MapProps } from './types'
 
 const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
   const [tooltipContent, setTooltipContent] = useState('')
-  const locations =  coordinates?.map((coordinate) => Object.entries(coordinate))
-
+  const locations = coordinates?.map((coordinate) => Object.entries(coordinate))
 
   return (
     <ComposableMap
@@ -18,7 +23,7 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
       projection='geoAzimuthalEqualArea'
       projectionConfig={{
         scale: 400,
-        rotate: [60, 20, 0],
+        rotate: [60, 20, 0]
       }}
     >
       <ZoomableGroup>
@@ -37,15 +42,15 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
                   style={{
                     hover: {
                       fill: '#8094ae',
-                      fillOpacity: 0.5,
-                    },
+                      fillOpacity: 0.5
+                    }
                   }}
                 />
               ))
           }
         </Geographies>
         {locations?.map((location) => (
-         <>
+          <>
             <Marker
               coordinates={location[0][1]}
               key={uuidv4()}
@@ -56,7 +61,12 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
                 setTooltipContent('')
               }}
             >
-              <Tooltip title={tooltipContent} arrow placement='top' sx={{ backgroundColor: '#fff' }}  key={uuidv4()}>
+              <Tooltip
+                title={tooltipContent}
+                arrow
+                placement='top'
+                sx={{ backgroundColor: '#fff' }}
+              >
                 <g
                   fill='#52525b'
                   stroke='#b695ff'
@@ -80,4 +90,3 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
 }
 
 export default memo(PodsLocation)
-

@@ -29,10 +29,8 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
     try {
       const request = await api.post('/invite-user/', { email: data.email })
       setIsDisabled(true)
-      console.log('invite', request.data)
       if (request.data.status === 'created') {
         setIsSuccess(true)
-        //todo show success toast
       }
     } catch (error) {
       console.error(error)
@@ -78,6 +76,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
       <form
         className='form flex flex-col gap-4 p-6 relative '
         onSubmit={handleSubmit(onInviteSubmit)}
+        action='POST'
       >
         <Input
           placeholder='Digite o e-mail'
@@ -86,7 +85,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
           error={errors?.email}
           {...register('email')}
         />
-        <div className='flex gap-6 items-center'>
+        <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
             {isSubmitting ? <Loading /> : 'Adicionar usuário'}
           </SubmitButton>

@@ -20,7 +20,7 @@ export default function MainRoutes() {
     <Routes>
       {/*error pages*/}
       <Route
-        path='error'
+        path='/error'
         element={
           <Suspense fallback={<>...</>}>
             <Error />
@@ -45,7 +45,7 @@ export default function MainRoutes() {
       />
 
       {/*Auth routes */}
-      <Route path='auth' element={<AuthPage />} />
+      <Route path='/auth' element={<AuthPage />} />
       <Route
         path='auth/reset'
         element={
@@ -57,7 +57,7 @@ export default function MainRoutes() {
 
       {/*header routes */}
       <Route
-        path='terms'
+        path='/terms'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />
@@ -65,7 +65,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='help'
+        path='/help'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />
@@ -73,7 +73,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='policitys'
+        path='/policitys'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />

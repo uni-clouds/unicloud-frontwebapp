@@ -16,10 +16,10 @@ const GatewayTimeout: React.FC = () => {
         <div>
           <h3 className='font-medium text-xl leading-10'>Oops!</h3>
           <p className='my-2'>
-            Sentimos muito pelo inconveniente, mas parece que nossos servidores
-            estão sobrecarregados.
+            Sentimos muito pelo inconveniente, mas parece que não conseguimos
+            validar sua requisição.
           </p>
-          <p className='my-2'>Poderia tentar novamente?</p>
+          <p className='my-6'>Poderia tentar novamente?</p>
         </div>
         <NavigateButton text='Voltar' onclick={() => navigate(-1)} />
       </div>

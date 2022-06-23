@@ -2,8 +2,9 @@ import { ReactNode } from 'react'
 
 export interface SubmitButtonProps {
   children: ReactNode
-  isDisabled: boolean
-  isLogin: boolean
+  isDisabled?: boolean
+  isLogin?: boolean
+  isForm?: boolean
 }
 
 export interface UnstyledButtonProps {

@@ -67,6 +67,7 @@ export const Login: React.FC = () => {
       <form
         onSubmit={handleSubmit(onLoginSubmit)}
         className='w-full flex-col flex'
+        action='POST'
       >
         <EmailField
           placeholder='Digite seu endereço de e-mail'

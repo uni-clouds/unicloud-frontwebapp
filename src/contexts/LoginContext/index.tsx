@@ -18,12 +18,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [authenticated, setAuthenticated] = useState(false)
   const navigate = useNavigate()
 
-  //verifica e atualiza o state na inicializacão
-
-  const cookie = parseCookies()
   useEffect(() => {
+    const cookie = parseCookies()
     if (cookie.token && cookie.token !== undefined) {
-      checkToken(cookie.token)
       setUser(cookie)
       setAuthenticated(true)
       refreshToken(cookie.refresh)
