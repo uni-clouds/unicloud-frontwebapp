@@ -11,6 +11,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
+        justifyContent: 'flex-end',
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
             alpha(

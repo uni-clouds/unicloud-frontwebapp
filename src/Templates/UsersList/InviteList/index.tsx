@@ -8,8 +8,14 @@ export const InviteList: React.FC = ({}) => {
 
   return (
     <Layout>
-      <Header data={data} />
-      <InvitesTable />
+      <section
+        className={`${
+          data?.length >= 7 ? 'h-full' : 'h-screen'
+        } w-full flex flex-col gap-6 p-6 items-center`}
+      >
+        <Header data={data} />
+        <InvitesTable />
+      </section>
     </Layout>
   )
 }

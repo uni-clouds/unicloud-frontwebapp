@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
@@ -11,6 +11,7 @@ import { api } from '../../../services/api'
 import { ToastError } from '../../Elements/ToastError'
 import { Portal } from '@mui/material'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
+import { ToastWarning } from '../../Elements/ToastWarning'
 
 export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
   const {
@@ -24,6 +25,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [isPending, setIsPending] = useState(false)
 
   const onInviteSubmit: SubmitHandler<InviteFormProps> = async (data) => {
     try {
@@ -32,10 +34,13 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
       if (request.data.status === 'created') {
         setIsSuccess(true)
       }
-    } catch (error) {
-      console.error(error)
-      if (error) {
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setIsPending(true)
+      }
+      if (error.response.status !== 409) {
         setIsError(true)
+        console.error(error)
       }
     } finally {
       reset()
@@ -60,6 +65,15 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
           <ToastError
             isError={!!isError}
             message='Ocorreu algo inesperado, tente novamente.'
+            handleClose={handleOnClose}
+          />
+        </Portal>
+      )}
+      {!!isPending && (
+        <Portal>
+          <ToastWarning
+            isWarning={!!isPending}
+            message='E-mail já possui um convite em espera!'
             handleClose={handleOnClose}
           />
         </Portal>

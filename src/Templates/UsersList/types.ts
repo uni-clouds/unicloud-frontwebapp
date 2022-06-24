@@ -1,5 +1,5 @@
 export interface HeaderProps extends InviteListTypes {
-  totalUsers: string
+  totalUsers: number
 }
 
 export interface UserModalProps {

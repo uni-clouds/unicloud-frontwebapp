@@ -9,7 +9,16 @@ async function getUsers(): Promise<Array<UserDataType>> {
   return data
 }
 
+const REVALIDATE_TIME = 60 * 60 //60 min
+const CACHE_TIME = 60 * 10 //10min
 export const useUsersList = () => {
-  const query = useQuery('get-users', getUsers)
+  const query = useQuery('get-users', getUsers, {
+    staleTime: REVALIDATE_TIME,
+    cacheTime: CACHE_TIME,
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
+    refetchOnReconnect: true,
+    refetchIntervalInBackground: true
+  })
   return query
 }

@@ -32,3 +32,10 @@ export interface ToastWarningProps {
   isWarning: boolean
   handleClose: () => void
 }
+
+export interface ModalProps {
+  handleClose: () => void
+  isOpen: boolean
+  children: ReactNode
+  height: number
+}

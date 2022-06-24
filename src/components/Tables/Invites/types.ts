@@ -13,6 +13,7 @@ export interface HeadCell {
 
 export interface TableToolbarProps {
   numSelected: number
+  id: number[]
 }
 
 export type Order = 'asc' | 'desc'
@@ -23,7 +24,6 @@ export interface TableProps {
     event: React.MouseEvent<unknown>,
     property: keyof Data
   ) => void
-  //onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void
   order: Order
   orderBy: string
   rowCount: number

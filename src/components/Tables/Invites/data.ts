@@ -17,7 +17,7 @@ export const headCells: readonly HeadCell[] = [
     numeric: false,
     disablePadding: false,
     label: 'Enviado em',
-    minWidth: 200
+    minWidth: 80
   }
 ]
 

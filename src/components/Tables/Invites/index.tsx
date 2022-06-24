@@ -26,7 +26,10 @@ export const InvitesTable: React.FC = () => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
-  const [id, setId] = useState([])
+
+  const getId = data
+    .filter((e) => e.email === selected.toString())
+    .map((item) => item.id)
 
   const rows = data?.map((invite) =>
     createData(
@@ -80,14 +83,7 @@ export const InvitesTable: React.FC = () => {
 
     setSelected(newSelected)
   }
-  const emails = selected.toString()
-  useEffect(() => {
-    let ids = []
-    const getId = data.filter((e) => e.email === emails).map((item) => item.id)
 
-    setId(getId)
-  }, [emails])
-  console.log(id)
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage)
   }
@@ -106,13 +102,13 @@ export const InvitesTable: React.FC = () => {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Number(rows?.length)) : 0
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, px: 2 }}>
-        <TableToolbar numSelected={Number(selected?.length)} />
+    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <Paper sx={{ maxWidth: 1280, width: '100%', mb: 2, px: 2 }}>
+        <TableToolbar numSelected={Number(selected?.length)} id={getId} />
         <TableContainer>
           <Table
             sx={{
-              minWidth: 750,
+              minWidth: 500,
               borderCollapse: 'separate !important',
               borderSpacing: '0px 16px !important',
               '& .Mui-selected': {
@@ -192,7 +188,16 @@ export const InvitesTable: React.FC = () => {
                       >
                         {row.email}
                       </TableCell>
-                      <TableCell align='left' sx={{ border: 'none' }}>
+                      <TableCell
+                        align='left'
+                        sx={{
+                          border: 'none',
+                          width: 250,
+                          borderRadius: 2,
+                          borderTopLeftRadius: 0,
+                          borderBottomLeftRadius: 0
+                        }}
+                      >
                         {row.created_at}
                       </TableCell>
                     </TableRow>
