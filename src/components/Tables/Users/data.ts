@@ -4,18 +4,18 @@ const today = new Date()
 const phone = '(99) 99999-9999'
 const active = 'Ativo'
 
-function createData(
+export function createData(
   name: string,
-  username: string,
-  phone: string,
-  createdAt: string,
+  email: string,
+  phone: string | undefined,
+  country: string | undefined,
   status: string
 ): Data {
   return {
     name,
-    username,
+    email,
     phone,
-    createdAt,
+    country,
     status
   }
 }
@@ -29,10 +29,10 @@ export const headCells: readonly HeadCell[] = [
     minWidth: 180
   },
   {
-    id: 'username',
+    id: 'email',
     numeric: false,
     disablePadding: false,
-    label: 'Username',
+    label: 'E-mail',
     minWidth: 200
   },
   {
@@ -43,10 +43,10 @@ export const headCells: readonly HeadCell[] = [
     minWidth: 150
   },
   {
-    id: 'createdAt',
+    id: 'country',
     numeric: false,
     disablePadding: false,
-    label: 'Data de criação',
+    label: 'País',
     minWidth: 100
   },
   {
@@ -61,90 +61,6 @@ export const headCells: readonly HeadCell[] = [
 export const rows = [
   createData(
     'Cupcake',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Donut',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Eclair',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Frozen yoghurt',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Gingerbread',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Honeycomb',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Ice cream sandwich',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Jelly Bean',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'KitKat',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Lollipop',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Marshmallow',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Nougat',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  ),
-  createData(
-    'Oreo',
     'contato@contato.com.br',
     phone,
     today.toLocaleDateString('pt-BR'),

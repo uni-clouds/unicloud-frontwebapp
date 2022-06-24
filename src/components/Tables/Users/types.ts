@@ -1,8 +1,29 @@
+export interface UsersTableProps {
+  list: UserDataType[]
+}
+
+export interface UserDataType {
+  id: number
+  username: string
+  first_name: string
+  last_name: string
+  email: string
+  is_active: boolean
+  userprofile?: Userprofile
+}
+
+type Userprofile = {
+  phone: string
+  address: string
+  city: string
+  state: string
+  country: string
+}
 export interface Data {
   name: string
-  username: string
-  phone: string
-  createdAt: string
+  email: string
+  phone: string | undefined
+  country: string | undefined
   status: string
 }
 

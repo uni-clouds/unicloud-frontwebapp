@@ -27,7 +27,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
           variant='subtitle1'
           component='div'
         >
-          {numSelected} selected
+          {numSelected} {numSelected === 1 ? 'selecionado' : 'selecionados'}
         </Typography>
       )}
       {numSelected > 0 ? (

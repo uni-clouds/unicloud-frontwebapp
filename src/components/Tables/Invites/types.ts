@@ -1,16 +1,13 @@
 export interface Data {
-  name: string
-  username: string
-  phone: string
-  createdAt: string
-  status: string
+  created_at: string
+  email: string
 }
 
 export interface HeadCell {
-  disablePadding: boolean
   id: keyof Data
+  disablePadding: boolean
   label: string
-  numeric: boolean
+  numeric: boolean //?
   minWidth: number
 }
 
@@ -26,7 +23,7 @@ export interface TableProps {
     event: React.MouseEvent<unknown>,
     property: keyof Data
   ) => void
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void
+  //onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void
   order: Order
   orderBy: string
   rowCount: number

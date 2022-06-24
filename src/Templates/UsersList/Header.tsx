@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
   const [openModal, setOpenModal] = useState(false)
   const navigate = useNavigate()
   const isInvite = Number(data?.length) > 0 ? true : false
-  console.log(isInvite)
+
   return (
     <div className='w-full flex flex-row justify-between px-4'>
       <div className='flex flex-col gap-2 justify-start'>
