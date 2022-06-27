@@ -5,7 +5,8 @@ export const Modal: React.FC<ModalProps> = ({
   isOpen,
   handleClose,
   children,
-  height
+  height,
+  width
 }) => {
   return (
     <Dialog
@@ -14,8 +15,14 @@ export const Modal: React.FC<ModalProps> = ({
       aria-labelledby='invite-user-form'
       aria-describedby='invite-user-form'
       fullWidth
-      maxWidth='md'
-      sx={{ '& .MuiPaper-root': { height: height, overflowY: 'hidden' } }}
+      maxWidth={width}
+      sx={{
+        '& .MuiPaper-root': {
+          height: height,
+          overflowY: 'hidden',
+          borderRadius: 2
+        }
+      }}
     >
       <DialogContent>{children}</DialogContent>
     </Dialog>

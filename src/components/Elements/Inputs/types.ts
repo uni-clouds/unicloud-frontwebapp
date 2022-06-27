@@ -6,6 +6,7 @@ export interface InputProps {
   label?: string
   type?: string
   error?: FieldError
+  disabled?: boolean
   showVisibilityIcon?: (event: FormEvent) => void
   isVisible?: boolean
 }

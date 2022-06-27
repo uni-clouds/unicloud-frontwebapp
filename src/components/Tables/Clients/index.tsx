@@ -8,10 +8,11 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
-import Skeleton from '@mui/material/Skeleton'
-import { Title } from '../../Elements/TitleDashboard'
-import { TableDataProps } from './types'
 import { useTheme } from '@mui/system'
+import { Title } from '../../Elements/TitleDashboard'
+import { TableSkeleton } from '../TableSkeleton'
+import { TableDataProps } from './types'
+import { Skeleton } from '@mui/material'
 
 export const ClientTable: React.FC<TableDataProps> = ({
   data,
@@ -50,14 +51,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
       >
         {isLoading || isError !== 'success' ? (
           <div className='p-6 flex flex-col gap-6 justify-between w-full'>
-            <Skeleton variant='text' animation='wave' width={300} />
-            <Skeleton animation='wave' variant='text' height={40} width={500} />
-            <Skeleton animation='wave' variant='text' height={40} width={500} />
-            <Skeleton animation='wave' variant='text' height={40} width={500} />
-            <Skeleton animation='wave' variant='text' height={40} width={500} />
-            <Skeleton animation='wave' variant='text' height={40} width={500} />
-            <Skeleton variant='text' animation='wave' width={250} />
-            <Skeleton variant='text' animation='wave' width={200} />
+            <TableSkeleton />
           </div>
         ) : (
           <>

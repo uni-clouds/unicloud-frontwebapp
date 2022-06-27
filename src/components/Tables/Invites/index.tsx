@@ -16,9 +16,10 @@ import { TableToolbar } from './TableToolbar'
 import { Data, Order } from './types'
 import { createData } from './data'
 import { colors } from '../../../styles/colors'
+import { TableSkeleton } from '../TableSkeleton'
 
 export const InvitesTable: React.FC = () => {
-  const { data } = useInviteList()
+  const { data, isLoading, isError } = useInviteList()
   const { palette } = useTheme()
   const [order, setOrder] = useState<Order>('asc')
   const [orderBy, setOrderBy] = useState<keyof Data>('created_at')
@@ -106,133 +107,137 @@ export const InvitesTable: React.FC = () => {
 
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-      <Paper sx={{ maxWidth: 1280, width: '100%', mb: 2, px: 2 }}>
-        <TableToolbar numSelected={Number(selected?.length)} id={getId} />
-        <TableContainer>
-          <Table
-            sx={{
-              minWidth: 500,
-              borderCollapse: 'separate !important',
-              borderSpacing: '0px 16px !important',
-              '& .Mui-selected': {
-                backgroundColor: 'lavender',
-                ':hover': {
-                  backgroundColor: 'lavender'
+      {isLoading || isError ? (
+        <TableSkeleton />
+      ) : (
+        <Paper sx={{ maxWidth: 1280, width: '100%', mb: 2, px: 2 }}>
+          <TableToolbar numSelected={Number(selected?.length)} id={getId} />
+          <TableContainer>
+            <Table
+              sx={{
+                minWidth: 500,
+                borderCollapse: 'separate !important',
+                borderSpacing: '0px 16px !important',
+                '& .Mui-selected': {
+                  backgroundColor: 'lavender',
+                  ':hover': {
+                    backgroundColor: 'lavender'
+                  }
                 }
-              }
-            }}
-            aria-labelledby='tableTitle'
-            size='medium'
-            component='table'
-          >
-            <CustomTableHead
-              numSelected={Number(selected?.length)}
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-              rowCount={Number(rows?.length)}
-            />
-            <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.email)
-                  const labelId = `user-list-table-${index}`
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => handleClick(event, row.email)}
-                      role='checkbox'
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.email}
-                      selected={isItemSelected}
-                      className='shadow-md'
-                      sx={{
-                        border: 'none',
-                        backgroundColor: colorRow,
-                        borderRadius: 2,
-                        '& .Mui-checked': {
-                          backgroundColor: colorBgChecked
-                        }
-                      }}
-                    >
-                      <TableCell
-                        padding='checkbox'
+              }}
+              aria-labelledby='tableTitle'
+              size='medium'
+              component='table'
+            >
+              <CustomTableHead
+                numSelected={Number(selected?.length)}
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+                rowCount={Number(rows?.length)}
+              />
+              <TableBody>
+                {stableSort(rows, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.email)
+                    const labelId = `user-list-table-${index}`
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) => handleClick(event, row.email)}
+                        role='checkbox'
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.email}
+                        selected={isItemSelected}
+                        className='shadow-md'
                         sx={{
                           border: 'none',
+                          backgroundColor: colorRow,
                           borderRadius: 2,
-                          borderTopRightRadius: 1,
-                          borderBottomRightRadius: 1
+                          '& .Mui-checked': {
+                            backgroundColor: colorBgChecked
+                          }
                         }}
                       >
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{
-                            'aria-labelledby': labelId,
-                            'aria-label': labelId
-                          }}
+                        <TableCell
+                          padding='checkbox'
                           sx={{
-                            color: 'secondary',
-                            '&.Mui-checked': {
-                              color: colors.brand[600],
-                              backgroundColor: 'transparent',
-                              ':hover': {
-                                backgroundColor: colorHover
-                              }
-                            }
+                            border: 'none',
+                            borderRadius: 2,
+                            borderTopRightRadius: 1,
+                            borderBottomRightRadius: 1
                           }}
-                        />
-                      </TableCell>
-                      <TableCell
-                        component='th'
-                        id={labelId}
-                        scope='row'
-                        padding='normal'
-                        sx={{
-                          border: 'none'
-                        }}
-                      >
-                        {row.email}
-                      </TableCell>
-                      <TableCell
-                        align='left'
-                        sx={{
-                          border: 'none',
-                          width: 250,
-                          borderRadius: 2,
-                          borderTopLeftRadius: 0,
-                          borderBottomLeftRadius: 0
-                        }}
-                      >
-                        {row.created_at}
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 53 * emptyRows
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component='div'
-          count={Number(rows?.length)}
-          rowsPerPage={rowsPerPage}
-          labelRowsPerPage='Linhas por página'
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
+                        >
+                          <Checkbox
+                            checked={isItemSelected}
+                            inputProps={{
+                              'aria-labelledby': labelId,
+                              'aria-label': labelId
+                            }}
+                            sx={{
+                              color: 'secondary',
+                              '&.Mui-checked': {
+                                color: colors.brand[600],
+                                backgroundColor: 'transparent',
+                                ':hover': {
+                                  backgroundColor: colorHover
+                                }
+                              }
+                            }}
+                          />
+                        </TableCell>
+                        <TableCell
+                          component='th'
+                          id={labelId}
+                          scope='row'
+                          padding='normal'
+                          sx={{
+                            border: 'none'
+                          }}
+                        >
+                          {row.email}
+                        </TableCell>
+                        <TableCell
+                          align='left'
+                          sx={{
+                            border: 'none',
+                            width: 250,
+                            borderRadius: 2,
+                            borderTopLeftRadius: 0,
+                            borderBottomLeftRadius: 0
+                          }}
+                        >
+                          {row.created_at}
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 53 * emptyRows
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component='div'
+            count={Number(rows?.length)}
+            rowsPerPage={rowsPerPage}
+            labelRowsPerPage='Linhas por página'
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      )}
     </Box>
   )
 }

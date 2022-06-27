@@ -1,4 +1,4 @@
-import { AlertProps } from '@mui/material'
+import { Breakpoint } from '@mui/material'
 import { ReactNode } from 'react'
 
 export interface DividerProps {
@@ -38,4 +38,5 @@ export interface ModalProps {
   isOpen: boolean
   children: ReactNode
   height: number
+  width: Breakpoint | false
 }

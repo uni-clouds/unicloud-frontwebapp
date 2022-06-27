@@ -15,8 +15,9 @@ import { TableToolbar } from './TableToolbar'
 import { Data, Order, UsersTableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
+import { TableSkeleton } from '../TableSkeleton'
 
-export const UsersTable: React.FC<UsersTableProps> = ({ list }) => {
+export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
   const [orderBy, setOrderBy] = useState<keyof Data>('name')
   const [selected, setSelected] = useState<readonly string[]>([])
@@ -107,23 +108,22 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list }) => {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
+  const getId = list
+    ?.filter((e) => e.email === selected.toString())
+    .map((item) => item.id)
+
   return (
     <Box sx={{ width: '100%' }}>
+      {!!isLoading && <TableSkeleton />}
       {!!users && (
         <Paper sx={{ width: '100%', mb: 2, px: 2 }}>
-          <TableToolbar numSelected={selected.length} />
+          <TableToolbar numSelected={selected.length} id={Number(getId)} />
           <TableContainer>
             <Table
               sx={{
                 minWidth: 750,
                 borderCollapse: 'separate !important',
-                borderSpacing: '0px 16px !important',
-                '& .Mui-selected': {
-                  backgroundColor: 'lavender',
-                  ':hover': {
-                    backgroundColor: 'lavender'
-                  }
-                }
+                borderSpacing: '0px 16px !important'
               }}
               aria-labelledby='tableTitle'
               size={dense ? 'small' : 'medium'}
@@ -141,16 +141,16 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list }) => {
                 {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
-                    const isItemSelected = isSelected(row.name)
+                    const isItemSelected = isSelected(row.email)
                     const labelId = `user-list-table-${index}`
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.name)}
+                        onClick={(event) => handleClick(event, row.email)}
                         role='checkbox'
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={row.name}
+                        key={row.email}
                         selected={isItemSelected}
                         className='shadow-md'
                         sx={{
@@ -177,10 +177,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list }) => {
                             sx={{
                               color: 'secondary',
                               '&.Mui-checked': {
-                                color: colors.brand[600],
-                                ':hover': {
-                                  backgroundColor: 'lavender'
-                                }
+                                color: colors.brand[600]
                               }
                             }}
                           />

@@ -18,8 +18,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [authenticated, setAuthenticated] = useState(false)
   const navigate = useNavigate()
 
+  const cookie = parseCookies()
   useEffect(() => {
-    const cookie = parseCookies()
     if (cookie.token && cookie.token !== undefined) {
       setUser(cookie)
       setAuthenticated(true)

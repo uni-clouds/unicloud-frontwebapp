@@ -1,5 +1,6 @@
 export interface UsersTableProps {
   list: UserDataType[]
+  isLoading: boolean
 }
 
 export interface UserDataType {
@@ -37,6 +38,7 @@ export interface HeadCell {
 
 export interface TableToolbarProps {
   numSelected: number
+  id: number
 }
 
 export type Order = 'asc' | 'desc'

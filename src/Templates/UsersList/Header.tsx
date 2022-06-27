@@ -3,7 +3,7 @@ import { HiPlus } from 'react-icons/hi'
 import { FcInvite } from 'react-icons/fc'
 import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
 import { OutlineButton } from '../../components/Elements/Buttons/OutlineButton'
-import { UserModal } from './UserModal'
+import { ModalInvitation } from './ModalInvitation'
 import { HeaderProps } from './types'
 import { useNavigate } from 'react-router-dom'
 
@@ -37,7 +37,10 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
           <HiPlus fontSize={20} />
           Usuário
         </PurpleButton>
-        <UserModal isOpen={openModal} handleClose={() => setOpenModal(false)} />
+        <ModalInvitation
+          isOpen={openModal}
+          handleClose={() => setOpenModal(false)}
+        />
       </div>
     </div>
   )

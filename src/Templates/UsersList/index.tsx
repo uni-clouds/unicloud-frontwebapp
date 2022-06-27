@@ -6,7 +6,7 @@ import { useUsersList } from '../../hooks/useUsersList'
 
 export const UsersList: React.FC = () => {
   const { data } = useInviteList()
-  const { data: users } = useUsersList()
+  const { data: users, isLoading } = useUsersList()
 
   return (
     <Layout>
@@ -16,7 +16,7 @@ export const UsersList: React.FC = () => {
         } w-full flex flex-col gap-6 mx-auto p-6`}
       >
         <Header totalUsers={users?.length} data={data} />
-        <UsersTable list={users} />
+        <UsersTable list={users} isLoading={isLoading} />
       </section>
     </Layout>
   )

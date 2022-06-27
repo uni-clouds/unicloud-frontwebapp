@@ -1,6 +1,6 @@
-import { Skeleton } from '@mui/material'
 import { v4 as uuidv4 } from 'uuid'
 import { PartnersProps } from '../../../Templates/Dashboard/types'
+import { ListSkeleton } from '../../Elements/ListSkeleton'
 import { Title } from '../../Elements/TitleDashboard'
 
 export const CardListClient: React.FC<PartnersProps> = ({
@@ -12,16 +12,7 @@ export const CardListClient: React.FC<PartnersProps> = ({
     <div className='col-span-1 lg:w-[25rem] h-full flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow w-full'>
       {isLoading || isError !== 'success' ? (
         <div className='flex flex-col justify-between gap-4 items-center w-full'>
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
-          <Skeleton variant='text' animation='wave' width={240} height={35} />
+          <ListSkeleton />
         </div>
       ) : (
         <>

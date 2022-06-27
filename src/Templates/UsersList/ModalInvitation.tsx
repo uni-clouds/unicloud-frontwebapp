@@ -1,13 +1,13 @@
 import { Modal } from '../../components/Elements/ModalDefault'
 import { InviteUser as InviteUserForm } from '../../components/Forms/InviteUser'
-import { UserModalProps } from './types'
+import { InvitationModalProps } from './types'
 
-export const UserModal: React.FC<UserModalProps> = ({
+export const ModalInvitation: React.FC<InvitationModalProps> = ({
   isOpen,
   handleClose
 }) => {
   return (
-    <Modal height={300} isOpen={isOpen} handleClose={handleClose}>
+    <Modal height={300} isOpen={isOpen} handleClose={handleClose} width='md'>
       <InviteUserForm handleClose={handleClose} />
     </Modal>
   )

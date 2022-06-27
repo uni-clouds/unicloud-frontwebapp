@@ -57,13 +57,3 @@ export const headCells: readonly HeadCell[] = [
     minWidth: 100
   }
 ]
-
-export const rows = [
-  createData(
-    'Cupcake',
-    'contato@contato.com.br',
-    phone,
-    today.toLocaleDateString('pt-BR'),
-    active
-  )
-]

@@ -1,24 +1,26 @@
 import { IconButton, Tooltip, Typography, Toolbar } from '@mui/material'
-import { alpha } from '@mui/material/styles'
+import { useState } from 'react'
+import { CgDanger } from 'react-icons/cg'
 import { MdFilterList } from 'react-icons/md'
 import { RiListSettingsLine } from 'react-icons/ri'
+import { BiDetail } from 'react-icons/bi'
 import { TableToolbarProps } from './types'
+import { useUsersList } from '../../../hooks/useUsersList'
+import { colors } from '../../../styles/colors'
+import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
 
 export const TableToolbar = (props: TableToolbarProps) => {
-  const { numSelected } = props
+  const { numSelected, id } = props
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { data } = useUsersList()
+  const userSelected = data?.filter((f) => f.id === id)
+
   return (
     <Toolbar
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
-        justifyContent: 'flex-end',
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.grey[100],
-              theme.palette.action.activatedOpacity
-            )
-        })
+        justifyContent: 'flex-end'
       }}
     >
       {numSelected > 0 && (
@@ -31,25 +33,39 @@ export const TableToolbar = (props: TableToolbarProps) => {
           {numSelected} {numSelected === 1 ? 'selecionado' : 'selecionados'}
         </Typography>
       )}
-      {numSelected > 0 ? (
-        <Tooltip title='Editar'>
+
+      {numSelected === 1 ? (
+        <Tooltip title='Exibir detalhes'>
+          <IconButton
+            onClick={() => setIsModalOpen(!isModalOpen)}
+            sx={{ '& :hover': { color: colors.brand[600] } }}
+          >
+            <BiDetail color={colors.brand[600]} />
+          </IconButton>
+        </Tooltip>
+      ) : numSelected > 1 ? (
+        <Tooltip
+          title='Apenas um usuário por vez'
+          aria-disabled='true'
+          role='alert'
+          disableInteractive
+        >
           <IconButton>
-            <RiListSettingsLine />
+            <CgDanger />
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title='Filtrar'>
-          <IconButton
-            sx={{
-              '& . MuiToolbar-root': {
-                justifyContent: 'fex-end'
-              }
-            }}
-          >
+          <IconButton>
             <MdFilterList />
           </IconButton>
         </Tooltip>
       )}
+      <ModalDetails
+        isOpen={!!isModalOpen}
+        handleClose={() => setIsModalOpen(!isModalOpen)}
+        data={userSelected}
+      />
     </Toolbar>
   )
 }

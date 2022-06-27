@@ -77,28 +77,35 @@ export function getTokenLocalStorage() {
   return token ?? null
 }
 
-export function refreshToken(refreshToken: string) {
-  setInterval(async () => {
-    try {
-      const request = await api.post('/api/token/refresh/', {
-        refresh: refreshToken
-      })
+const updateToken = setInterval(async () => {
+  try {
+    const request = await api.post('/api/token/refresh/', {
+      refresh: refreshToken
+    })
 
-      const data = request.data
-      console.log('refresh token', data)
-      if (request.status === 200 && request.data !== undefined) {
-        setCookie(null, 'token', String(data.access), {
-          path: '/',
-          maxAge: MAX_AGE_TOKEN,
-          sameSite: true
-        })
-      }
-      const cookies = parseCookies()
-      console.log('novo token', cookies.token)
-      return data
-    } catch (err) {
-      console.error(err)
-      return null
+    const data = request.data
+    console.log('refresh token', data)
+    if (request.status === 200 && request.data !== undefined) {
+      setCookie(null, 'token', String(data.access), {
+        path: '/',
+        maxAge: MAX_AGE_TOKEN,
+        sameSite: true
+      })
     }
-  }, SESSION_VALIDATE)
+    const cookies = parseCookies()
+    console.log('novo token', cookies.token)
+    return data
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}, SESSION_VALIDATE)
+export function refreshToken(refreshToken: string) {
+  try {
+    updateToken
+  } catch (error) {
+    console.error('refresh', error)
+  } finally {
+    clearInterval(updateToken)
+  }
 }

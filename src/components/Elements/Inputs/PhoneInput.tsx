@@ -4,7 +4,7 @@ import { Input } from './Input'
 import { InputProps } from './types'
 
 const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { error, ...rest },
+  { error, disabled, ...rest },
   ref
 ) => {
   return (
@@ -21,6 +21,7 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         placeholder='Telefone'
         guide
         id='phone'
+        disabled={disabled}
         role='Telefone'
         className={`form-input peer-relative py-3 px-4 dark:placeholder:bg-transparent placeholder:text-base-300 rounded-md border border-light-200 dark:border-neutral-700 placeholder-neutral-50 dark:placeholder-zinc-300 bg-transparent focus:ring-1 focus:outline-none focus:ring-offset-1 ${
           error
