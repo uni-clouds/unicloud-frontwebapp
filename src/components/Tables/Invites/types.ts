@@ -1,13 +1,14 @@
 export interface Data {
   created_at: string
   email: string
+  status: string
 }
 
 export interface HeadCell {
   id: keyof Data
   disablePadding: boolean
   label: string
-  numeric: boolean //?
+  numeric: boolean
   minWidth: number
 }
 

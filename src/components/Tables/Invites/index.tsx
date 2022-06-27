@@ -42,9 +42,11 @@ export const InvitesTable: React.FC = () => {
         day: '2-digit',
         month: 'long',
         year: 'numeric'
-      }).format(new Date(invite.created_at))
+      }).format(new Date(invite.created_at)),
+      invite.status
     )
   )
+  console.log('🐫', rows)
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -203,13 +205,27 @@ export const InvitesTable: React.FC = () => {
                           align='left'
                           sx={{
                             border: 'none',
-                            width: 250,
-                            borderRadius: 2,
-                            borderTopLeftRadius: 0,
-                            borderBottomLeftRadius: 0
+                            width: 250
                           }}
                         >
                           {row.created_at}
+                        </TableCell>
+                        <TableCell
+                          align='left'
+                          sx={{
+                            border: 'none',
+                            width: 100,
+                            borderRadius: 2,
+                            borderTopLeftRadius: 0,
+                            borderBottomLeftRadius: 0,
+                            textTransform: 'capitalize',
+                            color:
+                              row.status === 'expired'
+                                ? colors.brand.bitcoin
+                                : colors.brand.ethereum
+                          }}
+                        >
+                          {row.status === 'pending' ? 'Pendente' : 'Expirado'}
                         </TableCell>
                       </TableRow>
                     )

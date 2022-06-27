@@ -1,7 +1,11 @@
 import { HeadCell, Data } from './types'
 
-export function createData(email: string, created_at: string): Data {
-  return { email, created_at }
+export function createData(
+  email: string,
+  created_at: string,
+  status: string
+): Data {
+  return { email, created_at, status }
 }
 
 export const headCells: readonly HeadCell[] = [
@@ -17,6 +21,13 @@ export const headCells: readonly HeadCell[] = [
     numeric: false,
     disablePadding: false,
     label: 'Enviado em',
+    minWidth: 80
+  },
+  {
+    id: 'status',
+    numeric: false,
+    disablePadding: false,
+    label: 'Status',
     minWidth: 80
   }
 ]
