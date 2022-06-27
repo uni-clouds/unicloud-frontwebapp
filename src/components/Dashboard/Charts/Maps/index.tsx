@@ -19,7 +19,8 @@ const PodsLocation: React.FC<MapProps> = ({ coordinates }) => {
   return (
     <ComposableMap
       width={600}
-      height={480}
+      height={650}
+      overflow='hidden'
       projection='geoAzimuthalEqualArea'
       projectionConfig={{
         scale: 400,

@@ -37,7 +37,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
   return (
     <Paper
       sx={{
-        maxWidth: '550px',
+        // maxWidth: '550px',
         width: '100%',
         overflow: 'hidden',
         boxShadow: 1,
@@ -46,7 +46,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
     >
       <TableContainer
         sx={{ height: '500px' }}
-        className='scrollbar-thumb-brand-200 dark:scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200 dark:hover:scrollbar-thumb-zinc-600'
+        className='col-span-1 w-full scrollbar-thumb-brand-200 dark:scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200 dark:hover:scrollbar-thumb-zinc-600'
       >
         {isLoading || isError !== 'success' ? (
           <div className='p-6 flex flex-col gap-6 justify-between w-full'>

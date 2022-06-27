@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useInviteList } from '../../../hooks/useInviteList'
 import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
@@ -26,6 +26,9 @@ export const InvitesTable: React.FC = () => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
+  const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
+  const colorBgChecked =
+    palette.mode === 'dark' ? colors.scroll : colors.brand[300]
 
   const getId = data
     .filter((e) => e.email === selected.toString())
@@ -148,7 +151,10 @@ export const InvitesTable: React.FC = () => {
                       sx={{
                         border: 'none',
                         backgroundColor: colorRow,
-                        borderRadius: 2
+                        borderRadius: 2,
+                        '& .Mui-checked': {
+                          backgroundColor: colorBgChecked
+                        }
                       }}
                     >
                       <TableCell
@@ -170,8 +176,9 @@ export const InvitesTable: React.FC = () => {
                             color: 'secondary',
                             '&.Mui-checked': {
                               color: colors.brand[600],
+                              backgroundColor: 'transparent',
                               ':hover': {
-                                backgroundColor: 'lavender'
+                                backgroundColor: colorHover
                               }
                             }
                           }}

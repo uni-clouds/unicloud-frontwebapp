@@ -9,7 +9,7 @@ export const CardListClient: React.FC<PartnersProps> = ({
   isError
 }) => {
   return (
-    <div className='lg:w-[25rem] md:w-[20rem] h-full flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow w-60'>
+    <div className='col-span-1 lg:w-[25rem] h-full flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow w-full'>
       {isLoading || isError !== 'success' ? (
         <div className='flex flex-col justify-between gap-4 items-center w-full'>
           <Skeleton variant='text' animation='wave' width={240} height={35} />

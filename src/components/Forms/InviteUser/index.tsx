@@ -31,7 +31,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
     try {
       const request = await api.post('/invite-user/', { email: data.email })
       setIsDisabled(true)
-      if (request.data.status === 'created') {
+      if (request.status === 200) {
         setIsSuccess(true)
       }
     } catch (error: any) {

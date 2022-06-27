@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -47,7 +47,6 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list }) => {
   const rows = users?.map((d) =>
     createData(d.name, d.email, d.phone, d.country, d.status)
   )
-  console.log('🐼', list)
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,

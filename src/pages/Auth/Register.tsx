@@ -8,7 +8,7 @@ import { LoadingValidation } from '../../Templates/AuthRegister/LoadingValidatio
 const NotValid = lazy(() => import('../Error/GatewayTimeout'))
 
 const Register: React.FC = () => {
-  document.title = 'Unicloud | Registro'
+  document.title = 'Unicloud | Novo usuário'
 
   const [isValid, setIsValid] = useState(true)
   const [isNotValid, setIsNotValid] = useState(false)

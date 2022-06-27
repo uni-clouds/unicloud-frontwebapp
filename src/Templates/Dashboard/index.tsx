@@ -59,7 +59,7 @@ export const Dashboard: React.FC = () => {
           Reports
         </PurpleButton>
       </div>
-      <div className='flex flex-row gap-24 items-center'>
+      <div className='grid grid-cols-2 place-content-center gap-6 lg:flex lg:flex-row lg:gap-24 lg:items-center'>
         {mockData.map((data) => (
           <CardDefault
             title={data.title}
@@ -69,7 +69,7 @@ export const Dashboard: React.FC = () => {
           />
         ))}
       </div>
-      <div className='flex flex-row gap-8 justify-between items-center lg:h-[550px]'>
+      <div className='grid grid-flow-row gap-y-6 lg:flex lg:flex-row lg:gap-8 lg:justify-between lg:items-center lg:h-[550px]'>
         <ClientTable
           data={query.data?.customers}
           isLoading={query.isLoading}
