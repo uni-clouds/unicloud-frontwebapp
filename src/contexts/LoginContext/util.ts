@@ -15,7 +15,7 @@ export async function LoginRequest(username: string, password: string) {
       setCookie(null, 'refresh', data.refresh, {
         path: '/',
         maxAge: MAX_AGE_REFRESH_TOKEN,
-        sameSite: true,
+        sameSite: true
       })
     }
     return data
@@ -25,17 +25,40 @@ export async function LoginRequest(username: string, password: string) {
   }
 }
 
+export async function checkToken(token: string) {
+  try {
+    const request = await api.post('/api/token/verify/', {
+      token: token
+    })
+
+    if (request.status === 200 && request.data !== undefined) {
+      setCookie(null, 'token', String(request.data.access), {
+        path: '/',
+        maxAge: MAX_AGE_TOKEN,
+        sameSite: true
+      })
+    }
+    if (request.status === 200 && request.data.code === 'token_not_valid') {
+      return
+    }
+    return request.data
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+
 export function setUserLocalStorage(user: UserType | null) {
   if (user?.token !== undefined && user?.token !== null) {
     setCookie(null, 'user', String(user.email), {
       path: '/',
       maxAge: MAX_AGE_REFRESH_TOKEN,
-      sameSite: true,
+      sameSite: true
     })
     setCookie(null, 'token', String(user.token), {
       path: '/',
       maxAge: MAX_AGE_TOKEN,
-      sameSite: true,
+      sameSite: true
     })
   }
 }
@@ -54,28 +77,35 @@ export function getTokenLocalStorage() {
   return token ?? null
 }
 
-export function refreshToken(refreshToken: string) {
-  setInterval(async () => {
-    try {
-      const request = await api.post('/api/token/refresh/', {
-        refresh: refreshToken,
-      })
+const updateToken = setInterval(async () => {
+  try {
+    const request = await api.post('/api/token/refresh/', {
+      refresh: refreshToken
+    })
 
-      const data = request.data
-      console.log('refresh token', data)
-      if (request.status === 200 && request.data !== undefined) {
-        setCookie(null, 'token', String(data.access), {
-          path: '/',
-          maxAge: MAX_AGE_TOKEN,
-          sameSite: true,
-        })
-      }
-      const cookies = parseCookies()
-      console.log('novo token', cookies.token)
-      return data
-    } catch (err) {
-      console.error(err)
-      return null
+    const data = request.data
+    console.log('refresh token', data)
+    if (request.status === 200 && request.data !== undefined) {
+      setCookie(null, 'token', String(data.access), {
+        path: '/',
+        maxAge: MAX_AGE_TOKEN,
+        sameSite: true
+      })
     }
-  }, SESSION_VALIDATE)
+    const cookies = parseCookies()
+    console.log('novo token', cookies.token)
+    return data
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}, SESSION_VALIDATE)
+export function refreshToken(refreshToken: string) {
+  try {
+    updateToken
+  } catch (error) {
+    console.error('refresh', error)
+  } finally {
+    clearInterval(updateToken)
+  }
 }

@@ -6,6 +6,9 @@ module.exports = {
       sans: ['DM Sans', 'sans-serif']
     },
     extend: {
+      boxShadow: {
+        shadow: '0 1px 2px -1px rgba(0, 0, 0, 0.2)'
+      },
       colors: {
         scroll: 'rgba(161, 161, 170, 0.6)',
         //text-default

@@ -22,7 +22,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   lastName
 }) => {
   const { logout } = useAuth()
-  const { palette} = useTheme()
+  const { palette } = useTheme()
   const superUser = isSuperUser ? 'Super Administrador' : 'Staff'
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -35,7 +35,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const customHover = palette.mode === 'dark' ? '#9d72ff': '#7500ff'
+  const customHover = palette.mode === 'dark' ? '#9d72ff' : '#7500ff'
 
   return (
     <>
@@ -49,7 +49,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         className=' peer flex flex-row capitalize items-start min-w-max text-base text-brand-600  hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-600 transition-colors delay-75'
       >
         <div className='flex-col'>
-          <p className='font-normal text-sm'>{superUser}</p>
+          <p className='font-normal text-sm text-left'>{superUser}</p>
           <span className='text-base-500 dark:text-base-100 text-sm flex flex-row items-start'>
             {username}
             <RiArrowDropDownLine className='text-2xl ml-2 peer-hover:translate-y-px peer-hover:transition-transform peer-hover:ease-in-out peer-hover:delay-75' />

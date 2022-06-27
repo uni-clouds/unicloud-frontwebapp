@@ -5,19 +5,23 @@ import AuthPage from '../pages/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import HomePage from '../pages/Home'
 import PlaceholderPage from '../pages/Placeholder'
+import Users from '../pages/Users'
+import Register from '../pages/Auth/Register'
+import InvitesPage from '../pages/Users/Invites'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
   const NotFound = lazy(() => import('../pages/NotFound'))
   const Timeout = lazy(() => import('../pages/Error/GatewayTimeout'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
+  const UsersPanel = lazy(() => import('../pages/Users'))
   //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
     <Routes>
       {/*error pages*/}
       <Route
-        path='error'
+        path='/error'
         element={
           <Suspense fallback={<>...</>}>
             <Error />
@@ -42,7 +46,7 @@ export default function MainRoutes() {
       />
 
       {/*Auth routes */}
-      <Route path='auth' element={<AuthPage />} />
+      <Route path='/auth' element={<AuthPage />} />
       <Route
         path='auth/reset'
         element={
@@ -54,7 +58,7 @@ export default function MainRoutes() {
 
       {/*header routes */}
       <Route
-        path='terms'
+        path='/terms'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />
@@ -62,7 +66,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='help'
+        path='/help'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />
@@ -70,13 +74,15 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='policitys'
+        path='/policitys'
         element={
           <Suspense fallback={<>...</>}>
             <PlaceholderPage />
           </Suspense>
         }
       />
+
+      <Route path='/auth-register' element={<Register />} />
 
       {/*private routes*/}
 
@@ -128,7 +134,15 @@ export default function MainRoutes() {
         path='/user-list-default'
         element={
           <ProtectedRoute>
-            <PlaceholderPage />
+            <Users />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/user-list-default/invite'
+        element={
+          <ProtectedRoute>
+            <InvitesPage />
           </ProtectedRoute>
         }
       />

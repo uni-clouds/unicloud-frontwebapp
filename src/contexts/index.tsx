@@ -13,7 +13,6 @@ const GlobalContext: React.FC<AuthProviderProps> = ({ children }) => {
         </UserContextProvider>
       </AuthProvider>
     </ThemeContextProvider>
-
   )
 }
 
