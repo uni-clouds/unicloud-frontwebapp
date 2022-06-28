@@ -1,14 +1,12 @@
 import { Header } from './Header'
 import { Layout } from '../../components/Layout'
 import { UsersTable } from '../../components/Tables/Users'
-import { useInviteList } from '../../hooks/useInviteList'
-import { useUsersList } from '../../hooks/useUsersList'
 import { TableSkeleton } from '../../components/Tables/TableSkeleton'
 
-export const UsersList: React.FC = () => {
-  const { data } = useInviteList()
-  const { data: users, isLoading } = useUsersList()
-
+const CustomersList: React.FC = () => {
+  const users = []
+  const isLoading = false
+  const data = []
   return (
     <Layout>
       <section
@@ -30,3 +28,5 @@ export const UsersList: React.FC = () => {
     </Layout>
   )
 }
+
+export default CustomersList

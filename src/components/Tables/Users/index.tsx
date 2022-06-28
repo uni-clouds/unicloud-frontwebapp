@@ -15,7 +15,6 @@ import { TableToolbar } from './TableToolbar'
 import { Data, Order, UsersTableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
-import { TableSkeleton } from '../TableSkeleton'
 
 export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -114,7 +113,6 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
 
   return (
     <Box sx={{ width: '100%' }}>
-      {!!isLoading && <TableSkeleton />}
       {!!users && (
         <Paper sx={{ width: '100%', mb: 2, px: 2 }}>
           <TableToolbar numSelected={selected.length} id={Number(getId)} />

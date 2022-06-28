@@ -27,6 +27,7 @@ import { MenuDataProp, SidebarProps } from './types'
 import { OrganizationLogoProps } from '../../Elements/OrganizationLogo/types'
 import { Footer } from '../../Footer'
 import { useToggleTheme } from '../../../hooks/useToggleTheme'
+import { colors } from '../../../styles/colors'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -40,7 +41,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { toggleColorMode } = useToggleTheme()
   const { pathname } = useLocation()
   const { token } = parseCookies()
-  const customHover = theme.palette.mode === 'dark' ? '#9d72ff' : '#7500ff'
+  const customHover =
+    theme.palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
   const iconColor =
     theme.palette.mode === 'dark' ? 'inherit' : 'rgba(0, 0, 0, 0.54)'
   useEffect(() => {
@@ -120,7 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     mr: isOpen ? 3 : 'auto',
                     justifyContent: 'center',
                     '&:hover': { color: customHover },
-                    color: pathname === '/' ? 'rgba(177, 61, 244)' : iconColor
+                    color: pathname === '/' ? colors.brand[800] : iconColor
                   }}
                 >
                   <RiHome3Line className='text-xl' />
@@ -158,7 +160,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: customHover },
                         color:
                           pathname === '/customers'
-                            ? 'rgba(177, 61, 244)'
+                            ? colors.brand[800]
                             : iconColor
                       }}
                     >

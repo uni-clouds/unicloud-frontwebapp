@@ -110,7 +110,7 @@ export const InvitesTable: React.FC = () => {
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
       {isLoading || isError ? (
-        <TableSkeleton />
+        <TableSkeleton width={750} />
       ) : (
         <Paper sx={{ maxWidth: 1280, width: '100%', mb: 2, px: 2 }}>
           <TableToolbar numSelected={Number(selected?.length)} id={getId} />

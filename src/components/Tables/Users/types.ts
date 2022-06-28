@@ -54,3 +54,7 @@ export interface TableProps {
   orderBy: string
   rowCount: number
 }
+
+export interface SkeletonTableProps {
+  width: number
+}

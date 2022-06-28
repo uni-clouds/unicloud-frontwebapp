@@ -8,6 +8,7 @@ import { CardPodsLocation } from '../../components/Dashboard/Cards/CardPodsLocat
 import { ClientTable } from '../../components/Tables/Clients'
 import { DashboardDataType } from './types'
 import { useQuery } from 'react-query'
+import { Grid } from '@mui/material'
 
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
@@ -59,29 +60,37 @@ export const Dashboard: React.FC = () => {
           Reports
         </PurpleButton>
       </div>
-      <div className='grid grid-cols-2 place-content-center gap-6 lg:flex lg:flex-row lg:gap-24 lg:items-center'>
+      <Grid container spacing={2}>
         {mockData.map((data) => (
-          <CardDefault
-            title={data.title}
-            description={data.description}
-            amount={data.amount}
-            key={uuidv4()}
-          />
+          <Grid item sm={3}>
+            <CardDefault
+              title={data.title}
+              description={data.description}
+              amount={data.amount}
+              key={uuidv4()}
+            />
+          </Grid>
         ))}
-      </div>
-      <div className='grid grid-flow-row gap-y-6 lg:flex lg:flex-row lg:gap-8 lg:justify-between lg:items-center lg:h-[550px]'>
-        <ClientTable
-          data={query.data?.customers}
-          isLoading={query.isLoading}
-          isError={query.status}
-        />
-        <CardPodsLocation coordinates={query.data?.locations} />
-        <CardListClient
-          partners={query.data?.partners}
-          isLoading={query.isLoading}
-          isError={query.status}
-        />
-      </div>
+      </Grid>
+      <Grid container spacing={4}>
+        <Grid item lg={5} md={12} sm={12}>
+          <ClientTable
+            data={query.data?.customers}
+            isLoading={query.isLoading}
+            isError={query.status}
+          />
+        </Grid>
+        <Grid item lg={4} md={8} sm={8}>
+          <CardPodsLocation coordinates={query.data?.locations} />
+        </Grid>
+        <Grid item lg={3} md={4} sm={4}>
+          <CardListClient
+            partners={query.data?.partners}
+            isLoading={query.isLoading}
+            isError={query.status}
+          />
+        </Grid>
+      </Grid>
     </section>
   )
 }

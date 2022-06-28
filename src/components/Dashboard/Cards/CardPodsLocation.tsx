@@ -8,7 +8,7 @@ export const CardPodsLocation: React.FC<PodsLocationsProps> = ({
   isLoading
 }) => {
   return (
-    <div className='col-span-2 w-full h-full flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow overflow-hidden'>
+    <div className=' w-full h-[34rem] xl:h-full flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow overflow-hidden'>
       <div className='flex items-baseline gap-1'>
         <Title text='Nossos Pods' />
         {!!isLoading && <Loading />}
