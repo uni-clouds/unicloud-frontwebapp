@@ -1,7 +1,11 @@
 export interface DropdownProps {
   username: string
-  isSuperUser: boolean
+  type: string
   email: string
   firstName: string
   lastName: string
+}
+
+export interface userType {
+  type: string
 }

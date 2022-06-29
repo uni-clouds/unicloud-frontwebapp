@@ -5,13 +5,15 @@ import { Avatar } from '../../Avatar'
 import { MenuDropdown } from './MenuDropdown'
 import { Notifications } from './Notifications'
 import { DecodeTypes } from './types'
+import { useUserType } from '../../../hooks/useUserType'
 
 export const NavHeader = () => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
-  const [isSuperUser, setIsSuperUser] = useState(false)
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [userType, setUserType] = useState(null)
+  const { data } = useUserType()
 
   useMemo(() => {
     const cookies = parseCookies()
@@ -22,14 +24,14 @@ export const NavHeader = () => {
       createName.push(decode.first_name)
       createName.push(decode.last_name)
       const handleName = createName.join(' ')
-
+      const type = data?.type === 'root' ? 'Super Administrador' : data?.type
       setUsername(handleName)
       setEmail(decode.email)
-      setIsSuperUser(decode.is_superuser)
+      setUserType(type)
       setFirstName(decode.first_name)
       setLastName(decode.last_name)
     }
-  }, [])
+  }, [data])
   return (
     <nav className='max-w-fit' role='navigation' aria-controls='navigation'>
       <ul role='menu' className='flex flex-row gap-6 items-center'>
@@ -43,7 +45,7 @@ export const NavHeader = () => {
           <MenuDropdown
             email={email}
             username={username}
-            isSuperUser={isSuperUser}
+            type={userType}
             firstName={firstName}
             lastName={lastName}
           />

@@ -17,7 +17,8 @@ const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       <input
         type={type}
         placeholder={placeholder}
-        role={label}
+        role='textbox'
+        aria-labelledby={label}
         {...rest}
         ref={ref}
         id={label}
@@ -28,6 +29,7 @@ const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         }`}
       />
       <p
+        role='alert'
         className={`text-red-custom text-xs py-1.5 peer-absolute inset-x-0 -bottom-7 transition-all delay-75 ease-in ${
           error ? 'visible' : 'invisible'
         }`}

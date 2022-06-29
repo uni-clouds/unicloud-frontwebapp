@@ -13,17 +13,17 @@ import { Avatar } from '../../../Avatar'
 import { useAuth } from '../../../../hooks/useAuth'
 
 import { DropdownProps } from './types'
+import { colors } from '../../../../styles/colors'
 
 export const MenuDropdown: React.FC<DropdownProps> = ({
   email,
-  isSuperUser,
+  type,
   username,
   firstName,
   lastName
 }) => {
   const { logout } = useAuth()
   const { palette } = useTheme()
-  const superUser = isSuperUser ? 'Super Administrador' : 'Staff'
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -35,7 +35,8 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const customHover = palette.mode === 'dark' ? '#9d72ff' : '#7500ff'
+  const customHover =
+    palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
 
   return (
     <>
@@ -49,7 +50,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         className=' peer flex flex-row capitalize items-start min-w-max text-base text-brand-600  hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-600 transition-colors delay-75'
       >
         <div className='flex-col'>
-          <p className='font-normal text-sm text-left'>{superUser}</p>
+          <p className='font-normal text-sm text-left'>{type}</p>
           <span className='text-base-500 dark:text-base-100 text-sm flex flex-row items-start'>
             {username}
             <RiArrowDropDownLine className='text-2xl ml-2 peer-hover:translate-y-px peer-hover:transition-transform peer-hover:ease-in-out peer-hover:delay-75' />
@@ -62,7 +63,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'menu list'
+          'aria-labelledby': 'menu-item'
         }}
       >
         <div className='px-2 flex flex-row gap-4 items-center py-2 mb-2'>

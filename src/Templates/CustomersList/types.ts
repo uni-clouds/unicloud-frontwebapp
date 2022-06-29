@@ -1,10 +1,11 @@
-import { UserDataType } from '../../components/Tables/Users/types'
+import { CustomerTableType } from '../../components/Tables/Customers/types'
 
-export interface HeaderProps extends InviteListTypes {
+export interface HeaderProps {
   totalUsers: number
+  data: CustomerTableType[]
 }
 
-export interface InvitationModalProps {
+export interface CreateCustomerModalProps {
   handleClose: () => void
   isOpen: boolean
 }
@@ -19,6 +20,6 @@ export type Invite = {
   email: string
 }
 
-export interface ModalDetailsProps extends InvitationModalProps {
-  data: UserDataType[]
+export interface ModalDetailsCustomerProps extends CreateCustomerModalProps {
+  data: CustomerTableType[]
 }

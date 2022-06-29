@@ -1,13 +1,13 @@
 import { Modal } from '../../components/Elements/ModalDefault'
 import { CreateCustomer as CreateCustomerForm } from '../../components/Forms/CreateCustomer'
-import { InvitationModalProps } from './types'
+import { CreateCustomerModalProps } from './types'
 
-export const ModalInvitation: React.FC<InvitationModalProps> = ({
+export const ModalNewCustomer: React.FC<CreateCustomerModalProps> = ({
   isOpen,
   handleClose
 }) => {
   return (
-    <Modal height={300} isOpen={isOpen} handleClose={handleClose} width='md'>
+    <Modal height={400} isOpen={isOpen} handleClose={handleClose} width='md'>
       <CreateCustomerForm handleClose={handleClose} />
     </Modal>
   )

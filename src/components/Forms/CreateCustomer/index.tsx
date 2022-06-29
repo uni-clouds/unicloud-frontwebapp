@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
@@ -12,6 +12,9 @@ import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { ToastWarning } from '../../Elements/ToastWarning'
 import { CreateCustomerFormProps, CreateCustomerType } from './types'
 import { schemaCreateCustomer } from './validation'
+import { CnpjInput } from '../../Elements/Inputs/CnpjField'
+import { InputType } from '../../Elements/Inputs/TypeInput'
+import { useUserType } from '../../../hooks/useUserType'
 
 export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   handleClose
@@ -19,6 +22,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   const {
     register,
     handleSubmit,
+    setValue,
+    control,
     reset,
     formState: { errors, isSubmitting }
   } = useForm<CreateCustomerType>({
@@ -27,24 +32,29 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [isPending, setIsPending] = useState(false)
+
+  const { data } = useUserType()
+  useEffect(() => {
+    if (data.type !== 'root') {
+      setValue('type', 'customer')
+    }
+  }, [data])
 
   const createCustomerSubmit: SubmitHandler<CreateCustomerType> = async (
     data
   ) => {
     try {
-      const request = await api.post('/customer/', {
+      const request = await api.post('/customers/', {
         email: data.email,
-        cnpj: data.cnpj
+        cnpj: data.cnpj,
+        type: data.type
       })
       setIsDisabled(true)
       if (request.status === 200) {
         setIsSuccess(true)
+        setTimeout(() => handleClose, 2000)
       }
     } catch (error: any) {
-      if (error.response.status === 409) {
-        setIsPending(true)
-      }
       if (error.response.status !== 409) {
         setIsError(true)
         console.error(error)
@@ -53,6 +63,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       reset()
       setIsDisabled(false)
     }
+    console.log('🐼', data)
   }
 
   const handleOnClose = (
@@ -76,15 +87,6 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
           />
         </Portal>
       )}
-      {!!isPending && (
-        <Portal>
-          <ToastWarning
-            isWarning={!!isPending}
-            message='Cliente já existe!'
-            handleClose={handleOnClose}
-          />
-        </Portal>
-      )}
       {!!isSuccess && (
         <Portal>
           <ToastSuccess
@@ -101,11 +103,34 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       >
         <Input
           placeholder='Digite o e-mail'
-          label='E-mail'
+          label='E-mail do usuário principal'
           type='email'
           error={errors?.email}
           {...register('email')}
         />
+        <div className='flex flex-row gap-6 justify-between items-center'>
+          <div className='w-full flex flex-col gap-2'>
+            <Controller
+              name='cnpj'
+              control={control}
+              render={({ field, fieldState: { error } }) => (
+                <CnpjInput error={error} {...field} />
+              )}
+            />
+          </div>
+          {data.type === 'root' && (
+            <div className='w-full flex flex-col gap-2 -mb-3'>
+              <Controller
+                name='type'
+                control={control}
+                rules={{ required: true }}
+                render={({ field, fieldState: { error } }) => (
+                  <InputType field={field} error={error} />
+                )}
+              />
+            </div>
+          )}
+        </div>
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
             {isSubmitting ? <Loading /> : 'Adicionar usuário'}

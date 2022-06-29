@@ -62,12 +62,11 @@ export const Dashboard: React.FC = () => {
       </div>
       <Grid container spacing={2}>
         {mockData.map((data) => (
-          <Grid item sm={3}>
+          <Grid item sm={3} key={uuidv4()}>
             <CardDefault
               title={data.title}
               description={data.description}
               amount={data.amount}
-              key={uuidv4()}
             />
           </Grid>
         ))}
