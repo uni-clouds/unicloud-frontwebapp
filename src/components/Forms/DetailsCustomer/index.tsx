@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
-
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
-import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
 import { Input } from '../../Elements/Inputs/Input'
-import { PhoneInput } from '../../Elements/Inputs/PhoneInput'
+import { Container } from '@mui/system'
 import { CustomerDetailsType, CustomerDetailsProps } from './types'
-
-import { PurpleButton } from '../../Elements/Buttons/PurpleButton'
+import { Grid } from '@mui/material'
 
 export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
   handleClose,
@@ -16,7 +13,6 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
   const {
     register,
     setValue,
-    control,
     formState: { errors }
   } = useForm<CustomerDetailsType>({})
 
@@ -40,135 +36,133 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
     setValue('pais', data?.map((d) => d.pais).toString())
     setValue('email', data?.map((d) => d.email).toString())
   }, [data])
-
+  const styleGrid = { display: 'flex', flexDirection: 'column', gap: 1 }
   return (
-    <form
-      action='POST'
-      className='w-full h-full flex flex-col gap-2 p-8 custom-dark dark:border-transparent border border-light-200 rounded-md '
-      onSubmit={() => {}}
-    >
-      <div className='flex flex-row gap-4 my-2 w-full items-center'>
-        <div className='flex flex-col gap-2 w-full'>
-          <Input
-            type='text'
-            label='Razão Social'
-            disabled={isDisabled}
-            error={errors?.razao_social}
-            {...register('razao_social')}
-          />
-        </div>
-        <div className='flex flex-col gap-2 w-1/3'>
-          <Input
-            type='text'
-            label='Nome Fantasia'
-            disabled={isDisabled}
-            error={errors?.nome_fantasia}
-            {...register('nome_fantasia')}
-          />
-        </div>
-        <div className='flex flex-col gap-2 w-1/3'>
-          <Input
-            type='text'
-            label='CNPJ'
-            disabled={isDisabled}
-            error={errors?.cnpj}
-            {...register('cnpj')}
-          />
-        </div>
-      </div>
-      <div className='flex flex-row gap-4 my-2'>
-        <div className='flex flex-col gap-2  w-1/3'>
-          <Input
-            type='text'
-            label='E-mail'
-            disabled={isDisabled}
-            error={errors?.email}
-            {...register('email')}
-          />
-        </div>
-        <div className='flex flex-col gap-2 w-1/3 '>
-          <Input
-            type='text'
-            label='Natureza Jurídica'
-            disabled={isDisabled}
-            error={errors?.natureza_juridica}
-            {...register('natureza_juridica')}
-          />
-        </div>
-        <div className='flex flex-col gap-2 w-1/3'>
-          <Input
-            type='phone'
-            label='Telefone'
-            disabled={isDisabled}
-            error={errors?.telefone}
-            {...register('telefone')}
-          />
-        </div>
-      </div>
-      <div className='flex flex-row gap-4 my-2'>
-        <div className='flex flex-col gap-2  w-1/2'>
-          <Input
-            type='text'
-            label='Endereço'
-            disabled={isDisabled}
-            error={errors?.logradouro}
-            {...register('logradouro')}
-          />
-        </div>
-        <div className='flex flex-col gap-2 w-1/12 '>
-          <Input
-            type='text'
-            label='Número'
-            disabled={isDisabled}
-            error={errors?.numero}
-            {...register('numero')}
-          />
-        </div>
-        <div className='flex flex-col gap-2  w-1/3'>
-          <Input
-            type='text'
-            label='Bairro'
-            disabled={isDisabled}
-            error={errors?.municipio}
-            {...register('municipio')}
-          />
-        </div>
-        <div className='flex flex-col gap-2  w-1/10'>
-          <Input
-            type='text'
-            label='CEP'
-            disabled={isDisabled}
-            error={errors?.cep}
-            {...register('cep')}
-          />
-        </div>
-      </div>
+    <>
+      <form
+        action='POST'
+        className='w-full h-full flex flex-col lg:p-8 p-6 custom-dark dark:border-transparent border border-light-200 rounded-md '
+        onSubmit={() => {}}
+      >
+        <Grid container spacing={1}>
+          <Grid item sx={styleGrid} sm={5}>
+            <Input
+              type='text'
+              label='Razão Social'
+              disabled={isDisabled}
+              error={errors?.razao_social}
+              {...register('razao_social')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={3}>
+            <Input
+              type='text'
+              label='Nome Fantasia'
+              disabled={isDisabled}
+              error={errors?.nome_fantasia}
+              {...register('nome_fantasia')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={4}>
+            <Input
+              type='text'
+              label='CNPJ'
+              disabled={isDisabled}
+              error={errors?.cnpj}
+              {...register('cnpj')}
+            />
+          </Grid>
 
-      <div className='flex flex-row gap-4 my-2 '>
-        <div className='flex flex-col gap-2  w-1/3'>
-          <Input
-            type='text'
-            label='Cidade'
-            disabled={isDisabled}
-            error={errors?.municipio}
-            {...register('municipio')}
-          />
+          <Grid item sx={styleGrid} sm={5}>
+            <Input
+              type='text'
+              label='E-mail'
+              disabled={isDisabled}
+              error={errors?.email}
+              {...register('email')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={6}>
+            <Input
+              type='text'
+              label='Natureza Jurídica'
+              disabled={isDisabled}
+              error={errors?.natureza_juridica}
+              {...register('natureza_juridica')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={5}>
+            <Input
+              type='phone'
+              label='Telefone'
+              disabled={isDisabled}
+              error={errors?.telefone}
+              {...register('telefone')}
+            />
+          </Grid>
+
+          <Grid item sx={styleGrid} md={5} sm={5}>
+            <Input
+              type='text'
+              label='Endereço'
+              disabled={isDisabled}
+              error={errors?.logradouro}
+              {...register('logradouro')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} md={2} sm={2}>
+            <Input
+              type='text'
+              label='Número'
+              disabled={isDisabled}
+              error={errors?.numero}
+              {...register('numero')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} md={3} sm={4}>
+            <Input
+              type='text'
+              label='Bairro'
+              disabled={isDisabled}
+              error={errors?.bairro}
+              {...register('bairro')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} md={2} sm={3}>
+            <Input
+              type='text'
+              label='CEP'
+              disabled={isDisabled}
+              error={errors?.cep}
+              {...register('cep')}
+            />
+          </Grid>
+
+          <Grid item sx={styleGrid} sm={4}>
+            <Input
+              type='text'
+              label='Cidade'
+              disabled={isDisabled}
+              error={errors?.municipio}
+              {...register('municipio')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={2}>
+            <Input
+              type='text'
+              label='Estado'
+              disabled={isDisabled}
+              error={errors?.estado}
+              {...register('estado')}
+            />
+          </Grid>
+        </Grid>
+        <div className=' flex flex-row gap-6 justify-end items-center '>
+          <OutlineButton name='clear-form' onclick={handleClose}>
+            Fechar
+          </OutlineButton>
         </div>
-        <div className='flex flex-col gap-2  w-1/12'>
-          <Input
-            type='text'
-            label='Estado'
-            disabled={isDisabled}
-            error={errors?.estado}
-            {...register('estado')}
-          />
-        </div>
-      </div>
-      <div className=' flex flex-row gap-6 justify-end items-center '>
-        <OutlineButton name='clear-form' onclick={handleClose}>
-          Fechar
-        </OutlineButton>
-      </div>
-    </form>
+      </form>
+    </>
   )
 }

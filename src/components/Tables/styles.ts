@@ -37,3 +37,21 @@ export const stylesTableUsers = {
   borderCollapse: 'separate !important',
   borderSpacing: '0px 16px !important'
 }
+
+export const stylesTableClients = {
+  borderCollapse: 'separate !important',
+  borderSpacing: '0px 8px !important',
+  minWidth: 500
+}
+
+export const stylesPaperClients = {
+  width: '100%',
+  overflow: 'hidden',
+  borderRadius: 2,
+  boxShadow: 0
+}
+export const stylesContainerClients = {
+  minHeight: 415,
+  minWidth: 350,
+  px: 2
+}

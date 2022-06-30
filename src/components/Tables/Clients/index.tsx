@@ -14,6 +14,11 @@ import { TableSkeleton } from '../TableSkeleton'
 import { TableDataProps } from './types'
 import { Skeleton } from '@mui/material'
 import { colors } from '../../../styles/colors'
+import {
+  stylesContainerClients,
+  stylesPaperClients,
+  stylesTableClients
+} from '../styles'
 
 export const ClientTable: React.FC<TableDataProps> = ({
   data,
@@ -23,13 +28,13 @@ export const ClientTable: React.FC<TableDataProps> = ({
   const { palette } = useTheme()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  const textColor = palette.mode === 'dark' ? 'inherit' : '#526484'
   const [isData, setIsData] = useState<string[] | undefined>()
   const [loading, setLoading] = useState<boolean>()
   const [error, setError] = useState(null)
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage)
   }
+  const textColor = palette.mode === 'dark' ? 'inherit' : '#526484'
   useMemo(() => {
     setIsData(data)
     setLoading(isLoading)
@@ -44,21 +49,13 @@ export const ClientTable: React.FC<TableDataProps> = ({
   }
 
   return (
-    <div className='h-35rem'>
-      <Paper
-        sx={{
-          //maxWidth: '550px',
-          width: '100%',
-          overflow: 'hidden',
-          boxShadow: 1,
-          borderRadius: 2
-        }}
-      >
-        <div className='px-4 py-3 '>
+    <div className='h-35rem shadow rounded-md'>
+      <Paper sx={stylesPaperClients}>
+        <div className='px-4 mt-4'>
           <Title text='Clientes' />
         </div>
         <TableContainer
-          sx={{ minHeight: 415, minWidth: 350 }}
+          sx={stylesContainerClients}
           className=' col-span-1 w-full h-full max-h-[400px] scrollbar-thumb-brand-200 dark:scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin hover:scrollbar-thumb-base-200 dark:hover:scrollbar-thumb-zinc-600'
         >
           {isLoading || isError !== 'success' ? (
@@ -70,11 +67,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
               <Table
                 aria-label='client list table'
                 role='table'
-                sx={{
-                  borderCollapse: 'separate !important',
-                  borderSpacing: '0px 8px !important',
-                  minWidth: 500
-                }}
+                sx={stylesTableClients}
               >
                 <caption className='sr-only'>Lista de clientes</caption>
                 <TableHead>
@@ -105,11 +98,8 @@ export const ClientTable: React.FC<TableDataProps> = ({
                       hover
                     >
                       <TableCell
-                        className='shadow-md'
-                        sx={{
-                          color: textColor,
-                          textTransform: 'capitalize'
-                        }}
+                        className='shadow-md capitalize rounded-md dark:shadow-zinc-800'
+                        sx={{ color: textColor, borderBottom: 0 }}
                       >
                         {client}
                       </TableCell>
