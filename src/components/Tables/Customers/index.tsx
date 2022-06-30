@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useInviteList } from '../../../hooks/useInviteList'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -13,40 +12,48 @@ import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
 import { TableToolbar } from './TableToolbar'
-import { Data, Order } from './types'
-import { createData } from './data'
+import { CustomersTableProps, CustomerTableType, Data, Order } from './types'
 import { colors } from '../../../styles/colors'
-import { TableSkeleton } from '../TableSkeleton'
+import { createData } from './data'
 
-export const InvitesTable: React.FC = () => {
-  const { data, isLoading, isError } = useInviteList()
-  const { palette } = useTheme()
+export const CustomersTable: React.FC<CustomersTableProps> = ({
+  list,
+  isLoading,
+  isError
+}) => {
   const [order, setOrder] = useState<Order>('asc')
-  const [orderBy, setOrderBy] = useState<keyof Data>('created_at')
-  const [selected, setSelected] = useState<readonly string[] | undefined>([])
+  const [orderBy, setOrderBy] = useState<keyof Data>('name')
+  const [selected, setSelected] = useState<readonly string[]>([])
   const [page, setPage] = useState(0)
+  const [dense, setDense] = useState(false)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
-  const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
-  const colorBgChecked =
-    palette.mode === 'dark' ? colors.scroll : colors.brand[300]
+  const theme = useTheme()
+  const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
+  const [customers, setCustomers] = useState([])
 
-  const getId = data
-    .filter((e) => e.email === selected.toString())
-    .map((item) => item.id)
-
-  const rows = data?.map((invite) =>
-    createData(
-      invite.email,
-      new Intl.DateTimeFormat('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-      }).format(new Date(invite.created_at)),
-      invite.status
-    )
+  useEffect(() => {
+    const handleCustomers = list?.map((customer) => {
+      return {
+        name:
+          customer.razao_social === undefined || null
+            ? ' - '
+            : customer.razao_social,
+        email: customer.email === undefined || null ? ' - ' : customer.email,
+        phone:
+          customer?.telefone === undefined || null ? ' - ' : customer?.telefone,
+        city:
+          customer?.municipio === undefined || null
+            ? ' - '
+            : customer.municipio,
+        status: customer.is_active ? 'Ativo' : 'Inativo',
+        cnpj: customer.cnpj === undefined || null ? ' - ' : customer.cnpj
+      }
+    })
+    setCustomers(handleCustomers)
+  }, [list])
+  const rows = customers?.map((d) =>
+    createData(d.name, d.cnpj, d.phone, d.email, d.city, d.status)
   )
-  console.log('🐫', rows)
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -59,7 +66,7 @@ export const InvitesTable: React.FC = () => {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = rows?.map((n) => n.email)
+      const newSelecteds = rows?.map((n) => n.name)
       setSelected(newSelecteds)
       return
     }
@@ -67,24 +74,20 @@ export const InvitesTable: React.FC = () => {
   }
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected?.indexOf(name)
+    const selectedIndex = selected.indexOf(name)
     let newSelected: readonly string[] = []
 
-    if (selected) {
-      if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, name)
-      } else if (selectedIndex === 0) {
-        newSelected = newSelected.concat(selected.slice(1))
-      } else if (selectedIndex === selected.length - 1) {
-        newSelected = newSelected.concat(selected.slice(0, -1))
-      } else if (!!selectedIndex) {
-        if (selectedIndex > 0) {
-          newSelected = newSelected.concat(
-            selected.slice(0, selectedIndex),
-            selected.slice(selectedIndex + 1)
-          )
-        }
-      }
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name)
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1))
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1))
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      )
     }
 
     setSelected(newSelected)
@@ -101,42 +104,43 @@ export const InvitesTable: React.FC = () => {
     setPage(0)
   }
 
-  const isSelected = (name: string) => selected?.indexOf(name) !== -1
+  const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDense(event.target.checked)
+  }
+
+  const isSelected = (name: string) => selected.indexOf(name) !== -1
 
   //* Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - Number(rows?.length)) : 0
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
+
+  const getId = list
+    ?.filter((e) => e.email === selected.toString())
+    .map((item) => item.id)
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-      {isLoading || isError ? (
-        <TableSkeleton width={750} />
-      ) : (
-        <Paper sx={{ maxWidth: 1280, width: '100%', mb: 2, px: 2 }}>
-          <TableToolbar numSelected={Number(selected?.length)} id={getId} />
+    <Box sx={{ width: '100%' }}>
+      {!!customers && (
+        <Paper sx={{ width: '100%', mb: 2, px: 2 }}>
+          <TableToolbar numSelected={selected.length} id={Number(getId)} />
           <TableContainer>
             <Table
               sx={{
-                minWidth: 500,
+                minWidth: 750,
                 borderCollapse: 'separate !important',
-                borderSpacing: '0px 16px !important',
-                '& .Mui-selected': {
-                  backgroundColor: 'lavender',
-                  ':hover': {
-                    backgroundColor: 'lavender'
-                  }
-                }
+                borderSpacing: '0px 16px !important'
               }}
               aria-labelledby='tableTitle'
-              size='medium'
+              size={dense ? 'small' : 'medium'}
               component='table'
             >
               <CustomTableHead
-                numSelected={Number(selected?.length)}
+                numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
                 onRequestSort={handleRequestSort}
-                rowCount={Number(rows?.length)}
+                rowCount={rows?.length}
               />
               <TableBody>
                 {stableSort(rows, getComparator(order, orderBy))
@@ -157,10 +161,7 @@ export const InvitesTable: React.FC = () => {
                         sx={{
                           border: 'none',
                           backgroundColor: colorRow,
-                          borderRadius: 2,
-                          '& .Mui-checked': {
-                            backgroundColor: colorBgChecked
-                          }
+                          borderRadius: 2
                         }}
                       >
                         <TableCell
@@ -181,11 +182,7 @@ export const InvitesTable: React.FC = () => {
                             sx={{
                               color: 'secondary',
                               '&.Mui-checked': {
-                                color: colors.brand[600],
-                                backgroundColor: 'transparent',
-                                ':hover': {
-                                  backgroundColor: colorHover
-                                }
+                                color: colors.brand[600]
                               }
                             }}
                           />
@@ -199,33 +196,31 @@ export const InvitesTable: React.FC = () => {
                             border: 'none'
                           }}
                         >
-                          {row.email}
+                          {row.name}
+                        </TableCell>
+                        <TableCell align='left' sx={{ border: 'none' }}>
+                          {row.cnpj}
+                        </TableCell>
+                        <TableCell align='left' sx={{ border: 'none' }}>
+                          {row.phone}
+                        </TableCell>
+                        <TableCell align='left' sx={{ border: 'none' }}>
+                          {row.city}
                         </TableCell>
                         <TableCell
                           align='left'
                           sx={{
-                            border: 'none',
-                            width: 250
-                          }}
-                        >
-                          {row.created_at}
-                        </TableCell>
-                        <TableCell
-                          align='left'
-                          sx={{
-                            border: 'none',
-                            width: 100,
                             borderRadius: 2,
-                            borderTopLeftRadius: 0,
-                            borderBottomLeftRadius: 0,
-                            textTransform: 'capitalize',
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none',
                             color:
-                              row.status === 'expired'
-                                ? colors.brand.bitcoin
-                                : colors.brand.ethereum
+                              row.status === 'Ativo'
+                                ? colors.teal.custom
+                                : colors.red.custom
                           }}
                         >
-                          {row.status === 'pending' ? 'Pendente' : 'Expirado'}
+                          {row.status}
                         </TableCell>
                       </TableRow>
                     )
@@ -233,7 +228,7 @@ export const InvitesTable: React.FC = () => {
                 {emptyRows > 0 && (
                   <TableRow
                     style={{
-                      height: 53 * emptyRows
+                      height: (dense ? 33 : 53) * emptyRows
                     }}
                   >
                     <TableCell colSpan={6} />
@@ -245,7 +240,7 @@ export const InvitesTable: React.FC = () => {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component='div'
-            count={Number(rows?.length)}
+            count={rows.length}
             rowsPerPage={rowsPerPage}
             labelRowsPerPage='Linhas por página'
             page={page}

@@ -1,31 +1,33 @@
-export interface UsersTableProps {
-  list: UserDataType[]
+export interface CustomersTableProps {
+  list: CustomerTableType[]
   isLoading: boolean
+  isError: boolean
 }
-
-export interface UserDataType {
-  id: number
-  username: string
-  first_name: string
-  last_name: string
+export interface CustomerTableType {
+  bairro: string
+  cep: string
+  cnpj: string
+  telefone: string
+  numero: string
+  nome_fantasia: string
+  razao_social: string
+  logradouro: string
+  municipio: string
+  natureza_juridica: string
+  estado: string
+  pais: string
   email: string
   is_active: boolean
-  userprofile?: Userprofile
-}
-
-type Userprofile = {
-  phone: string
-  address: string
-  city: string
-  state: string
-  country: string
+  id: number
+  type: string
 }
 export interface Data {
   name: string
-  email: string
+  cnpj: string
   phone: string | undefined
-  country: string | undefined
+  city: string | undefined
   status: string
+  email: string
 }
 
 export interface HeadCell {

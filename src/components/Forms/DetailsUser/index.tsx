@@ -120,7 +120,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         </div>
       </div>
       <div className=' flex flex-row gap-6 justify-end items-center '>
-        {!isDisabled ? (
+        {!!isDisabled ? (
           <PurpleButton onclick={() => setIsDisabled(false)} name='edit-user'>
             Editar
           </PurpleButton>

@@ -71,6 +71,7 @@ export const Login: React.FC = () => {
       >
         <EmailField
           placeholder='Digite seu endereço de e-mail'
+          aria-invalid={errors.email ? 'true' : 'false'}
           label='E-mail'
           type='text'
           {...register('email')}
@@ -80,6 +81,7 @@ export const Login: React.FC = () => {
           placeholder='Digite sua senha'
           label='Senha'
           type={!!passwordIsShow ? 'text' : 'password'}
+          aria-invalid={errors.password ? 'true' : 'false'}
           isVisible={passwordIsShow}
           showVisibilityIcon={showPassword}
           {...register('password')}

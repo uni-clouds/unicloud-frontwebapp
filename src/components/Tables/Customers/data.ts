@@ -2,16 +2,18 @@ import { HeadCell, Data } from './types'
 
 export function createData(
   name: string,
-  email: string,
+  cnpj: string,
   phone: string | undefined,
-  country: string | undefined,
+  email: string | undefined,
+  city: string | undefined,
   status: string
 ): Data {
   return {
     name,
-    email,
+    cnpj,
     phone,
-    country,
+    email,
+    city,
     status
   }
 }
@@ -21,14 +23,14 @@ export const headCells: readonly HeadCell[] = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Nome',
+    label: 'Empresa',
     minWidth: 180
   },
   {
-    id: 'email',
+    id: 'cnpj',
     numeric: false,
     disablePadding: false,
-    label: 'E-mail',
+    label: 'CNPJ',
     minWidth: 200
   },
   {
@@ -39,10 +41,10 @@ export const headCells: readonly HeadCell[] = [
     minWidth: 150
   },
   {
-    id: 'country',
+    id: 'city',
     numeric: false,
     disablePadding: false,
-    label: 'País',
+    label: 'Cidade',
     minWidth: 100
   },
   {

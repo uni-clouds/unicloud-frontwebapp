@@ -2,45 +2,47 @@ import { forwardRef, ForwardRefRenderFunction } from 'react'
 import MaskedInput from 'react-text-mask'
 import { InputProps } from './types'
 
-const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+const CnpjField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { error, disabled, ...rest },
   ref
 ) => {
   return (
     <>
       <label
-        aria-label={`input-phone`}
+        aria-label={`input-cnpj`}
         className='font-bold '
         htmlFor='Telefone'
       >
-        Telefone
+        CNPJ
       </label>
       <MaskedInput
-        type='phone'
-        placeholder='Telefone'
-        guide
-        id='phone'
+        type='text'
+        placeholder='Número do CNPJ'
+        id='cnpj'
         disabled={disabled}
-        role='Telefone'
+        role='CNPJ'
         className={`form-input peer-relative py-3 px-4 dark:placeholder:bg-transparent placeholder:text-base-300 rounded-md border border-light-200 dark:border-neutral-700 placeholder-neutral-50 dark:placeholder-zinc-300 bg-transparent focus:ring-1 focus:outline-none focus:ring-offset-1 ${
           error
             ? 'focus:border-rose-400 focus:ring-rose-400 focus:ring-offset-red-custom'
             : 'focus:border-brand-800 focus:ring-brand-800 focus:ring-offset-brand-600'
         }`}
         mask={[
-          '(',
-          /[1-9]/,
           /\d/,
-          ')',
-          ' ',
           /\d/,
+          '.',
+          /\d/,
+          /\d/,
+          /\d/,
+          '.',
+          /\d/,
+          /\d/,
+          /\d/,
+          '/',
           /\d/,
           /\d/,
           /\d/,
           /\d/,
           '-',
-          /\d/,
-          /\d/,
           /\d/,
           /\d/
         ]}
@@ -57,4 +59,4 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   )
 }
 
-export const PhoneInput = forwardRef(PhoneField)
+export const CnpjInput = forwardRef(CnpjField)

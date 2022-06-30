@@ -22,7 +22,7 @@ const Notifications: React.FC = () => {
         <button
           className='py-4 bg-brand-600 px-10 text-slate-100 font-medium text-lg rounded-2xl border-brand-800 hover:bg-brand-700 focus:outline-brand-800 focus:ring-offset-brand-800 focus:ring-1 focus:ring-brand-800'
           type='button'
-          onClick={() => navigate('/', { replace: true })}
+          onClick={() => navigate('/', { replace: false })}
         >
           Voltar
         </button>

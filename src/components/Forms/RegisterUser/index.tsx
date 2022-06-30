@@ -94,6 +94,7 @@ export const RegisterUser: React.FC = () => {
               type='text'
               placeholder='Digite seu nome'
               label='Nome'
+              aria-invalid={errors.first_name ? 'true' : 'false'}
               error={errors?.first_name}
               {...register('first_name')}
             />
@@ -102,6 +103,7 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder='Digite seu sobrenome'
+              aria-invalid={errors.last_name ? 'true' : 'false'}
               label='Sobrenome'
               error={errors?.last_name}
               {...register('last_name')}
@@ -111,6 +113,7 @@ export const RegisterUser: React.FC = () => {
         <Input
           type='email'
           placeholder='Digite seu e-mail'
+          aria-invalid={errors.username ? 'true' : 'false'}
           label='E-mail'
           error={errors?.username}
           {...register('username')}
@@ -120,6 +123,7 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='password'
               placeholder='Digite sua senha'
+              aria-invalid={errors.password ? 'true' : 'false'}
               label='Senha'
               error={errors?.password}
               {...register('password')}
@@ -130,7 +134,11 @@ export const RegisterUser: React.FC = () => {
               name='phone'
               control={control}
               render={({ formState: { errors }, field }) => (
-                <PhoneInput error={errors?.phone} {...field} />
+                <PhoneInput
+                  error={errors?.phone}
+                  aria-invalid={errors.phone ? 'true' : 'false'}
+                  {...field}
+                />
               )}
             />
           </div>
@@ -139,6 +147,7 @@ export const RegisterUser: React.FC = () => {
           type='text'
           placeholder='Digite seu endereço'
           label='Endereço'
+          aria-invalid={errors.address ? 'true' : 'false'}
           error={errors?.address}
           {...register('address')}
         />
@@ -147,6 +156,7 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder='Digite sua cidade'
+              aria-invalid={errors.city ? 'true' : 'false'}
               label='Cidade'
               error={errors?.city}
               {...register('city')}
@@ -156,6 +166,7 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder='Digite seu Estado'
+              aria-invalid={errors.state ? 'true' : 'false'}
               label='Estado'
               error={errors?.state}
               {...register('state')}
@@ -167,6 +178,7 @@ export const RegisterUser: React.FC = () => {
               placeholder='Digite seu país'
               label='País'
               error={errors?.country}
+              aria-invalid={errors.country ? 'true' : 'false'}
               {...register('country')}
             />
           </div>
