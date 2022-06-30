@@ -10,6 +10,7 @@ import { visuallyHidden } from '@mui/utils'
 import { headCells } from './data'
 import { Data, TableProps } from './types'
 import { colors } from '../../../styles/colors'
+import { stylesCheckboxTable } from '../styles'
 
 export function CustomTableHead(props: TableProps) {
   const {
@@ -33,17 +34,11 @@ export function CustomTableHead(props: TableProps) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
+            disabled
             inputProps={{
               'aria-label': 'select all users'
             }}
-            sx={{
-              '&.Mui-checked': {
-                color: colors.brand[600]
-              },
-              '&.MuiCheckbox-indeterminate': {
-                color: colors.brand[600]
-              }
-            }}
+            sx={stylesCheckboxTable}
           />
         </TableCell>
         {headCells.map((headCell) => (

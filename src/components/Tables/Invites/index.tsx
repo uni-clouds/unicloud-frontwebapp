@@ -131,6 +131,7 @@ export const InvitesTable: React.FC = () => {
               size='medium'
               component='table'
             >
+              <caption className='sr-only'>Lista de convites</caption>
               <CustomTableHead
                 numSelected={Number(selected?.length)}
                 order={order}

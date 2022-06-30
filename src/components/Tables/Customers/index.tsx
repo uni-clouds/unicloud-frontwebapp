@@ -12,15 +12,11 @@ import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
 import { TableToolbar } from './TableToolbar'
-import { CustomersTableProps, CustomerTableType, Data, Order } from './types'
+import { CustomersTableProps, Data, Order } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
 
-export const CustomersTable: React.FC<CustomersTableProps> = ({
-  list,
-  isLoading,
-  isError
-}) => {
+export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
   const [orderBy, setOrderBy] = useState<keyof Data>('name')
   const [selected, setSelected] = useState<readonly string[]>([])
@@ -51,6 +47,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({
     })
     setCustomers(handleCustomers)
   }, [list])
+
   const rows = customers?.map((d) =>
     createData(d.name, d.cnpj, d.phone, d.email, d.city, d.status)
   )
@@ -104,13 +101,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({
     setPage(0)
   }
 
-  const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDense(event.target.checked)
-  }
-
   const isSelected = (name: string) => selected.indexOf(name) !== -1
 
-  //* Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
@@ -134,6 +126,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({
               size={dense ? 'small' : 'medium'}
               component='table'
             >
+              <caption className='sr-only'>Lista de clientes</caption>
               <CustomTableHead
                 numSelected={selected.length}
                 order={order}

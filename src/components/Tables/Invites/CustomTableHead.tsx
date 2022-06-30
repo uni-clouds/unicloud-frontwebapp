@@ -3,16 +3,15 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Checkbox,
   TableSortLabel
 } from '@mui/material'
 import { visuallyHidden } from '@mui/utils'
 import { headCells } from './data'
-import { Data, TableProps, HeadCell } from './types'
+import { Data, TableProps } from './types'
 import { colors } from '../../../styles/colors'
 
 export function CustomTableHead(props: TableProps) {
-  const { order, orderBy, numSelected, rowCount, onRequestSort } = props
+  const { order, orderBy, onRequestSort } = props
   const createSortHandler =
     (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property)

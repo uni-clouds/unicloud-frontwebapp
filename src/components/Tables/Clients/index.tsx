@@ -76,7 +76,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
                   minWidth: 500
                 }}
               >
-                <caption>Lista de clientes</caption>
+                <caption className='sr-only'>Lista de clientes</caption>
                 <TableHead>
                   <TableRow>
                     <TableCell

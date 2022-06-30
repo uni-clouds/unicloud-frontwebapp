@@ -35,7 +35,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
 
   const { data } = useUserType()
   useEffect(() => {
-    if (data.type !== 'root') {
+    if (data.type === 'partner') {
       setValue('type', 'customer')
     }
   }, [data])
@@ -52,7 +52,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       setIsDisabled(true)
       if (request.status === 200) {
         setIsSuccess(true)
-        setTimeout(() => handleClose, 2000)
+        setTimeout(handleClose, 2000)
       }
     } catch (error: any) {
       if (error.response.status !== 409) {
@@ -63,7 +63,6 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       reset()
       setIsDisabled(false)
     }
-    console.log('🐼', data)
   }
 
   const handleOnClose = (
