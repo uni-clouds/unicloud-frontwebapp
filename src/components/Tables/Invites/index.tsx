@@ -46,7 +46,6 @@ export const InvitesTable: React.FC = () => {
       invite.status
     )
   )
-  console.log('🐫', rows)
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,

@@ -7,7 +7,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar>
-        <section className='ml-[240px] px-10 lg:px-16 py-6'>{children}</section>
+        <section className='ml-[14.5rem] px-6 lg:px-6 py-6'>{children}</section>
       </Navbar>
 
       <Outlet />

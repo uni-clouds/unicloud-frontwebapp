@@ -11,16 +11,6 @@ export interface SidebarProps {
   children: ReactNode
 }
 
-export interface MenuDataProp {
-  menu: Array<DataProp>
-}
-type DataProp = {
-  heading: string
-  icon: string
-  link: string
-  text: string
-}
-
 export interface OrganizationLogoProps {
   logo?: string
 }
