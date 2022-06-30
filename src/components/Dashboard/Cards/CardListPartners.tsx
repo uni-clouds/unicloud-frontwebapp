@@ -3,7 +3,7 @@ import { PartnersProps } from '../../../Templates/Dashboard/types'
 import { ListSkeleton } from '../../Elements/ListSkeleton'
 import { Title } from '../../Elements/TitleDashboard'
 
-export const CardListClient: React.FC<PartnersProps> = ({
+export const CardListPartners: React.FC<PartnersProps> = ({
   partners,
   isLoading,
   isError
@@ -17,14 +17,16 @@ export const CardListClient: React.FC<PartnersProps> = ({
       ) : (
         <>
           <Title text='Parceiros' />
-          <ul className='w-full mt-6 flex flex-col items-start gap-3 overflow-y-scroll scrollbar-thin  dark:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-stone-100 hover:scrollbar-thumb-stone-100 dark:scrollbar-thumb-transparent dark:hover:scrollbar-thumb-stone-700'>
+          <ul className='whitespace-normal w-full mt-6 flex flex-col items-start gap-3 overflow-y-scroll scrollbar-thin  dark:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-stone-100 hover:scrollbar-thumb-stone-100 dark:scrollbar-thumb-transparent dark:hover:scrollbar-thumb-stone-700'>
             {partners?.map((data) => (
               <li
-                className='w-full flex items-start capitalize rounded-sm shadow-md py-2 border-l-2 border-l-brand-480 dark:border-b dark:border-b-zinc-700'
+                className='w-full flex items-start  rounded-sm shadow-md py-2 border-l-2 border-l-brand-480 dark:border-b dark:border-b-zinc-700'
                 key={uuidv4()}
               >
-                <div className='lg:w-[16.5rem] md:w-[10rem] max-w-xs mx-auto py-2'>
-                  <p className='text-xs font-normal px-4'>{data}</p>
+                <div className='lg:w-[16.5rem] md:w-[10rem] max-w-xs py-2'>
+                  <p className='text-[0.65rem] lg:text-xs font-normal pl-2 text-left'>
+                    {data}
+                  </p>
                 </div>
               </li>
             ))}

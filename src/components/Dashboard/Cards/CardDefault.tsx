@@ -9,9 +9,9 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
   amount
 }) => {
   return (
-    <div className='w-full h-[10rem] bg-white custom-dark  p-6 text-base-600 dark:text-neutral-200 rounded-md shadow'>
+    <div className='flex-wrap w-full h-full bg-white custom-dark p-4 lg:p-6 text-base-600 dark:text-neutral-200 rounded-md shadow'>
       <div className='flex flex-col gap-3'>
-        <div className='flex flex-row gap-2 items-center '>
+        <div className='flex flex-row gap-2 items-center flex-wrap '>
           <h3 className='font-medium text-md lg:text-xl text-base-700 dark:text-slate-100'>
             {title}
           </h3>
@@ -26,9 +26,9 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
           )}
         </div>
         <div>
-          <p className=' text-md lg:text-lg leading-4 '>
+          <p className='text-sm md:text-md lg:text-lg leading-4 '>
             {description}:
-            <span className='text-xl font-bold text-brand-bitcoin align-middle'>
+            <span className='text-normal lg:text-lg xl:text-xl font-bold text-brand-bitcoin align-middle'>
               {' '}
               {amount}
             </span>

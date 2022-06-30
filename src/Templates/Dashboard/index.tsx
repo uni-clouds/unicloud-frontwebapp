@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { api } from '../../services/api'
 import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
-import { CardListClient } from '../../components/Dashboard/Cards/CardListClient'
+import { CardListPartners } from '../../components/Dashboard/Cards/CardListPartners'
 import { CardDefault } from '../../components/Dashboard/Cards/CardDefault'
 import { CardPodsLocation } from '../../components/Dashboard/Cards/CardPodsLocation'
 import { ClientTable } from '../../components/Tables/Clients'
@@ -62,7 +62,7 @@ export const Dashboard: React.FC = () => {
       </div>
       <Grid container spacing={2}>
         {mockData.map((data) => (
-          <Grid item sm={3} key={uuidv4()}>
+          <Grid item md={3} sm={6} key={uuidv4()}>
             <CardDefault
               title={data.title}
               description={data.description}
@@ -79,11 +79,11 @@ export const Dashboard: React.FC = () => {
             isError={query.status}
           />
         </Grid>
-        <Grid item lg={4} md={8} sm={8}>
+        <Grid item lg={4} md={8} sm={7}>
           <CardPodsLocation coordinates={query.data?.locations} />
         </Grid>
-        <Grid item lg={3} md={4} sm={4}>
-          <CardListClient
+        <Grid item lg={3} md={4} sm={5}>
+          <CardListPartners
             partners={query.data?.partners}
             isLoading={query.isLoading}
             isError={query.status}

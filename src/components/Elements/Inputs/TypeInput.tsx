@@ -23,7 +23,19 @@ const TypeSelect: ForwardRefRenderFunction<
       paddingBottom: '14px'
     }
   }
-
+  const stylesInput: SxProps = {
+    '.MuiOutlinedInput-notchedOutline': {
+      borderColor: colors.light[200],
+      borderRadius: '0.375rem'
+    },
+    '&:hover .MuiOutlinedInput-notchedOutline': {
+      borderColor: colors.light[200]
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: colors.brand[600],
+      borderWidth: 2
+    }
+  }
   return (
     <FormControl sx={styles}>
       <InputLabel
@@ -44,23 +56,19 @@ const TypeSelect: ForwardRefRenderFunction<
           name: 'type-customer',
           id: 'type-customer'
         }}
-        sx={{
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: colors.light[200],
-            borderRadius: 2
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: colors.light[200]
-          },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: colors.brand[600],
-            borderWidth: 2
-          }
-        }}
+        sx={stylesInput}
       >
         <MenuItem value={'partner'}>Partner</MenuItem>
         <MenuItem value={'customer'}>Customer</MenuItem>
       </Select>
+      <p
+        className={`text-red-custom text-xs py-1.5 peer-absolute inset-x-0 -bottom-7 transition-all delay-75 ease-in ${
+          error ? 'visible' : 'invisible'
+        }`}
+        role='alert'
+      >
+        {error?.message}
+      </p>
     </FormControl>
   )
 }

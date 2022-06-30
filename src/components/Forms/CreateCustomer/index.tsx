@@ -118,7 +118,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
             />
           </div>
           {data.type === 'root' && (
-            <div className='w-full flex flex-col gap-2 -mb-3'>
+            <div className='w-full flex flex-col gap-2 -mb-5'>
               <Controller
                 name='type'
                 control={control}
