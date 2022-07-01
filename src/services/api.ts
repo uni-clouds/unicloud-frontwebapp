@@ -8,8 +8,12 @@ let failedRequestQueue: any = []
 let URL_BACKEND = 'https://unicloudbr.azurewebsites.net'
 
 export const api = axios.create({
+<<<<<<< HEAD
   // baseURL: URL_BACKEND
   baseURL: import.meta.env.VITE_BASE_URL
+=======
+  baseURL: URL_BACKEND
+>>>>>>> babf700 (FEAT: :sparkles: updated cards dashboard)
 })
 
 api.interceptors.request.use(

@@ -5,8 +5,8 @@ import { LinkInternal } from '../../components/Elements/Navigation/LinkInternal'
 import { NavLinksHelpers } from '../../components/Elements/Navigation/NavLinksHelpers'
 import { Divider } from '@mui/material'
 
-export const Login:React.FC = () =>{
-   const navItems = [
+export const Login: React.FC = () => {
+  const navItems = [
     {
       name: 'Comercial',
       path: '/commercial'
@@ -16,14 +16,16 @@ export const Login:React.FC = () =>{
       path: '/help-desk'
     }
   ]
-  return(
+  return (
     <>
-        <main className='h-screen flex flex-col items-center justify-center'>
+      <main className='h-screen flex flex-col items-center justify-center'>
         <section className='flex-col justify-center align-center'>
           <Logo />
           <div className='mt-6 flex flex-col align-center w-[30rem] rounded-sm bg-neutral-50 custom-dark p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
             <div>
-              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>Entrar</h4>
+              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>
+                Entrar
+              </h4>
               <p className='text-sm'>Acesse o Broker com seu e-mail e senha.</p>
             </div>
             <LoginForm />
@@ -38,7 +40,7 @@ export const Login:React.FC = () =>{
           </div>
         </section>
       </main>
-      <Footer local='auth' />
+      <Footer local='' />
     </>
   )
 }
