@@ -13,28 +13,6 @@ import { Grid } from '@mui/material'
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
 export const Dashboard: React.FC = () => {
-  const mockData = [
-    {
-      title: 'POD',
-      description: 'Pods ativos',
-      amount: 3
-    },
-    {
-      title: 'vCPU',
-      description: 'Quantidade de vCPU',
-      amount: 67
-    },
-    {
-      title: 'Memória',
-      description: 'Memória disponível',
-      amount: 34567
-    },
-    {
-      title: 'Armazenamento',
-      description: 'Capacidade de armazentamento',
-      amount: 987654
-    }
-  ]
   async function getDashboardData(): Promise<DashboardDataType> {
     const { data } = await api.get('/dashboard/')
     return data
@@ -49,6 +27,39 @@ export const Dashboard: React.FC = () => {
     refetchIntervalInBackground: true
   })
 
+  const dataCard = [
+    {
+      title: 'PODS',
+      description: 'Pods ativos',
+      amount: query.data?.number_of_pods
+    },
+    {
+      title: 'CPU Física',
+      description: 'Total de CPU físicas',
+      amount: query.data?.total_fisical_cpu
+    },
+    {
+      title: 'Memória',
+      description: 'Total de memória',
+      amount: query.data?.total_memory
+    },
+    {
+      title: 'Nodes',
+      description: 'Total de nodes',
+      amount: query.data?.total_nodes
+    },
+    {
+      title: 'Spare Nodes',
+      description: 'Total de spare nodes',
+      amount: query.data?.total_spare_nodes
+    },
+    {
+      title: 'vCore',
+      description: 'Total de vCore',
+      amount: query.data?.total_vcores
+    }
+  ]
+
   return (
     <section className='flex flex-col gap-12'>
       <div className='flex flex-row justify-between items-center p-2 '>
@@ -61,8 +72,8 @@ export const Dashboard: React.FC = () => {
         </PurpleButton>
       </div>
       <Grid container spacing={2}>
-        {mockData.map((data) => (
-          <Grid item md={3} sm={6} key={uuidv4()}>
+        {dataCard.map((data) => (
+          <Grid item xl={2} lg={4} md={4} sm={6} key={uuidv4()}>
             <CardDefault
               title={data.title}
               description={data.description}
