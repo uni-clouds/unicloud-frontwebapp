@@ -1,7 +1,18 @@
 import { Avatar } from '../Avatar'
 import { MdMoreVert } from 'react-icons/md'
+import { BsPersonCircle, BsBell } from 'react-icons/bs'
+import { FiActivity, FiLock } from 'react-icons/fi'
+import { NavigationItem } from './NavigationItem'
+import { useState } from 'react'
 
-const Profile: React.FC = () => {
+export const Profile: React.FC = () => {
+  const [mode, setMode] = useState<
+    | 'Informações Pessoais'
+    | 'Notificações'
+    | 'Atividade'
+    | 'Configurações de Segurança'
+  >('Informações Pessoais')
+
   return (
     <div className='flex flex-1'>
       <div className='flex flex-col w-96'>
@@ -15,11 +26,20 @@ const Profile: React.FC = () => {
             <MdMoreVert />
           </button>
         </section>
-        <section className='flex w-full p-8 bg-green-300 '>
-          <h3>Empresa</h3>
+        <section className='flex flex-col w-full p-8 bg-green-300 '>
+          <h4>Empresa</h4>
+          <h2>Uni.Cloud</h2>
+          <p>0.034939 BTC</p>
         </section>
         <section className='flex flex-1 w-full p-8 bg-blue-300'>
-          <h3>Navigation</h3>
+          <nav className='w-full'>
+            <ul className='flex flex-col w-full gap-8'>
+              <NavigationItem text='Informações Pessoais' />
+              <NavigationItem text='Notificações' />
+              <NavigationItem text='Atividade' />
+              <NavigationItem text='Configurações de Segurança' />
+            </ul>
+          </nav>
         </section>
       </div>
       <section className='flex flex-col flex-1 p-8 bg-yellow-200'>
@@ -28,4 +48,3 @@ const Profile: React.FC = () => {
     </div>
   )
 }
-export default Profile
