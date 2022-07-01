@@ -9,6 +9,7 @@ import Users from '../pages/Users'
 import Register from '../pages/Auth/Register'
 import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
+import UserProfilePage from '../pages/UserProfile'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -144,6 +145,14 @@ export default function MainRoutes() {
         element={
           <ProtectedRoute>
             <InvitesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/user-profile-regular'
+        element={
+          <ProtectedRoute>
+            <UserProfilePage />
           </ProtectedRoute>
         }
       />
