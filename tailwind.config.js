@@ -17,7 +17,7 @@ module.exports = {
           200: '#dfe9fe',
           300: '#b6c6e3',
           400: '#8094ae',
-          500: '#526484',
+          500: '#526484', //base-tex
           600: '#364a63',
           700: '#1c2b46'
         },
@@ -26,15 +26,15 @@ module.exports = {
           30: 'rgba(255, 255, 255, 0.1)',
           50: '#f0eaff',
           100: '#e3e7fe', //dim
-          200: '#e7dcff',
-          300: '#d4c2ff', //accent-light
+          200: '#e7dcff', //accent-light
+          300: '#d4c2ff',
           400: '#00b2ce',
           450: '#3ab2f2', //accent-dark
           480: '#b695ff',
           500: '#9d72ff',
           600: '#7500ff', //main-color
           700: '#5f00cc', //main +1
-          800: '#b13df4',
+          800: '#b13df4', //active-links
           900: '#3a2272',
           bitcoin: '#f9841e',
           ethereum: '#6174b9',

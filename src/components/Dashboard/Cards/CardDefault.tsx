@@ -1,6 +1,9 @@
 import { RiDashboardLine } from 'react-icons/ri'
 import { BsCpu } from 'react-icons/bs'
-import { MdOutlineStorage, MdOutlineSdStorage } from 'react-icons/md'
+import { MdOutlineSdStorage } from 'react-icons/md'
+import { GrCloudComputer, GrNodes } from 'react-icons/gr'
+import { RiNodeTree } from 'react-icons/ri'
+
 import { CardDefaultProps } from '../../../Templates/Dashboard/types'
 
 export const CardDefault: React.FC<CardDefaultProps> = ({
@@ -15,14 +18,18 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
           <h3 className='font-medium text-md lg:text-xl text-base-700 dark:text-slate-100'>
             {title}
           </h3>
-          {title === 'POD' ? (
+          {title === 'PODS' ? (
             <RiDashboardLine className='text-lg lg:text-2xl' />
-          ) : title === 'vCPU' ? (
+          ) : title === 'vCore' ? (
             <BsCpu className='text-lg lg:text-2xl' />
           ) : title === 'Memória' ? (
             <MdOutlineSdStorage className='text-lg lg:text-2xl dark:text-slate-100' />
+          ) : title === 'CPU Física' ? (
+            <GrCloudComputer className='text-lg lg:text-2xl ' />
+          ) : title === 'Nodes' ? (
+            <GrNodes className='text-lg lg:text-2xl ' />
           ) : (
-            <MdOutlineStorage className='text-lg lg:text-2xl ' />
+            <RiNodeTree className='text-lg lg:text-2xl ' />
           )}
         </div>
         <div>
