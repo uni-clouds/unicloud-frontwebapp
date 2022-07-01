@@ -15,6 +15,12 @@ import { TableToolbar } from './TableToolbar'
 import { Data, Order, UsersTableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
+import {
+  checkboxCellUsers,
+  stylesCellUsers,
+  stylesLastCellUsers,
+  stylesTableUsers
+} from '../styles'
 
 export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -118,15 +124,12 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
           <TableToolbar numSelected={selected.length} id={Number(getId)} />
           <TableContainer>
             <Table
-              sx={{
-                minWidth: 750,
-                borderCollapse: 'separate !important',
-                borderSpacing: '0px 16px !important'
-              }}
+              sx={stylesTableUsers}
               aria-labelledby='tableTitle'
               size={dense ? 'small' : 'medium'}
               component='table'
             >
+              <caption className='sr-only'>Lista de usuários</caption>
               <CustomTableHead
                 numSelected={selected.length}
                 order={order}
@@ -157,27 +160,14 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           borderRadius: 2
                         }}
                       >
-                        <TableCell
-                          padding='checkbox'
-                          sx={{
-                            border: 'none',
-                            borderRadius: 2,
-                            borderTopRightRadius: 1,
-                            borderBottomRightRadius: 1
-                          }}
-                        >
+                        <TableCell padding='checkbox' sx={stylesLastCellUsers}>
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{
                               'aria-labelledby': labelId,
                               'aria-label': labelId
                             }}
-                            sx={{
-                              color: 'secondary',
-                              '&.Mui-checked': {
-                                color: colors.brand[600]
-                              }
-                            }}
+                            sx={checkboxCellUsers}
                           />
                         </TableCell>
                         <TableCell
@@ -185,19 +175,17 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           id={labelId}
                           scope='row'
                           padding='normal'
-                          sx={{
-                            border: 'none'
-                          }}
+                          sx={stylesCellUsers}
                         >
                           {row.name}
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.email}
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.phone}
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.country}
                         </TableCell>
                         <TableCell

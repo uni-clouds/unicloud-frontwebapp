@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { IconButton, Tooltip, Typography, Toolbar } from '@mui/material'
-import { alpha } from '@mui/material/styles'
 import { MdFilterList } from 'react-icons/md'
 import { CgDanger } from 'react-icons/cg'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
@@ -8,6 +7,7 @@ import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { TableToolbarProps } from './types'
 import { api } from '../../../services/api'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
+import { stylesToolbar } from '../styles'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -23,7 +23,6 @@ export const TableToolbar = (props: TableToolbarProps) => {
       return update.data
     } catch (error: any) {
       console.error(error)
-      //verificar prazo de validação
     }
   }
   const handleOnClose = (reason?: string) => {
@@ -41,20 +40,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
           handleClose={handleOnClose}
         />
       )}
-      <Toolbar
-        sx={{
-          pl: { sm: 2 },
-          pr: { xs: 1, sm: 1 },
-          justifyContent: 'flex-end',
-          ...(numSelected > 0 && {
-            bgcolor: (theme) =>
-              alpha(
-                theme.palette.grey[100],
-                theme.palette.action.activatedOpacity
-              )
-          })
-        }}
-      >
+      <Toolbar sx={stylesToolbar}>
         {numSelected > 0 && (
           <Typography
             sx={{ flex: '1 1 100%' }}

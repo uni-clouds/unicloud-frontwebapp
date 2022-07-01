@@ -1,4 +1,4 @@
-import { Column, Data } from './types'
+import { Column } from './types'
 
 export const columns: readonly Column[] = [
   { id: 'name', label: 'Nome', minWidth: 170 },

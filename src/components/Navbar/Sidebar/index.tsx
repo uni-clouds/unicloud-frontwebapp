@@ -21,48 +21,40 @@ import {
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 import { Logo } from '../../Logo'
 
+import { useUserType } from '../../../hooks/useUserType'
 import { OrganizationLogo } from '../../Elements/OrganizationLogo'
 import { Drawer, DrawerHeader, Main } from './variants'
-import { MenuDataProp, SidebarProps } from './types'
+import { SidebarProps } from './types'
 import { OrganizationLogoProps } from '../../Elements/OrganizationLogo/types'
 import { Footer } from '../../Footer'
 import { useToggleTheme } from '../../../hooks/useToggleTheme'
 import { colors } from '../../../styles/colors'
+import { Box } from '@mui/system'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
   closeDrawer,
   children
 }) => {
-  const [menuData, setMenuData] = useState<MenuDataProp>()
   const [organizationLogo, setOrganizationLogo] =
     useState<OrganizationLogoProps>()
   const theme = useTheme()
   const { toggleColorMode } = useToggleTheme()
   const { pathname } = useLocation()
   const { token } = parseCookies()
+  const { data } = useUserType()
+  const role = data?.type
+
   const customHover =
     theme.palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
   const iconColor =
     theme.palette.mode === 'dark' ? 'inherit' : 'rgba(0, 0, 0, 0.54)'
+
   useEffect(() => {
     if (token !== undefined) {
-      getMenuData()
       getOrganizationLogo()
     }
   }, [])
-
-  async function getMenuData() {
-    try {
-      const request = await api.get('/menu/')
-      if (request.status === 200 && request.data !== undefined) {
-        const response = request.data
-        setMenuData(response)
-      }
-    } catch (err) {
-      // console.error(err)
-    }
-  }
 
   async function getOrganizationLogo() {
     try {
@@ -78,8 +70,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
       console.error('getLogo', err)
     }
   }
+  const styleListItem = { display: 'block', '&:hover': { color: customHover } }
+  const styleListButton = {
+    minHeight: 48,
+    justifyContent: isOpen ? 'initial' : 'center',
+    px: 3
+  }
+  const styleListText = { opacity: isOpen ? 1 : 0 }
 
-  const role = menuData?.menu.find((data) => data.heading === 'Administração')
   return (
     <>
       <Drawer variant='permanent' open={isOpen}>
@@ -99,23 +97,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem
-            disablePadding
-            sx={{ display: 'block', '&:hover': { color: customHover } }}
-          >
+          <ListItem disablePadding sx={styleListItem}>
             <NavLink
               to='/'
               className={({ isActive }) =>
                 isActive ? 'text-brand-800' : undefined
               }
             >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: isOpen ? 'initial' : 'center',
-                  px: 3
-                }}
-              >
+              <ListItemButton sx={styleListButton}>
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
@@ -127,69 +116,50 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <RiHome3Line className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
-                  Home
-                </ListItemText>
+                <ListItemText sx={styleListText}>Home</ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>
-          {!!role && (
-            <>
-              <ListItem
-                disablePadding
-                sx={{ display: 'block', '&:hover': { color: customHover } }}
+
+          {role === 'root' || 'partner' ? (
+            <ListItem disablePadding sx={styleListItem}>
+              <NavLink
+                to='/customers'
+                className={({ isActive }) =>
+                  isActive ? 'text-brand-800' : undefined
+                }
               >
-                <NavLink
-                  to='/customers'
-                  className={({ isActive }) =>
-                    isActive ? 'text-brand-800' : undefined
-                  }
-                >
-                  <ListItemButton
+                <ListItemButton sx={styleListButton}>
+                  <ListItemIcon
                     sx={{
-                      minHeight: 48,
-                      justifyContent: isOpen ? 'initial' : 'center',
-                      px: 3
+                      minWidth: 0,
+                      mr: isOpen ? 3 : 'auto',
+                      justifyContent: 'center',
+                      '&:hover': { color: customHover },
+                      color:
+                        pathname === '/customers'
+                          ? colors.brand[800]
+                          : iconColor
                     }}
                   >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: isOpen ? 3 : 'auto',
-                        justifyContent: 'center',
-                        '&:hover': { color: customHover },
-                        color:
-                          pathname === '/customers'
-                            ? colors.brand[800]
-                            : iconColor
-                      }}
-                    >
-                      <RiGroup2Line className='text-xl' />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
-                      Clientes
-                    </ListItemText>
-                  </ListItemButton>
-                </NavLink>
-              </ListItem>
+                    <RiGroup2Line className='text-xl' />
+                  </ListItemIcon>
+                  <ListItemText sx={styleListText}>Clientes</ListItemText>
+                </ListItemButton>
+              </NavLink>
+            </ListItem>
+          ) : null}
 
-              <ListItem
-                disablePadding
-                sx={{ display: 'block', '&:hover': { color: customHover } }}
-              >
+          {role === 'root' && (
+            <>
+              <ListItem disablePadding sx={styleListItem}>
                 <NavLink
                   to='/unicloud-pods'
                   className={({ isActive }) =>
                     isActive ? 'text-brand-800' : undefined
                   }
                 >
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: isOpen ? 'initial' : 'center',
-                      px: 3
-                    }}
-                  >
+                  <ListItemButton sx={styleListButton}>
                     <ListItemIcon
                       sx={{
                         minWidth: 0,
@@ -198,36 +168,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: customHover },
                         color:
                           pathname === '/unicloud-pods'
-                            ? 'rgba(177, 61, 244)'
+                            ? colors.brand[800]
                             : iconColor
                       }}
                     >
                       <RiDashboardLine className='text-xl' />
                     </ListItemIcon>
-                    <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
-                      Pods
-                    </ListItemText>
+                    <ListItemText sx={styleListText}>Pods</ListItemText>
                   </ListItemButton>
                 </NavLink>
               </ListItem>
 
-              <ListItem
-                disablePadding
-                sx={{ display: 'block', '&:hover': { color: customHover } }}
-              >
+              <ListItem disablePadding sx={styleListItem}>
                 <NavLink
                   to='/monitor'
                   className={({ isActive }) =>
                     isActive ? 'text-brand-800' : undefined
                   }
                 >
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: isOpen ? 'initial' : 'center',
-                      px: 3
-                    }}
-                  >
+                  <ListItemButton sx={styleListButton}>
                     <ListItemIcon
                       sx={{
                         minWidth: 0,
@@ -236,13 +195,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         '&:hover': { color: customHover },
                         color:
                           pathname === '/monitor'
-                            ? 'rgba(177, 61, 244)'
+                            ? colors.brand[800]
                             : iconColor
                       }}
                     >
                       <RiNumbersLine className='text-xl' />
                     </ListItemIcon>
-                    <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
+                    <ListItemText sx={styleListText}>
                       Monitoramento
                     </ListItemText>
                   </ListItemButton>
@@ -251,23 +210,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </>
           )}
 
-          <ListItem
-            disablePadding
-            sx={{ display: 'block', '&:hover': { color: customHover } }}
-          >
+          <ListItem disablePadding sx={styleListItem}>
             <NavLink
               to='/user-list-default'
               className={({ isActive }) =>
                 isActive ? 'text-brand-800' : undefined
               }
             >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: isOpen ? 'initial' : 'center',
-                  px: 3
-                }}
-              >
+              <ListItemButton sx={styleListButton}>
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
@@ -276,37 +226,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     '&:hover': { color: customHover },
                     color:
                       pathname === '/user-list-default'
-                        ? 'rgba(177, 61, 244)'
+                        ? colors.brand[800]
                         : iconColor
                   }}
                 >
                   <RiTeamLine className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={{ opacity: isOpen ? 1 : 0 }}>
-                  Usuários
-                </ListItemText>
+                <ListItemText sx={styleListText}>Usuários</ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>
         </List>
 
         <List sx={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-          <ListItem
-            disablePadding
-            sx={{ display: 'block', '&:hover': { color: customHover } }}
-            onClick={toggleColorMode}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: 'center',
-                px: 3
-              }}
-            >
+          <ListItem disablePadding sx={styleListItem} onClick={toggleColorMode}>
+            <ListItemButton sx={styleListButton}>
               <ListItemIcon
                 sx={{
                   minWidth: 60,
-                  mr: isOpen ? 3 : 'auto',
+                  mx: 'auto',
                   justifyContent: 'center',
                   '&:hover': { color: customHover },
                   px: 3
@@ -325,7 +263,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <Main open={isOpen}>
         <DrawerHeader />
         {children}
-        <Footer local='pages' />
+        <Box sx={{ marginLeft: 23 }}>
+          <Footer local='pages' />
+        </Box>
       </Main>
     </>
   )

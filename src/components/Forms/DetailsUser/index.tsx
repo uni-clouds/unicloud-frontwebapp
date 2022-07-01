@@ -38,7 +38,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
   return (
     <form
       action='POST'
-      className='w-full h-full flex flex-col gap-2 p-8 custom-dark bg-zinc-100 rounded-md '
+      className='w-full h-full flex flex-col gap-2 p-8 custom-dark dark:border-transparent border border-light-200 rounded-md '
       onSubmit={() => {}}
     >
       <div className='flex flex-row gap-4 my-2 w-full items-center'>

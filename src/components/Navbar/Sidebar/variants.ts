@@ -3,10 +3,10 @@ import MuiDrawer from '@mui/material/Drawer'
 import MuiAppBar from '@mui/material/AppBar'
 import { AppBarProps } from './types'
 
-export const DRAWER_WIDTH = 240
+const DRAWER_WIDTH = 240
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: DRAWER_WIDTH,
+  width: theme.breakpoints.down('lg') ? 200 : DRAWER_WIDTH,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen
@@ -24,7 +24,9 @@ export const AppBar = styled(MuiAppBar, {
   }),
   ...(open && {
     marginLeft: DRAWER_WIDTH,
-    width: `calc(100% - ${DRAWER_WIDTH}px)`,
+    width: theme.breakpoints.down('lg')
+      ? `calc(100% - 200px)`
+      : `calc(100% - ${DRAWER_WIDTH}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
@@ -35,13 +37,13 @@ export const AppBar = styled(MuiAppBar, {
 export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open'
 })(({ theme, open }) => ({
-  width: DRAWER_WIDTH,
+  width: theme.breakpoints.down('lg') ? 200 : DRAWER_WIDTH,
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
   display: 'flex',
   justifyContent: 'space-between',
- position: 'relative',
+  position: 'relative',
   ...(open && {
     ...openedMixin(theme),
     '& .MuiDrawer-paper': openedMixin(theme)
@@ -82,7 +84,7 @@ export const Main = styled('main', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
   }),
-  marginLeft: `-${DRAWER_WIDTH}px`,
+  marginLeft: theme.breakpoints.down('lg') ? '-200px' : `-${DRAWER_WIDTH}px`,
   ...(open && {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,

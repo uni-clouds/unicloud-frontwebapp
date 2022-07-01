@@ -1,7 +1,7 @@
 export interface CustomersTableProps {
   list: CustomerTableType[]
-  isLoading: boolean
-  isError: boolean
+  isLoading?: boolean
+  isError?: boolean
 }
 export interface CustomerTableType {
   bairro: string

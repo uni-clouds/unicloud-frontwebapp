@@ -2,12 +2,12 @@ import { IconButton, Tooltip, Typography, Toolbar } from '@mui/material'
 import { useState } from 'react'
 import { CgDanger } from 'react-icons/cg'
 import { MdFilterList } from 'react-icons/md'
-import { RiListSettingsLine } from 'react-icons/ri'
 import { BiDetail } from 'react-icons/bi'
 import { TableToolbarProps } from './types'
 import { useUsersList } from '../../../hooks/useUsersList'
 import { colors } from '../../../styles/colors'
 import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
+import { stylesToolbar } from '../styles'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const { numSelected, id } = props
@@ -16,13 +16,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
   const userSelected = data?.filter((f) => f.id === id)
 
   return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        justifyContent: 'flex-end'
-      }}
-    >
+    <Toolbar sx={stylesToolbar}>
       {numSelected > 0 && (
         <Typography
           sx={{ flex: '1 1 100%' }}

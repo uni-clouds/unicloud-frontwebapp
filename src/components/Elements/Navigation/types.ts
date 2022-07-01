@@ -13,3 +13,10 @@ export interface LinkInternalProps {
   name: string
   href: string
 }
+
+export interface PathActiveProps {
+  paths: Array<{
+    path: string
+    route: string
+  }>
+}

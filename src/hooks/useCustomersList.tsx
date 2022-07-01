@@ -4,7 +4,6 @@ import { api } from '../services/api'
 
 async function getCustomers(): Promise<Array<CustomerTableType>> {
   const { data } = await api.get('/customers/')
-  console.log('👀', data)
   return data
 }
 const REVALIDATE_TIME = 60 * 60 //60 min
