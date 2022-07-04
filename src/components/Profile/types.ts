@@ -1,6 +1,7 @@
 export interface InformationDisplayProps {
   text: string
   icon?: boolean
+  label?: string
 }
 
 export interface NavigationItemProps {

@@ -1,9 +1,19 @@
-import { EmailField } from '../../Elements/Inputs/EmailField'
-import { Input } from '../../Elements/Inputs/Input'
-import { PhoneInput } from '../../Elements/Inputs/PhoneInput'
 import InformationDisplay from '../InformationDisplay'
 
-export default function PersonalInformation(props) {
+export default function PersonalInformation({ user }) {
+  console.log(user.last_login)
+
+  function transformDate(date: string) {
+    return new Intl.DateTimeFormat('pt-BR', {
+      dateStyle: 'long'
+      // month: 'narrow',
+      // year: 'numeric'
+    }).format(new Date(date))
+  }
+
+  const lastLogin = transformDate(user.last_login)
+  const dateJoined = transformDate(user.date_joined)
+
   return (
     <div className='w-full flex flex-col gap-8'>
       <div>
@@ -12,25 +22,29 @@ export default function PersonalInformation(props) {
       </div>
       <div className='w-full flex flex-col gap-4 '>
         <div>
-          <h3 className='w-full bg-light-200 p-4 py-1 rounded-sm uppercase font-black text-sm'>
+          <h3 className='w-full bg-light-200 dark:bg-light-800 p-4 py-1 rounded-sm uppercase font-black text-sm'>
             Dados de contato
           </h3>
           <div className='flex flex-col divide-y-2   px-2'>
-            <InformationDisplay text='João Avelino' icon />
-            <InformationDisplay text='joao.avelino@uni.cloud' icon />
-            <InformationDisplay text='(XX) XXXXX-XXXX' icon />
             <InformationDisplay
-              text='R. Nicola Pellanda, 5315, Umbará, Curitiba-PR'
+              text={`${user.first_name} ${user.last_name}`}
+              icon
+            />
+            <InformationDisplay text={user.email} icon />
+            <InformationDisplay text={user.userprofile.phone} icon />
+            <InformationDisplay
+              text={`${user.userprofile.address}, ${user.userprofile.city} - ${user.userprofile.state}, ${user.userprofile.country}`}
               icon
             />
           </div>
         </div>
+
         <div className='py-4'>
-          <h3 className='w-full bg-light-200 p-4 py-1 rounded-sm uppercase font-black text-sm'>
+          <h3 className='w-full bg-light-200 dark:bg-light-800 p-4 py-1 rounded-sm uppercase font-black text-sm'>
             Geral
           </h3>
-          <InformationDisplay text={`Último logon: ${`02/07/2022`}`} />
-          <InformationDisplay text={`Usuário desde: ${`02/07/2022`}`} />
+          <InformationDisplay text={lastLogin} label='Last login' />
+          <InformationDisplay text={dateJoined} label='User since' />
         </div>
       </div>
     </div>

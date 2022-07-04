@@ -18,7 +18,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
 
   return (
     <li
-      className={`flex items-center justify-between gap-2 cursor-pointer px-4 py-2 hover:bg-light-100 rounded-full transition-colors -translate-x-4 text-${activeColor} `}
+      className={`flex items-center justify-between gap-2 cursor-pointer px-4 py-2 hover:bg-light-100 dark:hover:bg-light-800 rounded-full transition-colors -translate-x-4 text-${activeColor} `}
       onClick={onClick}
     >
       {renderIcon()}
