@@ -27,24 +27,32 @@ export default function PersonalInformation({ user }) {
           </h3>
           <div className='flex flex-col divide-y-2   px-2'>
             <InformationDisplay
+              label='Nome'
               text={`${user.first_name} ${user.last_name}`}
               icon
             />
-            <InformationDisplay text={user.email} icon />
-            <InformationDisplay text={user.userprofile.phone} icon />
+            <InformationDisplay label='Email' text={user.email} icon />
             <InformationDisplay
+              label='Telefone'
+              text={user.userprofile.phone}
+              icon
+            />
+            <InformationDisplay
+              label='Endereço'
               text={`${user.userprofile.address}, ${user.userprofile.city} - ${user.userprofile.state}, ${user.userprofile.country}`}
               icon
             />
           </div>
         </div>
 
-        <div className='py-4'>
+        <div className='py-4 '>
           <h3 className='w-full bg-light-200 dark:bg-light-800 p-4 py-1 rounded-sm uppercase font-black text-sm'>
             Geral
           </h3>
-          <InformationDisplay text={lastLogin} label='Last login' />
-          <InformationDisplay text={dateJoined} label='User since' />
+          <div className='px-2'>
+            <InformationDisplay text={lastLogin} label='Último login' />
+            <InformationDisplay text={dateJoined} label='Usuário' />
+          </div>
         </div>
       </div>
     </div>

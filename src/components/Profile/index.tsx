@@ -3,39 +3,39 @@ import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
 import { useState } from 'react'
 import PersonalInformation from './PersonalInformation'
-import Notifications from './Notifications'
 import Activities from './Activities'
 import SafetySettings from './SafetySettings'
 import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
+import { useNavigate } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
   const [mode, setMode] = useState<
-    | 'Informações Pessoais'
-    | 'Notificações'
-    | 'Atividade'
-    | 'Configurações de Segurança'
+    'Informações Pessoais' | 'Atividade' | 'Configurações de Segurança'
   >('Informações Pessoais')
 
+  const navigate = useNavigate()
   const { customerData } = useUserData()
   const { data } = useUsersList()
   const { user_id } = useDecode()
   const user = data?.filter((el) => el.id === user_id)[0]
 
+  const companyNameSize =
+    customerData?.razao_social.length > 30 ? 'text-xl' : 'text-2xl'
+
   function renderSection() {
     if (mode === 'Informações Pessoais')
       return <PersonalInformation user={user} />
-    if (mode === 'Notificações') return <Notifications />
     if (mode === 'Atividade') return <Activities />
     if (mode === 'Configurações de Segurança') return <SafetySettings />
   }
 
   return (
     <>
-      {user && (
+      {user && customerData ? (
         <div className='flex flex-1'>
-          <div className='flex flex-col w-96'>
+          <div className='flex flex-col max-w-64'>
             <section className='flex items-center justify-between w-full p-8 gap-4  '>
               <Avatar firstName={user.first_name} lastName={user.last_name} />
               <div className='flex-1'>
@@ -51,8 +51,8 @@ export const Profile: React.FC = () => {
             </section>
             <section className='flex flex-col w-full p-8 border-t-2 border-b-2 dark:border-light-700'>
               <h4>Empresa</h4>
-              <h2 className='text-2xl font-bold'>
-                {customerData.razao_social}
+              <h2 className={`${companyNameSize} font-bold`}>
+                {customerData?.razao_social}
               </h2>
             </section>
             <section className='flex flex-1 w-full p-8 '>
@@ -65,8 +65,8 @@ export const Profile: React.FC = () => {
                   />
                   <NavigationItem
                     text='Notificações'
-                    onClick={() => setMode('Notificações')}
-                    active={mode === 'Notificações'}
+                    onClick={() => navigate('/notifications')}
+                    active={false}
                   />
                   <NavigationItem
                     text='Atividade'
@@ -86,7 +86,7 @@ export const Profile: React.FC = () => {
             {renderSection()}
           </section>
         </div>
-      )}
+      ) : null}
     </>
   )
 }
