@@ -49,10 +49,10 @@ export const Profile: React.FC = () => {
                 <MdMoreVert />
               </button>
             </section>
-            <section className='flex flex-col w-full p-8  '>
+            <section className='flex flex-col w-full p-8 border-t-2 border-b-2 dark:border-light-700'>
               <h4>Empresa</h4>
               <h2 className='text-2xl font-bold'>
-                {customerData.nome_fantasia}
+                {customerData.razao_social}
               </h2>
             </section>
             <section className='flex flex-1 w-full p-8 '>
@@ -82,7 +82,7 @@ export const Profile: React.FC = () => {
               </nav>
             </section>
           </div>
-          <section className='flex flex-col flex-1 p-8 '>
+          <section className='flex flex-col flex-1 p-8 border-l-2 dark:border-light-700'>
             {renderSection()}
           </section>
         </div>
