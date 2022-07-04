@@ -9,6 +9,7 @@ import Users from '../pages/Users'
 import Register from '../pages/Auth/Register'
 import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
+import Pods from '../pages/Pods'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -117,7 +118,7 @@ export default function MainRoutes() {
         path='/unicloud-pods'
         element={
           <ProtectedRoute>
-            <PlaceholderPage />
+            <Pods />
           </ProtectedRoute>
         }
       />
