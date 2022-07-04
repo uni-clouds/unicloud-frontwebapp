@@ -18,18 +18,18 @@ export const Login: React.FC = () => {
   ]
   return (
     <>
-      <main className='h-screen flex flex-col items-center justify-center'>
+      <main className='h-screen flex flex-col gap-6 items-center justify-center'>
         <section className='flex-col justify-center align-center'>
           <Logo />
-          <div className='mt-6 flex flex-col align-center w-[30rem] rounded-sm bg-neutral-50 custom-dark p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
+          <div className='mt-6 flex flex-col align-center w-[25rem] lg:w-[30rem] rounded-sm bg-neutral-50 custom-dark p-6 lg:p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
             <div>
-              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>
+              <h4 className='font-bold text-xl lg:text-2xl text-base-600 dark:text-base-200 mb-2'>
                 Entrar
               </h4>
               <p className='text-sm'>Acesse o Broker com seu e-mail e senha.</p>
             </div>
             <LoginForm />
-            <p className='my-5'>
+            <p className='my-4 text-sm lg:text-md text-center'>
               Ainda não possui acesso?
               <span className='ml-2'>
                 <LinkInternal name='Contate nossa equipe' href='#' />
@@ -39,8 +39,8 @@ export const Login: React.FC = () => {
             <NavLinksHelpers items={navItems} />
           </div>
         </section>
+        <Footer local='auth' />
       </main>
-      <Footer local='' />
     </>
   )
 }
