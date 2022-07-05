@@ -12,7 +12,7 @@ import { colors } from '../../../styles/colors'
 const TypeSelect: ForwardRefRenderFunction<
   HTMLInputElement,
   SelectInputProps
-> = ({ error, field }, ref) => {
+> = ({ error, name, values, ...field }, ref) => {
   const styles: SxProps = {
     '.MuiFormLabel-root': {
       color: colors.base[300],
@@ -48,18 +48,21 @@ const TypeSelect: ForwardRefRenderFunction<
 
       <Select
         {...field}
-        aria-labelledby='select-type-customer'
-        id='type-customer'
+        aria-labelledby={`select-type-${name}`}
+        id={`type-${name}`}
         aria-haspopup
         label='Selecione o tipo de cliente'
         inputProps={{
-          name: 'type-customer',
-          id: 'type-customer'
+          name: `type-${name}`,
+          id: `type-${name}`
         }}
         sx={stylesInput}
       >
-        <MenuItem value={'partner'}>Partner</MenuItem>
-        <MenuItem value={'customer'}>Customer</MenuItem>
+        {values?.map((value) => (
+          <MenuItem value={value} sx={{ textTransform: 'capitalize' }}>
+            {value}
+          </MenuItem>
+        ))}
       </Select>
       <p
         className={`text-red-custom text-xs py-1.5 peer-absolute inset-x-0 -bottom-7 transition-all delay-75 ease-in ${
