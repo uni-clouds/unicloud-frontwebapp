@@ -130,6 +130,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
                     error={error}
                     name='customer'
                     values={values}
+                    label='Selecione o tipo de cliente'
                   />
                 )}
               />

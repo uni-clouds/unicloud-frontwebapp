@@ -14,7 +14,7 @@ export interface InputProps {
 
 export interface SelectInputProps extends ControllerRenderProps {
   error?: FieldError
-  // field?: ControllerRenderProps<CreateCustomerType, 'type'>
   values: string[]
   name: string
+  label: string
 }

@@ -155,6 +155,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               render={({ field, fieldState: { error } }) => (
                 <InputType
                   {...field}
+                  label='Selecione o tipo de POD'
                   error={error}
                   name='customer'
                   values={values}
