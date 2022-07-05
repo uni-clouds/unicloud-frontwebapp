@@ -1,8 +1,7 @@
 import InformationDisplay from '../InformationDisplay'
+import { renderData } from '../util'
 
 export default function PersonalInformation({ user }) {
-  console.log(user.last_login)
-
   function transformDate(date: string) {
     return new Intl.DateTimeFormat('pt-BR', {
       dateStyle: 'long'
@@ -11,8 +10,8 @@ export default function PersonalInformation({ user }) {
     }).format(new Date(date))
   }
 
-  const lastLogin = transformDate(user.last_login)
-  const dateJoined = transformDate(user.date_joined)
+  const lastLogin = transformDate(renderData(user.last_login))
+  const dateJoined = transformDate(renderData(user.date_joined))
 
   return (
     <div className='w-full flex flex-col gap-8'>
@@ -28,18 +27,28 @@ export default function PersonalInformation({ user }) {
           <div className='flex flex-col divide-y-2   px-2'>
             <InformationDisplay
               label='Nome'
-              text={`${user.first_name} ${user.last_name}`}
+              text={`${renderData(user.first_name)} ${renderData(
+                user.last_name
+              )}`}
               icon
             />
-            <InformationDisplay label='Email' text={user.email} icon />
+            <InformationDisplay
+              label='Email'
+              text={renderData(user.email)}
+              icon
+            />
             <InformationDisplay
               label='Telefone'
-              text={user.userprofile.phone}
+              text={renderData(user.userprofile.phone)}
               icon
             />
             <InformationDisplay
               label='Endereço'
-              text={`${user.userprofile.address}, ${user.userprofile.city} - ${user.userprofile.state}, ${user.userprofile.country}`}
+              text={`${renderData(user.userprofile.address)}, ${renderData(
+                user.userprofile.city
+              )} - ${renderData(user.userprofile.state)}, ${renderData(
+                user.userprofile.country
+              )}`}
               icon
             />
           </div>

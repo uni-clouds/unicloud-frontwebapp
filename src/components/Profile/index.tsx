@@ -9,6 +9,7 @@ import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
 import { useNavigate } from 'react-router-dom'
+import { renderData } from './util'
 
 export const Profile: React.FC = () => {
   const [mode, setMode] = useState<
@@ -37,13 +38,16 @@ export const Profile: React.FC = () => {
         <div className='flex flex-1'>
           <div className='flex flex-col max-w-64'>
             <section className='flex items-center justify-between w-full p-8 gap-4  '>
-              <Avatar firstName={user.first_name} lastName={user.last_name} />
+              <Avatar
+                firstName={renderData(user.first_name)}
+                lastName={renderData(user.last_name)}
+              />
               <div className='flex-1'>
                 <h3 className='font-black text-xl '>
-                  {user.first_name}
-                  {user.last_name}
+                  {renderData(user.first_name)}
+                  {renderData(user.last_name)}
                 </h3>
-                <h4 className='text-base-500'>{user.email}</h4>
+                <h4 className='text-base-500'>{renderData(user.email)}</h4>
               </div>
               <button className='px-2 py-2 hover:bg-light-100 rounded-full transition-colors '>
                 <MdMoreVert />
@@ -52,7 +56,7 @@ export const Profile: React.FC = () => {
             <section className='flex flex-col w-full p-8 border-t-2 border-b-2 dark:border-light-700'>
               <h4>Empresa</h4>
               <h2 className={`${companyNameSize} font-bold`}>
-                {customerData?.razao_social}
+                {renderData(customerData.razao_social)}
               </h2>
             </section>
             <section className='flex flex-1 w-full p-8 '>
