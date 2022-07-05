@@ -85,7 +85,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <Drawer variant='permanent' open={isOpen}>
         <DrawerHeader>
           <span className='w-28 mx-auto max-h-10'>
-            {!!organizationLogo && organizationLogo !== null ? (
+            {!!organizationLogo?.logo ? (
               <Link to='/'>
                 <OrganizationLogo logo={organizationLogo.logo} />
               </Link>

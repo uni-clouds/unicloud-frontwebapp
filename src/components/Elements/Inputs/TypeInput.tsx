@@ -3,7 +3,8 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-  SxProps
+  SxProps,
+  useTheme
 } from '@mui/material'
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { SelectInputProps } from './types'
@@ -13,29 +14,41 @@ const TypeSelect: ForwardRefRenderFunction<
   HTMLInputElement,
   SelectInputProps
 > = ({ error, name, label, values, ...field }, ref) => {
+  const { palette } = useTheme()
+
   const styles: SxProps = {
     '.MuiFormLabel-root': {
-      color: colors.base[300],
+      color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit',
       width: '100%',
-      '&.Mui-focused ': { color: colors.base[500] }
+      '&.Mui-focused ': {
+        color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit'
+      }
     },
     '& .MuiSelect-select': {
       paddingTop: '12px',
       paddingBottom: '14px'
+    },
+    '& .Mui-checked': {
+      color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit'
     }
   }
   const stylesInput: SxProps = {
     '.MuiOutlinedInput-notchedOutline': {
-      borderColor: colors.light[200],
+      borderColor:
+        palette.mode === 'dark' ? colors.neutral[700] : colors.light[200],
       width: '100%',
       borderRadius: '0.375rem'
     },
     '&:hover .MuiOutlinedInput-notchedOutline': {
-      borderColor: colors.light[200]
+      borderColor:
+        palette.mode === 'dark' ? colors.neutral[700] : colors.light[200]
     },
     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: colors.brand[600],
       borderWidth: 2
+    },
+    '& .Mui-error': {
+      border: colors.red.custom
     }
   }
   return (

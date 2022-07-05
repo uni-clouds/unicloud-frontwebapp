@@ -6,14 +6,18 @@ export function createData(
   email: string,
   phone: string | undefined,
   country: string | undefined,
-  status: string
+  status: string,
+  first_name: string,
+  last_name: string
 ): Data {
   return {
     name,
     email,
     phone,
     country,
-    status
+    status,
+    first_name,
+    last_name
   }
 }
 

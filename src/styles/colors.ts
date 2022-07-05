@@ -77,5 +77,10 @@ export const colors = {
   },
   zinc: {
     800: '#121212'
+  },
+  neutral: {
+    50: '#fafafa',
+    700: '#404040',
+    800: '#262626'
   }
 } as const

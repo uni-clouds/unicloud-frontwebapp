@@ -10,4 +10,6 @@ export interface PodType {
   pod_user: string
   pod_password: string
   project_id: string
+  domain_tenant: string
+  spare_nodes: number
 }
