@@ -26,6 +26,8 @@ export interface Data {
   phone: string | undefined
   country: string | undefined
   status: string
+  first_name: string
+  last_name: string
 }
 
 export interface HeadCell {

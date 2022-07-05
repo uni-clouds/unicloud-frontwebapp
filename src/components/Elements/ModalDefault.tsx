@@ -21,7 +21,8 @@ export const Modal: React.FC<ModalProps> = ({
           height: height,
           overflowY: 'hidden',
           borderRadius: 2
-        }
+        },
+        overflow: 'hidden'
       }}
     >
       <DialogContent>{children}</DialogContent>

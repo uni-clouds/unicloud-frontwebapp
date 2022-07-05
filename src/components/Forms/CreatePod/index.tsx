@@ -30,7 +30,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   const values = ['Compute', 'Storage']
 
   const createCustomerSubmit: SubmitHandler<PodType> = async (data) => {
-    console.log('👀', data)
+    console.log('🐼', data)
     try {
       const request = await api.post('/create-zadara-pod/', {
         name: data.name,
@@ -39,7 +39,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         url_base: data.url_base,
         pod_user: data.pod_user,
         pod_password: data.pod_password,
-        project_id: data.project_id
+        project_id: data.project_id,
+        domain_tenant: data.domain_tenant,
+        spare_nodes: data.spare_nodes
       })
       setIsDisabled(true)
       if (request.status === 200) {
@@ -82,7 +84,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message='Cliente criado sucesso.'
+            message='POD criado sucesso!'
             handleClose={handleOnClose}
           />
         </Portal>
@@ -92,8 +94,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         onSubmit={handleSubmit(createCustomerSubmit)}
         action='POST'
       >
-        <Grid container spacing={3} aria-labelledby='form-create-pod'>
-          <Grid item sx={styleGrid} lg={6}>
+        <Grid container spacing={2} aria-labelledby='form-create-pod'>
+          <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
               placeholder='Digite o nome do POD'
               label='Nome do POD'
@@ -102,7 +104,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               {...register('name')}
             />
           </Grid>
-          <Grid item sx={styleGrid} lg={6}>
+          <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
               placeholder='Digite a localização. Ex. Curitiba'
               label='Localização'
@@ -111,7 +113,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               {...register('location')}
             />
           </Grid>
-          <Grid item sx={styleGrid} lg={4}>
+          <Grid item sx={styleGrid} md={3} lg={4}>
             <Input
               placeholder='Digite o usuário'
               label='Usuário'
@@ -120,7 +122,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               {...register('pod_user')}
             />
           </Grid>
-          <Grid item sx={styleGrid} lg={4}>
+          <Grid item sx={styleGrid} md={3} lg={4}>
             <Input
               placeholder='Digite a senha'
               label='Senha'
@@ -129,7 +131,26 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               {...register('pod_password')}
             />
           </Grid>
-          <Grid item lg={4}>
+          <Grid item sx={styleGrid} md={3} lg={4}>
+            <Input
+              placeholder='Informe a quantidade'
+              label='Spare Node'
+              type='number'
+              error={errors?.spare_nodes}
+              {...register('spare_nodes')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} md={6} lg={6}>
+            <Input
+              placeholder='Informe o domain tenant'
+              label='Domain tenant'
+              type='text'
+              error={errors?.domain_tenant}
+              {...register('domain_tenant')}
+            />
+          </Grid>
+
+          <Grid item md={6} lg={6}>
             <div className='w-full flex flex-col gap-2 mt-[30px] '>
               <Controller
                 name='type'
@@ -147,7 +168,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               />
             </div>
           </Grid>
-          <Grid item sx={styleGrid} lg={6}>
+          <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
               placeholder='Digite a url. Ex. https://www.pod.com'
               label='URL base'
@@ -156,7 +177,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               {...register('url_base')}
             />
           </Grid>
-          <Grid item sx={styleGrid} lg={6}>
+          <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
               placeholder='Digite o ID'
               label='ID'
@@ -169,11 +190,13 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         <Grid
           item
           lg={12}
+          md={12}
           sx={{
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'flex-end',
-            gap: 3
+            gap: 3,
+            padding: 0
           }}
         >
           <SubmitButton isDisabled={isDisabled} isLogin={false} isForm>
