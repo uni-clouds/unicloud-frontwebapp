@@ -5,8 +5,6 @@ export default function PersonalInformation({ user }) {
   function transformDate(date: string) {
     return new Intl.DateTimeFormat('pt-BR', {
       dateStyle: 'long'
-      // month: 'narrow',
-      // year: 'numeric'
     }).format(new Date(date))
   }
 
