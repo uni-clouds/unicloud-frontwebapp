@@ -1,7 +1,7 @@
 import { Avatar } from '../Avatar'
 import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PersonalInformation from './PersonalInformation'
 import Activities from './Activities'
 import SafetySettings from './SafetySettings'
@@ -12,15 +12,20 @@ import { useNavigate } from 'react-router-dom'
 import { renderData } from './util'
 
 export const Profile: React.FC = () => {
+  const [loggedUser, setLoggedUser] = useState(null)
+  const [company, setCompany] = useState(null)
   const [mode, setMode] = useState<
     'Informações Pessoais' | 'Atividade' | 'Configurações de Segurança'
   >('Informações Pessoais')
 
-  const navigate = useNavigate()
-  const { customerData } = useUserData()
-  const { data } = useUsersList()
-  const { user_id } = useDecode()
-  const user = data?.filter((el) => el.id === user_id)[0]
+  useEffect(() => {
+    const navigate = useNavigate()
+    const { customerData } = useUserData()
+    const { data } = useUsersList()
+    const { user_id } = useDecode()
+    const user = data?.filter((el) => el.id === user_id)[0]
+    use
+  })
 
   const companyNameSize =
     customerData?.razao_social.length > 30 ? 'text-xl' : 'text-2xl'
