@@ -28,10 +28,10 @@ export default function PersonalInformation({ user }) {
       </div>
       <div className='w-full flex flex-col gap-4 '>
         <div>
-          <h3 className='w-full bg-light-200 dark:bg-light-800 p-4 py-1 rounded-sm uppercase font-black text-sm'>
+          <h3 className='w-full bg-brand-200 dark:bg-zinc-700 p-4 py-1 rounded-sm uppercase font-black text-sm'>
             Dados de contato
           </h3>
-          <div className='flex flex-col divide-y-2   px-2'>
+          <div className='flex flex-col divide-y   px-2'>
             <InformationDisplay
               label='Nome'
               text={`${user ? renderData(user.first_name) : '-'}
@@ -61,7 +61,7 @@ export default function PersonalInformation({ user }) {
         </div>
 
         <div className='py-4 '>
-          <h3 className='w-full bg-light-200 dark:bg-light-800 p-4 py-1 rounded-sm uppercase font-black text-sm'>
+          <h3 className='w-full bg-brand-200 dark:bg-zinc-700 p-4 py-1 rounded-sm uppercase font-black text-sm'>
             Geral
           </h3>
           <div className='px-2'>
