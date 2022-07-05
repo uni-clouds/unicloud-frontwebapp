@@ -7,9 +7,18 @@ export default function PersonalInformation({ user }) {
       dateStyle: 'long'
     }).format(new Date(date))
   }
+  function interpolateAdress() {
+    return `${
+      user && user.userprofile ? renderData(user.userprofile.address) : ''
+    },${user && user.userprofile ? renderData(user.userprofile.city) : ''} - ${
+      user && user.userprofile ? renderData(user.userprofile.state) : ''
+    }, ${user && user.userprofile ? renderData(user.userprofile.country) : ''}`
+  }
 
-  const lastLogin = transformDate(renderData(user.last_login))
-  const dateJoined = transformDate(renderData(user.date_joined))
+  console.log(user)
+
+  const lastLogin = transformDate(user ? renderData(user.last_login) : '-')
+  const dateJoined = transformDate(user ? renderData(user.date_joined) : '-')
 
   return (
     <div className='w-full flex flex-col gap-8'>
@@ -25,28 +34,27 @@ export default function PersonalInformation({ user }) {
           <div className='flex flex-col divide-y-2   px-2'>
             <InformationDisplay
               label='Nome'
-              text={`${renderData(user.first_name)} ${renderData(
-                user.last_name
-              )}`}
+              text={`${user ? renderData(user.first_name) : '-'}
+              ${user ? renderData(user.last_name) : '-'}`}
               icon
             />
             <InformationDisplay
               label='Email'
-              text={renderData(user.email)}
+              text={user ? renderData(user.email) : '-'}
               icon
             />
             <InformationDisplay
               label='Telefone'
-              text={renderData(user.userprofile.phone)}
+              text={
+                user && user.userprofile
+                  ? renderData(user.userprofile.phone)
+                  : '-'
+              }
               icon
             />
             <InformationDisplay
               label='Endereço'
-              text={`${renderData(user.userprofile.address)}, ${renderData(
-                user.userprofile.city
-              )} - ${renderData(user.userprofile.state)}, ${renderData(
-                user.userprofile.country
-              )}`}
+              text={user.userprofile ? interpolateAdress() : '-'}
               icon
             />
           </div>
