@@ -12,7 +12,7 @@ import { colors } from '../../../styles/colors'
 const TypeSelect: ForwardRefRenderFunction<
   HTMLInputElement,
   SelectInputProps
-> = ({ error, name, values, ...field }, ref) => {
+> = ({ error, name, label, values, ...field }, ref) => {
   const styles: SxProps = {
     '.MuiFormLabel-root': {
       color: colors.base[300],
@@ -43,7 +43,7 @@ const TypeSelect: ForwardRefRenderFunction<
         htmlFor='type-customer'
         aria-label={`input-type-customer`}
       >
-        Selecione o tipo de cliente
+        {label}
       </InputLabel>
 
       <Select
