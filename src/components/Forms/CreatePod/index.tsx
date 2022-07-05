@@ -11,8 +11,8 @@ import { Grid, Portal } from '@mui/material'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { CreatePodProps, PodType } from './types'
 import { schemaCreatePod } from './validation'
-import { CnpjInput } from '../../Elements/Inputs/CnpjField'
 import { InputType } from '../../Elements/Inputs/TypeInput'
+import { styleGrid } from '../styles'
 
 export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   const {
@@ -92,86 +92,97 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         onSubmit={handleSubmit(createCustomerSubmit)}
         action='POST'
       >
-        <Grid container>
-          <Grid item>
+        <Grid container spacing={3} aria-labelledby='form-create-pod'>
+          <Grid item sx={styleGrid} lg={6}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite o nome do POD'
+              label='Nome do POD'
+              type='text'
               error={errors?.name}
               {...register('name')}
             />
           </Grid>
-          <Grid item>
+          <Grid item sx={styleGrid} lg={6}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite a localização. Ex. Curitiba'
+              label='Localização'
+              type='text'
               error={errors?.location}
               {...register('location')}
             />
           </Grid>
-          <Grid item>
+          <Grid item sx={styleGrid} lg={4}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite o usuário'
+              label='Usuário'
+              type='text'
               error={errors?.pod_user}
               {...register('pod_user')}
             />
           </Grid>
-          <Grid item>
+          <Grid item sx={styleGrid} lg={4}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite a senha'
+              label='Senha'
+              type='password'
               error={errors?.pod_password}
               {...register('pod_password')}
             />
           </Grid>
-          <Grid item>
+          <Grid item lg={4}>
+            <div className='w-full flex flex-col gap-2 mt-[30px] '>
+              <Controller
+                name='type'
+                control={control}
+                rules={{ required: true }}
+                render={({ field, fieldState: { error } }) => (
+                  <InputType
+                    {...field}
+                    label='Selecione o tipo de POD'
+                    error={error}
+                    name='customer'
+                    values={values}
+                  />
+                )}
+              />
+            </div>
+          </Grid>
+          <Grid item sx={styleGrid} lg={6}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite a url. Ex. https://www.pod.com'
+              label='URL base'
+              type='url'
               error={errors?.url_base}
               {...register('url_base')}
             />
           </Grid>
-          <Grid item>
+          <Grid item sx={styleGrid} lg={6}>
             <Input
-              placeholder='Digite o e-mail'
-              label='E-mail do usuário principal'
-              type='email'
+              placeholder='Digite o ID'
+              label='ID'
+              type='text'
               error={errors?.project_id}
               {...register('project_id')}
             />
           </Grid>
-          <Grid item>
-            <Controller
-              name='type'
-              control={control}
-              rules={{ required: true }}
-              render={({ field, fieldState: { error } }) => (
-                <InputType
-                  {...field}
-                  label='Selecione o tipo de POD'
-                  error={error}
-                  name='customer'
-                  values={values}
-                />
-              )}
-            />
-          </Grid>
         </Grid>
-        <div className='flex gap-6 items-center w-1/2'>
-          <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : 'Adicionar usuário'}
+        <Grid
+          item
+          lg={12}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            gap: 3
+          }}
+        >
+          <SubmitButton isDisabled={isDisabled} isLogin={false} isForm>
+            {isSubmitting ? <Loading /> : 'Criar'}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
             {!!isSuccess ? 'Fechar' : 'Cancelar'}
           </OutlineButton>
-        </div>
+        </Grid>
       </form>
     </>
   )

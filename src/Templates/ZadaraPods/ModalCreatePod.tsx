@@ -7,7 +7,7 @@ export const ModalCreatePod: React.FC<ModalCreatePodProps> = ({
   handleClose
 }) => {
   return (
-    <Modal height={500} isOpen={isOpen} handleClose={handleClose} width='md'>
+    <Modal height={550} isOpen={isOpen} handleClose={handleClose} width='md'>
       <CreatePodForm handleClose={handleClose} />
     </Modal>
   )

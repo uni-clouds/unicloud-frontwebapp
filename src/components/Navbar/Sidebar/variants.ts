@@ -6,7 +6,7 @@ import { AppBarProps } from './types'
 const DRAWER_WIDTH = 240
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: theme.breakpoints.down('lg') ? 200 : DRAWER_WIDTH,
+  width: theme.breakpoints.down('lg') ? '210px' : DRAWER_WIDTH,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen
@@ -25,7 +25,7 @@ export const AppBar = styled(MuiAppBar, {
   ...(open && {
     marginLeft: DRAWER_WIDTH,
     width: theme.breakpoints.down('lg')
-      ? `calc(100% - 200px)`
+      ? `calc(100% - 210px)`
       : `calc(100% - ${DRAWER_WIDTH}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -37,7 +37,7 @@ export const AppBar = styled(MuiAppBar, {
 export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open'
 })(({ theme, open }) => ({
-  width: theme.breakpoints.down('lg') ? 200 : DRAWER_WIDTH,
+  width: theme.breakpoints.down('lg') ? '210px' : DRAWER_WIDTH,
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
@@ -84,7 +84,7 @@ export const Main = styled('main', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
   }),
-  marginLeft: theme.breakpoints.down('lg') ? '-200px' : `-${DRAWER_WIDTH}px`,
+  marginLeft: theme.breakpoints.down('lg') ? '-210px' : `-${DRAWER_WIDTH}px`,
   ...(open && {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,

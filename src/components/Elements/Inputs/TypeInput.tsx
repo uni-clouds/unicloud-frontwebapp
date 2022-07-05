@@ -16,6 +16,7 @@ const TypeSelect: ForwardRefRenderFunction<
   const styles: SxProps = {
     '.MuiFormLabel-root': {
       color: colors.base[300],
+      width: '100%',
       '&.Mui-focused ': { color: colors.base[500] }
     },
     '& .MuiSelect-select': {
@@ -26,6 +27,7 @@ const TypeSelect: ForwardRefRenderFunction<
   const stylesInput: SxProps = {
     '.MuiOutlinedInput-notchedOutline': {
       borderColor: colors.light[200],
+      width: '100%',
       borderRadius: '0.375rem'
     },
     '&:hover .MuiOutlinedInput-notchedOutline': {
