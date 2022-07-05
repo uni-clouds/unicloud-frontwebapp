@@ -1,3 +1,4 @@
 export function renderData(data: string): string {
-  return data === null || data === undefined ? ' - ' : data
+  console.log(data)
+  return data === null || data === undefined ? '' : data
 }
