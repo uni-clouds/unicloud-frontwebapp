@@ -33,7 +33,7 @@ export const Profile: React.FC = () => {
   }
 
   return (
-    <div className='flex flex-1'>
+    <div className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'>
       <div className='flex flex-col max-w-64'>
         <section className='flex items-center justify-between w-full p-8 gap-4  '>
           <Avatar
@@ -53,7 +53,7 @@ export const Profile: React.FC = () => {
             <MdMoreVert />
           </button>
         </section>
-        <section className='flex flex-col w-full p-8 border-t-2 border-b-2 dark:border-light-700'>
+        <section className='flex flex-col w-full p-8 border-t border-b dark:border-light-700'>
           <h4>Empresa</h4>
           <h2 className={`${companyNameSize} font-bold`}>
             {customerData ? renderData(customerData.razao_social) : ''}
@@ -86,7 +86,7 @@ export const Profile: React.FC = () => {
           </nav>
         </section>
       </div>
-      <section className='flex flex-col flex-1 p-8 border-l-2 dark:border-light-700'>
+      <section className='flex flex-col flex-1 p-8 border-l dark:border-light-700'>
         {user ? renderSection() : null}
       </section>
     </div>
