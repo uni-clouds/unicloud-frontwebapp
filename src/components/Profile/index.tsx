@@ -2,18 +2,20 @@ import { Avatar } from '../Avatar'
 import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
 import { useState } from 'react'
-import PersonalInformation from './PersonalInformation'
 import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
 import { useNavigate } from 'react-router-dom'
 import { renderData } from './util'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import PersonalInformation from './PersonalInformation'
 
 export const Profile: React.FC = () => {
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
+  const { t } = useTranslation()
 
   const { customerData } = useUserData()
   const { data } = useUsersList()
@@ -54,7 +56,7 @@ export const Profile: React.FC = () => {
           </button>
         </div>
         <div className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
-          <h4>Empresa</h4>
+          <h4>{t('profile:company')}</h4>
           <h2 className={`${companyNameSize} font-bold`}>
             {customerData ? renderData(customerData.razao_social) : ''}
           </h2>
@@ -67,15 +69,23 @@ export const Profile: React.FC = () => {
           >
             <ul className='flex flex-col w-full gap-8'>
               <NavigationItem
-                text='Informações Pessoais'
+                text={t('profile:personalInformation')}
                 href='#'
                 active={mode === 'Informações Pessoais'}
               />
 
-              <NavigationItem text='Notificações' href='#' active={false} />
-              <NavigationItem text='Atividade' href='#' active={false} />
               <NavigationItem
-                text='Configurações de Segurança'
+                text={t('profile:notifications')}
+                href='#'
+                active={false}
+              />
+              <NavigationItem
+                text={t('profile:activity')}
+                href='#'
+                active={false}
+              />
+              <NavigationItem
+                text={t('profile:safetyAdjusts')}
                 href='#'
                 active={false}
               />

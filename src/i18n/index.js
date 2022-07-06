@@ -5,18 +5,22 @@ import { initReactI18next } from 'react-i18next'
 //ENGLISH:
 import enCommon from '../../public/locales/en/common.json'
 import enLogin from '../../public/locales/en/login.json'
+import enProfile from '../../public/locales/en/profile.json'
 //PORTUGUESE:
 import ptCommon from '../../public/locales/pt/common.json'
 import ptLogin from '../../public/locales/pt/login.json'
+import ptProfile from '../../public/locales/pt/profile.json'
 
 const resources = {
   en: {
     common: enCommon,
-    login: enLogin
+    login: enLogin,
+    profile: enProfile
   },
   pt: {
     common: ptCommon,
-    login: ptLogin
+    login: ptLogin,
+    profile: ptProfile
   }
 }
 

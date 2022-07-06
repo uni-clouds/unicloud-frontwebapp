@@ -6,6 +6,9 @@
   "password": "Password",
   "password-placeholder": "Digite a sua senha",
   "password-forgot": "Esqueceu sua senha?",
+  "phone": "Telefone",
+  "address": "Endereço",
+
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
   "terms": "Termos & Condições",
