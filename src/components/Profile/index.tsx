@@ -76,11 +76,7 @@ export const Profile: React.FC = () => {
                 active={mode === 'Informações Pessoais'}
               />
 
-              <NavigationItem
-                text='Notificações'
-                href='/notifications'
-                active={false}
-              />
+              <NavigationItem text='Notificações' href='#' active={false} />
               {/* <NavigationItem
                 text='Atividade'
                 href='#'
