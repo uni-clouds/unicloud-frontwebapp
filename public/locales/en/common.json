@@ -11,5 +11,17 @@
   "terms": "Terms & Conditions",
   "privacy": "Privacy Policies",
   "help": "Help",
-  "languageSelect": "Language"
+  "languageSelect": "Language",
+
+  "home": "Home",
+  "customers": "Customers",
+  "pods": "Pods",
+  "monitoring": "Monitoring",
+  "users": "Users",
+  "search-placeholder": "Search",
+
+  "profile": "Profile",
+  "preferences": "Preferences",
+  "activity": "Activity",
+  "logout": "Logout"
 }

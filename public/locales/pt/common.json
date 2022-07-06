@@ -11,5 +11,17 @@
   "terms": "Termos & Condições",
   "privacy": "Política de privacidae",
   "help": "Ajuda",
-  "languageSelect": "Idioma"
+  "languageSelect": "Idioma",
+
+  "home": "Home",
+  "customers": "Clientes",
+  "pods": "Pods",
+  "monitoring": "Monitoramento",
+  "users": "Usuários",
+  "search-placeholder": "Buscar",
+
+  "profile": "Perfil",
+  "preferences": "Preferências",
+  "activity": "Atividade",
+  "logout": "Sair"
 }

@@ -30,6 +30,7 @@ import { Footer } from '../../Footer'
 import { useToggleTheme } from '../../../hooks/useToggleTheme'
 import { colors } from '../../../styles/colors'
 import { Box } from '@mui/system'
+import { useTranslation } from 'react-i18next'
 
 export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
@@ -44,6 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { token } = parseCookies()
   const { data } = useUserType()
   const role = data?.type
+  const { t } = useTranslation()
 
   const customHover =
     theme.palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
@@ -116,7 +118,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <RiHome3Line className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={styleListText}>Home</ListItemText>
+                <ListItemText sx={styleListText}>{t('home')}</ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>
@@ -144,7 +146,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   >
                     <RiGroup2Line className='text-xl' />
                   </ListItemIcon>
-                  <ListItemText sx={styleListText}>Clientes</ListItemText>
+                  <ListItemText sx={styleListText}>
+                    {t('customers')}
+                  </ListItemText>
                 </ListItemButton>
               </NavLink>
             </ListItem>
@@ -174,7 +178,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     >
                       <RiDashboardLine className='text-xl' />
                     </ListItemIcon>
-                    <ListItemText sx={styleListText}>Pods</ListItemText>
+                    <ListItemText sx={styleListText}>{t('pods')}</ListItemText>
                   </ListItemButton>
                 </NavLink>
               </ListItem>
@@ -202,7 +206,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       <RiNumbersLine className='text-xl' />
                     </ListItemIcon>
                     <ListItemText sx={styleListText}>
-                      Monitoramento
+                      {t('monitoring')}
                     </ListItemText>
                   </ListItemButton>
                 </NavLink>
@@ -232,7 +236,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <RiTeamLine className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={styleListText}>Usuários</ListItemText>
+                <ListItemText sx={styleListText}>{t('users')}</ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>

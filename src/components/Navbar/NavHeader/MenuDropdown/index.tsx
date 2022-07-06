@@ -14,6 +14,7 @@ import { useAuth } from '../../../../hooks/useAuth'
 
 import { DropdownProps } from './types'
 import { colors } from '../../../../styles/colors'
+import { useTranslation } from 'react-i18next'
 
 export const MenuDropdown: React.FC<DropdownProps> = ({
   email,
@@ -24,6 +25,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
 }) => {
   const { logout } = useAuth()
   const { palette } = useTheme()
+  const { t } = useTranslation()
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -79,7 +81,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='/user-profile' className='flex flex-row gap-2'>
             <HiOutlineUserCircle />
-            <span className='text-sm'>Perfil</span>
+            <span className='text-sm'>{t('profile')}</span>
           </Link>
         </MenuItem>
         <MenuItem
@@ -90,7 +92,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
-            <span className='text-sm'>Preferências</span>
+            <span className='text-sm'>{t('preferences')}</span>
           </Link>
         </MenuItem>
         <MenuItem
@@ -101,7 +103,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
-            <span className='text-sm'>Atividade</span>
+            <span className='text-sm'>{t('activity')}</span>
           </Link>
         </MenuItem>
         <Divider />
@@ -112,7 +114,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
           }}
         >
           <RiLogoutBoxRLine />
-          <span className='ml-2  text-sm'>Sair</span>
+          <span className='ml-2  text-sm'>{t('logout')}</span>
         </MenuItem>
       </Menu>
     </>
