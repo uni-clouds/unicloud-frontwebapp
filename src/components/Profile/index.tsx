@@ -33,6 +33,7 @@ export const Profile: React.FC = () => {
     if (mode === 'Configurações de Segurança') return <SafetySettings />
   }
 
+const Profile: React.FC = () => {
   return (
     <section
       className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'
@@ -54,7 +55,7 @@ export const Profile: React.FC = () => {
               {user ? renderData(user.email) : ''}
             </h4>
           </div>
-          <button className='px-2 py-2 hover:bg-light-100 rounded-full transition-colors '>
+          <button>
             <MdMoreVert />
           </button>
         </div>
@@ -102,3 +103,4 @@ export const Profile: React.FC = () => {
     </section>
   )
 }
+export default Profile
