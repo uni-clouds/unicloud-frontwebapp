@@ -6,21 +6,25 @@ import { initReactI18next } from 'react-i18next'
 import enCommon from '../../public/locales/en/common.json'
 import enLogin from '../../public/locales/en/login.json'
 import enProfile from '../../public/locales/en/profile.json'
+import enCustomers from '../../public/locales/en/customers.json'
 //PORTUGUESE:
 import ptCommon from '../../public/locales/pt/common.json'
 import ptLogin from '../../public/locales/pt/login.json'
 import ptProfile from '../../public/locales/pt/profile.json'
+import ptCustomers from '../../public/locales/pt/customers.json'
 
 const resources = {
   en: {
     common: enCommon,
     login: enLogin,
-    profile: enProfile
+    profile: enProfile,
+    customers: enCustomers
   },
   pt: {
     common: ptCommon,
     login: ptLogin,
-    profile: ptProfile
+    profile: ptProfile,
+    customers: ptCustomers
   }
 }
 
