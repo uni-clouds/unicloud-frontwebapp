@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Tooltip } from '@mui/material'
 import { HiPlus } from 'react-icons/hi'
 import { FcInvite } from 'react-icons/fc'
 import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
 import { OutlineButton } from '../../components/Elements/Buttons/OutlineButton'
 import { ModalInvitation } from './ModalInvitation'
 import { HeaderProps } from './types'
-import { useNavigate } from 'react-router-dom'
 
 export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
   const [openModal, setOpenModal] = useState(false)
@@ -30,13 +31,15 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
             Convites
           </OutlineButton>
         )}
-        <PurpleButton
-          name='adicionar usuários'
-          onclick={() => setOpenModal(true)}
-        >
-          <HiPlus fontSize={20} />
-          Usuário
-        </PurpleButton>
+        <Tooltip title='Adicionar usuário' aria-haspopup role='alert'>
+          <PurpleButton
+            name='adicionar usuários'
+            onclick={() => setOpenModal(true)}
+          >
+            <HiPlus fontSize={20} />
+            Usuário
+          </PurpleButton>
+        </Tooltip>
         <ModalInvitation
           isOpen={openModal}
           handleClose={() => setOpenModal(false)}

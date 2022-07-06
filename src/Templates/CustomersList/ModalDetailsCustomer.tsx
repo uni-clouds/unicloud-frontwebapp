@@ -8,7 +8,7 @@ export const ModalDetailsCustomer: React.FC<ModalDetailsCustomerProps> = ({
   data
 }) => {
   return (
-    <Modal height={700} isOpen={isOpen} handleClose={handleClose} width='lg'>
+    <Modal height={600} isOpen={isOpen} handleClose={handleClose} width='lg'>
       <DetailsCustomerForm handleClose={handleClose} data={data} />
     </Modal>
   )

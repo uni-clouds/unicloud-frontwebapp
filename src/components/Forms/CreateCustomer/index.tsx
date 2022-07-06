@@ -32,6 +32,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const values = ['Customer', 'Partner']
 
   const { data } = useUserType()
   useEffect(() => {
@@ -124,7 +125,13 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
                 control={control}
                 rules={{ required: true }}
                 render={({ field, fieldState: { error } }) => (
-                  <InputType field={field} error={error} />
+                  <InputType
+                    {...field}
+                    error={error}
+                    name='customer'
+                    values={values}
+                    label='Selecione o tipo de cliente'
+                  />
                 )}
               />
             </div>

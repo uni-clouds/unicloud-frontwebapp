@@ -9,7 +9,7 @@ const PasswordInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   ref
 ) => {
   return (
-    <div className='group flex flex-col mb-7 relative gap-3.5'>
+    <div className='group flex flex-col relative gap-3'>
       <Input
         placeholder={placeholder}
         label={label}
