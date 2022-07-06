@@ -10,7 +10,7 @@ export default function PersonalInformation({ user }) {
   function interpolateAdress() {
     return `${
       user && user.userprofile ? renderData(user.userprofile.address) : ''
-    },${user && user.userprofile ? renderData(user.userprofile.city) : ''} - ${
+    }, ${user && user.userprofile ? renderData(user.userprofile.city) : ''} - ${
       user && user.userprofile ? renderData(user.userprofile.state) : ''
     }, ${user && user.userprofile ? renderData(user.userprofile.country) : ''}`
   }
@@ -39,7 +39,7 @@ export default function PersonalInformation({ user }) {
               icon
             />
             <InformationDisplay
-              label='Email'
+              label='E-mail'
               text={user ? renderData(user.email) : '-'}
               icon
             />
@@ -66,7 +66,7 @@ export default function PersonalInformation({ user }) {
           </h3>
           <div className='px-2'>
             <InformationDisplay text={lastLogin} label='Último login' />
-            <InformationDisplay text={dateJoined} label='Usuário' />
+            <InformationDisplay text={dateJoined} label='Usuário desde' />
           </div>
         </div>
       </div>
