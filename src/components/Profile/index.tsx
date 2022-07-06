@@ -1,10 +1,8 @@
 import { Avatar } from '../Avatar'
 import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PersonalInformation from './PersonalInformation'
-import Activities from './Activities'
-import SafetySettings from './SafetySettings'
 import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
@@ -13,9 +11,9 @@ import { renderData } from './util'
 import { Link } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
-  const [mode, setMode] = useState<
-    'Informações Pessoais' | 'Atividade' | 'Configurações de Segurança'
-  >('Informações Pessoais')
+  const [mode, setMode] = useState<'Informações Pessoais'>(
+    'Informações Pessoais'
+  )
 
   const { customerData } = useUserData()
   const { data } = useUsersList()
@@ -28,8 +26,6 @@ export const Profile: React.FC = () => {
   function renderSection() {
     if (mode === 'Informações Pessoais')
       return <PersonalInformation user={user} />
-    if (mode === 'Atividade') return <Activities />
-    if (mode === 'Configurações de Segurança') return <SafetySettings />
   }
 
   return (
@@ -77,16 +73,12 @@ export const Profile: React.FC = () => {
               />
 
               <NavigationItem text='Notificações' href='#' active={false} />
-              {/* <NavigationItem
-                text='Atividade'
-                href='#'
-                active={mode === 'Atividade'}
-              />
+              <NavigationItem text='Atividade' href='#' active={false} />
               <NavigationItem
                 text='Configurações de Segurança'
                 href='#'
-                active={mode === 'Configurações de Segurança'}
-              /> */}
+                active={false}
+              />
             </ul>
           </nav>
         </div>
