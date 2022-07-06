@@ -15,8 +15,6 @@ export default function PersonalInformation({ user }) {
     }, ${user && user.userprofile ? renderData(user.userprofile.country) : ''}`
   }
 
-  console.log(user)
-
   const lastLogin = transformDate(user ? renderData(user.last_login) : '-')
   const dateJoined = transformDate(user ? renderData(user.date_joined) : '-')
 

@@ -6,16 +6,14 @@ import PersonalInformation from './PersonalInformation'
 import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
-import { useNavigate } from 'react-router-dom'
 import { renderData } from './util'
-import { Link } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
 
-  const { customerData } = useUserData()
+  const { data: customerData } = useUserData()
   const { data } = useUsersList()
   const { user_id } = useDecode()
   const user = data?.filter((el) => el.id === user_id)[0]

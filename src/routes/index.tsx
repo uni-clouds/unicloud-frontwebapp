@@ -9,6 +9,7 @@ import Users from '../pages/Users'
 import Register from '../pages/Auth/Register'
 import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
+import Pods from '../pages/Pods'
 import UserProfilePage from '../pages/UserProfile'
 
 export default function MainRoutes() {
@@ -118,7 +119,7 @@ export default function MainRoutes() {
         path='/unicloud-pods'
         element={
           <ProtectedRoute>
-            <PlaceholderPage />
+            <Pods />
           </ProtectedRoute>
         }
       />

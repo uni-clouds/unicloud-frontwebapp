@@ -3,7 +3,8 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-  SxProps
+  SxProps,
+  useTheme
 } from '@mui/material'
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { SelectInputProps } from './types'
@@ -12,28 +13,42 @@ import { colors } from '../../../styles/colors'
 const TypeSelect: ForwardRefRenderFunction<
   HTMLInputElement,
   SelectInputProps
-> = ({ error, field }, ref) => {
+> = ({ error, name, label, values, ...field }, ref) => {
+  const { palette } = useTheme()
+
   const styles: SxProps = {
     '.MuiFormLabel-root': {
-      color: colors.base[300],
-      '&.Mui-focused ': { color: colors.base[500] }
+      color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit',
+      width: '100%',
+      '&.Mui-focused ': {
+        color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit'
+      }
     },
     '& .MuiSelect-select': {
       paddingTop: '12px',
       paddingBottom: '14px'
+    },
+    '& .Mui-checked': {
+      color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit'
     }
   }
   const stylesInput: SxProps = {
     '.MuiOutlinedInput-notchedOutline': {
-      borderColor: colors.light[200],
+      borderColor:
+        palette.mode === 'dark' ? colors.neutral[700] : colors.light[200],
+      width: '100%',
       borderRadius: '0.375rem'
     },
     '&:hover .MuiOutlinedInput-notchedOutline': {
-      borderColor: colors.light[200]
+      borderColor:
+        palette.mode === 'dark' ? colors.neutral[700] : colors.light[200]
     },
     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: colors.brand[600],
       borderWidth: 2
+    },
+    '& .Mui-error': {
+      border: colors.red.custom
     }
   }
   return (
@@ -43,23 +58,26 @@ const TypeSelect: ForwardRefRenderFunction<
         htmlFor='type-customer'
         aria-label={`input-type-customer`}
       >
-        Selecione o tipo de cliente
+        {label}
       </InputLabel>
 
       <Select
         {...field}
-        aria-labelledby='select-type-customer'
-        id='type-customer'
+        aria-labelledby={`select-type-${name}`}
+        id={`type-${name}`}
         aria-haspopup
         label='Selecione o tipo de cliente'
         inputProps={{
-          name: 'type-customer',
-          id: 'type-customer'
+          name: `type-${name}`,
+          id: `type-${name}`
         }}
         sx={stylesInput}
       >
-        <MenuItem value={'partner'}>Partner</MenuItem>
-        <MenuItem value={'customer'}>Customer</MenuItem>
+        {values?.map((value) => (
+          <MenuItem value={value} sx={{ textTransform: 'capitalize' }}>
+            {value}
+          </MenuItem>
+        ))}
       </Select>
       <p
         className={`text-red-custom text-xs py-1.5 peer-absolute inset-x-0 -bottom-7 transition-all delay-75 ease-in ${

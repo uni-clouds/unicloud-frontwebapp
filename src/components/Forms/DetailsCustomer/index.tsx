@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Grid } from '@mui/material'
 import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
 import { Input } from '../../Elements/Inputs/Input'
-import { Container } from '@mui/system'
 import { CustomerDetailsType, CustomerDetailsProps } from './types'
-import { Grid } from '@mui/material'
+import { styleGrid } from '../styles'
 
 export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
   handleClose,
@@ -36,7 +36,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
     setValue('pais', data?.map((d) => d.pais).toString())
     setValue('email', data?.map((d) => d.email).toString())
   }, [data])
-  const styleGrid = { display: 'flex', flexDirection: 'column', gap: 1 }
+
   return (
     <>
       <form
@@ -73,7 +73,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} sm={5}>
+          <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
               label='E-mail'
@@ -138,7 +138,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} sm={4}>
+          <Grid item sx={styleGrid} sm={3} md={5}>
             <Input
               type='text'
               label='Cidade'

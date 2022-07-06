@@ -15,6 +15,11 @@ import { TableToolbar } from './TableToolbar'
 import { CustomersTableProps, Data, Order } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
+import {
+  checkboxCellUsers,
+  stylesCellUsers,
+  stylesLastCellUsers
+} from '../styles'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -157,27 +162,14 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           borderRadius: 2
                         }}
                       >
-                        <TableCell
-                          padding='checkbox'
-                          sx={{
-                            border: 'none',
-                            borderRadius: 2,
-                            borderTopRightRadius: 1,
-                            borderBottomRightRadius: 1
-                          }}
-                        >
+                        <TableCell padding='checkbox' sx={stylesLastCellUsers}>
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{
                               'aria-labelledby': labelId,
                               'aria-label': labelId
                             }}
-                            sx={{
-                              color: 'secondary',
-                              '&.Mui-checked': {
-                                color: colors.brand[600]
-                              }
-                            }}
+                            sx={checkboxCellUsers}
                           />
                         </TableCell>
                         <TableCell
@@ -185,19 +177,22 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           id={labelId}
                           scope='row'
                           padding='normal'
-                          sx={{
-                            border: 'none'
-                          }}
+                          sx={stylesCellUsers}
                         >
-                          {row.name}
+                          <div className='flex flex-col gap-1'>
+                            <span className='font-semibold'>{row.name}</span>
+                            <span className='text-xs text-base-400'>
+                              {row.email}
+                            </span>
+                          </div>
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.cnpj}
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.phone}
                         </TableCell>
-                        <TableCell align='left' sx={{ border: 'none' }}>
+                        <TableCell align='left' sx={stylesCellUsers}>
                           {row.city}
                         </TableCell>
                         <TableCell

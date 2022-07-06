@@ -35,9 +35,16 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const customHover =
-    palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
 
+  const styles = {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 1,
+    mt: '8px',
+    '&:hover': {
+      color: palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
+    }
+  }
   return (
     <>
       <button
@@ -71,46 +78,26 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
           <span className='text-xs'>{email}</span>
         </div>
         <Divider />
-        <MenuItem
-          sx={{
-            mt: '8px',
-            '&:hover': { color: customHover }
-          }}
-        >
-          <Link to='/user-profile' className='flex flex-row gap-2'>
+        <Link to='/user-profile'>
+          <MenuItem sx={styles}>
             <HiOutlineUserCircle />
             <span className='text-sm'>Perfil</span>
-          </Link>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
-          <Link to='#' className='flex flex-row gap-2'>
+          </MenuItem>
+        </Link>
+        <Link to='#'>
+          <MenuItem onClick={handleClose} sx={styles}>
             <RiUserSettingsLine />
             <span className='text-sm'>Preferências</span>
-          </Link>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
-          <Link to='#' className='flex flex-row gap-2'>
+          </MenuItem>
+        </Link>
+        <Link to='#'>
+          <MenuItem onClick={handleClose} sx={styles}>
             <FiActivity />
             <span className='text-sm'>Atividade</span>
-          </Link>
-        </MenuItem>
+          </MenuItem>
+        </Link>
         <Divider />
-        <MenuItem
-          onClick={() => logout()}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
+        <MenuItem onClick={() => logout()} sx={styles}>
           <RiLogoutBoxRLine />
           <span className='ml-2  text-sm'>Sair</span>
         </MenuItem>

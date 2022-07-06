@@ -12,6 +12,7 @@ import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
 import { TableToolbar } from './TableToolbar'
+import { Avatar } from '../../Avatar'
 import { Data, Order, UsersTableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
@@ -47,11 +48,21 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
         user.userprofile?.country === undefined || null
           ? ' - '
           : user.userprofile?.country,
-      status: user.is_active ? 'Ativo' : 'Inativo'
+      status: user.is_active ? 'Ativo' : 'Inativo',
+      first_name: user.first_name === undefined || null ? ' ' : user.first_name,
+      last_name: user.last_name === undefined || null ? ' ' : user.last_name
     }
   })
   const rows = users?.map((d) =>
-    createData(d.name, d.email, d.phone, d.country, d.status)
+    createData(
+      d.name,
+      d.email,
+      d.phone,
+      d.country,
+      d.status,
+      d.first_name,
+      d.last_name
+    )
   )
 
   const handleRequestSort = (
@@ -177,7 +188,13 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           padding='normal'
                           sx={stylesCellUsers}
                         >
-                          {row.name}
+                          <div className='flex flex-row gap-3 items-center'>
+                            <Avatar
+                              firstName={row.first_name}
+                              lastName={row.last_name}
+                            />
+                            <span>{row.name}</span>
+                          </div>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
                           {row.email}
