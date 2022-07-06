@@ -10,6 +10,7 @@ import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
 import { useNavigate } from 'react-router-dom'
 import { renderData } from './util'
+import { Link } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
   const navigate = useNavigate()
@@ -33,62 +34,71 @@ export const Profile: React.FC = () => {
   }
 
   return (
-    <div className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'>
+    <section
+      className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'
+      role='region'
+      aria-label='User profile'
+    >
       <div className='flex flex-col max-w-64'>
-        <section className='flex items-center justify-between w-full p-8 gap-4  '>
+        <div className='flex items-center justify-between w-full p-8 gap-4  '>
           <Avatar
             firstName={user ? renderData(user.first_name) : ''}
             lastName={user ? renderData(user.last_name) : ''}
           />
           <div className='flex-1'>
             <h3 className='font-black text-xl '>
-              {user ? renderData(user.first_name) : ''}
+              {user ? renderData(user.first_name) : ''}{' '}
               {user ? renderData(user.last_name) : ''}
             </h3>
             <h4 className='text-base-500'>
-              {user ? renderData(user.last_name) : ''}
+              {user ? renderData(user.email) : ''}
             </h4>
           </div>
           <button className='px-2 py-2 hover:bg-light-100 rounded-full transition-colors '>
             <MdMoreVert />
           </button>
-        </section>
-        <section className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
+        </div>
+        <div className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
           <h4>Empresa</h4>
           <h2 className={`${companyNameSize} font-bold`}>
             {customerData ? renderData(customerData.razao_social) : ''}
           </h2>
-        </section>
-        <section className='flex flex-1 w-full p-8 '>
-          <nav className='w-full'>
+        </div>
+        <div className='flex flex-1 w-full p-8 '>
+          <nav
+            className='w-full'
+            role='navigation'
+            aria-label='User profile section'
+          >
             <ul className='flex flex-col w-full gap-8'>
               <NavigationItem
                 text='Informações Pessoais'
-                onClick={() => setMode('Informações Pessoais')}
+                href='#'
                 active={mode === 'Informações Pessoais'}
               />
+
               <NavigationItem
                 text='Notificações'
-                onClick={() => navigate('/notifications')}
+                href='/notifications'
                 active={false}
               />
-              <NavigationItem
+              {/* <NavigationItem
                 text='Atividade'
-                onClick={() => setMode('Atividade')}
+                href='#'
                 active={mode === 'Atividade'}
               />
               <NavigationItem
                 text='Configurações de Segurança'
-                onClick={() => setMode('Configurações de Segurança')}
+                href='#'
                 active={mode === 'Configurações de Segurança'}
-              />
+              /> */}
             </ul>
           </nav>
-        </section>
+        </div>
       </div>
-      <section className='flex flex-col flex-1 p-8 border-l dark:border-zinc-700'>
+      <div className='flex flex-col flex-1 p-8 border-l dark:border-zinc-700'>
         {user ? renderSection() : null}
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

@@ -6,6 +6,6 @@ export interface InformationDisplayProps {
 
 export interface NavigationItemProps {
   text: string
-  onClick: () => void
+  href: string
   active?: boolean
 }
