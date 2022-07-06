@@ -10,6 +10,8 @@ export interface UserDataType {
   last_name: string
   email: string
   is_active: boolean
+  last_login: string
+  date_joined: string
   userprofile?: Userprofile
 }
 

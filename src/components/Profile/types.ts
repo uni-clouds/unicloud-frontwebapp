@@ -1,3 +1,15 @@
+export interface InformationDisplayProps {
+  text: string
+  icon?: boolean
+  label?: string
+}
+
+export interface NavigationItemProps {
+  text: string
+  href: string
+  active?: boolean
+}
+
 export interface CustomerDataType {
   logo: string
   bairro: string
@@ -15,18 +27,4 @@ export interface CustomerDataType {
   razao_social: string
   telefone: string
   type: string
-}
-
-export interface CustomerType {
-  type: string
-}
-
-export interface ContextData {
-  customerData?: CustomerDataType
-  customerType?: CustomerType
-}
-export interface ContextType extends ContextData {}
-
-export interface UserProviderProps {
-  children: JSX.Element
 }
