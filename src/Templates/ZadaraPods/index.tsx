@@ -12,9 +12,11 @@ export const ZadaraPods: React.FC = () => {
 
   return (
     <section
-      className={`container mx-auto ${isFullScreen ? ' h-full' : 'h-screen'}`}
+      className={`container mx-auto ${
+        isFullScreen ? ' h-full' : 'h-screen'
+      } px-12 flex flex-col gap-4`}
     >
-      <Header />
+      <Header pods={Number(data?.length)} />
       <CardPod />
     </section>
   )
