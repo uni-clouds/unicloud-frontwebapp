@@ -1,0 +1,15 @@
+{
+  "name": "Name",
+  "name-placeholder": "Enter your name",
+  "email": "E-mail",
+  "email-placeholder": "Enter your email address",
+  "password": "Password",
+  "password-placeholder": "Enter your password",
+  "password-forgot": "Forgot your password?",
+  "error-invalid-credentials": "Invalid credentials, try again",
+  "copyright": "© 2022 Uni.Cloud. All rights reserved.",
+  "terms": "Terms & Conditions",
+  "privacy": "Privacy Policies",
+  "help": "Help",
+  "languageSelect": "Language"
+}
