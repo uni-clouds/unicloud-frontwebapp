@@ -149,11 +149,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-<<<<<<< HEAD
         path='/user-profile'
-=======
-        path='/user-profile-regular'
->>>>>>> refs/remotes/origin/user-profile
         element={
           <ProtectedRoute>
             <UserProfilePage />

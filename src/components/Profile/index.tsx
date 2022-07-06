@@ -13,7 +13,6 @@ import { renderData } from './util'
 import { Link } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
-  const navigate = useNavigate()
   const [mode, setMode] = useState<
     'Informações Pessoais' | 'Atividade' | 'Configurações de Segurança'
   >('Informações Pessoais')
@@ -33,7 +32,6 @@ export const Profile: React.FC = () => {
     if (mode === 'Configurações de Segurança') return <SafetySettings />
   }
 
-const Profile: React.FC = () => {
   return (
     <section
       className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'
@@ -103,4 +101,3 @@ const Profile: React.FC = () => {
     </section>
   )
 }
-export default Profile
