@@ -5,7 +5,6 @@ import { initReactI18next } from 'react-i18next'
 //ENGLISH:
 import enCommon from '../../public/locales/en/common.json'
 import enLogin from '../../public/locales/en/login.json'
-<<<<<<< HEAD
 import enProfile from '../../public/locales/en/profile.json'
 import enCustomersUsers from '../../public/locales/en/customers-users.json'
 //PORTUGUESE:
@@ -13,16 +12,10 @@ import ptCommon from '../../public/locales/pt/common.json'
 import ptLogin from '../../public/locales/pt/login.json'
 import ptProfile from '../../public/locales/pt/profile.json'
 import ptCustomersUsers from '../../public/locales/pt/customers-users.json'
-=======
-//PORTUGUESE:
-import ptCommon from '../../public/locales/pt/common.json'
-import ptLogin from '../../public/locales/pt/login.json'
->>>>>>> a637d20 (conflict fixes)
 
 const resources = {
   en: {
     common: enCommon,
-<<<<<<< HEAD
     login: enLogin,
     profile: enProfile,
     customersUsers: enCustomersUsers
@@ -32,13 +25,6 @@ const resources = {
     login: ptLogin,
     profile: ptProfile,
     customersUsers: ptCustomersUsers
-=======
-    login: enLogin
-  },
-  pt: {
-    common: ptCommon,
-    login: ptLogin
->>>>>>> a637d20 (conflict fixes)
   }
 }
 

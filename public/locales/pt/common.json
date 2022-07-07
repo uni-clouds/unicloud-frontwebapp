@@ -6,7 +6,6 @@
   "password": "Password",
   "password-placeholder": "Digite a sua senha",
   "password-forgot": "Esqueceu sua senha?",
-<<<<<<< HEAD
   "phone": "Telefone",
   "address": "Endereço",
   "cnpj": "CNPJ",
@@ -23,14 +22,10 @@
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
 
-=======
-  "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
->>>>>>> a637d20 (conflict fixes)
   "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
   "terms": "Termos & Condições",
   "privacy": "Política de privacidae",
   "help": "Ajuda",
-<<<<<<< HEAD
   "languageSelect": "Idioma",
 
   "home": "Home",
@@ -47,7 +42,4 @@
 
   "active": "Ativo",
   "inactive": "Inativo"
-=======
-  "languageSelect": "Idioma"
->>>>>>> a637d20 (conflict fixes)
 }
