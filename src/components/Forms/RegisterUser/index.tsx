@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastError } from '../../Elements/ToastError'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { PhoneInput } from '../../Elements/Inputs/PhoneInput'
+import { useTranslation } from 'react-i18next'
 
 export const RegisterUser: React.FC = () => {
   const {
@@ -26,6 +27,8 @@ export const RegisterUser: React.FC = () => {
   const [isFail, setIsFail] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const navigate = useNavigate()
+
+  const { t: translate } = useTranslation()
 
   const onRegisterSubmit: SubmitHandler<RegisterFormProps> = async (data) => {
     try {
@@ -64,21 +67,21 @@ export const RegisterUser: React.FC = () => {
     <>
       {!!isError && (
         <ToastError
-          message='Ocorreu um erro inesperado, recarregue a página e tente novamente.'
+          message={translate('error-something-unexpected-refresh')}
           isError={isError}
           handleClose={handleOnClose}
         />
       )}
       {!!isSuccess && (
         <ToastSuccess
-          message='Usuário criado com sucesso!'
+          message={translate('success-user-created')}
           isSuccess={isSuccess}
           handleClose={handleOnClose}
         />
       )}
       {!!isFail && (
         <ToastError
-          message='Usuário já cadastrado, verifique os dados e tente novamente.'
+          message={translate('error-user-alreadyExists')}
           isError={isFail}
           handleClose={handleOnClose}
         />
@@ -92,8 +95,8 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2 w-1/2'>
             <Input
               type='text'
-              placeholder='Digite seu nome'
-              label='Nome'
+              placeholder={translate('firstName-placeholder')}
+              label={translate('firstName')}
               aria-invalid={errors.first_name ? 'true' : 'false'}
               error={errors?.first_name}
               {...register('first_name')}
@@ -102,9 +105,9 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2 w-1/2'>
             <Input
               type='text'
-              placeholder='Digite seu sobrenome'
+              placeholder={translate('lastName-placeholder')}
               aria-invalid={errors.last_name ? 'true' : 'false'}
-              label='Sobrenome'
+              label={translate('lastName')}
               error={errors?.last_name}
               {...register('last_name')}
             />
@@ -112,9 +115,9 @@ export const RegisterUser: React.FC = () => {
         </div>
         <Input
           type='email'
-          placeholder='Digite seu e-mail'
+          placeholder={translate('email-placeholder')}
           aria-invalid={errors.username ? 'true' : 'false'}
-          label='E-mail'
+          label={translate('email')}
           error={errors?.username}
           {...register('username')}
         />
@@ -122,9 +125,9 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2  w-1/2'>
             <Input
               type='password'
-              placeholder='Digite sua senha'
+              placeholder={translate('password-placeholder')}
               aria-invalid={errors.password ? 'true' : 'false'}
-              label='Senha'
+              label={translate('password')}
               error={errors?.password}
               {...register('password')}
             />
@@ -145,8 +148,8 @@ export const RegisterUser: React.FC = () => {
         </div>
         <Input
           type='text'
-          placeholder='Digite seu endereço'
-          label='Endereço'
+          placeholder={translate('address-placeholder')}
+          label={translate('address')}
           aria-invalid={errors.address ? 'true' : 'false'}
           error={errors?.address}
           {...register('address')}
@@ -155,9 +158,9 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2  w-1/3 sm:w-full'>
             <Input
               type='text'
-              placeholder='Digite sua cidade'
+              placeholder={translate('city-placeholder')}
               aria-invalid={errors.city ? 'true' : 'false'}
-              label='Cidade'
+              label={translate('city')}
               error={errors?.city}
               {...register('city')}
             />
@@ -165,9 +168,9 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2  w-1/3 sm:w-full'>
             <Input
               type='text'
-              placeholder='Digite seu Estado'
+              placeholder={translate('state-placeholder')}
               aria-invalid={errors.state ? 'true' : 'false'}
-              label='Estado'
+              label={translate('state')}
               error={errors?.state}
               {...register('state')}
             />
@@ -175,8 +178,8 @@ export const RegisterUser: React.FC = () => {
           <div className='flex flex-col gap-2  w-1/3 sm:w-full'>
             <Input
               type='text'
-              placeholder='Digite seu país'
-              label='País'
+              placeholder={translate('country-placeholder')}
+              label={translate('country')}
               error={errors?.country}
               aria-invalid={errors.country ? 'true' : 'false'}
               {...register('country')}
@@ -185,10 +188,10 @@ export const RegisterUser: React.FC = () => {
         </div>
         <div className=' flex flex-row gap-6 justify-end items-center my-2 '>
           <SubmitButton isDisabled={false} isForm={true}>
-            Enviar
+            {translate('submit')}
           </SubmitButton>
           <OutlineButton name='clear-form' onclick={() => reset()}>
-            Limpar
+            {translate('clear')}
           </OutlineButton>
         </div>
       </form>
