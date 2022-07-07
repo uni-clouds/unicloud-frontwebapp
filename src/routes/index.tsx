@@ -9,7 +9,6 @@ import Users from '../pages/Users'
 import Register from '../pages/Auth/Register'
 import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
-import UserProfilePage from '../pages/UserProfile'
 import Pods from '../pages/Pods'
 
 export default function MainRoutes() {
