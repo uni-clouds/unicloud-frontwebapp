@@ -1,9 +1,17 @@
-import { lazy } from 'react'
+import { Navigate } from 'react-router-dom'
+import { useCanAccess } from '../../hooks/useCanAccess'
 import CustomersList from '../../Templates/CustomersList'
 
-//const CustomersList = lazy(() => import('../../Templates/CustomersList'))
 const Customers: React.FC = () => {
   document.title = 'Uni.Cloud | Clientes'
-  return <CustomersList />
+  const accessLevelOne = useCanAccess({
+    role: ['root', 'partner']
+  })
+
+  if (accessLevelOne) {
+    return <CustomersList />
+  }
+
+  return <Navigate to='/not-found' replace />
 }
 export default Customers
