@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
             </div>
             <LoginForm />
             <p className='my-4 text-sm lg:text-md text-center'>
-              Ainda não possui acesso?
+              {translate('login:noAccess')}
               <span className='ml-2'>
                 <LinkInternal name={translate('login:noAccessLink')} href='#' />
               </span>
