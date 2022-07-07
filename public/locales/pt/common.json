@@ -20,7 +20,6 @@
   "country": "País",
   "status": "Status",
   "user": "Usuário",
-
   "company": "Empresa",
   "companyName": "Razão Social",
   "companyTradingName": "Nome Fantasia",
@@ -37,6 +36,9 @@
 
   "tooltip-showDetails": "Exibir detalhes",
   "tooltip-oneUserAtATime": "Apenas um usuário por vez",
+
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
 
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
