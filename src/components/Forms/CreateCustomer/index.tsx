@@ -133,7 +133,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
                     error={error}
                     name='customer'
                     values={values}
-                    label='Selecione o tipo de cliente'
+                    label={t('customersUsers:customerType-placeholder')}
                   />
                 )}
               />
@@ -142,10 +142,10 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         </div>
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : 'Adicionar usuário'}
+            {isSubmitting ? <Loading /> : t('customersUsers:addCustomer')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? 'Fechar' : 'Cancelar'}
+            {!!isSuccess ? t('close') : t('cancel')}
           </OutlineButton>
         </div>
       </form>

@@ -18,6 +18,7 @@
 
   "cancel": "Cancelar",
   "confirm": "Confirmar",
+  "close": "Fechar",
 
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
