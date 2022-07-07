@@ -10,7 +10,6 @@ import { renderData } from './util'
 import { UserDataType } from '../Tables/Users/types'
 
 export const Profile: React.FC = () => {
-  document.title = 'Uni.Cloud | Perfil'
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
