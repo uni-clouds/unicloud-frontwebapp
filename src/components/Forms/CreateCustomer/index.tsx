@@ -32,7 +32,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const values = ['Customer', 'Partner']
+  const values = ['customer', 'partner']
 
   const { data } = useUserType()
   useEffect(() => {

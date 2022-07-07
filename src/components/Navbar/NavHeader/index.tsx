@@ -6,6 +6,7 @@ import { MenuDropdown } from './MenuDropdown'
 import { Notifications } from './Notifications'
 import { DecodeTypes } from './types'
 import { useUserType } from '../../../hooks/useUserType'
+import { useDecode } from '../../../hooks/useDecode'
 
 export const NavHeader = () => {
   const [email, setEmail] = useState('')
@@ -14,24 +15,20 @@ export const NavHeader = () => {
   const [lastName, setLastName] = useState('')
   const [userType, setUserType] = useState(null)
   const { data } = useUserType()
+  const { first_name, last_name, email: userEmail } = useDecode()
 
   useMemo(() => {
-    const cookies = parseCookies()
-    const token = cookies.token
-    if (token) {
-      const decode = jwtDecode<DecodeTypes>(token)
-      const createName = []
-      createName.push(decode.first_name)
-      createName.push(decode.last_name)
-      const handleName = createName.join(' ')
-      const type = data?.type === 'root' ? 'Super Administrador' : data?.type
-      setUsername(handleName)
-      setEmail(decode.email)
-      setUserType(type)
-      setFirstName(decode.first_name)
-      setLastName(decode.last_name)
-    }
-  }, [data])
+    const createName = []
+    createName.push(first_name)
+    createName.push(last_name)
+    const handleName = createName.join(' ')
+    const type = data?.type === 'root' ? 'Super Administrador' : data?.type
+    setUsername(handleName)
+    setEmail(userEmail)
+    setUserType(type)
+    setFirstName(first_name)
+    setLastName(last_name)
+  }, [data, first_name, last_name, userEmail])
   return (
     <nav className='max-w-fit' role='navigation' aria-controls='navigation'>
       <ul role='menu' className='flex flex-row gap-6 items-center'>
