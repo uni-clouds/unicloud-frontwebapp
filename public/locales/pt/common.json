@@ -14,10 +14,14 @@
   "country": "País",
   "status": "Status",
   "user": "Usuário",
-  "userType-placeholder": "Selecione o tipo de usuário",
   "company": "Empresa",
 
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
+  "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
+
   "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
   "terms": "Termos & Condições",
   "privacy": "Política de privacidae",
@@ -36,5 +40,6 @@
   "activity": "Atividade",
   "logout": "Sair",
 
-  "active": "ativo"
+  "active": "Ativo",
+  "inactive": "Inativo"
 }

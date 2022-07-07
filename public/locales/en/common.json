@@ -6,6 +6,19 @@
   "password": "Password",
   "password-placeholder": "Enter your password",
   "password-forgot": "Forgot your password?",
+  "phone": "Phone",
+  "address": "Address",
+  "cnpj": "EIN",
+  "cnpj-placeholder": "Enter the EIN",
+  "city": "City",
+  "country": "Country",
+  "status": "Status",
+  "user": "User",
+  "company": "Company",
+
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+
   "error-invalid-credentials": "Invalid credentials, try again",
   "copyright": "© 2022 Uni.Cloud. All rights reserved.",
   "terms": "Terms & Conditions",
@@ -23,5 +36,8 @@
   "profile": "Profile",
   "preferences": "Preferences",
   "activity": "Activity",
-  "logout": "Logout"
+  "logout": "Logout",
+
+  "active": "Active",
+  "inactive": "Inactive"
 }

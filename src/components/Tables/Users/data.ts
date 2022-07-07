@@ -1,4 +1,5 @@
 import { HeadCell, Data } from './types'
+import i18n from '../../../i18n'
 
 export function createData(
   name: string,
@@ -21,35 +22,35 @@ export const headCells: readonly HeadCell[] = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Nome',
+    label: `${i18n.t('name')}`,
     minWidth: 180
   },
   {
     id: 'email',
     numeric: false,
     disablePadding: false,
-    label: 'E-mail',
+    label: `${i18n.t('email')}`,
     minWidth: 200
   },
   {
     id: 'phone',
     numeric: false,
     disablePadding: false,
-    label: 'Telefone',
+    label: `${i18n.t('phone')}`,
     minWidth: 150
   },
   {
     id: 'country',
     numeric: false,
     disablePadding: false,
-    label: 'País',
+    label: `${i18n.t('country')}`,
     minWidth: 100
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: 'Status',
+    label: `${i18n.t('status')}`,
     minWidth: 100
   }
 ]

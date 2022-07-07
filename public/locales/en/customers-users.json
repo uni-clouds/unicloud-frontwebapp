@@ -1,0 +1,13 @@
+{
+  "table-subtitle-1": "You have",
+
+  "customers-subtitle-2-singular": "customer",
+  "customers-subtitle-2-plural": "customers",
+
+  "users-subtitle-2-singular": "user",
+  "users-subtitle-2-plural": "users",
+
+  "mainUserEmail": "",
+  "userType-placeholder": "",
+  "addUser": ""
+}
