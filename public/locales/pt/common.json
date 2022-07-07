@@ -36,6 +36,7 @@
 
   "tooltip-showDetails": "Exibir detalhes",
   "tooltip-oneUserAtATime": "Apenas um usuário por vez",
+  "tooltip-oneCustomerAtATime": "Apenas um cliente por vez",
 
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",

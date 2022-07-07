@@ -46,7 +46,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         </Tooltip>
       ) : numSelected > 1 ? (
         <Tooltip
-          title={translate('tooltip-oneUserAtATime')}
+          title={translate('tooltip-oneCustomerAtATime')}
           aria-disabled='true'
           role='alert'
           disableInteractive
