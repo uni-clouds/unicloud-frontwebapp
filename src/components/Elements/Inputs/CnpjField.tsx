@@ -7,7 +7,7 @@ const CnpjField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { error, disabled, ...rest },
   ref
 ) => {
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
   return (
     <>
       <label
@@ -15,11 +15,11 @@ const CnpjField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         className='font-bold '
         htmlFor='Telefone'
       >
-        {t('cnpj')}
+        {translate('cnpj')}
       </label>
       <MaskedInput
         type='text'
-        placeholder={t('cnpj-placeholder')}
+        placeholder={translate('cnpj-placeholder')}
         id='cnpj'
         disabled={disabled}
         role='CNPJ'

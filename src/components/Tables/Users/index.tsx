@@ -34,7 +34,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const users = list?.map((user) => {
     return {
@@ -51,7 +51,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
         user.userprofile?.country === undefined || null
           ? ' - '
           : user.userprofile?.country,
-      status: user.is_active ? t('active') : t('inactive'),
+      status: user.is_active ? translate('active') : translate('inactive'),
       first_name: user.first_name === undefined || null ? ' ' : user.first_name,
       last_name: user.last_name === undefined || null ? ' ' : user.last_name
     }
@@ -243,7 +243,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
             component='div'
             count={rows.length}
             rowsPerPage={rowsPerPage}
-            labelRowsPerPage={t('linesPerPage')}
+            labelRowsPerPage={translate('linesPerPage')}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}

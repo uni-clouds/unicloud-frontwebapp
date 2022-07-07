@@ -25,7 +25,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
 }) => {
   const { logout } = useAuth()
   const { palette } = useTheme()
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -81,7 +81,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='/user-profile' className='flex flex-row gap-2'>
             <HiOutlineUserCircle />
-            <span className='text-sm'>{t('profile')}</span>
+            <span className='text-sm'>{translate('profile')}</span>
           </Link>
         </MenuItem>
         <MenuItem
@@ -92,7 +92,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
-            <span className='text-sm'>{t('preferences')}</span>
+            <span className='text-sm'>{translate('preferences')}</span>
           </Link>
         </MenuItem>
         <MenuItem
@@ -103,7 +103,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         >
           <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
-            <span className='text-sm'>{t('activity')}</span>
+            <span className='text-sm'>{translate('activity')}</span>
           </Link>
         </MenuItem>
         <Divider />
@@ -114,7 +114,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
           }}
         >
           <RiLogoutBoxRLine />
-          <span className='ml-2  text-sm'>{t('logout')}</span>
+          <span className='ml-2  text-sm'>{translate('logout')}</span>
         </MenuItem>
       </Menu>
     </>

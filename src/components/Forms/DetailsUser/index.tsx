@@ -25,7 +25,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
 
   const [isDisabled, setIsDisabled] = useState(true)
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   useEffect(() => {
     setValue('address', data?.map((d) => d.userprofile?.address).toString())
@@ -48,7 +48,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         <div className='flex flex-col gap-2 w-1/2'>
           <Input
             type='text'
-            label={t('firstName')}
+            label={translate('firstName')}
             disabled={isDisabled}
             error={errors?.first_name}
             {...register('first_name')}
@@ -57,7 +57,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         <div className='flex flex-col gap-2 w-1/2'>
           <Input
             type='text'
-            label={t('lastName')}
+            label={translate('lastName')}
             disabled={isDisabled}
             error={errors?.last_name}
             {...register('last_name')}
@@ -66,14 +66,14 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
       </div>
       <Input
         type='email'
-        label={t('email')}
+        label={translate('email')}
         disabled={isDisabled}
         error={errors?.username}
         {...register('username')}
       />
       <Input
         type='text'
-        label={t('address')}
+        label={translate('address')}
         disabled={isDisabled}
         error={errors?.address}
         {...register('address')}
@@ -82,7 +82,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         <div className='flex flex-col gap-2  w-1/2'>
           <Input
             type='text'
-            label={t('city')}
+            label={translate('city')}
             disabled={isDisabled}
             error={errors?.city}
             {...register('city')}
@@ -106,7 +106,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         <div className='flex flex-col gap-2  w-1/2 sm:w-full'>
           <Input
             type='text'
-            label={t('state')}
+            label={translate('state')}
             disabled={isDisabled}
             error={errors?.state}
             {...register('state')}
@@ -115,7 +115,7 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         <div className='flex flex-col gap-2  w-1/2 sm:w-full'>
           <Input
             type='text'
-            label={t('country')}
+            label={translate('country')}
             disabled={isDisabled}
             error={errors?.country}
             {...register('country')}
@@ -125,16 +125,16 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
       <div className=' flex flex-row gap-6 justify-end items-center '>
         {!!isDisabled ? (
           <PurpleButton onclick={() => setIsDisabled(false)} name='edit-user'>
-            {t('edit')}
+            {translate('edit')}
           </PurpleButton>
         ) : (
           <SubmitButton isDisabled={false} isForm={true}>
-            {t('submit')}
+            {translate('submit')}
           </SubmitButton>
         )}
 
         <OutlineButton name='clear-form' onclick={handleOnClose}>
-          {t('close')}
+          {translate('close')}
         </OutlineButton>
       </div>
     </form>

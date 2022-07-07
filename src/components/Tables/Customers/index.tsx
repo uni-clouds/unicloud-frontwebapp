@@ -33,7 +33,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const [customers, setCustomers] = useState([])
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   useEffect(() => {
     const handleCustomers = list?.map((customer) => {
@@ -49,7 +49,9 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
           customer?.municipio === undefined || null
             ? ' - '
             : customer.municipio,
-        status: customer.is_active ? t('active') : t('inactive'),
+        status: customer.is_active
+          ? translate('active')
+          : translate('inactive'),
         cnpj: customer.cnpj === undefined || null ? ' - ' : customer.cnpj
       }
     })
@@ -233,7 +235,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
             component='div'
             count={rows.length}
             rowsPerPage={rowsPerPage}
-            labelRowsPerPage={t('linesPerPage')}
+            labelRowsPerPage={translate('linesPerPage')}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}

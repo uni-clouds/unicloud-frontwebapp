@@ -42,7 +42,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
     }
   }, [data])
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const createCustomerSubmit: SubmitHandler<CreateCustomerType> = async (
     data
@@ -85,7 +85,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastError
             isError={!!isError}
-            message={t('error-something-unexpected')}
+            message={translate('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -94,7 +94,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message={t('customerUser:customerCreated')}
+            message={translate('customerUser:customerCreated')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -105,8 +105,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         action='POST'
       >
         <Input
-          placeholder={t('email-placeholder')}
-          label={t('email')}
+          placeholder={translate('email-placeholder')}
+          label={translate('email')}
           type='email'
           error={errors?.email}
           {...register('email')}
@@ -133,7 +133,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
                     error={error}
                     name='customer'
                     values={values}
-                    label={t('customersUsers:customerType-placeholder')}
+                    label={translate('customersUsers:customerType-placeholder')}
                   />
                 )}
               />
@@ -142,10 +142,14 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         </div>
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : t('customersUsers:addCustomer')}
+            {isSubmitting ? (
+              <Loading />
+            ) : (
+              translate('customersUsers:addCustomer')
+            )}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? t('close') : t('cancel')}
+            {!!isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </div>
       </form>

@@ -14,19 +14,19 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
   const navigate = useNavigate()
   const isInvite = Number(data?.length) > 0 ? true : false
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   return (
     <div className='w-full flex flex-row justify-between px-4'>
       <div className='flex flex-col gap-2 justify-start'>
         <h1 className='text-3xl font-bold text-base-700 dark:text-base-100'>
-          {t('Usuários')}
+          {translate('Usuários')}
         </h1>
         <p className='text-base-400'>
-          {t('customersUsers:table-subtitle-1')} {totalUsers}{' '}
+          {translate('customersUsers:table-subtitle-1')} {totalUsers}{' '}
           {totalUsers === 1
-            ? t('customersUsers:users-subtitle-2-singular')
-            : t('customersUsers:users-subtitle-2-plural')}
+            ? translate('customersUsers:users-subtitle-2-singular')
+            : translate('customersUsers:users-subtitle-2-plural')}
         </p>
       </div>
       <div className='flex flex-row gap-4'>
@@ -36,15 +36,19 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
             name='convites'
           >
             <FcInvite fontSize={20} />
-            {t('customersUsers:userInvitations')}
+            {translate('customersUsers:userInvitations')}
           </OutlineButton>
         )}
-        <Tooltip title={t('customersUsers:addUser')} aria-haspopup role='alert'>
+        <Tooltip
+          title={translate('customersUsers:addUser')}
+          aria-haspopup
+          role='alert'
+        >
           <PurpleButton
             name='adicionar usuários'
             onclick={() => setOpenModal(true)}
           >
-            {t('customersUsers:addUser')}
+            {translate('customersUsers:addUser')}
             <HiPlus fontSize={20} />
           </PurpleButton>
         </Tooltip>

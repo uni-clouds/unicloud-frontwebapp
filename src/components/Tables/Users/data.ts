@@ -21,40 +21,42 @@ export function createData(
   }
 }
 
+const translate = i18n.t
+
 export const headCells: readonly HeadCell[] = [
   {
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: `${i18n.t('name')}`,
+    label: `${translate('name')}`,
     minWidth: 180
   },
   {
     id: 'email',
     numeric: false,
     disablePadding: false,
-    label: `${i18n.t('email')}`,
+    label: `${translate('email')}`,
     minWidth: 200
   },
   {
     id: 'phone',
     numeric: false,
     disablePadding: false,
-    label: `${i18n.t('phone')}`,
+    label: `${translate('phone')}`,
     minWidth: 150
   },
   {
     id: 'country',
     numeric: false,
     disablePadding: false,
-    label: `${i18n.t('country')}`,
+    label: `${translate('country')}`,
     minWidth: 100
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: `${i18n.t('status')}`,
+    label: `${translate('status')}`,
     minWidth: 100
   }
 ]

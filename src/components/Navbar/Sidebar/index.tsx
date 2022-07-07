@@ -45,7 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { token } = parseCookies()
   const { data } = useUserType()
   const role = data?.type
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const customHover =
     theme.palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
@@ -121,7 +121,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <RiHome3Line className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={styleListText}>{t('home')}</ListItemText>
+                <ListItemText sx={styleListText}>
+                  {translate('home')}
+                </ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>
@@ -150,7 +152,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <RiGroup2Line className='text-xl' />
                   </ListItemIcon>
                   <ListItemText sx={styleListText}>
-                    {t('customers')}
+                    {translate('customers')}
                   </ListItemText>
                 </ListItemButton>
               </NavLink>
@@ -181,7 +183,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     >
                       <RiDashboardLine className='text-xl' />
                     </ListItemIcon>
-                    <ListItemText sx={styleListText}>{t('pods')}</ListItemText>
+                    <ListItemText sx={styleListText}>
+                      {translate('pods')}
+                    </ListItemText>
                   </ListItemButton>
                 </NavLink>
               </ListItem>
@@ -209,7 +213,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       <RiNumbersLine className='text-xl' />
                     </ListItemIcon>
                     <ListItemText sx={styleListText}>
-                      {t('monitoring')}
+                      {translate('monitoring')}
                     </ListItemText>
                   </ListItemButton>
                 </NavLink>
@@ -239,7 +243,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <RiTeamLine className='text-xl' />
                 </ListItemIcon>
-                <ListItemText sx={styleListText}>{t('users')}</ListItemText>
+                <ListItemText sx={styleListText}>
+                  {translate('users')}
+                </ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>

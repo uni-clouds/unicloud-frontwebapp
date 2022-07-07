@@ -17,7 +17,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
   const { data } = useCustomersList()
   const userSelected = data?.filter((f) => f.id === id)
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   return (
     <Toolbar sx={stylesToolbar}>
@@ -29,12 +29,14 @@ export const TableToolbar = (props: TableToolbarProps) => {
           component='div'
         >
           {numSelected}{' '}
-          {numSelected === 1 ? t('selected-singular') : t('selected-plural')}
+          {numSelected === 1
+            ? translate('selected-singular')
+            : translate('selected-plural')}
         </Typography>
       )}
 
       {numSelected === 1 ? (
-        <Tooltip title={t('tooltip-showDetails')}>
+        <Tooltip title={translate('tooltip-showDetails')}>
           <IconButton
             onClick={() => setIsModalOpen(!isModalOpen)}
             sx={{ '& :hover': { color: colors.brand[600] } }}
@@ -44,7 +46,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         </Tooltip>
       ) : numSelected > 1 ? (
         <Tooltip
-          title={t('tooltip-oneUserAtATime')}
+          title={translate('tooltip-oneUserAtATime')}
           aria-disabled='true'
           role='alert'
           disableInteractive
@@ -54,7 +56,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title={t('filter')}>
+        <Tooltip title={translate('filter')}>
           <IconButton>
             <MdFilterList />
           </IconButton>

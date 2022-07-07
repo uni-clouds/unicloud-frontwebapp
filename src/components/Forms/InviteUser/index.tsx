@@ -28,7 +28,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isPending, setIsPending] = useState(false)
 
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const onInviteSubmit: SubmitHandler<InviteFormProps> = async (data) => {
     try {
@@ -67,7 +67,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastError
             isError={!!isError}
-            message={t('error-something-unexpected')}
+            message={translate('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -76,7 +76,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastWarning
             isWarning={!!isPending}
-            message={t('consumersUsers:invitationIsPending')}
+            message={translate('consumersUsers:invitationIsPending')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -85,7 +85,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message={t('consumersUsers:invitationSent')}
+            message={translate('consumersUsers:invitationSent')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -96,8 +96,8 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         action='POST'
       >
         <Input
-          placeholder={t('email-placeholder')}
-          label={t('email')}
+          placeholder={translate('email-placeholder')}
+          label={translate('email')}
           type='email'
           error={errors?.email}
           aria-invalid={errors.email ? 'true' : 'false'}
@@ -105,10 +105,10 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         />
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : t('customersUsers:addUser')}
+            {isSubmitting ? <Loading /> : translate('customersUsers:addUser')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? t('close') : t('cancel')}
+            {!!isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </div>
       </form>

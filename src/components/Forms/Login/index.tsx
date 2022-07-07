@@ -14,7 +14,7 @@ import { PasswordField } from '../../Elements/Inputs/PasswordField'
 import { useTranslation } from 'react-i18next'
 
 export const Login: React.FC = () => {
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
   const {
     register,
     handleSubmit,
@@ -62,7 +62,7 @@ export const Login: React.FC = () => {
       {!!isError && (
         <ToastError
           isError={!!isError}
-          message={t('error-invalid-credentials')}
+          message={translate('error-invalid-credentials')}
           handleClose={handleOnClose}
         />
       )}
@@ -72,16 +72,16 @@ export const Login: React.FC = () => {
         action='POST'
       >
         <EmailField
-          placeholder={t('email-placeholder')}
+          placeholder={translate('email-placeholder')}
           aria-invalid={errors.email ? 'true' : 'false'}
-          label={t('email')}
+          label={translate('email')}
           type='text'
           {...register('email')}
           error={errors?.email}
         />
         <PasswordField
-          placeholder={t('password-placeholder')}
-          label={t('password')}
+          placeholder={translate('password-placeholder')}
+          label={translate('password')}
           type={!!passwordIsShow ? 'text' : 'password'}
           aria-invalid={errors.password ? 'true' : 'false'}
           isVisible={passwordIsShow}
@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
           error={errors?.password}
         />
         <SubmitButton isDisabled={isSubmitting} isLogin>
-          {!!isSubmitting ? <Loading /> : t('login:login')}
+          {!!isSubmitting ? <Loading /> : translate('login:login')}
         </SubmitButton>
       </form>
     </>

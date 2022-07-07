@@ -7,7 +7,7 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { error, disabled, ...rest },
   ref
 ) => {
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
   return (
     <>
       <label
@@ -15,11 +15,11 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         className='font-bold '
         htmlFor='Telefone'
       >
-        {t('phone')}
+        {translate('phone')}
       </label>
       <MaskedInput
         type='phone'
-        placeholder={t('phone-placeholder')}
+        placeholder={translate('phone-placeholder')}
         guide
         id='phone'
         disabled={disabled}

@@ -15,7 +15,7 @@ export const Profile: React.FC = () => {
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
-  const { t } = useTranslation()
+  const { t: translate } = useTranslation()
 
   const { customerData } = useUserData()
   const { data } = useUsersList()
@@ -56,7 +56,7 @@ export const Profile: React.FC = () => {
           </button>
         </div>
         <div className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
-          <h4>{t('profile:company')}</h4>
+          <h4>{translate('profile:company')}</h4>
           <h2 className={`${companyNameSize} font-bold`}>
             {customerData ? renderData(customerData.razao_social) : ''}
           </h2>
@@ -69,23 +69,23 @@ export const Profile: React.FC = () => {
           >
             <ul className='flex flex-col w-full gap-8'>
               <NavigationItem
-                text={t('profile:personalInformation')}
+                text={translate('profile:personalInformation')}
                 href='#'
                 active={mode === 'Informações Pessoais'}
               />
 
               <NavigationItem
-                text={t('profile:notifications')}
+                text={translate('profile:notifications')}
                 href='#'
                 active={false}
               />
               <NavigationItem
-                text={t('profile:activity')}
+                text={translate('profile:activity')}
                 href='#'
                 active={false}
               />
               <NavigationItem
-                text={t('profile:safetyAdjusts')}
+                text={translate('profile:safetyAdjusts')}
                 href='#'
                 active={false}
               />
