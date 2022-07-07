@@ -1,11 +1,10 @@
 import { Footer } from '../../components/Footer'
 import { Login as LoginForm } from '../../components/Forms/Login'
 import { Logo } from '../../components/Logo'
-import { NavLinkLogin } from '../../components/Elements/Navigation/NavLinkLogin'
-import { useTranslation } from 'react-i18next'
 import { LinkInternal } from '../../components/Elements/Navigation/LinkInternal'
-import { Divider } from '@mui/material'
 import { NavLinksHelpers } from '../../components/Elements/Navigation/NavLinksHelpers'
+import { Divider } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 export const Login: React.FC = () => {
   const { t: translate } = useTranslation()
@@ -13,11 +12,11 @@ export const Login: React.FC = () => {
   const navItems = [
     {
       name: `${translate('login:commercial')}`,
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      path: '/commercial'
     },
     {
       name: `${translate('login:help-desk')}`,
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      path: '/help-desk'
     }
   ]
   return (
@@ -27,7 +26,7 @@ export const Login: React.FC = () => {
           <Logo />
           <div className='mt-6 flex flex-col align-center w-[25rem] lg:w-[30rem] rounded-sm bg-neutral-50 custom-dark p-6 lg:p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
             <div>
-              <h4 className='font-bold text-xl lg:text-2xl text-base-600 dark:text-base-200 mb-2'>
+              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>
                 {translate('login:login')}
               </h4>
               <p className='text-sm'>{translate('login:subtitle')}</p>

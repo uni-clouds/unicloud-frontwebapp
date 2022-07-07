@@ -37,9 +37,6 @@
   "tooltip-showDetails": "Exibir detalhes",
   "tooltip-oneUserAtATime": "Apenas um usuário por vez",
 
-  "cancel": "Cancelar",
-  "confirm": "Confirmar",
-
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
   "error-email-invalid": "Informe um e-mail válido",
