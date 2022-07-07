@@ -33,7 +33,7 @@ export const CardPod: React.FC = () => {
                 </span>
                 <span className='capitalize'>{pod.type}</span>
               </li>
-              <li className='w-full whitespace-nowrap'>
+              <li className='w-full'>
                 <span className='font-semibold dark:text-brand-bitcoin mr-1'>
                   URL:
                 </span>

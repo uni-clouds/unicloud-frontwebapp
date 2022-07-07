@@ -73,7 +73,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} sm={5}>
+          <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
               label='E-mail'
@@ -138,7 +138,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} sm={4}>
+          <Grid item sx={styleGrid} sm={3} md={5}>
             <Input
               type='text'
               label='Cidade'

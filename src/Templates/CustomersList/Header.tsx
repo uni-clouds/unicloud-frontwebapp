@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { HiPlus } from 'react-icons/hi'
@@ -23,13 +24,12 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
         </p>
       </div>
       <div className='flex flex-row gap-4'>
-        <PurpleButton
-          name='adicionar usuários'
-          onclick={() => setOpenModal(true)}
-        >
-          <HiPlus fontSize={20} />
-          {t('user')}
-        </PurpleButton>
+        <Tooltip title='Adicionar cliente' aria-haspopup role='alert'>
+          <PurpleButton name='add-customer' onclick={() => setOpenModal(true)}>
+            <HiPlus fontSize={20} />
+            Cliente
+          </PurpleButton>
+        </Tooltip>
         <ModalNewCustomer
           isOpen={openModal}
           handleClose={() => setOpenModal(false)}
