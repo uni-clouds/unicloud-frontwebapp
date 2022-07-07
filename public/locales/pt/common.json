@@ -8,6 +8,7 @@
   "password-forgot": "Esqueceu sua senha?",
   "phone": "Telefone",
   "address": "Endereço",
+<<<<<<< HEAD
   "cnpj": "CNPJ",
   "cnpj-placeholder": "Número do CNPJ",
   "city": "Cidade",
@@ -18,6 +19,8 @@
 
   "cancel": "Cancelar",
   "confirm": "Confirmar",
+=======
+>>>>>>> 254370b (conflit fixes)
 
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",

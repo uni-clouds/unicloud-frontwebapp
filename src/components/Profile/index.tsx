@@ -17,7 +17,7 @@ export const Profile: React.FC = () => {
   )
   const { t } = useTranslation()
 
-  const { customerData } = useUserData()
+  const { data: customerData } = useUserData()
   const { data } = useUsersList()
   const { user_id } = useDecode()
   const user = data?.filter((el) => el.id === user_id)[0]
