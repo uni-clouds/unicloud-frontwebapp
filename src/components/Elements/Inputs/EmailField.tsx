@@ -7,7 +7,7 @@ const EmailInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   ref
 ) => {
   return (
-    <div className='group flex flex-col mb-6 relative gap-3.5 mt-3'>
+    <div className='group flex flex-col relative gap-3 mt-3'>
       <Input
         placeholder={placeholder}
         label={label}

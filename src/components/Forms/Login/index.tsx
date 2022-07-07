@@ -68,7 +68,7 @@ export const Login: React.FC = () => {
       )}
       <form
         onSubmit={handleSubmit(onLoginSubmit)}
-        className='w-full flex-col flex'
+        className='w-full flex-col flex gap-2'
         action='POST'
       >
         <EmailField
