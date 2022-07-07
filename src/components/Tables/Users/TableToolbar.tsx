@@ -8,12 +8,14 @@ import { useUsersList } from '../../../hooks/useUsersList'
 import { colors } from '../../../styles/colors'
 import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
 import { stylesToolbar } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const { numSelected, id } = props
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { data } = useUsersList()
   const userSelected = data?.filter((f) => f.id === id)
+  const { t } = useTranslation()
 
   return (
     <Toolbar sx={stylesToolbar}>
@@ -29,7 +31,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
       )}
 
       {numSelected === 1 ? (
-        <Tooltip title='Exibir detalhes'>
+        <Tooltip title={t('tooltip-showDetails')}>
           <IconButton
             onClick={() => setIsModalOpen(!isModalOpen)}
             sx={{ '& :hover': { color: colors.brand[600] } }}
@@ -39,7 +41,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         </Tooltip>
       ) : numSelected > 1 ? (
         <Tooltip
-          title='Apenas um usuário por vez'
+          title={t('tooltip-oneUserAtATime')}
           aria-disabled='true'
           role='alert'
           disableInteractive
@@ -49,7 +51,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title='Filtrar'>
+        <Tooltip title={t('filter')}>
           <IconButton>
             <MdFilterList />
           </IconButton>

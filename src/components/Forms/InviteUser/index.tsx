@@ -12,6 +12,7 @@ import { ToastError } from '../../Elements/ToastError'
 import { Portal } from '@mui/material'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { ToastWarning } from '../../Elements/ToastWarning'
+import { useTranslation } from 'react-i18next'
 
 export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
   const {
@@ -26,6 +27,8 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isPending, setIsPending] = useState(false)
+
+  const { t } = useTranslation()
 
   const onInviteSubmit: SubmitHandler<InviteFormProps> = async (data) => {
     try {
@@ -64,7 +67,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastError
             isError={!!isError}
-            message='Ocorreu algo inesperado, tente novamente.'
+            message={t('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -73,7 +76,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastWarning
             isWarning={!!isPending}
-            message='E-mail já possui um convite em espera!'
+            message={t('consumersUsers:invitationIsPending')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -82,7 +85,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message='Convite enviado com sucesso.'
+            message={t('consumersUsers:invitationSent')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -93,8 +96,8 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         action='POST'
       >
         <Input
-          placeholder='Digite o e-mail'
-          label='E-mail'
+          placeholder={t('email-placeholder')}
+          label={t('email')}
           type='email'
           error={errors?.email}
           aria-invalid={errors.email ? 'true' : 'false'}
@@ -102,10 +105,10 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
         />
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : 'Adicionar usuário'}
+            {isSubmitting ? <Loading /> : t('customersUsers:addUser')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? 'Fechar' : 'Cancelar'}
+            {!!isSuccess ? t('close') : t('cancel')}
           </OutlineButton>
         </div>
       </form>

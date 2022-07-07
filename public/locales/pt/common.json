@@ -1,5 +1,7 @@
 {
   "name": "Nome",
+  "firstName": "Nome",
+  "lastName": "Sobrenome",
   "name-placeholder": "Digite o seu nome",
   "email": "E-mail",
   "email-placeholder": "Digite seu endereço de e-mail",
@@ -24,6 +26,8 @@
   "companyTradingName": "Nome Fantasia",
   "businessEntityType": "Natureza Jurídica",
 
+  "edit": "Editar",
+  "submit": "Enviar",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
   "close": "Fechar",
@@ -56,5 +60,6 @@
   "logout": "Sair",
 
   "active": "Ativo",
-  "inactive": "Inativo"
+  "inactive": "Inativo",
+  "linesPerPage": "Linhas por página"
 }

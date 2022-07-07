@@ -1,4 +1,5 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { useTranslation } from 'react-i18next'
 import MaskedInput from 'react-text-mask'
 import { InputProps } from './types'
 
@@ -6,6 +7,7 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { error, disabled, ...rest },
   ref
 ) => {
+  const { t } = useTranslation()
   return (
     <>
       <label
@@ -13,11 +15,11 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         className='font-bold '
         htmlFor='Telefone'
       >
-        Telefone
+        {t('phone')}
       </label>
       <MaskedInput
         type='phone'
-        placeholder='Telefone'
+        placeholder={t('phone-placeholder')}
         guide
         id='phone'
         disabled={disabled}

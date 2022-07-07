@@ -4,13 +4,17 @@
   "customers-subtitle-2-singular": "cliente",
   "customers-subtitle-2-plural": "clientes",
 
-  "users-subtitle-2-singular": "usuário",
-  "users-subtitle-2-plural": "usuários",
-
   "mainUserEmail": "E-mail do usuário principal",
   "customerType-placeholder": "Selecione o tipo de usuário",
   "addCustomer": "Adicionar usuário",
   "customerCreated": "Cliente criado sucesso.",
+
+  "users-subtitle-2-singular": "usuário",
+  "users-subtitle-2-plural": "usuários",
+
+  "userInvitations": "Convites",
+  "invitationIsPending": "E-mail já possui um convite em espera!",
+  "invitationSent": "Convite enviado com sucesso.",
 
   "addUser": "Adicionar usuário",
   "userCreated": "Usuário criado sucesso."

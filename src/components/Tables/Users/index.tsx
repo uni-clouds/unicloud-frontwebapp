@@ -22,6 +22,7 @@ import {
   stylesLastCellUsers,
   stylesTableUsers
 } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -32,6 +33,8 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
+
+  const { t } = useTranslation()
 
   const users = list?.map((user) => {
     return {
@@ -48,7 +51,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
         user.userprofile?.country === undefined || null
           ? ' - '
           : user.userprofile?.country,
-      status: user.is_active ? 'Ativo' : 'Inativo',
+      status: user.is_active ? t('active') : t('inactive'),
       first_name: user.first_name === undefined || null ? ' ' : user.first_name,
       last_name: user.last_name === undefined || null ? ' ' : user.last_name
     }
@@ -240,7 +243,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
             component='div'
             count={rows.length}
             rowsPerPage={rowsPerPage}
-            labelRowsPerPage='Linhas por página'
+            labelRowsPerPage={t('linesPerPage')}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
