@@ -3,7 +3,11 @@
   "subtitle": "Acesse o Broker com seu e-mail e senha.",
   "noAccess": "Ainda não tem acesso?",
   "noAccessLink": "Contate nossa equipe",
+<<<<<<< HEAD
   "or": "OU",
+=======
+  "or": "ou",
+>>>>>>> a637d20 (conflict fixes)
   "commercial": "Comercial",
   "help-desk": "Suporte técnico"
 }

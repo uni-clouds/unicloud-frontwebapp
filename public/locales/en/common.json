@@ -6,6 +6,7 @@
   "password": "Password",
   "password-placeholder": "Enter your password",
   "password-forgot": "Forgot your password?",
+<<<<<<< HEAD
   "phone": "Phone",
   "address": "Address",
   "cnpj": "EIN",
@@ -19,11 +20,14 @@
   "cancel": "Cancelar",
   "confirm": "Confirmar",
 
+=======
+>>>>>>> a637d20 (conflict fixes)
   "error-invalid-credentials": "Invalid credentials, try again",
   "copyright": "© 2022 Uni.Cloud. All rights reserved.",
   "terms": "Terms & Conditions",
   "privacy": "Privacy Policies",
   "help": "Help",
+<<<<<<< HEAD
   "languageSelect": "Language",
 
   "home": "Home",
@@ -40,4 +44,7 @@
 
   "active": "Active",
   "inactive": "Inactive"
+=======
+  "languageSelect": "Language"
+>>>>>>> a637d20 (conflict fixes)
 }
