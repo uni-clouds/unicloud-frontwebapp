@@ -35,7 +35,7 @@ i18n.use(initReactI18next).init({
   //default language
   lng: localStorage.getItem('language')
     ? localStorage.getItem('language')
-    : 'en',
+    : 'pt',
   interpolation: {
     escapeValue: false
   }
