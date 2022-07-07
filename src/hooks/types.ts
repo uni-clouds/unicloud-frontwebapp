@@ -9,3 +9,7 @@ export interface DecodeTokenType extends JwtPayload {
   is_staff?: boolean
   is_superuser?: boolean
 }
+
+export interface CanAccessParams {
+  role: string[]
+}

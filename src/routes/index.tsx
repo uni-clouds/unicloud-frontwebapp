@@ -17,7 +17,6 @@ export default function MainRoutes() {
   const Timeout = lazy(() => import('../pages/Error/GatewayTimeout'))
   const ForgotPassword = lazy(() => import('../pages/Auth/ForgotPassword'))
   const UsersPanel = lazy(() => import('../pages/Users'))
-  //const UnderConstruction = lazy(() => import('../pages/Placeholder'))
 
   return (
     <Routes>
@@ -32,6 +31,14 @@ export default function MainRoutes() {
       />
       <Route
         path='*'
+        element={
+          <Suspense fallback={<>...</>}>
+            <NotFound />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/nt-found'
         element={
           <Suspense fallback={<>...</>}>
             <NotFound />
