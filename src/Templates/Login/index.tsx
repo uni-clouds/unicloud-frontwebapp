@@ -12,12 +12,12 @@ export const Login: React.FC = () => {
 
   const navItems = [
     {
-      name: 'Comercial',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:commercial')}`,
+      path: '/commercial'
     },
     {
-      name: 'Suporte Técnico',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:help-desk')}`,
+      path: '/help-desk'
     }
   ]
   return (
@@ -27,19 +27,19 @@ export const Login: React.FC = () => {
           <Logo />
           <div className='mt-6 flex flex-col align-center w-[25rem] lg:w-[30rem] rounded-sm bg-neutral-50 custom-dark p-6 lg:p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
             <div>
-              <h4 className='font-bold text-xl lg:text-2xl text-base-600 dark:text-base-200 mb-2'>
-                Entrar
+              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>
+                {translate('login:login')}
               </h4>
               <p className='text-sm'>{translate('login:subtitle')}</p>
             </div>
             <LoginForm />
-            <p className='my-4 text-sm lg:text-md text-center'>
-              Ainda não possui acesso?
+            <p className='my-5'>
+              {translate('login:noAccess')}
               <span className='ml-2'>
-                <LinkInternal name='Contate nossa equipe' href='#' />
+                <LinkInternal name={translate('login:noAccessLink')} href='#' />
               </span>
             </p>
-            <Divider>OU</Divider>
+            <Divider>{translate('login:or')}</Divider>
             <NavLinksHelpers items={navItems} />
           </div>
         </section>
