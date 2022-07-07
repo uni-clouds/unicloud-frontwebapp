@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { NavLinksProps } from './types'
 
 export const NavLinksHelpers: React.FC<NavLinksProps> = ({ items }) => {
@@ -7,13 +7,16 @@ export const NavLinksHelpers: React.FC<NavLinksProps> = ({ items }) => {
       {items.map((item) => (
         <li
           role='menuitem'
+          aria-labelledby='nav-item'
           key={item.name}
           className='py-2 px-4 leading-6 hover:underline decoration-current text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out dark:text-brand-500 dark:hover:text-brand-600'
         >
-          <Link to={item.path}> {item.name}</Link>
+          <Link to={item.path} aria-label='nav-link'>
+            {' '}
+            {item.name}
+          </Link>
         </li>
       ))}
-      <Outlet />
     </ul>
   )
 }
