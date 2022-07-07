@@ -15,6 +15,7 @@ import { schemaCreateCustomer } from './validation'
 import { CnpjInput } from '../../Elements/Inputs/CnpjField'
 import { InputType } from '../../Elements/Inputs/TypeInput'
 import { useUserType } from '../../../hooks/useUserType'
+import { useTranslation } from 'react-i18next'
 
 export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   handleClose
@@ -39,6 +40,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       setValue('type', 'customer')
     }
   }, [data])
+
+  const { t } = useTranslation()
 
   const createCustomerSubmit: SubmitHandler<CreateCustomerType> = async (
     data
@@ -81,7 +84,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastError
             isError={!!isError}
-            message='Ocorreu algo inesperado, tente novamente.'
+            message={t('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -90,7 +93,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message='Cliente criado sucesso.'
+            message={t('customerUser:customerCreated')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -101,8 +104,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         action='POST'
       >
         <Input
-          placeholder='Digite o e-mail'
-          label='E-mail do usuário principal'
+          placeholder={t('email-placeholder')}
+          label={t('email')}
           type='email'
           error={errors?.email}
           {...register('email')}
