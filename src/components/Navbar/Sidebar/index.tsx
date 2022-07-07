@@ -113,7 +113,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     mr: isOpen ? 3 : 'auto',
                     justifyContent: 'center',
                     '&:hover': { color: customHover },
-                    color: pathname === '/' ? colors.brand[800] : iconColor
+                    color:
+                      pathname === '/' || pathname === '/user-profile'
+                        ? colors.brand[800]
+                        : iconColor
                   }}
                 >
                   <RiHome3Line className='text-xl' />
