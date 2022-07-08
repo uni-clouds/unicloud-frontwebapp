@@ -11,7 +11,6 @@ import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
 import Pods from '../pages/Pods'
 import UserProfilePage from '../pages/UserProfile'
-import Pods from '../pages/Pods'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
