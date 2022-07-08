@@ -48,8 +48,8 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
             name='adicionar usuários'
             onclick={() => setOpenModal(true)}
           >
-            {translate('customersUsers:addUser')}
             <HiPlus fontSize={20} />
+            {translate('user')}
           </PurpleButton>
         </Tooltip>
         <ModalInvitation
