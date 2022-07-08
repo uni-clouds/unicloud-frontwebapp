@@ -16,7 +16,6 @@ export const Profile: React.FC = () => {
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
-  const { t } = useTranslation()
 
   const { customerData } = useUserData()
   const { data } = useUsersList()

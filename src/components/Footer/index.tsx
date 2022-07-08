@@ -27,7 +27,7 @@ export const Footer = ({ local }: { local: string }) => {
       ${local === 'auth' ? 'fixed inset-x-0 bottom-0 w-full ' : 'relative'}`}
     >
       <div className='text-base-400 dark:text-base-100 text-sm'>
-        &copy; 2022 Uni.Cloud. Todos os direitos reservados.
+        {translate('copyright')}
       </div>
       <nav>
         <NavLinksHelpers items={navItems} />
