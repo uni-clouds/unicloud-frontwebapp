@@ -19,6 +19,7 @@ import {
   stylesPaperClients,
   stylesTableClients
 } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const ClientTable: React.FC<TableDataProps> = ({
   data,
@@ -41,6 +42,8 @@ export const ClientTable: React.FC<TableDataProps> = ({
     setError(isError)
   }, [data])
 
+  const { t: translate } = useTranslation()
+
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -52,7 +55,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
     <div className='h-35rem shadow rounded-md'>
       <Paper sx={stylesPaperClients}>
         <div className='px-4 mt-4'>
-          <Title text='Clientes' />
+          <Title text={translate('customers')} />
         </div>
         <TableContainer
           sx={stylesContainerClients}
@@ -84,7 +87,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
                         borderBottomColor: 'transparent'
                       }}
                     >
-                      Nome
+                      {translate('name')}
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -121,7 +124,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            labelRowsPerPage={'Linhas por página'}
+            labelRowsPerPage={`${translate('linesPerPage')}`}
             sx={{
               color: textColor
             }}
