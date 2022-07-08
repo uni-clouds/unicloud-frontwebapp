@@ -2,7 +2,7 @@
   "pods": "PODS",
   "pods-active": "Pods ativos",
   "physicalCPU": "CPU Física",
-  "physicalCPU-total": "Total of physical CPU",
+  "physicalCPU-total": "Total de CPU físicas",
   "memory": "Memória",
   "memory-total": "Total de memória",
   "nodes": "Nodes",

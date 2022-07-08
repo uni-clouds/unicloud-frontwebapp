@@ -1,5 +1,5 @@
 {
-  "PT": {
+  "EN": {
     "namespaces": {
       "common": {
         "name": "Nome",
@@ -16,7 +16,7 @@
         "cnpj": "CNPJ",
         "cnpj-placeholder": "Número do CNPJ",
         "phone": "Telefone",
-        "phone-placeholder": "Digite seu telefone",
+        "phone-placeholder": "Digite seu elefone",
         "address": "Endereço",
         "address-placeholder": "Digite seu endereço",
         "streetNumber": "Número",
