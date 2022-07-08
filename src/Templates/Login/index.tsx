@@ -30,21 +30,10 @@ export const Login: React.FC = () => {
               <p className='text-sm'>{translate('login:subtitle')}</p>
             </div>
             <LoginForm />
-<<<<<<< HEAD
-            <p className='my-4 text-sm lg:text-md text-center'>
-              {translate('login:noAccess')}
-              <span className='ml-2'>
-                <LinkInternal name={translate('login:noAccessLink')} href='#' />
-              </span>
-            </p>
-            <Divider>{translate('login:or')}</Divider>
-            <NavLinksHelpers items={navItems} />
-=======
             <div className='flex flex-row items-center gap-2'>
-              <p className='text-sm'>Ainda não possui acesso?</p>
+              <p className='text-sm'>{translate('login:noAccess')}</p>
               <NavLinkLogin items={navItems} />
             </div>
->>>>>>> a81dbb9 (git pull 8/7)
           </div>
         </section>
         <Footer local='auth' />
