@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
           {translate('customers')}
         </h1>
         <p className='text-base-400'>
-          {translate('customersUsers:table-subtitle-1')} {totalUsers}{' '}
+          {translate('pageSubtitle-1')} {totalUsers}{' '}
           {totalUsers > 1
             ? translate('customersUsers:customers-subtitle-2-plural')
             : translate('customersUsers:customers-subtitle-2-singular')}

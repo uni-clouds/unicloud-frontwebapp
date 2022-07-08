@@ -20,10 +20,10 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
     <div className='w-full flex flex-row justify-between px-4'>
       <div className='flex flex-col gap-2 justify-start'>
         <h1 className='text-3xl font-bold text-base-700 dark:text-base-100'>
-          {translate('Usuários')}
+          {translate('users')}
         </h1>
         <p className='text-base-400'>
-          {translate('customersUsers:table-subtitle-1')} {totalUsers}{' '}
+          {translate('pageSubtitle-1')} {totalUsers}{' '}
           {totalUsers === 1
             ? translate('customersUsers:users-subtitle-2-singular')
             : translate('customersUsers:users-subtitle-2-plural')}
@@ -48,7 +48,6 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers, data }) => {
             name='adicionar usuários'
             onclick={() => setOpenModal(true)}
           >
-            {translate('customersUsers:addUser')}
             <HiPlus fontSize={20} />
             {translate('user')}
           </PurpleButton>

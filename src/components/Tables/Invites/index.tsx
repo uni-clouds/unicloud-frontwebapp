@@ -17,6 +17,7 @@ import { Data, Order } from './types'
 import { createData } from './data'
 import { colors } from '../../../styles/colors'
 import { TableSkeleton } from '../TableSkeleton'
+import { useTranslation } from 'react-i18next'
 
 export const InvitesTable: React.FC = () => {
   const { data, isLoading, isError } = useInviteList()
@@ -30,6 +31,8 @@ export const InvitesTable: React.FC = () => {
   const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
   const colorBgChecked =
     palette.mode === 'dark' ? colors.scroll : colors.brand[300]
+
+  const { t: translate } = useTranslation()
 
   const getId = data
     .filter((e) => e.email === selected.toString())
@@ -225,7 +228,9 @@ export const InvitesTable: React.FC = () => {
                                 : colors.brand.ethereum
                           }}
                         >
-                          {row.status === 'pending' ? 'Pendente' : 'Expirado'}
+                          {row.status === 'pending'
+                            ? translate('pending')
+                            : translate('expired')}
                         </TableCell>
                       </TableRow>
                     )
@@ -247,7 +252,7 @@ export const InvitesTable: React.FC = () => {
             component='div'
             count={Number(rows?.length)}
             rowsPerPage={rowsPerPage}
-            labelRowsPerPage='Linhas por página'
+            labelRowsPerPage={translate('linesPerPage')}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}

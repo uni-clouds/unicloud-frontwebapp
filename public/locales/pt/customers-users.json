@@ -12,9 +12,13 @@
   "users-subtitle-2-singular": "usuário",
   "users-subtitle-2-plural": "usuários",
 
+  "invitations-subtitle-2-singular": "convite enviado",
+  "invitations-subtitle-2-plural": "convites enviados",
+
   "userInvitations": "Convites",
   "invitationIsPending": "E-mail já possui um convite em espera!",
   "invitationSent": "Convite enviado com sucesso.",
+  "sentAt": "Enviado em",
 
   "addUser": "Adicionar usuário",
   "userCreated": "Usuário criado sucesso."

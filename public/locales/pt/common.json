@@ -27,6 +27,7 @@
   "country-placeholder": "Digite seu país",
   "status": "Status",
   "user": "Usuário",
+  "user-placeholder": "Digite o usuário",
   "company": "Empresa",
   "companyName": "Razão Social",
   "companyTradingName": "Nome Fantasia",
@@ -39,6 +40,7 @@
   "confirm": "Confirmar",
   "close": "Fechar",
   "filter": "Filtrar",
+  "back": "Voltar",
   "selected-singular": "selecionado",
   "selected-plural": "selecionados",
 
@@ -81,6 +83,7 @@
   "users": "Usuários",
   "search-placeholder": "Buscar",
   "partners": "Parceiros",
+  "invitations": "Convites",
 
   "profile": "Perfil",
   "preferences": "Preferências",
@@ -89,5 +92,9 @@
 
   "active": "Ativo",
   "inactive": "Inativo",
-  "linesPerPage": "Linhas por página"
+  "pending": "Pendente",
+  "expired": "Expirado",
+  "linesPerPage": "Linhas por página",
+
+  "pageSubtitle-1": "Você tem "
 }
