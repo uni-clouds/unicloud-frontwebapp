@@ -12,12 +12,12 @@ export const Login: React.FC = () => {
 
   const navItems = [
     {
-      name: 'Comercial',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:commercial')}`,
+      path: '/commercial'
     },
     {
-      name: 'Suporte Técnico',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:help-desk')}`,
+      path: '/help-desk'
     }
   ]
   return (
@@ -33,10 +33,14 @@ export const Login: React.FC = () => {
               <p className='text-sm'>{translate('login:subtitle')}</p>
             </div>
             <LoginForm />
-            <div className='flex flex-row items-center gap-2'>
-              <p className='text-sm'>{translate('login:noAccess')}</p>
-              <NavLinkLogin items={navItems} />
-            </div>
+            <p className='my-5'>
+              {translate('login:noAccess')}
+              <span className='ml-2'>
+                <LinkInternal name={translate('login:noAccessLink')} href='#' />
+              </span>
+            </p>
+            <Divider>{translate('login:or')}</Divider>
+            <NavLinksHelpers items={navItems} />
           </div>
         </section>
         <Footer local='auth' />
