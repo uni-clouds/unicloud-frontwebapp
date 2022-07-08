@@ -23,10 +23,6 @@ on:
       - main
   workflow_dispatch:
 
-variables:
-  VITE_BASE_URL: $(VITE_BASE_URL)
-  VITE_PUBLIC_URL: $(VITE_PUBLIC_URL)
-
 env:
   AZURE_WEBAPP_NAME: unicloud-frontapp # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: 'dist' # set this to the path to your web app project, defaults to the repository root
