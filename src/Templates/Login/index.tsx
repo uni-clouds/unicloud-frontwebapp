@@ -26,8 +26,8 @@ export const Login: React.FC = () => {
           <Logo />
           <div className='mt-6 flex flex-col align-center w-[25rem] lg:w-[30rem] rounded-sm bg-neutral-50 custom-dark p-6 lg:p-10 justify-center border border-light-200 dark:border-neutral-700 shadow-sm'>
             <div>
-              <h4 className='font-bold text-xl lg:text-2xl text-base-600 dark:text-base-200 mb-2'>
-                Entrar
+              <h4 className='font-bold text-2xl text-base-600 dark:text-base-200 mb-2'>
+                {translate('login:login')}
               </h4>
               <p className='text-sm'>{translate('login:subtitle')}</p>
             </div>
