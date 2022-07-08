@@ -2,18 +2,19 @@ import { Footer } from '../../components/Footer'
 import { Login as LoginForm } from '../../components/Forms/Login'
 import { Logo } from '../../components/Logo'
 import { NavLinkLogin } from '../../components/Elements/Navigation/NavLinkLogin'
+import { useTranslation } from 'react-i18next'
 
 export const Login: React.FC = () => {
   const { t: translate } = useTranslation()
 
   const navItems = [
     {
-      name: 'Comercial',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:commercial')}`,
+      path: '/commercial'
     },
     {
-      name: 'Suporte Técnico',
-      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
+      name: `${translate('login:help-desk')}`,
+      path: '/help-desk'
     }
   ]
   return (
@@ -30,7 +31,7 @@ export const Login: React.FC = () => {
             </div>
             <LoginForm />
             <div className='flex flex-row items-center gap-2'>
-              <p className='text-sm'>Ainda não possui acesso?</p>
+              <p className='text-sm'>{translate('login:noAccessLink')}</p>
               <NavLinkLogin items={navItems} />
             </div>
           </div>
