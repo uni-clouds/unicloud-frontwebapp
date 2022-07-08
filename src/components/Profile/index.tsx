@@ -8,12 +8,15 @@ import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
 import { renderData } from './util'
 import { UserDataType } from '../Tables/Users/types'
+import { useTranslation } from 'react-i18next'
 
 export const Profile: React.FC = () => {
   document.title = 'Uni.Cloud | Perfil'
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
+  const { t: translate } = useTranslation()
+
   const { data: customerData } = useUserData()
   const { data } = useUsersList()
   const { user_id } = useDecode()

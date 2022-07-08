@@ -10,11 +10,6 @@
   "password": "Password",
   "password-placeholder": "Digite a sua senha",
   "password-forgot": "Esqueceu sua senha?",
-<<<<<<< HEAD
-=======
-  "phone": "Telefone",
-  "address": "Endereço",
->>>>>>> e36aecb (conflict fixes json)
   "cnpj": "CNPJ",
   "cnpj-placeholder": "Número do CNPJ",
   "phone": "Telefone",
@@ -93,10 +88,6 @@
   "logout": "Sair",
 
   "active": "Ativo",
-<<<<<<< HEAD
   "inactive": "Inativo",
   "linesPerPage": "Linhas por página"
-=======
-  "inactive": "Inativo"
->>>>>>> e36aecb (conflict fixes json)
 }
