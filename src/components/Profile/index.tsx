@@ -22,7 +22,6 @@ export const Profile: React.FC = () => {
   const [isHugeName, setIsHugeName] = useState<'text-xl' | 'text-2xl'>(
     'text-xl'
   )
-
   const { t: translate } = useTranslation()
 
   useEffect(() => {
