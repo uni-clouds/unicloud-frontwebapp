@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   FormControl,
   InputLabel,
@@ -10,18 +10,33 @@ import {
   useTheme
 } from '@mui/material'
 import { colors } from '../../styles/colors'
+import { parseCookies, setCookie } from 'nookies'
 
 export default function LanguageSelector() {
+  const [currentLanguage, setCurrentLanguage] = useState<string>('')
   const { i18n, t: translate } = useTranslation()
+  const cookies = parseCookies()
 
   useEffect(() => {
-    localStorage.setItem('language', i18n.resolvedLanguage)
-    console.log('initial language', localStorage.getItem('language'))
+    if (cookies.language) {
+      setCurrentLanguage(cookies.language)
+      i18n.changeLanguage(cookies.language)
+    } else {
+      setCurrentLanguage(i18n.resolvedLanguage),
+        setCookie(null, 'language', i18n.resolvedLanguage, {
+          maxAge: 30 * 24 * 60 * 60
+        })
+    }
+  }, [])
+
+  useEffect(() => {
+    setCookie(null, 'language', i18n.resolvedLanguage, {
+      maxAge: 30 * 24 * 60 * 60
+    })
   }, [i18n.resolvedLanguage])
 
   function changeLanguageHandler(event: SelectChangeEvent) {
     const newLanguage = event.target.value
-    // i18n.changeLanguage(newLanguage.value)
     i18n.changeLanguage(newLanguage)
   }
 
@@ -100,38 +115,39 @@ export default function LanguageSelector() {
   }
 
   return (
-    <FormControl size='small' sx={stylesLabel}>
-      <InputLabel id='language-select-label'>
-        {translate('languageSelect')}
-      </InputLabel>
-      <Select
-        labelId='language-select-label'
-        id='language-select'
-        defaultValue={i18n.resolvedLanguage}
-        label={translate('languageSelect')}
-        onChange={changeLanguageHandler}
-        sx={stylesInput}
-        aria-role='listbox'
-      >
-        {languages.map((lang) => (
-          <MenuItem
-            value={lang.code}
-            key={`langSwitch-${lang.code}`}
-            aria-label={translate('languageSelect')}
-            aria-labeledby='language-select-label'
-            aria-role='option'
-            aria-valuetext={i18n.resolvedLanguage}
-            aria-selected={
-              lang.code === i18n.resolvedLanguage ? 'true' : 'false'
-            }
+    <>
+      {currentLanguage && (
+        <FormControl size='small' sx={stylesLabel}>
+          <InputLabel id='language-select-label'>
+            {translate('languageSelect')}
+          </InputLabel>
+          <Select
+            labelId='language-select-label'
+            id='language-select'
+            defaultValue={currentLanguage}
+            label={translate('languageSelect')}
+            onChange={changeLanguageHandler}
+            sx={stylesInput}
           >
-            <div className='flex gap-4 items-center'>
-              {renderFlag(lang.flag, lang.name)}
-              {lang.name}
-            </div>
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+            {languages.map((lang) => (
+              <MenuItem
+                value={lang.code}
+                key={`langSwitch-${lang.code}`}
+                aria-label={translate('languageSelect')}
+                aria-valuetext={i18n.resolvedLanguage}
+                aria-selected={
+                  lang.code === i18n.resolvedLanguage ? 'true' : 'false'
+                }
+              >
+                <div className='flex gap-4 items-center'>
+                  {renderFlag(lang.flag, lang.name)}
+                  {lang.name}
+                </div>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      )}
+    </>
   )
 }
