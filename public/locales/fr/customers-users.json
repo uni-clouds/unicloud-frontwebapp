@@ -1,0 +1,25 @@
+{
+  "table-subtitle-1": "Vous avez ",
+
+  "customers-subtitle-2-singular": "client",
+  "customers-subtitle-2-plural": "clients",
+
+  "mainUserEmail": "Adresse e-mail de l'utilisateur principal",
+  "customerType-placeholder": "Type de client",
+  "addCustomer": "Ajouter un client",
+  "customerCreated": "Client crée avez succès",
+
+  "users-subtitle-2-singular": "utilisateur",
+  "users-subtitle-2-plural": "utilisateurs",
+
+  "invitations-subtitle-2-singular": "invitation envoyée",
+  "invitations-subtitle-2-plural": "invitations envoyées",
+
+  "userInvitations": "Invitations",
+  "invitationIsPending": "Cet adresse e-mail a déjà une invitation en attente.",
+  "invitationSent": "Invitation envoyée avec succès.",
+  "sentAt": "Envoyée le",
+
+  "addUser": "Ajouter utilisateur",
+  "userCreated": "Utilisateur crée avec succès."
+}

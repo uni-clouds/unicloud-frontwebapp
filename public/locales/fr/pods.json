@@ -1,0 +1,22 @@
+{
+  "pods-subtitle-p2-singular": "POD",
+  "pods-subtitle-p2-plural": "PODS",
+  "addPod": "Ajouter Pod",
+  "noPods": "Vous n'avez pas de PODS enrigestrés.",
+  "podName": "Nom du POD",
+  "podName-placeholder": "Saisir le nom du POD",
+  "podLocation": "Emplacement",
+  "podLocation-placeholder": "Saisissez votre emplacement. Ex.: Atlanta",
+  "spareNode": "Spare node",
+  "spareNode-placeholder": "Informer la quantité",
+  "domainTenant": "Domain Tenant",
+  "domainTenant-placeholder": "Informez le Domain Tenant",
+  "podType": "Seleccionez le type de POD",
+  "type": "Type",
+  "storage": "Storage",
+  "compute": "Compute",
+  "URL": "URL",
+  "baseURL": "URL de base",
+  "baseURL-placeholder": "Saisissez l'URL. Ex.: https://www.pod.com",
+  "podCreated": "Pod crée avec succès!"
+}

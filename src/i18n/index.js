@@ -23,6 +23,13 @@ import esProfile from '../../public/locales/es/profile.json'
 import esCustomersUsers from '../../public/locales/es/customers-users.json'
 import esDashboard from '../../public/locales/es/dashboard.json'
 import esPods from '../../public/locales/es/pods.json'
+//PORTUGUESE:
+import frCommon from '../../public/locales/fr/common.json'
+import frLogin from '../../public/locales/fr/login-register.json'
+import frProfile from '../../public/locales/fr/profile.json'
+import frCustomersUsers from '../../public/locales/fr/customers-users.json'
+import frDashboard from '../../public/locales/fr/dashboard.json'
+import frPods from '../../public/locales/fr/pods.json'
 
 const resources = {
   en: {
@@ -48,6 +55,14 @@ const resources = {
     customersUsers: esCustomersUsers,
     dashboard: esDashboard,
     pods: esPods
+  },
+  fr: {
+    common: frCommon,
+    login: frLogin,
+    profile: frProfile,
+    customersUsers: frCustomersUsers,
+    dashboard: frDashboard,
+    pods: frPods
   }
 }
 

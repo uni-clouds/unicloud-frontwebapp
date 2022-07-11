@@ -55,6 +55,11 @@ export default function LanguageSelector() {
       code: 'es',
       name: 'Español',
       flag: 'es'
+    },
+    {
+      code: 'fr',
+      name: 'Français',
+      flag: 'fr'
     }
   ]
 
