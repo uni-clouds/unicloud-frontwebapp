@@ -1,30 +1,29 @@
 import { Avatar } from '../Avatar'
 import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import PersonalInformation from './PersonalInformation'
 import { useUsersList } from '../../hooks/useUsersList'
 import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
-import { useNavigate } from 'react-router-dom'
 import { renderData } from './util'
 import { UserDataType } from '../Tables/Users/types'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import PersonalInformation from './PersonalInformation'
 
 export const Profile: React.FC = () => {
   document.title = 'Uni.Cloud | Perfil'
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
-
-  const { customerData } = useUserData()
+  const { data: customerData } = useUserData()
   const { data } = useUsersList()
   const { user_id } = useDecode()
   const [currentUser, setCurrentUser] = useState<UserDataType>()
   const [isHugeName, setIsHugeName] = useState<'text-xl' | 'text-2xl'>(
     'text-xl'
   )
+
   const { t: translate } = useTranslation()
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export const Profile: React.FC = () => {
     if (mode === 'Informações Pessoais')
       return <PersonalInformation user={currentUser} />
   }
-
   return (
     <section
       className='flex flex-1 border dark:border-none shadow bg-white custom-dark rounded-md'
@@ -77,7 +75,7 @@ export const Profile: React.FC = () => {
             role='navigation'
             aria-label='User profile section'
           >
-            <ul className='flex flex-col w-full gap-8'>
+            <ul className='flex flex-col w-full gap-8' role='menu'>
               <NavigationItem
                 text={translate('profile:personalInformation')}
                 href='#'
