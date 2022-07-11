@@ -13,11 +13,11 @@ export const Login: React.FC = () => {
   const navItems = [
     {
       name: `${translate('login:commercial')}`,
-      path: '/commercial'
+      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
     },
     {
       name: `${translate('login:help-desk')}`,
-      path: '/help-desk'
+      path: 'https://uni.cloud/pt-br/fale-com-especialista/'
     }
   ]
   return (
