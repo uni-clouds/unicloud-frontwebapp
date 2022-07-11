@@ -1,16 +1,18 @@
 import { Grid } from '@mui/material'
 import { usePodsData } from '../../../hooks/usePodsData'
 import { v4 as uuidv4 } from 'uuid'
+import { useTranslation } from 'react-i18next'
 
 export const CardPod: React.FC = () => {
   const { data } = usePodsData()
+  const { t: translate } = useTranslation()
 
   return (
     <Grid container spacing={3}>
       {data?.length === 0 && (
         <div className='mx-auto p-6 mt-10'>
           <h3 className='text-xl font-semibold text-base-400'>
-            Você não possui POD cadastrado!
+            {translate('pods:noPods')}
           </h3>
         </div>
       )}
@@ -23,25 +25,25 @@ export const CardPod: React.FC = () => {
             <ul className='flex flex-col gap-2 items-start'>
               <li>
                 <span className='font-semibold dark:text-brand-bitcoin mr-1'>
-                  Local:
+                  {translate('pods:podLocation')}:
                 </span>
                 <span className='capitalize'> {pod.location}</span>
               </li>
               <li>
                 <span className='font-semibold dark:text-brand-bitcoin mr-1'>
-                  Tipo:
+                  {translate('pods:type')}:
                 </span>
                 <span className='capitalize'>{pod.type}</span>
               </li>
               <li className='w-full'>
                 <span className='font-semibold dark:text-brand-bitcoin mr-1'>
-                  URL:
+                  {translate('pods:URL')}:
                 </span>
                 {pod.url_base}
               </li>
               <li>
                 <span className='font-semibold dark:text-brand-bitcoin mr-1'>
-                  User:
+                  {translate('user')}:
                 </span>{' '}
                 {pod.pod_user}
               </li>

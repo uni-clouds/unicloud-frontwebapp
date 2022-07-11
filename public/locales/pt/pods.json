@@ -2,17 +2,22 @@
   "pods-subtitle-p2-singular": "POD",
   "pods-subtitle-p2-plural": "PODS",
 
+  "addPod": "Adicionar POD",
+  "noPods": "Você não possui PODS cadastrados!",
   "podName": "Nome do POD",
   "podName-placeholder": "Digite o nome do POD",
   "podLocation": "Localização",
   "podLocation-placeholder": "Digite a Localização. Ex.: Curitiba",
   "spareNode": "Spare node",
   "spareNode-placeholder": "Informe a quantidade",
-  "DomainTenant": "Domain Tenant",
-  "DomainTenant-placeholder": "Informe o Domain Tenant",
+  "domainTenant": "Domain Tenant",
+  "domainTenant-placeholder": "Informe o Domain Tenant",
   "podType": "Selecione o tipo de POD",
+  "type": "Tipo",
   "storage": "Storage",
   "compute": "Compute",
-  "BaseURL": "URL de base",
-  "BaseURL-placeholder": "Digite a URL. Ex.: https://www.pod.com"
+  "URL": "URL",
+  "baseURL": "URL de base",
+  "baseURL-placeholder": "Digite a URL. Ex.: https://www.pod.com",
+  "podCreated": "Pod criado com sucesso!"
 }
