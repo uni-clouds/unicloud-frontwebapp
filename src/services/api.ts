@@ -11,8 +11,6 @@ export const api = axios.create({
   baseURL: import.meta.env.VITE.BASE_URL
 })
 
-console.log('🐼', import.meta.env.VITE.BASE_URL)
-
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     if (cookies.token) {
