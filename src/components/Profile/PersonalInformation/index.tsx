@@ -65,7 +65,7 @@ export default function PersonalInformation({ user }) {
 
         <div className='py-4 '>
           <h3 className='w-full bg-brand-200 dark:bg-zinc-700 p-4 py-1 rounded-sm uppercase font-black text-sm'>
-            Geral
+            {translate('profile:general')}
           </h3>
           <div className='px-2'>
             <InformationDisplay
