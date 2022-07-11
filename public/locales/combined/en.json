@@ -29,8 +29,12 @@
         "country": "Country",
         "country-placeholder": "Enter your country",
         "status": "Status",
-        "user": "Username",
-        "user-placeholder": "Enter the username",
+        "user": "User",
+        "user-placeholder": "Enter the user",
+        "id": "ID",
+        "id-placeholder": "Enter the ID",
+        "userName": "Username",
+        "userName-placeholder": "Enter the username",
         "company": "Company",
         "companyName": "Company name",
         "companyTradingName": "Company Trading Name",
@@ -92,6 +96,7 @@
         "preferences": "Preferences",
         "activity": "Activity",
         "logout": "Logout",
+        "superAdmin": "Super Admin",
 
         "active": "Active",
         "inactive": "Inactive",
@@ -138,7 +143,7 @@
 
         "mainUserEmail": "Main user email",
         "customerType-placeholder": "Select user type",
-        "addCustomer": "Add user",
+        "addCustomer": "Add customer",
         "customerCreated": "Customer successfully created.",
 
         "users-subtitle-2-singular": "User",
@@ -158,20 +163,24 @@
       "pods": {
         "pods-subtitle-p2-singular": "POD",
         "pods-subtitle-p2-plural": "PODS",
-
+        "addPod": "Add Pod",
+        "noPods": "You don't have any registered PODS!",
         "podName": "POD name",
         "podName-placeholder": "Enter the POD name",
         "podLocation": "Location",
         "podLocation-placeholder": "Enter the location. Eg.: Atlanta",
         "spareNode": "Spare node",
         "spareNode-placeholder": "Inform the amount",
-        "DomainTenant": "Domain Tenant",
-        "DomainTenant-placeholder": "Informe o Domain Tenant",
+        "domainTenant": "Domain Tenant",
+        "domainTenant-placeholder": "Informe o Domain Tenant",
         "podType": "Select POD type",
+        "type": "Type",
         "storage": "Storage",
         "compute": "Compute",
-        "BaseURL": "Base URL",
-        "BaseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com"
+        "URL": "URL",
+        "baseURL": "Base URL",
+        "baseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com",
+        "podCreated": "Pod successfully created!"
       },
       "profile": {
         "company": "Company",
