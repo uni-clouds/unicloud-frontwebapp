@@ -79,7 +79,6 @@ export const Profile: React.FC = () => {
                 href='#'
                 active={mode === 'Informações Pessoais'}
               />
-
               <NavigationItem
                 text={translate('profile:notifications')}
                 href='#'
