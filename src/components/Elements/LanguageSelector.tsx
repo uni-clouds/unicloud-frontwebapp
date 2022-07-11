@@ -33,6 +33,7 @@ export default function LanguageSelector() {
     setCookie(null, 'language', i18n.resolvedLanguage, {
       maxAge: 30 * 24 * 60 * 60
     })
+    localStorage.setItem('language', i18n.resolvedLanguage)
   }, [i18n.resolvedLanguage])
 
   function changeLanguageHandler(event: SelectChangeEvent) {

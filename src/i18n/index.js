@@ -30,6 +30,9 @@ import frProfile from '../../public/locales/fr/profile.json'
 import frCustomersUsers from '../../public/locales/fr/customers-users.json'
 import frDashboard from '../../public/locales/fr/dashboard.json'
 import frPods from '../../public/locales/fr/pods.json'
+import { parseCookies } from 'nookies'
+
+const cookies = parseCookies()
 
 const resources = {
   en: {
@@ -71,9 +74,7 @@ i18n.use(initReactI18next).init({
   //set default namespace
   defaultNS: 'common',
   //default language
-  lng: localStorage.getItem('language')
-    ? localStorage.getItem('language')
-    : 'en',
+  lng: cookies.language ? cookies.language : 'en',
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false
