@@ -62,7 +62,7 @@
         "error-phone-required": "Informe seu telefone",
         "error-address-invalid": "Informe um endereço válido",
         "error-address-required": "Informe seu endereço",
-        "error-password-invalid": "Senha deve conter no mínimo 6 carácteres",
+        "error-password-invalid": "Senha deve conter no mínimo 6 caracteres",
         "error-password-required": "Informe a senha",
         "error-city-required": "Informe a cidade",
         "error-state-required": "Informe o estado",
@@ -75,7 +75,7 @@
 
         "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
         "terms": "Termos & Condições",
-        "privacy": "Política de privacidae",
+        "privacy": "Política de privacidade",
         "help": "Ajuda",
         "languageSelect": "Idioma",
 
