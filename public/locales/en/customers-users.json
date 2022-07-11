@@ -1,13 +1,25 @@
 {
-  "table-subtitle-1": "You have",
+  "table-subtitle-1": "You have ",
 
   "customers-subtitle-2-singular": "customer",
   "customers-subtitle-2-plural": "customers",
 
-  "users-subtitle-2-singular": "user",
-  "users-subtitle-2-plural": "users",
+  "mainUserEmail": "Main user email",
+  "customerType-placeholder": "Select user type",
+  "addCustomer": "Add user",
+  "customerCreated": "Customer successfully created.",
 
-  "mainUserEmail": "",
-  "userType-placeholder": "",
-  "addUser": ""
+  "users-subtitle-2-singular": "User",
+  "users-subtitle-2-plural": "Users",
+
+  "invitations-subtitle-2-singular": "invitation sent",
+  "invitations-subtitle-2-plural": "invitations sent",
+
+  "userInvitations": "Invitations",
+  "invitationIsPending": " This email already has an invite on hold.",
+  "invitationSent": "Invitation successfully sent.",
+  "sentAt": "Sent on",
+
+  "addUser": "Add user",
+  "userCreated": "User created"
 }

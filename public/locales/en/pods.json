@@ -1,0 +1,18 @@
+{
+  "pods-subtitle-p2-singular": "POD",
+  "pods-subtitle-p2-plural": "PODS",
+
+  "podName": "POD name",
+  "podName-placeholder": "Enter the POD name",
+  "podLocation": "Location",
+  "podLocation-placeholder": "Enter the location. Eg.: Atlanta",
+  "spareNode": "Spare node",
+  "spareNode-placeholder": "Inform the amount",
+  "DomainTenant": "Domain Tenant",
+  "DomainTenant-placeholder": "Informe o Domain Tenant",
+  "podType": "Select POD type",
+  "storage": "Storage",
+  "compute": "Compute",
+  "BaseURL": "Base URL",
+  "BaseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com"
+}

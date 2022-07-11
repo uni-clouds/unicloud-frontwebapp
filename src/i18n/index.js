@@ -8,12 +8,21 @@ import enLogin from '../../public/locales/en/login-register.json'
 import enProfile from '../../public/locales/en/profile.json'
 import enCustomersUsers from '../../public/locales/en/customers-users.json'
 import enDashboard from '../../public/locales/en/dashboard.json'
+import enPods from '../../public/locales/en/pods.json'
 //PORTUGUESE:
 import ptCommon from '../../public/locales/pt/common.json'
 import ptLogin from '../../public/locales/pt/login-register.json'
 import ptProfile from '../../public/locales/pt/profile.json'
 import ptCustomersUsers from '../../public/locales/pt/customers-users.json'
 import ptDashboard from '../../public/locales/pt/dashboard.json'
+import ptPods from '../../public/locales/pt/pods.json'
+//SPANISH:
+import esCommon from '../../public/locales/es/common.json'
+import esLogin from '../../public/locales/es/login-register.json'
+import esProfile from '../../public/locales/es/profile.json'
+import esCustomersUsers from '../../public/locales/es/customers-users.json'
+import esDashboard from '../../public/locales/es/dashboard.json'
+import esPods from '../../public/locales/es/pods.json'
 
 const resources = {
   en: {
@@ -21,14 +30,24 @@ const resources = {
     login: enLogin,
     profile: enProfile,
     customersUsers: enCustomersUsers,
-    dashboard: enDashboard
+    dashboard: enDashboard,
+    pods: enPods
   },
   pt: {
     common: ptCommon,
     login: ptLogin,
     profile: ptProfile,
     customersUsers: ptCustomersUsers,
-    dashboard: ptDashboard
+    dashboard: ptDashboard,
+    pods: ptPods
+  },
+  es: {
+    common: esCommon,
+    login: esLogin,
+    profile: esProfile,
+    customersUsers: esCustomersUsers,
+    dashboard: esDashboard,
+    pods: esPods
   }
 }
 
@@ -39,7 +58,8 @@ i18n.use(initReactI18next).init({
   //default language
   lng: localStorage.getItem('language')
     ? localStorage.getItem('language')
-    : 'pt',
+    : 'en',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false
   }
