@@ -24,10 +24,14 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
         </p>
       </div>
       <div className='flex flex-row gap-4'>
-        <Tooltip title='Adicionar cliente' aria-haspopup role='alert'>
+        <Tooltip
+          title={translate('customersUsers:addCustomer')}
+          aria-haspopup
+          role='alert'
+        >
           <PurpleButton name='add-customer' onclick={() => setOpenModal(true)}>
             <HiPlus fontSize={20} />
-            {translate('user')}
+            {translate('customersUsers:customers-subtitle-2-singular')}
           </PurpleButton>
         </Tooltip>
         <ModalNewCustomer

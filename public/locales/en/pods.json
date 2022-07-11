@@ -16,7 +16,7 @@
   "storage": "Storage",
   "compute": "Compute",
   "URL": "URL",
-  "BaseURL": "Base URL",
-  "BaseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com",
+  "baseURL": "Base URL",
+  "baseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com",
   "podCreated": "Pod successfully created!"
 }

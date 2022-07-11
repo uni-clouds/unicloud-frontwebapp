@@ -5,8 +5,8 @@
   "customers-subtitle-2-plural": "clientes",
 
   "mainUserEmail": "E-mail do usuário principal",
-  "customerType-placeholder": "Selecione o tipo de usuário",
-  "addCustomer": "Adicionar usuário",
+  "customerType-placeholder": "Selecione o tipo de cliente",
+  "addCustomer": "Adicionar cliente",
   "customerCreated": "Cliente criado sucesso.",
 
   "users-subtitle-2-singular": "usuário",
