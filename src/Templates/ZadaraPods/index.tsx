@@ -1,4 +1,5 @@
-import { useMediaQuery, useTheme } from '@mui/material'
+import { useTheme } from '@mui/system'
+import { useMediaQuery } from '@mui/material'
 import { CardPod } from '../../components/Cards/Pods'
 import { usePodsData } from '../../hooks/usePodsData'
 import { Header } from './Header'

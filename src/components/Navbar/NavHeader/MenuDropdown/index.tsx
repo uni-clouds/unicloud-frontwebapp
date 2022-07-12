@@ -37,9 +37,16 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
   const handleClose = () => {
     setAnchorEl(null)
   }
-  const customHover =
-    palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
 
+  const styles = {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 1,
+    mt: '8px',
+    '&:hover': {
+      color: palette.mode === 'dark' ? colors.brand[500] : colors.brand[600]
+    }
+  }
   return (
     <>
       <button
@@ -73,46 +80,26 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
           <span className='text-xs'>{email}</span>
         </div>
         <Divider />
-        <MenuItem
-          sx={{
-            mt: '8px',
-            '&:hover': { color: customHover }
-          }}
-        >
-          <Link to='/user-profile' className='flex flex-row gap-2'>
+        <Link to='/user-profile'>
+          <MenuItem sx={styles}>
             <HiOutlineUserCircle />
             <span className='text-sm'>{translate('profile')}</span>
-          </Link>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
+          </MenuItem>
+        </Link>
+        <MenuItem onClick={handleClose} sx={styles}>
           <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
             <span className='text-sm'>{translate('preferences')}</span>
           </Link>
         </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
+        <MenuItem onClick={handleClose} sx={styles}>
           <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
             <span className='text-sm'>{translate('activity')}</span>
           </Link>
         </MenuItem>
         <Divider />
-        <MenuItem
-          onClick={() => logout()}
-          sx={{
-            '&:hover': { color: customHover }
-          }}
-        >
+        <MenuItem onClick={() => logout()} sx={styles}>
           <RiLogoutBoxRLine />
           <span className='ml-2  text-sm'>{translate('logout')}</span>
         </MenuItem>
