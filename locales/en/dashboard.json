@@ -1,0 +1,18 @@
+{
+  "pods": "PODS",
+  "pods-active": "Active Pods",
+  "physicalCPU": "Physical CPU",
+  "physicalCPU-total": "Total of physical CPUs",
+  "memory": "Memory",
+  "memory-total": "Total of memory",
+  "nodes": "Nodes",
+  "nodes-total": "Total of nodes",
+  "spareNodes": "Spare Nodes",
+  "spareNodes-total": "Total of spare nodes",
+  "vCore": "vCore",
+  "vCore-total": "Total of vCore",
+  "ourPods": "Our pods",
+
+  "dashboard": "Dashboard",
+  "reports": "Reports"
+}

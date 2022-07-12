@@ -1,4 +1,5 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { VisibilityIcon } from '../../Elements/VisibilityIcon'
 import { Input } from './Input'
@@ -8,6 +9,7 @@ const PasswordInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { type, error, label, placeholder, isVisible, showVisibilityIcon, ...rest },
   ref
 ) => {
+  const { t: translate } = useTranslation()
   return (
     <div className='group flex flex-col relative gap-3'>
       <Input
@@ -20,7 +22,7 @@ const PasswordInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       />
       <label className='absolute inset-y-0 right-0 text-xs dark:text-brand-500 dark:hover:text-brand-600 text-brand-600 hover:text-brand-700 transition-colors hover:ease-in-out pointer-events-none'>
         <Link className='pointer-events-auto p-2' to={'reset'}>
-          Esqueceu a senha?
+          {translate('password-forgot')}
         </Link>
       </label>
       <label

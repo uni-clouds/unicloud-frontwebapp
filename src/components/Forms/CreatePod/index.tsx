@@ -13,6 +13,7 @@ import { CreatePodProps, PodType } from './types'
 import { schemaCreatePod } from './validation'
 import { InputType } from '../../Elements/Inputs/TypeInput'
 import { styleGrid } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   const {
@@ -27,7 +28,11 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const values = ['Compute', 'Storage']
+  const { t: translate } = useTranslation()
+  const values = [
+    `${translate('pods:compute')}`,
+    `${translate('pods:storage')}`
+  ]
 
   const createCustomerSubmit: SubmitHandler<PodType> = async (data) => {
     console.log('🐼', data)
@@ -75,7 +80,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         <Portal>
           <ToastError
             isError={!!isError}
-            message='Ocorreu algo inesperado, tente novamente.'
+            message={translate('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -84,7 +89,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message='POD criado sucesso!'
+            message={translate('pods:podCreated')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -97,8 +102,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
         <Grid container spacing={2} aria-labelledby='form-create-pod'>
           <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
-              placeholder='Digite o nome do POD'
-              label='Nome do POD'
+              placeholder={translate('pods:podName-placeholder')}
+              label={translate('pods:podName')}
               type='text'
               error={errors?.name}
               {...register('name')}
@@ -106,8 +111,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
-              placeholder='Digite a localização. Ex. Curitiba'
-              label='Localização'
+              placeholder={translate('pods:podLocation-placeholder')}
+              label={translate('pods:podLocation')}
               type='text'
               error={errors?.location}
               {...register('location')}
@@ -115,8 +120,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={3} lg={4}>
             <Input
-              placeholder='Digite o usuário'
-              label='Usuário'
+              placeholder={translate('user')}
+              label={translate('user-placeholder')}
               type='text'
               error={errors?.pod_user}
               {...register('pod_user')}
@@ -124,8 +129,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={3} lg={4}>
             <Input
-              placeholder='Digite a senha'
-              label='Senha'
+              placeholder={translate('password-placeholder')}
+              label={translate('password')}
               type='password'
               error={errors?.pod_password}
               {...register('pod_password')}
@@ -133,8 +138,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={3} lg={4}>
             <Input
-              placeholder='Informe a quantidade'
-              label='Spare Node'
+              placeholder={translate('pods:spareNode-placeholder')}
+              label={translate('pods:spareNode')}
               type='number'
               error={errors?.spare_nodes}
               {...register('spare_nodes')}
@@ -142,8 +147,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
-              placeholder='Informe o domain tenant'
-              label='Domain tenant'
+              placeholder={translate('pods:domainTenant-placeholder')}
+              label={translate('pods:domainTenant')}
               type='text'
               error={errors?.domain_tenant}
               {...register('domain_tenant')}
@@ -159,7 +164,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
                 render={({ field, fieldState: { error } }) => (
                   <InputType
                     {...field}
-                    label='Selecione o tipo de POD'
+                    label={translate('pods:podType')}
                     error={error}
                     name='customer'
                     values={values}
@@ -170,8 +175,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
-              placeholder='Digite a url. Ex. https://www.pod.com'
-              label='URL base'
+              placeholder={translate('pods:baseURL-placeholder')}
+              label={translate('pods:baseURL')}
               type='url'
               error={errors?.url_base}
               {...register('url_base')}
@@ -179,8 +184,8 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           </Grid>
           <Grid item sx={styleGrid} md={6} lg={6}>
             <Input
-              placeholder='Digite o ID'
-              label='ID'
+              placeholder={translate('id')}
+              label={translate('id-placeholder')}
               type='text'
               error={errors?.project_id}
               {...register('project_id')}
@@ -200,10 +205,10 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
           }}
         >
           <SubmitButton isDisabled={isDisabled} isLogin={false} isForm>
-            {isSubmitting ? <Loading /> : 'Criar'}
+            {isSubmitting ? <Loading /> : translate('create')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? 'Fechar' : 'Cancelar'}
+            {!!isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </Grid>
       </form>

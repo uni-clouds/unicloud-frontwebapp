@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next'
 import InformationDisplay from '../InformationDisplay'
 import { renderData } from '../util'
 
 export default function PersonalInformation({ user }) {
+  const { t: translate } = useTranslation()
+
   function transformDate(date: string) {
     return new Intl.DateTimeFormat('pt-BR', {
       dateStyle: 'long'
@@ -21,28 +24,30 @@ export default function PersonalInformation({ user }) {
   return (
     <div className='w-full flex flex-col gap-8'>
       <div>
-        <h2 className='font-black text-2xl'>Informações Pessoais</h2>
-        <p>Informações básicas de contato</p>
+        <h2 className='font-black text-2xl'>
+          {translate('profile:personalInformation')}
+        </h2>
+        <p>{translate('profile:personalInformation-subtitle')}</p>
       </div>
       <div className='w-full flex flex-col gap-4 '>
         <div>
           <h3 className='w-full bg-brand-200 dark:bg-zinc-700 p-4 py-1 rounded-sm uppercase font-black text-sm'>
-            Dados de contato
+            {translate('profile:contactData')}
           </h3>
           <div className='flex flex-col divide-y   px-2'>
             <InformationDisplay
-              label='Nome'
+              label={translate('name')}
               text={`${user ? renderData(user.first_name) : '-'}
               ${user ? renderData(user.last_name) : '-'}`}
               icon
             />
             <InformationDisplay
-              label='E-mail'
+              label={translate('email')}
               text={user ? renderData(user.email) : '-'}
               icon
             />
             <InformationDisplay
-              label='Telefone'
+              label={translate('phone')}
               text={
                 user && user.userprofile
                   ? renderData(user.userprofile.phone)
@@ -51,7 +56,7 @@ export default function PersonalInformation({ user }) {
               icon
             />
             <InformationDisplay
-              label='Endereço'
+              label={translate('address')}
               text={user.userprofile ? interpolateAdress() : '-'}
               icon
             />
@@ -60,11 +65,17 @@ export default function PersonalInformation({ user }) {
 
         <div className='py-4 '>
           <h3 className='w-full bg-brand-200 dark:bg-zinc-700 p-4 py-1 rounded-sm uppercase font-black text-sm'>
-            Geral
+            {translate('profile:general')}
           </h3>
           <div className='px-2'>
-            <InformationDisplay text={lastLogin} label='Último login' />
-            <InformationDisplay text={dateJoined} label='Usuário desde' />
+            <InformationDisplay
+              text={lastLogin}
+              label={translate('profile:lastLogin')}
+            />
+            <InformationDisplay
+              text={dateJoined}
+              label={translate('profile:userSince')}
+            />
           </div>
         </div>
       </div>

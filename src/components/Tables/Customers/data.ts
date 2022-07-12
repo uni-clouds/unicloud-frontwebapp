@@ -1,4 +1,5 @@
 import { HeadCell, Data } from './types'
+import i18n from '../../../i18n'
 
 export function createData(
   name: string,
@@ -18,40 +19,42 @@ export function createData(
   }
 }
 
+const translate = i18n.t
+
 export const headCells: readonly HeadCell[] = [
   {
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Empresa',
+    label: `${translate('company')}`,
     minWidth: 180
   },
   {
     id: 'cnpj',
     numeric: false,
     disablePadding: false,
-    label: 'CNPJ',
+    label: `${translate('cnpj')}`,
     minWidth: 200
   },
   {
     id: 'phone',
     numeric: false,
     disablePadding: false,
-    label: 'Telefone',
+    label: `${translate('phone')}`,
     minWidth: 150
   },
   {
     id: 'city',
     numeric: false,
     disablePadding: false,
-    label: 'Cidade',
+    label: `${translate('city')}`,
     minWidth: 100
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: 'Status',
+    label: `${translate('status')}`,
     minWidth: 100
   }
 ]

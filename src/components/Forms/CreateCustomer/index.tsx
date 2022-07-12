@@ -15,6 +15,7 @@ import { schemaCreateCustomer } from './validation'
 import { CnpjInput } from '../../Elements/Inputs/CnpjField'
 import { InputType } from '../../Elements/Inputs/TypeInput'
 import { useUserType } from '../../../hooks/useUserType'
+import { useTranslation } from 'react-i18next'
 
 export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
   handleClose
@@ -40,6 +41,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
       setValue('type', 'customer')
     }
   }, [data])
+
+  const { t: translate } = useTranslation()
 
   const createCustomerSubmit: SubmitHandler<CreateCustomerType> = async (
     data
@@ -82,7 +85,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastError
             isError={!!isError}
-            message='Ocorreu algo inesperado, tente novamente.'
+            message={translate('error-something-unexpected')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -91,7 +94,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message='Cliente criado sucesso.'
+            message={translate('customerUser:customerCreated')}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -102,8 +105,8 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         action='POST'
       >
         <Input
-          placeholder='Digite o e-mail'
-          label='E-mail do usuário principal'
+          placeholder={translate('email-placeholder')}
+          label={translate('email')}
           type='email'
           error={errors?.email}
           {...register('email')}
@@ -130,7 +133,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
                     error={error}
                     name='customer'
                     values={values}
-                    label='Selecione o tipo de cliente'
+                    label={translate('customersUsers:customerType-placeholder')}
                   />
                 )}
               />
@@ -139,10 +142,14 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         </div>
         <div className='flex gap-6 items-center w-1/2'>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
-            {isSubmitting ? <Loading /> : 'Adicionar usuário'}
+            {isSubmitting ? (
+              <Loading />
+            ) : (
+              translate('customersUsers:addCustomer')
+            )}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? 'Fechar' : 'Cancelar'}
+            {!!isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </div>
       </form>

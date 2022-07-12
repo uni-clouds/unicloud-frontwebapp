@@ -11,8 +11,10 @@ import { ToastError } from '../../Elements/ToastError'
 import { useAuth } from '../../../hooks/useAuth'
 import { LoginFormProps } from './types'
 import { PasswordField } from '../../Elements/Inputs/PasswordField'
+import { useTranslation } from 'react-i18next'
 
 export const Login: React.FC = () => {
+  const { t: translate } = useTranslation()
   const {
     register,
     handleSubmit,
@@ -60,7 +62,7 @@ export const Login: React.FC = () => {
       {!!isError && (
         <ToastError
           isError={!!isError}
-          message='Credenciais inválidas, tente novamente.'
+          message={translate('error-invalid-credentials')}
           handleClose={handleOnClose}
         />
       )}
@@ -70,16 +72,16 @@ export const Login: React.FC = () => {
         action='POST'
       >
         <EmailField
-          placeholder='Digite seu endereço de e-mail'
+          placeholder={translate('email-placeholder')}
           aria-invalid={errors.email ? 'true' : 'false'}
-          label='E-mail'
+          label={translate('email')}
           type='text'
           {...register('email')}
           error={errors?.email}
         />
         <PasswordField
-          placeholder='Digite sua senha'
-          label='Senha'
+          placeholder={translate('password-placeholder')}
+          label={translate('password')}
           type={!!passwordIsShow ? 'text' : 'password'}
           aria-invalid={errors.password ? 'true' : 'false'}
           isVisible={passwordIsShow}
@@ -88,7 +90,7 @@ export const Login: React.FC = () => {
           error={errors?.password}
         />
         <SubmitButton isDisabled={isSubmitting} isLogin>
-          {!!isSubmitting ? <Loading /> : 'Entrar'}
+          {!!isSubmitting ? <Loading /> : translate('login:login')}
         </SubmitButton>
       </form>
     </>

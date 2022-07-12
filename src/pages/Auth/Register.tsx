@@ -1,4 +1,5 @@
 import { lazy, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ToastError } from '../../components/Elements/ToastError'
 import { ToastWarning } from '../../components/Elements/ToastWarning'
 import { api } from '../../services/api'
@@ -14,6 +15,8 @@ const Register: React.FC = () => {
   const [isNotValid, setIsNotValid] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isExpired, setIsExpired] = useState(false)
+
+  const { t: translate } = useTranslation()
 
   useEffect(() => {
     const query = window.location.search
@@ -61,14 +64,14 @@ const Register: React.FC = () => {
     <>
       {!!isError && (
         <ToastError
-          message='Ocorreu um erro na requisição, verifique sua conexão.'
+          message={translate('error-request-connection')}
           isError={isError}
           handleClose={handleOnClose}
         />
       )}
       {!!isExpired && (
         <ToastWarning
-          message='Convite expirado, solicite um novo!'
+          message={translate('error-invitation-expired')}
           isWarning={isExpired}
           handleClose={handleOnClose}
         />

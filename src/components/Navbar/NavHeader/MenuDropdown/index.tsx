@@ -14,6 +14,7 @@ import { useAuth } from '../../../../hooks/useAuth'
 
 import { DropdownProps } from './types'
 import { colors } from '../../../../styles/colors'
+import { useTranslation } from 'react-i18next'
 
 export const MenuDropdown: React.FC<DropdownProps> = ({
   email,
@@ -24,6 +25,7 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
 }) => {
   const { logout } = useAuth()
   const { palette } = useTheme()
+  const { t: translate } = useTranslation()
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -81,25 +83,25 @@ export const MenuDropdown: React.FC<DropdownProps> = ({
         <Link to='/user-profile'>
           <MenuItem sx={styles}>
             <HiOutlineUserCircle />
-            <span className='text-sm'>Perfil</span>
+            <span className='text-sm'>{translate('profile')}</span>
           </MenuItem>
         </Link>
-        <Link to='#'>
-          <MenuItem onClick={handleClose} sx={styles}>
+        <MenuItem onClick={handleClose} sx={styles}>
+          <Link to='#' className='flex flex-row gap-2'>
             <RiUserSettingsLine />
-            <span className='text-sm'>Preferências</span>
-          </MenuItem>
-        </Link>
-        <Link to='#'>
-          <MenuItem onClick={handleClose} sx={styles}>
+            <span className='text-sm'>{translate('preferences')}</span>
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose} sx={styles}>
+          <Link to='#' className='flex flex-row gap-2'>
             <FiActivity />
-            <span className='text-sm'>Atividade</span>
-          </MenuItem>
-        </Link>
+            <span className='text-sm'>{translate('activity')}</span>
+          </Link>
+        </MenuItem>
         <Divider />
         <MenuItem onClick={() => logout()} sx={styles}>
           <RiLogoutBoxRLine />
-          <span className='ml-2  text-sm'>Sair</span>
+          <span className='ml-2  text-sm'>{translate('logout')}</span>
         </MenuItem>
       </Menu>
     </>

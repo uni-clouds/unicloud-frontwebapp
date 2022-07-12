@@ -1,17 +1,22 @@
+import LanguageSelector from '../Elements/LanguageSelector'
 import { NavLinksHelpers } from '../Elements/Navigation/NavLinksHelpers'
+import '../../i18n'
+import { useTranslation } from 'react-i18next'
 
 export const Footer = ({ local }: { local: string }) => {
+  const { t: translate } = useTranslation()
+
   const navItems = [
     {
-      name: 'Termos & Condições',
+      name: `${translate('terms')}`,
       path: '/terms'
     },
     {
-      name: 'Política de Privacidade',
+      name: `${translate('privacy')}`,
       path: '/policitys'
     },
     {
-      name: 'Ajuda',
+      name: `${translate('help')}`,
       path: '/help'
     }
   ]
@@ -22,11 +27,12 @@ export const Footer = ({ local }: { local: string }) => {
       ${local === 'auth' ? 'fixed inset-x-0 bottom-0 w-full ' : 'relative'}`}
     >
       <div className='text-base-400 dark:text-base-100 text-sm'>
-        &copy; 2022 Uni.Cloud. Todos os direitos reservados.
+        {translate('copyright')}
       </div>
       <nav>
         <NavLinksHelpers items={navItems} />
       </nav>
+      <LanguageSelector />
     </footer>
   )
 }

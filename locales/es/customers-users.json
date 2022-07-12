@@ -1,0 +1,19 @@
+{
+  "table-subtitle-1": "Tienes",
+  "customers-subtitle-2-singular": "cliente",
+  "customers-subtitle-2-plural": "clientes",
+  "mainUserEmail": "Correo del usuário principal",
+  "customerType-placeholder": "Seleccionar tipo de usuario",
+  "addCustomer": "Añadir cliente",
+  "customerCreated": "Cliente creado con éxito.",
+  "users-subtitle-2-singular": "usuario",
+  "users-subtitle-2-plural": "usuarios",
+  "invitations-subtitle-2-singular": "invitación enviada",
+  "invitations-subtitle-2-plural": "invitaciones enviadas",
+  "userInvitations": "Invitaciones",
+  "invitationIsPending": "Este email ya tiene uma invitación pendiente!",
+  "invitationSent": "Invitación enviada con éxito.",
+  "sentAt": "Enviado en",
+  "addUser": "Agregar usuario",
+  "userCreated": "Usuario creado con éxito."
+}

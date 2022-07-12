@@ -9,7 +9,7 @@ import queryClient from './services/queryClient'
 import App from './App'
 import Error from './pages/Error'
 import './styles/global.css'
-
+import './i18n'
 
 if (import.meta.env.PROD) {
   Sentry.init({
@@ -23,18 +23,16 @@ if (import.meta.env.PROD) {
   })
 }
 
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={<Error />}>
-          <BrowserRouter>
-            <QueryClientProvider client={queryClient}>
-                <GlobalContext>
-                    <App />
-                </GlobalContext>
-            </QueryClientProvider>
-          </BrowserRouter>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <GlobalContext>
+            <App />
+          </GlobalContext>
+        </QueryClientProvider>
+      </BrowserRouter>
     </Sentry.ErrorBoundary>
   </React.StrictMode>
 )

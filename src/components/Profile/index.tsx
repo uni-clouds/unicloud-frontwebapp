@@ -8,8 +8,11 @@ import { useDecode } from '../../hooks/useDecode'
 import { useUserData } from '../../hooks/useUserData'
 import { renderData } from './util'
 import { UserDataType } from '../Tables/Users/types'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export const Profile: React.FC = () => {
+  document.title = 'Uni.Cloud | Perfil'
   const [mode, setMode] = useState<'Informações Pessoais'>(
     'Informações Pessoais'
   )
@@ -20,6 +23,9 @@ export const Profile: React.FC = () => {
   const [isHugeName, setIsHugeName] = useState<'text-xl' | 'text-2xl'>(
     'text-xl'
   )
+
+  const { t: translate } = useTranslation()
+
   useEffect(() => {
     const user = data?.filter((el) => el.id === user_id)[0]
     setCurrentUser(user)
@@ -58,7 +64,7 @@ export const Profile: React.FC = () => {
           </button>
         </div>
         <div className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
-          <h4>Empresa</h4>
+          <h4>{translate('profile:company')}</h4>
           <h2 className={`${isHugeName} font-bold`}>
             {customerData ? renderData(customerData.razao_social) : ''}
           </h2>
@@ -71,15 +77,22 @@ export const Profile: React.FC = () => {
           >
             <ul className='flex flex-col w-full gap-8' role='menu'>
               <NavigationItem
-                text='Informações Pessoais'
+                text={translate('profile:personalInformation')}
                 href='#'
                 active={mode === 'Informações Pessoais'}
               />
-
-              <NavigationItem text='Notificações' href='#' active={false} />
-              <NavigationItem text='Atividade' href='#' active={false} />
               <NavigationItem
-                text='Configurações de Segurança'
+                text={translate('profile:notifications')}
+                href='#'
+                active={false}
+              />
+              <NavigationItem
+                text={translate('profile:activity')}
+                href='#'
+                active={false}
+              />
+              <NavigationItem
+                text={translate('profile:safetyAdjusts')}
                 href='#'
                 active={false}
               />

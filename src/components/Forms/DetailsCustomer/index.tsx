@@ -5,6 +5,7 @@ import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
 import { Input } from '../../Elements/Inputs/Input'
 import { CustomerDetailsType, CustomerDetailsProps } from './types'
 import { styleGrid } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
   handleClose,
@@ -17,6 +18,8 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
   } = useForm<CustomerDetailsType>({})
 
   const [isDisabled, setIsDisabled] = useState(true)
+
+  const { t: translate } = useTranslation()
 
   useEffect(() => {
     setValue('bairro', data?.map((d) => d.bairro).toString())
@@ -48,7 +51,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={5}>
             <Input
               type='text'
-              label='Razão Social'
+              label={translate('companyName')}
               disabled={isDisabled}
               error={errors?.razao_social}
               {...register('razao_social')}
@@ -57,7 +60,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={3}>
             <Input
               type='text'
-              label='Nome Fantasia'
+              label={translate('companyTradingName')}
               disabled={isDisabled}
               error={errors?.nome_fantasia}
               {...register('nome_fantasia')}
@@ -66,7 +69,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={4}>
             <Input
               type='text'
-              label='CNPJ'
+              label={translate('cnpj')}
               disabled={isDisabled}
               error={errors?.cnpj}
               {...register('cnpj')}
@@ -76,7 +79,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
-              label='E-mail'
+              label={translate('email')}
               disabled={isDisabled}
               error={errors?.email}
               {...register('email')}
@@ -85,7 +88,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
-              label='Natureza Jurídica'
+              label={translate('businessEntityType')}
               disabled={isDisabled}
               error={errors?.natureza_juridica}
               {...register('natureza_juridica')}
@@ -94,7 +97,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={5}>
             <Input
               type='phone'
-              label='Telefone'
+              label={translate('phone')}
               disabled={isDisabled}
               error={errors?.telefone}
               {...register('telefone')}
@@ -104,7 +107,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} md={5} sm={5}>
             <Input
               type='text'
-              label='Endereço'
+              label={translate('address')}
               disabled={isDisabled}
               error={errors?.logradouro}
               {...register('logradouro')}
@@ -113,7 +116,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} md={2} sm={2}>
             <Input
               type='text'
-              label='Número'
+              label={translate('streetNumber')}
               disabled={isDisabled}
               error={errors?.numero}
               {...register('numero')}
@@ -122,7 +125,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
-              label='Bairro'
+              label={translate('district')}
               disabled={isDisabled}
               error={errors?.bairro}
               {...register('bairro')}
@@ -131,7 +134,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} md={2} sm={3}>
             <Input
               type='text'
-              label='CEP'
+              label={translate('zipCode')}
               disabled={isDisabled}
               error={errors?.cep}
               {...register('cep')}
@@ -141,7 +144,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={3} md={5}>
             <Input
               type='text'
-              label='Cidade'
+              label={translate('city')}
               disabled={isDisabled}
               error={errors?.municipio}
               {...register('municipio')}
@@ -150,7 +153,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
           <Grid item sx={styleGrid} sm={2}>
             <Input
               type='text'
-              label='Estado'
+              label={translate('state')}
               disabled={isDisabled}
               error={errors?.estado}
               {...register('estado')}
@@ -159,7 +162,7 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
         </Grid>
         <div className=' flex flex-row gap-6 justify-end items-center '>
           <OutlineButton name='clear-form' onclick={handleClose}>
-            Fechar
+            {translate('close')}
           </OutlineButton>
         </div>
       </form>

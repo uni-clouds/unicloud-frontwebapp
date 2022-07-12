@@ -1,0 +1,11 @@
+{
+  "login": "Connexion",
+  "subtitle": "Connectez-vous sur le Broker avec votre adresse email et mot de passe.",
+  "noAccess": "Vous n'avez toujours pas accès.",
+  "noAccessLink": "Contactez notre équipe",
+  "or": "OU",
+  "commercial": "Commercial",
+  "help-desk": "Bureau-d'assistance",
+
+  "createAccount": "Créer une compte."
+}

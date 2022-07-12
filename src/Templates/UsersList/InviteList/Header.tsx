@@ -4,13 +4,15 @@ import { PurpleButton } from '../../../components/Elements/Buttons/PurpleButton'
 import { PathActive } from '../../../components/Elements/Navigation/PathActive'
 
 import { HeaderProps } from './types'
+import { useTranslation } from 'react-i18next'
 
 export const Header: React.FC<HeaderProps> = ({ data }) => {
   const navigate = useNavigate()
+  const { t: translate } = useTranslation()
   const totalInvites = Number(data?.length)
   const paths = [
-    { path: 'Usuários', route: 'user-list-default' },
-    { path: 'Convites', route: 'user-list-default/invite' }
+    { path: `${translate('users')}`, route: 'user-list-default' },
+    { path: `${translate('invitations')}`, route: 'user-list-default/invite' }
   ]
 
   return (
@@ -18,17 +20,19 @@ export const Header: React.FC<HeaderProps> = ({ data }) => {
       <div className='flex flex-col gap-2 justify-start'>
         <PathActive paths={paths} />
         <h1 className='text-3xl font-bold text-base-700 dark:text-base-100'>
-          Convites
+          {translate('invitations')}
         </h1>
         <p className='text-base-400'>
-          Você tem {totalInvites}{' '}
-          {totalInvites > 1 ? 'convites enviados' : 'convite enviado'}
+          {translate('pageSubtitle-1')} {totalInvites}{' '}
+          {totalInvites > 1
+            ? translate('customersUsers:invitations-subtitle-2-plural')
+            : translate('customersUsers:invitations-subtitle-2-singular')}
         </p>
       </div>
       <div className='flex flex-row gap-4'>
         <PurpleButton name='back' onclick={() => navigate(-1)}>
           <MdKeyboardBackspace fontSize={20} />
-          Voltar
+          {translate('back')}
         </PurpleButton>
       </div>
     </div>

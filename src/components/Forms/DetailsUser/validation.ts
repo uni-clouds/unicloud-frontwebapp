@@ -1,27 +1,39 @@
 import * as yup from 'yup'
+import i18n from '../../../i18n'
+
+const translate = i18n.t
 
 export const schemaUpdateUser = yup.object({
   username: yup
     .string()
-    .email('Informe e-mail válido')
-    .required('Informe um e-mail'),
+    .email(`${translate('error-email-invalid')}`)
+    .required(`${translate('error-email-required')}`),
   first_name: yup
     .string()
-    .min(3, 'Informe seu nome')
-    .required('Informe seu nome'),
+    .min(3, `${translate('error-firstName-invalid')}`)
+    .required(`${translate('error-firstName-required')}`),
   last_name: yup
     .string()
-    .min(3, 'Informe seu sobrenome')
-    .required('Informe seu sobrenome'),
+    .min(3, `${translate('error-lastName-invalid')}`)
+    .required(`${translate('error-lastName-required')}`),
   phone: yup
     .string()
-    .min(9, 'Informe um telefone válido')
-    .required('Informe seu telefone'),
+    .min(9, `${translate('error-phone-invalid')}`)
+    .required(`${translate('error-phone-required')}`),
   address: yup
     .string()
-    .min(5, 'Informe um endereço válido')
-    .required('Informe seu endereço'),
-  city: yup.string().min(5, 'Informe a cidade').required('Informe uma cidade'),
-  state: yup.string().min(5, 'Informe o estado').required('Informe o estado'),
-  country: yup.string().min(3, 'Informe o país').required('Informe o país')
+    .min(5, `${translate('error-address-invalid')}`)
+    .required(`${translate('error-address-required')}`),
+  city: yup
+    .string()
+    .min(5, `${translate('error-city-required')}`)
+    .required(`${translate('error-city-required')}`),
+  state: yup
+    .string()
+    .min(5, `${translate('error-country-required')}`)
+    .required(`${translate('error-state-required')}`),
+  country: yup
+    .string()
+    .min(3, `${translate('error-country-required')}`)
+    .required(`${translate('error-country-required')}`)
 })

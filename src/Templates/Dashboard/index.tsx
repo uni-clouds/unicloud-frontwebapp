@@ -9,6 +9,7 @@ import { ClientTable } from '../../components/Tables/Clients'
 import { DashboardDataType } from './types'
 import { useQuery } from 'react-query'
 import { Grid } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
@@ -27,35 +28,37 @@ export const Dashboard: React.FC = () => {
     refetchIntervalInBackground: true
   })
 
+  const { t: translate } = useTranslation()
+
   const dataCard = [
     {
-      title: 'PODS',
-      description: 'Pods ativos',
+      title: `${translate('dashboard:pods')}`,
+      description: `${translate('dashboard:pods-active')}`,
       amount: query.data?.number_of_pods
     },
     {
-      title: 'CPU Física',
-      description: 'Total de CPU físicas',
+      title: `${translate('dashboard:physicalCPU')}`,
+      description: `${translate('dashboard:physicalCPU-total')}`,
       amount: query.data?.total_fisical_cpu
     },
     {
-      title: 'Memória',
-      description: 'Total de memória',
+      title: `${translate('dashboard:memory')}`,
+      description: `${translate('dashboard:memory-total')}`,
       amount: query.data?.total_memory
     },
     {
-      title: 'Nodes',
-      description: 'Total de nodes',
+      title: `${translate('dashboard:nodes')}`,
+      description: `${translate('dashboard:nodes-total')}`,
       amount: query.data?.total_nodes
     },
     {
-      title: 'Spare Nodes',
-      description: 'Total de spare nodes',
+      title: `${translate('dashboard:spareNodes')}`,
+      description: `${translate('dashboard:spareNodes-total')}`,
       amount: query.data?.total_spare_nodes
     },
     {
-      title: 'vCore',
-      description: 'Total de vCore',
+      title: `${translate('dashboard:vCore')}`,
+      description: `${translate('dashboard:vCore-total')}`,
       amount: query.data?.total_vcores
     }
   ]
@@ -64,11 +67,11 @@ export const Dashboard: React.FC = () => {
     <section className='flex flex-col gap-12'>
       <div className='flex flex-row justify-between items-center p-2 '>
         <h1 className='font-bold leading-10 text-3xl text-base-700 dark:text-base-100 drop-shadow-xl'>
-          Dashboard
+          {translate('dashboard:dashboard')}
         </h1>
         <PurpleButton onclick={() => {}} name='reports'>
           <HiOutlineDocumentReport />
-          Reports
+          {translate('dashboard:reports')}
         </PurpleButton>
       </div>
       <Grid container spacing={2}>

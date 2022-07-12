@@ -20,6 +20,7 @@ import {
   stylesCellUsers,
   stylesLastCellUsers
 } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -31,6 +32,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const [customers, setCustomers] = useState([])
+
+  const { t: translate } = useTranslation()
 
   useEffect(() => {
     const handleCustomers = list?.map((customer) => {
@@ -46,7 +49,9 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
           customer?.municipio === undefined || null
             ? ' - '
             : customer.municipio,
-        status: customer.is_active ? 'Ativo' : 'Inativo',
+        status: customer.is_active
+          ? translate('active')
+          : translate('inactive'),
         cnpj: customer.cnpj === undefined || null ? ' - ' : customer.cnpj
       }
     })
@@ -230,7 +235,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
             component='div'
             count={rows.length}
             rowsPerPage={rowsPerPage}
-            labelRowsPerPage='Linhas por página'
+            labelRowsPerPage={translate('linesPerPage')}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}

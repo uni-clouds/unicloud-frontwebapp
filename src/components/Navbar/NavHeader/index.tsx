@@ -7,6 +7,7 @@ import { Notifications } from './Notifications'
 import { DecodeTypes } from './types'
 import { useUserType } from '../../../hooks/useUserType'
 import { useDecode } from '../../../hooks/useDecode'
+import { useTranslation } from 'react-i18next'
 
 export const NavHeader = () => {
   const [email, setEmail] = useState('')
@@ -16,13 +17,14 @@ export const NavHeader = () => {
   const [userType, setUserType] = useState(null)
   const { data } = useUserType()
   const { first_name, last_name, email: userEmail } = useDecode()
+  const { t: translate } = useTranslation()
 
   useMemo(() => {
     const createName = []
     createName.push(first_name)
     createName.push(last_name)
     const handleName = createName.join(' ')
-    const type = data?.type === 'root' ? 'Super Administrador' : data?.type
+    const type = data?.type === 'root' ? translate('superAdmin') : data?.type
     setUsername(handleName)
     setEmail(userEmail)
     setUserType(type)

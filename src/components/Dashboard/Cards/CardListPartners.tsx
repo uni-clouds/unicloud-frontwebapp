@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { v4 as uuidv4 } from 'uuid'
 import { PartnersProps } from '../../../Templates/Dashboard/types'
 import { ListSkeleton } from '../../Elements/ListSkeleton'
@@ -8,6 +9,7 @@ export const CardListPartners: React.FC<PartnersProps> = ({
   isLoading,
   isError
 }) => {
+  const { t: translate } = useTranslation()
   return (
     <div className='h-[34rem]  flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow w-full'>
       {isLoading || isError !== 'success' ? (
@@ -16,7 +18,7 @@ export const CardListPartners: React.FC<PartnersProps> = ({
         </div>
       ) : (
         <>
-          <Title text='Parceiros' />
+          <Title text={translate('partners')} />
           <ul className='whitespace-normal w-full mt-6 flex flex-col items-start gap-3 overflow-y-scroll scrollbar-thin  dark:scrollbar-thin scrollbar-track-transparent scrollbar-thumb-stone-100 hover:scrollbar-thumb-stone-100 dark:scrollbar-thumb-transparent dark:hover:scrollbar-thumb-stone-700 last:dark:border-b last:dark:border-b-zinc-700'>
             {partners?.map((data) => (
               <li

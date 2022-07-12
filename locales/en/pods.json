@@ -1,0 +1,22 @@
+{
+  "pods-subtitle-p2-singular": "POD",
+  "pods-subtitle-p2-plural": "PODS",
+  "addPod": "Add Pod",
+  "noPods": "You don't have any registered PODS!",
+  "podName": "POD name",
+  "podName-placeholder": "Enter the POD name",
+  "podLocation": "Location",
+  "podLocation-placeholder": "Enter the location. Eg.: Atlanta",
+  "spareNode": "Spare node",
+  "spareNode-placeholder": "Inform the amount",
+  "domainTenant": "Domain Tenant",
+  "domainTenant-placeholder": "Informe o Domain Tenant",
+  "podType": "Select POD type",
+  "type": "Type",
+  "storage": "Storage",
+  "compute": "Compute",
+  "URL": "URL",
+  "baseURL": "Base URL",
+  "baseURL-placeholder": "Enter the URL. Eg.: https://www.pod.com",
+  "podCreated": "Pod successfully created!"
+}

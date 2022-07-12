@@ -1,0 +1,12 @@
+{
+  "company": "Company",
+  "personalInformation": "Personal information",
+  "notifications": "Notifications",
+  "activity": "Activity",
+  "safetyAdjusts": "Security settings",
+  "personalInformation-subtitle": "Basic contact information",
+  "contactData": "Contact information",
+  "general": "General",
+  "lastLogin": "Last login",
+  "userSince": "User since"
+}
