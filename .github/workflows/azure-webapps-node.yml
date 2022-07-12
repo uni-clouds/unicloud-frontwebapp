@@ -75,7 +75,11 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-appsecrets: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> dist/process.json
+          name: node-app
+
+      - name: add process.json
+        run: |
+          echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> dist/process.json
 
       - name: 'Deploy to Azure WebApp'
         id: deploy-to-webapp
