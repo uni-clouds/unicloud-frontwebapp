@@ -27,7 +27,7 @@ env:
   AZURE_WEBAPP_NAME: unicloud-frontapp # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: 'dist' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x' # set this to the node version to use
-  VITE_BASE_URL: ${{ secrets.BASE_URL }}
+  VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
 
 permissions:
   contents: read
@@ -43,6 +43,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
+          env:
+            VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
 
       - name: npm install, build, and test
         run: |
