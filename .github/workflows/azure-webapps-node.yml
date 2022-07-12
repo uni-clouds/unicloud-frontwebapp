@@ -43,8 +43,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          env:
-            VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
 
       - name: npm install, build, and test
         run: |
