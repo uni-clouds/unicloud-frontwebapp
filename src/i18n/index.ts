@@ -36,7 +36,7 @@ import { parseCookies } from 'nookies'
 const cookies = parseCookies()
 
 const resources = {
-  en: {
+  'en-US': {
     common: enCommon,
     login: enLogin,
     profile: enProfile,
@@ -44,7 +44,7 @@ const resources = {
     dashboard: enDashboard,
     pods: enPods
   },
-  pt: {
+  'pt-BR': {
     common: ptCommon,
     login: ptLogin,
     profile: ptProfile,
@@ -52,7 +52,7 @@ const resources = {
     dashboard: ptDashboard,
     pods: ptPods
   },
-  es: {
+  'es-ES': {
     common: esCommon,
     login: esLogin,
     profile: esProfile,
@@ -60,7 +60,7 @@ const resources = {
     dashboard: esDashboard,
     pods: esPods
   },
-  fr: {
+  'fr-FR': {
     common: frCommon,
     login: frLogin,
     profile: frProfile,
