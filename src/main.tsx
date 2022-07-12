@@ -9,7 +9,7 @@ import queryClient from './services/queryClient'
 import App from './App'
 import Error from './pages/Error'
 import './styles/global.css'
-import '../src/i18n/'
+import './i18n'
 
 if (import.meta.env.PROD) {
   Sentry.init({
