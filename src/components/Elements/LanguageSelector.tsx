@@ -34,31 +34,33 @@ export default function LanguageSelector() {
       maxAge: 30 * 24 * 60 * 60
     })
     localStorage.setItem('language', i18n.resolvedLanguage)
+    document.documentElement.setAttribute('lang', i18n.resolvedLanguage)
   }, [i18n.resolvedLanguage])
 
   function changeLanguageHandler(event: SelectChangeEvent) {
     const newLanguage = event.target.value
+    document.documentElement.setAttribute('lang', newLanguage)
     i18n.changeLanguage(newLanguage)
   }
 
   const languages = [
     {
-      code: 'en',
+      code: 'en-US',
       name: 'English',
       flag: 'gb'
     },
     {
-      code: 'pt',
+      code: 'pt-BR',
       name: 'Português',
       flag: 'br'
     },
     {
-      code: 'es',
+      code: 'es-ES',
       name: 'Español',
       flag: 'es'
     },
     {
-      code: 'fr',
+      code: 'fr-FR',
       name: 'Français',
       flag: 'fr'
     }
