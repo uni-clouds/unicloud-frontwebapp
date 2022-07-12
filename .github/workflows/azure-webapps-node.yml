@@ -49,7 +49,7 @@ jobs:
           npm install --force
           npm run build --if-present
           npm run test --if-present
-          echo ${{ secrets.VITE_BACKEND_URL }}
+          echo Env. $VITE_BACKEND_URL
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -75,11 +75,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-app
-
-      - name: add process.json
-        run: |
-          echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> dist/process.json
+          name: node-appsecrets: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> dist/process.json
 
       - name: 'Deploy to Azure WebApp'
         id: deploy-to-webapp
