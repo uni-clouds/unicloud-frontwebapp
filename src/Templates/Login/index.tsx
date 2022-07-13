@@ -38,9 +38,6 @@ export const Login: React.FC = () => {
               <NavLinkLogin items={navItems} />
             </div>
           </div>
-          <p className='font-semibold text-center text-rose-400'>
-            my env: {import.meta.env.VITE_BACKEND_URL}
-          </p>
         </section>
         <Footer local='auth' />
       </main>
