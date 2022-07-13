@@ -17,22 +17,26 @@ export default function LanguageSelector() {
   const { i18n, t: translate } = useTranslation()
   const cookies = parseCookies()
 
+  function setLanguageCookie(value: string) {
+    setCookie(null, 'language', value, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+      sameSite: true
+    })
+  }
+
   useEffect(() => {
     if (cookies.language) {
       setCurrentLanguage(cookies.language)
       i18n.changeLanguage(cookies.language)
     } else {
       setCurrentLanguage(i18n.resolvedLanguage),
-        setCookie(null, 'language', i18n.resolvedLanguage, {
-          maxAge: 30 * 24 * 60 * 60
-        })
+        setLanguageCookie(i18n.resolvedLanguage)
     }
   }, [])
 
   useEffect(() => {
-    setCookie(null, 'language', i18n.resolvedLanguage, {
-      maxAge: 30 * 24 * 60 * 60
-    })
+    setLanguageCookie(i18n.resolvedLanguage)
     localStorage.setItem('language', i18n.resolvedLanguage)
     document.documentElement.setAttribute('lang', i18n.resolvedLanguage)
   }, [i18n.resolvedLanguage])

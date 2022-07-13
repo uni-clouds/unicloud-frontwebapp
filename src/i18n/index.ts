@@ -33,8 +33,6 @@ import frDashboard from '../../locales/fr/dashboard.json'
 import frPods from '../../locales/fr/pods.json'
 import { parseCookies } from 'nookies'
 
-const cookies = parseCookies()
-
 const resources = {
   'en-US': {
     common: enCommon,
@@ -74,12 +72,11 @@ i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
-    debug: true,
+    //set the languages resources
     resources,
     //set default namespace
     defaultNS: 'common',
     //default language
-    // lng: cookies.language ? cookies.language : 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
