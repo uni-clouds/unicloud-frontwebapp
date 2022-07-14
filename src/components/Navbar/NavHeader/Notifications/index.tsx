@@ -9,7 +9,7 @@ export const Notifications = () => {
   const [hasNotifications, setHasNotifications] = useState(false)
   const navigate = useNavigate()
 
-  const fakeQuantity = mockData.length
+  const fakeQuantity = 0
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
@@ -53,7 +53,7 @@ export const Notifications = () => {
             display: 'flex',
             justifyContent: 'start',
             padding: 1,
-            marginLeft: 1,
+            marginLeft: 1
           }}
         >
           Notificações
