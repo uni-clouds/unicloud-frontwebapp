@@ -10,39 +10,26 @@ import {
   useTheme
 } from '@mui/material'
 import { colors } from '../../styles/colors'
-import { parseCookies, setCookie } from 'nookies'
+import { parseCookies } from 'nookies'
+import RenderFlag from './RenderFlag'
+import { languages } from './data'
+import { setLangAttribute, setCookieByKey } from './util'
 
 export default function LanguageSelector() {
   const { i18n, t: translate } = useTranslation()
 
   const cookies = parseCookies()
 
-  function setLanguageCookie(value: string) {
-    setCookie(null, 'language', value, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/',
-      sameSite: true
-    })
-  }
-  function setLangAttribute(lang: string) {
-    if (lang === 'pt') document.documentElement.setAttribute('lang', 'pt-BR')
-    if (lang === 'en') document.documentElement.setAttribute('lang', 'en-US')
-    if (lang === 'es') document.documentElement.setAttribute('lang', 'es-ES')
-    if (lang === 'fr') document.documentElement.setAttribute('lang', 'fr-FR')
-  }
-
   useEffect(() => {
     if (cookies.language || cookies.language !== undefined) {
-      // setCurrentLanguage(cookies.language)
       i18n.changeLanguage(cookies.language)
     } else {
-      // setCurrentLanguage(i18n.resolvedLanguage),
-      setLanguageCookie(i18n.resolvedLanguage)
+      setCookieByKey('language', i18n.resolvedLanguage)
     }
   }, [])
 
   useEffect(() => {
-    setLanguageCookie(i18n.resolvedLanguage)
+    setCookieByKey('language', i18n.resolvedLanguage)
     localStorage.setItem('language', i18n.resolvedLanguage)
     setLangAttribute(i18n.resolvedLanguage)
   }, [i18n.resolvedLanguage])
@@ -51,48 +38,6 @@ export default function LanguageSelector() {
     const newLanguage = event.target.value
     setLangAttribute(newLanguage)
     i18n.changeLanguage(newLanguage)
-    // setCurrentLanguage(newLanguage)
-  }
-
-  const languages = [
-    {
-      code: 'en',
-      name: 'English',
-      flag: 'gb'
-    },
-    {
-      code: 'pt',
-      name: 'Português',
-      flag: 'br'
-    },
-    {
-      code: 'es',
-      name: 'Español',
-      flag: 'es'
-    },
-    {
-      code: 'fr',
-      name: 'Français',
-      flag: 'fr'
-    }
-  ]
-
-  function renderFlag(code: string, name: string) {
-    return (
-      <picture>
-        <source
-          type='image/webp'
-          srcSet={`https://flagcdn.com/w20/${code}.webp,
-          https://flagcdn.com/w40/${code}.webp 2x,`}
-        />
-        <source type='image/png' srcSet={`https://flagcdn.com/${code}.svg`} />
-        <img
-          src={`https://flagcdn.com/w20/${code}.webp`}
-          className='w-6'
-          alt={name}
-        />
-      </picture>
-    )
   }
 
   const { palette } = useTheme()
@@ -157,7 +102,7 @@ export default function LanguageSelector() {
             }
           >
             <div className='flex gap-4 items-center'>
-              {renderFlag(lang.flag, lang.name)}
+              <RenderFlag code={lang.flag} name={lang.name} />
               {lang.name}
             </div>
           </MenuItem>
