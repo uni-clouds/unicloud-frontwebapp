@@ -77,6 +77,9 @@ export default function LanguageSelector() {
       border: colors.red.custom
     }
   }
+  const stylesMenuItem: SxProps = {
+    color: palette.mode === 'dark' ? colors.neutral[50] : 'inherit'
+  }
 
   return (
     <FormControl size='small' sx={stylesLabel}>
@@ -100,6 +103,7 @@ export default function LanguageSelector() {
             aria-selected={
               lang.code === i18n.resolvedLanguage ? 'true' : 'false'
             }
+            sx={stylesMenuItem}
           >
             <div className='flex gap-4 items-center'>
               <RenderFlag code={lang.flag} name={lang.name} />
