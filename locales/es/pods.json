@@ -6,7 +6,7 @@
   "podName": "Nombre del POD",
   "podName-placeholder": "Escribe el nobre del POD",
   "podLocation": "Ubicación",
-  "podLocation-placeholder": "Escribe la ubicación. Ex.: Curitiba",
+  "podLocation-placeholder": "Escribe la ubicación. Ex.: Zaragoza",
   "spareNode": " Spare Nodes",
   "spareNode-placeholder": "Informar la cantidad",
   "domainTenant": "Domain tenant",

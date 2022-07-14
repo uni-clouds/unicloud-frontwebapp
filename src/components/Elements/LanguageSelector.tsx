@@ -13,8 +13,8 @@ import { colors } from '../../styles/colors'
 import { parseCookies, setCookie } from 'nookies'
 
 export default function LanguageSelector() {
-  const [currentLanguage, setCurrentLanguage] = useState<string>('')
   const { i18n, t: translate } = useTranslation()
+
   const cookies = parseCookies()
 
   function setLanguageCookie(value: string) {
@@ -24,47 +24,54 @@ export default function LanguageSelector() {
       sameSite: true
     })
   }
+  function setLangAttribute(lang: string) {
+    if (lang === 'pt') document.documentElement.setAttribute('lang', 'pt-BR')
+    if (lang === 'en') document.documentElement.setAttribute('lang', 'en-US')
+    if (lang === 'es') document.documentElement.setAttribute('lang', 'es-ES')
+    if (lang === 'fr') document.documentElement.setAttribute('lang', 'fr-FR')
+  }
 
   useEffect(() => {
-    if (cookies.language) {
-      setCurrentLanguage(cookies.language)
+    if (cookies.language || cookies.language !== undefined) {
+      // setCurrentLanguage(cookies.language)
       i18n.changeLanguage(cookies.language)
     } else {
-      setCurrentLanguage(i18n.resolvedLanguage),
-        setLanguageCookie(i18n.resolvedLanguage)
+      // setCurrentLanguage(i18n.resolvedLanguage),
+      setLanguageCookie(i18n.resolvedLanguage)
     }
   }, [])
 
   useEffect(() => {
     setLanguageCookie(i18n.resolvedLanguage)
     localStorage.setItem('language', i18n.resolvedLanguage)
-    document.documentElement.setAttribute('lang', i18n.resolvedLanguage)
+    setLangAttribute(i18n.resolvedLanguage)
   }, [i18n.resolvedLanguage])
 
   function changeLanguageHandler(event: SelectChangeEvent) {
     const newLanguage = event.target.value
-    document.documentElement.setAttribute('lang', newLanguage)
+    setLangAttribute(newLanguage)
     i18n.changeLanguage(newLanguage)
+    // setCurrentLanguage(newLanguage)
   }
 
   const languages = [
     {
-      code: 'en-US',
+      code: 'en',
       name: 'English',
       flag: 'gb'
     },
     {
-      code: 'pt-BR',
+      code: 'pt',
       name: 'Português',
       flag: 'br'
     },
     {
-      code: 'es-ES',
+      code: 'es',
       name: 'Español',
       flag: 'es'
     },
     {
-      code: 'fr-FR',
+      code: 'fr',
       name: 'Français',
       flag: 'fr'
     }
@@ -127,39 +134,35 @@ export default function LanguageSelector() {
   }
 
   return (
-    <>
-      {currentLanguage && (
-        <FormControl size='small' sx={stylesLabel}>
-          <InputLabel id='language-select-label'>
-            {translate('languageSelect')}
-          </InputLabel>
-          <Select
-            labelId='language-select-label'
-            id='language-select'
-            defaultValue={currentLanguage}
-            label={translate('languageSelect')}
-            onChange={changeLanguageHandler}
-            sx={stylesInput}
+    <FormControl size='small' sx={stylesLabel}>
+      <InputLabel id='language-select-label'>
+        {translate('languageSelect')}
+      </InputLabel>
+      <Select
+        labelId='language-select-label'
+        id='language-select'
+        value={i18n.resolvedLanguage}
+        label={translate('languageSelect')}
+        onChange={changeLanguageHandler}
+        sx={stylesInput}
+      >
+        {languages.map((lang) => (
+          <MenuItem
+            value={lang.code}
+            key={`langSwitch-${lang.code}`}
+            aria-label={translate('languageSelect')}
+            aria-valuetext={i18n.resolvedLanguage}
+            aria-selected={
+              lang.code === i18n.resolvedLanguage ? 'true' : 'false'
+            }
           >
-            {languages.map((lang) => (
-              <MenuItem
-                value={lang.code}
-                key={`langSwitch-${lang.code}`}
-                aria-label={translate('languageSelect')}
-                aria-valuetext={i18n.resolvedLanguage}
-                aria-selected={
-                  lang.code === i18n.resolvedLanguage ? 'true' : 'false'
-                }
-              >
-                <div className='flex gap-4 items-center'>
-                  {renderFlag(lang.flag, lang.name)}
-                  {lang.name}
-                </div>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      )}
-    </>
+            <div className='flex gap-4 items-center'>
+              {renderFlag(lang.flag, lang.name)}
+              {lang.name}
+            </div>
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   )
 }

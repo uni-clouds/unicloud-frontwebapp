@@ -34,7 +34,7 @@ import frPods from '../../locales/fr/pods.json'
 import { parseCookies } from 'nookies'
 
 const resources = {
-  'en-US': {
+  en: {
     common: enCommon,
     login: enLogin,
     profile: enProfile,
@@ -42,7 +42,7 @@ const resources = {
     dashboard: enDashboard,
     pods: enPods
   },
-  'pt-BR': {
+  pt: {
     common: ptCommon,
     login: ptLogin,
     profile: ptProfile,
@@ -50,7 +50,7 @@ const resources = {
     dashboard: ptDashboard,
     pods: ptPods
   },
-  'es-ES': {
+  es: {
     common: esCommon,
     login: esLogin,
     profile: esProfile,
@@ -58,7 +58,7 @@ const resources = {
     dashboard: esDashboard,
     pods: esPods
   },
-  'fr-FR': {
+  fr: {
     common: frCommon,
     login: frLogin,
     profile: frProfile,
@@ -72,6 +72,7 @@ i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
+    debug: true,
     //set the languages resources
     resources,
     //set default namespace
