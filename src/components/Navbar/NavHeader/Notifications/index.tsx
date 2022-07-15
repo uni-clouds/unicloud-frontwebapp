@@ -3,15 +3,15 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NotificationIcon } from '../../../Elements/NotificationIcon'
 import { NotificationsContent } from '../../../NotificationsContent'
-import { mockData } from '../../../NotificationsContent/data'
 
 export const Notifications = () => {
   const [hasNotifications, setHasNotifications] = useState(false)
+
   const navigate = useNavigate()
 
   const fakeQuantity = 0
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const open = Boolean(anchorEl)
+  const open = fakeQuantity === 0 ? null : Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)

@@ -1,7 +1,8 @@
 {
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
@@ -9,7 +10,7 @@
   ],
   "env": {
     "browser": true,
-    "es2020": true
+    "es2021": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -34,5 +35,8 @@
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "double"],
     " semi": ["error", "never"]
+  },
+  "settings": {
+    "version": "detect"
   }
 }
