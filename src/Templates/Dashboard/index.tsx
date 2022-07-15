@@ -11,6 +11,11 @@ import { useQuery } from 'react-query'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { RiDashboardLine } from 'react-icons/ri'
+import { BsCpu } from 'react-icons/bs'
+import { MdOutlineSdStorage } from 'react-icons/md'
+import { HiOutlineDesktopComputer } from 'react-icons/hi'
+import { AiOutlineNodeIndex } from 'react-icons/ai'
+import { RiNodeTree } from 'react-icons/ri'
 
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
@@ -41,27 +46,32 @@ export const Dashboard: React.FC = () => {
     {
       title: `${translate('dashboard:physicalCPU')}`,
       description: `${translate('dashboard:physicalCPU-total')}`,
-      amount: query.data?.total_fisical_cpu
+      amount: query.data?.total_fisical_cpu,
+      icon: <HiOutlineDesktopComputer />
     },
     {
       title: `${translate('dashboard:memory')}`,
       description: `${translate('dashboard:memory-total')}`,
-      amount: query.data?.total_memory
+      amount: query.data?.total_memory,
+      icon: <MdOutlineSdStorage />
     },
     {
       title: `${translate('dashboard:nodes')}`,
       description: `${translate('dashboard:nodes-total')}`,
-      amount: query.data?.total_nodes
+      amount: query.data?.total_nodes,
+      icon: <AiOutlineNodeIndex />
     },
     {
       title: `${translate('dashboard:spareNodes')}`,
       description: `${translate('dashboard:spareNodes-total')}`,
-      amount: query.data?.total_spare_nodes
+      amount: query.data?.total_spare_nodes,
+      icon: <RiNodeTree />
     },
     {
       title: `${translate('dashboard:vCore')}`,
       description: `${translate('dashboard:vCore-total')}`,
-      amount: query.data?.total_vcores
+      amount: query.data?.total_vcores,
+      icon: <BsCpu />
     }
   ]
 

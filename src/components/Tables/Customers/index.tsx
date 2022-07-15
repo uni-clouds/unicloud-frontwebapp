@@ -35,6 +35,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
 
   const { t: translate } = useTranslation()
 
+  console.log(list)
+
   useEffect(() => {
     const handleCustomers = list?.map((customer) => {
       return {
@@ -49,9 +51,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
           customer?.municipio === undefined || null
             ? ' - '
             : customer.municipio,
-        status: customer.is_active
-          ? translate('active')
-          : translate('inactive'),
+        status: customer.is_active ? 'Ativo' : 'Inativo',
         cnpj: customer.cnpj === undefined || null ? ' - ' : customer.cnpj
       }
     })
@@ -213,7 +213,9 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                                 : colors.red.custom
                           }}
                         >
-                          {row.status}
+                          {row.status === 'Ativo'
+                            ? translate('active')
+                            : translate('inactive')}
                         </TableCell>
                       </TableRow>
                     )
