@@ -22,12 +22,14 @@ on:
     branches:
       - 'devlopment'
   workflow_dispatch:
+  
 
-env:
+ 
+  
+env: 
   AZURE_WEBAPP_NAME: unicloud-front-development # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: 'dist' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x' # set this to the node version to use
-environment: production
   VITE_BACKEND_URL: ${{ secrets.VITE_BACKEND_URL }}
 
 permissions:
@@ -36,6 +38,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - uses: actions/checkout@v3
 
