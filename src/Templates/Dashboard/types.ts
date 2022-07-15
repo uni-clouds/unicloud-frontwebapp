@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { MapProps } from '../../components/Dashboard/Charts/Maps/types'
 
 export interface CardLineProps {
@@ -11,6 +12,7 @@ export interface CardDefaultProps {
   title: string
   description: string
   amount: number
+  icon: ReactNode
 }
 
 export interface DashboardDataType {

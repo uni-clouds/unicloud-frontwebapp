@@ -10,6 +10,7 @@ import { DashboardDataType } from './types'
 import { useQuery } from 'react-query'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { RiDashboardLine } from 'react-icons/ri'
 
 const REVALIDATE_TIME = 60 * 60 //60 min
 const CACHE_TIME = 60 * 10 //10min
@@ -34,7 +35,8 @@ export const Dashboard: React.FC = () => {
     {
       title: `${translate('dashboard:pods')}`,
       description: `${translate('dashboard:pods-active')}`,
-      amount: query.data?.number_of_pods
+      amount: query.data?.number_of_pods,
+      icon: <RiDashboardLine />
     },
     {
       title: `${translate('dashboard:physicalCPU')}`,
@@ -81,6 +83,7 @@ export const Dashboard: React.FC = () => {
               title={data.title}
               description={data.description}
               amount={data.amount}
+              icon={data.icon}
             />
           </Grid>
         ))}
