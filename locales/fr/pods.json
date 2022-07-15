@@ -11,7 +11,7 @@
   "spareNode-placeholder": "Informer la quantité",
   "domainTenant": "Domain Tenant",
   "domainTenant-placeholder": "Informez le Domain Tenant",
-  "podType": "Seleccionez le type de POD",
+  "podType": "Sélectionnez le type de POD",
   "type": "Type",
   "storage": "Storage",
   "compute": "Compute",
