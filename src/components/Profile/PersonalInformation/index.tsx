@@ -1,14 +1,18 @@
 import { useTranslation } from 'react-i18next'
+import { addCountryToLanguage } from '../../LanguageSelector/util'
 import InformationDisplay from '../InformationDisplay'
 import { renderData } from '../util'
 
 export default function PersonalInformation({ user }) {
-  const { t: translate } = useTranslation()
+  const { t: translate, i18n } = useTranslation()
 
   function transformDate(date: string) {
-    return new Intl.DateTimeFormat('pt-BR', {
-      dateStyle: 'long'
-    }).format(new Date(date))
+    return new Intl.DateTimeFormat(
+      addCountryToLanguage(i18n.resolvedLanguage),
+      {
+        dateStyle: 'long'
+      }
+    ).format(new Date(date))
   }
   function interpolateAdress() {
     return `${

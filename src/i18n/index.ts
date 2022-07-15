@@ -72,7 +72,6 @@ i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
-    debug: true,
     //set the languages resources
     resources,
     //set default namespace
