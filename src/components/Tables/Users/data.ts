@@ -1,5 +1,4 @@
 import { HeadCell, Data } from './types'
-import i18n from '../../../i18n'
 
 export function createData(
   name: string,
@@ -20,8 +19,6 @@ export function createData(
     last_name
   }
 }
-
-const translate = i18n.t
 
 export const headCells: readonly HeadCell[] = [
   {

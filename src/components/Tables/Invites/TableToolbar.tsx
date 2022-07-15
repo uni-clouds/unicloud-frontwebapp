@@ -8,11 +8,14 @@ import { TableToolbarProps } from './types'
 import { api } from '../../../services/api'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { stylesToolbar } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const [isSuccess, setIsSuccess] = useState(false)
   const { numSelected, id } = props
   const selectedId = id.toString()
+
+  const { t: translate } = useTranslation()
 
   async function updateInvitation(id: string) {
     try {
@@ -35,7 +38,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
     <>
       {!!isSuccess && (
         <ToastSuccess
-          message='Convite revalidado com sucesso!'
+          message={translate('customersUsers:invitationSent')}
           isSuccess={isSuccess}
           handleClose={handleOnClose}
         />
@@ -48,18 +51,21 @@ export const TableToolbar = (props: TableToolbarProps) => {
             variant='subtitle1'
             component='div'
           >
-            {numSelected} {numSelected === 1 ? 'selecionado' : 'selecionados'}
+            {numSelected}{' '}
+            {numSelected === 1
+              ? translate('customersUsers:invitations-singular')
+              : translate('invitations-plural')}
           </Typography>
         )}
         {numSelected === 1 ? (
-          <Tooltip title='Revalidar'>
+          <Tooltip title={translate('revalidate')}>
             <IconButton onClick={() => updateInvitation(selectedId)}>
               <BsArrowCounterclockwise />
             </IconButton>
           </Tooltip>
         ) : numSelected > 1 ? (
           <Tooltip
-            title='Apenas um convite por vez'
+            title={translate('tooltip-oneInvitationAtATime')}
             aria-disabled='true'
             role='alert'
             disableInteractive
@@ -69,7 +75,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title='Filtrar'>
+          <Tooltip title={translate('filter')}>
             <IconButton>
               <MdFilterList />
             </IconButton>

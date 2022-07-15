@@ -45,12 +45,14 @@
   "close": "Fechar",
   "filter": "Filtrar",
   "back": "Voltar",
+  "revalidate": "Revalidar",
   "selected-singular": "selecionado",
   "selected-plural": "selecionados",
 
   "tooltip-showDetails": "Exibir detalhes",
   "tooltip-oneUserAtATime": "Apenas um usuário por vez",
   "tooltip-oneCustomerAtATime": "Apenas um cliente por vez",
+  "tooltip-oneInvitationAtATime": "Apenas um convite por vez",
 
   "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
   "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",

@@ -1,10 +1,7 @@
-import { parseCookies, setCookie } from 'nookies'
+import { setCookie } from 'nookies'
 
 export function setLangAttribute(lang: string) {
-  if (lang === 'pt') document.documentElement.setAttribute('lang', 'pt-BR')
-  if (lang === 'en') document.documentElement.setAttribute('lang', 'en-US')
-  if (lang === 'es') document.documentElement.setAttribute('lang', 'es-ES')
-  if (lang === 'fr') document.documentElement.setAttribute('lang', 'fr-FR')
+  document.documentElement.setAttribute('lang', addCountryToLanguage(lang))
 }
 
 export function setCookieByKey(key: string, value: string) {
@@ -13,4 +10,11 @@ export function setCookieByKey(key: string, value: string) {
     path: '/',
     sameSite: true
   })
+}
+
+export function addCountryToLanguage(lang: string) {
+  if (lang === 'pt') return 'pt-BR'
+  if (lang === 'en') return 'en-US'
+  if (lang === 'es') return 'es-ES'
+  if (lang === 'fr') return 'fr-FR'
 }

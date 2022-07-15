@@ -54,6 +54,7 @@
         "tooltip-showDetails": "Afficher les détails",
         "tooltip-oneUserAtATime": "Un utilisateur à la fois",
         "tooltip-oneCustomerAtATime": "Un client à la fois",
+        "tooltip-oneInvitationAtATime": "Une invitation à la fois",
 
         "error-invalid-credentials": "Informations d'identification invalides. Réessayer.",
         "error-something-unexpected": "Quelque chose d'inattendu s'est produit. Réessayer.",

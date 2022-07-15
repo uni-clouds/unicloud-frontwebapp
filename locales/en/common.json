@@ -45,12 +45,14 @@
   "close": "Close",
   "filter": "Filter",
   "back": "Back",
+  "revalidate": "Revalidate",
   "selected-singular": "selected",
   "selected-plural": "selected",
 
   "tooltip-showDetails": "Show details",
   "tooltip-oneUserAtATime": "Only one user at a time",
   "tooltip-oneCustomerAtATime": "Only one customer at a time",
+  "tooltip-oneInvitationAtATime": "Only an invitation at a time",
 
   "error-invalid-credentials": "Invalid credentials. Try again.",
   "error-something-unexpected": "Something unexpected occurred. Try again",
