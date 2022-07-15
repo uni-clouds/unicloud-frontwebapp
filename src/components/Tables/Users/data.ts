@@ -28,35 +28,35 @@ export const headCells: readonly HeadCell[] = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: `${translate('name')}`,
+    label: `Nome`,
     minWidth: 180
   },
   {
     id: 'email',
     numeric: false,
     disablePadding: false,
-    label: `${translate('email')}`,
+    label: `E-mail`,
     minWidth: 200
   },
   {
     id: 'phone',
     numeric: false,
     disablePadding: false,
-    label: `${translate('phone')}`,
+    label: `Telefone`,
     minWidth: 150
   },
   {
     id: 'country',
     numeric: false,
     disablePadding: false,
-    label: `${translate('country')}`,
+    label: `País`,
     minWidth: 100
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: `${translate('status')}`,
+    label: `Status`,
     minWidth: 100
   }
 ]
