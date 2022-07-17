@@ -56,7 +56,7 @@ const CnpjField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         }`}
         role='alert'
       >
-        {error?.message}
+        {translate(error?.message)}
       </p>
     </>
   )

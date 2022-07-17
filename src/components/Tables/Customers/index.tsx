@@ -35,8 +35,6 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
 
   const { t: translate } = useTranslation()
 
-  console.log(list)
-
   useEffect(() => {
     const handleCustomers = list?.map((customer) => {
       return {

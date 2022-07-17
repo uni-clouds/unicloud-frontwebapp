@@ -1,10 +1,12 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { useTranslation } from 'react-i18next'
 import { InputProps } from './types'
 
 const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { placeholder, label, type, error, ...rest },
   ref
 ) => {
+  const { t: translate } = useTranslation()
   return (
     <>
       <label
@@ -34,7 +36,7 @@ const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           error ? 'visible' : 'invisible'
         }`}
       >
-        {error?.message}
+        {translate(error?.message)}
       </p>
     </>
   )

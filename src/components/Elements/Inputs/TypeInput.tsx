@@ -9,12 +9,14 @@ import {
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { SelectInputProps } from './types'
 import { colors } from '../../../styles/colors'
+import { useTranslation } from 'react-i18next'
 
 const TypeSelect: ForwardRefRenderFunction<
   HTMLInputElement,
   SelectInputProps
 > = ({ error, name, label, values, ...field }, ref) => {
   const { palette } = useTheme()
+  const { t: translate } = useTranslation()
 
   const styles: SxProps = {
     '.MuiFormLabel-root': {
@@ -85,7 +87,7 @@ const TypeSelect: ForwardRefRenderFunction<
         }`}
         role='alert'
       >
-        {error?.message}
+        {translate(error?.message)}
       </p>
     </FormControl>
   )
