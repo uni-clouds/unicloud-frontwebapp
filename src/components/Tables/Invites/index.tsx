@@ -18,6 +18,7 @@ import { createData } from './data'
 import { colors } from '../../../styles/colors'
 import { TableSkeleton } from '../TableSkeleton'
 import { useTranslation } from 'react-i18next'
+import { addCountryToLanguage } from '../../LanguageSelector/util'
 
 export const InvitesTable: React.FC = () => {
   const { data, isLoading, isError } = useInviteList()
@@ -32,7 +33,7 @@ export const InvitesTable: React.FC = () => {
   const colorBgChecked =
     palette.mode === 'dark' ? colors.scroll : colors.brand[300]
 
-  const { t: translate } = useTranslation()
+  const { t: translate, i18n } = useTranslation()
 
   const getId = data
     .filter((e) => e.email === selected.toString())
@@ -41,7 +42,7 @@ export const InvitesTable: React.FC = () => {
   const rows = data?.map((invite) =>
     createData(
       invite.email,
-      new Intl.DateTimeFormat('pt-BR', {
+      new Intl.DateTimeFormat(addCountryToLanguage(i18n.resolvedLanguage), {
         day: '2-digit',
         month: 'long',
         year: 'numeric'

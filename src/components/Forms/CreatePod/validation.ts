@@ -3,32 +3,35 @@ import * as yup from 'yup'
 export const schemaCreatePod = yup.object({
   name: yup
     .string()
-    .min(5, 'Mínimo de 5 caracteres')
-    .required('Informe um nome'),
+    .min(5, 'validation:min-chars_5')
+    .required('validation:name-required'),
   location: yup
     .string()
-    .min(3, 'Informe uma cidade válida')
-    .required('Informe uma cidade'),
+    .min(3, 'validation:city-invalid')
+    .required('validation:-city-required'),
   pod_user: yup
     .string()
-    .min(5, 'Mínimo de 5 caracteres')
-    .required('Informe um nome'),
+    .min(5, 'validation:min-chars_5')
+    .required('validation:name-required'),
   pod_password: yup
     .string()
-    .required('Informe a senha')
-    .min(6, 'Senha deve conter no mínimo 6 carácteres'),
-  type: yup.string().required('Selecione um tipo!'),
+    .required('validation:password-required')
+    .min(6, 'validation:min-chars_6'),
+  type: yup.string().required('validation:select-type'),
   url_base: yup
     .string()
-    .url('Informe uma URL válida')
-    .required('Informe uma URL'),
+    .url('validation:url-invalid')
+    .required('validation:url-required'),
   project_id: yup
     .string()
-    .min(5, 'Informe um ID válido')
-    .required('Informe um ID'),
-  domain_tenant: yup.string().max(50).required('Informe o domain tenant'),
+    .min(5, 'validation:id-invalid')
+    .required('validation:id-required'),
+  domain_tenant: yup
+    .string()
+    .max(50, 'validation:max-chars_50')
+    .required('validation:domainTenant-required'),
   spare_nodes: yup
     .string()
-    .min(1, 'Informe um número inteiro')
-    .required('Informe a quantidade!')
+    .min(1, 'validation:format_integer')
+    .required('validation:required_amount')
 })

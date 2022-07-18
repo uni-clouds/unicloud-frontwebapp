@@ -15,6 +15,9 @@
   "invitations-subtitle-2-singular": "invitation sent",
   "invitations-subtitle-2-plural": "invitations sent",
 
+  "invitations-singular": "invitation",
+  "invitations-plural": "invitations",
+
   "userInvitations": "Invitations",
   "invitationIsPending": " This email already has an invite on hold.",
   "invitationSent": "Invitation successfully sent.",

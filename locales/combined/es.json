@@ -54,6 +54,7 @@
         "tooltip-showDetails": "Exibir detalles",
         "tooltip-oneUserAtATime": "Solo uno usuário a la vez",
         "tooltip-oneCustomerAtATime": "Solo uno usuário a la vez",
+        "tooltip-oneInvitationAtATime": "Solo una invitación a la vez",
 
         "error-invalid-credentials": "Credenciales inválidas, intenta de nuevo.",
         "error-something-unexpected": "Sucedió algo inesperado, intenta de nuevo.",
@@ -173,7 +174,7 @@
         "podName": "Nombre del POD",
         "podName-placeholder": "Escribe el nobre del POD",
         "podLocation": "Ubicación",
-        "podLocation-placeholder": "Escribe la ubicación. Ex.: Curitiba",
+        "podLocation-placeholder": "Escribe la ubicación. Ex.: Zaragoza",
         "spareNode": " Spare Nodes",
         "spareNode-placeholder": "Informar la cantidad",
         "domainTenant": "Domain tenant",

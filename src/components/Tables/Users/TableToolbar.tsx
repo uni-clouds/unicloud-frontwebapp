@@ -28,8 +28,8 @@ export const TableToolbar = (props: TableToolbarProps) => {
         >
           {numSelected}{' '}
           {numSelected === 1
-            ? translate('users-subtitle-2-singular')
-            : translate('users-subtitle-2-plural')}
+            ? translate('selected-singular')
+            : translate('selected-plural')}
         </Typography>
       )}
 

@@ -10,6 +10,8 @@
   "users-subtitle-2-plural": "usuarios",
   "invitations-subtitle-2-singular": "invitación enviada",
   "invitations-subtitle-2-plural": "invitaciones enviadas",
+  "invitations-singular": "invitación",
+  "invitations-plural": "invitaciones",
   "userInvitations": "Invitaciones",
   "invitationIsPending": "Este email ya tiene uma invitación pendiente!",
   "invitationSent": "Invitación enviada con éxito.",

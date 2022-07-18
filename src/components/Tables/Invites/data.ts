@@ -1,4 +1,3 @@
-import i18n from '../../../i18n'
 import { HeadCell, Data } from './types'
 
 export function createData(
@@ -9,28 +8,26 @@ export function createData(
   return { email, created_at, status }
 }
 
-const translate = i18n.t
-
 export const headCells: readonly HeadCell[] = [
   {
     id: 'email',
     numeric: false,
     disablePadding: true,
-    label: `${translate('email')}`,
+    label: `E-mail`,
     minWidth: 180
   },
   {
     id: 'created_at',
     numeric: false,
     disablePadding: false,
-    label: `${translate('customersUsers:sentAt')}`,
+    label: `Enviado em`,
     minWidth: 80
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: `${translate('status')}`,
+    label: `Status`,
     minWidth: 80
   }
 ]

@@ -51,7 +51,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
         user.userprofile?.country === undefined || null
           ? ' - '
           : user.userprofile?.country,
-      status: user.is_active ? translate('active') : translate('inactive'),
+      status: user.is_active ? 'Ativo' : 'Inativo',
       first_name: user.first_name === undefined || null ? ' ' : user.first_name,
       last_name: user.last_name === undefined || null ? ' ' : user.last_name
     }
@@ -221,7 +221,9 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                                 : colors.red.custom
                           }}
                         >
-                          {row.status}
+                          {row.status === 'Ativo'
+                            ? translate('active')
+                            : translate('inactive')}
                         </TableCell>
                       </TableRow>
                     )

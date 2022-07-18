@@ -10,7 +10,8 @@ import { CardDefaultProps } from '../../../Templates/Dashboard/types'
 export const CardDefault: React.FC<CardDefaultProps> = ({
   title,
   description,
-  amount
+  amount,
+  icon
 }) => {
   return (
     <div className='flex-wrap w-full h-full bg-white custom-dark p-4 lg:p-6 text-base-600 dark:text-neutral-200 rounded-md shadow'>
@@ -19,19 +20,7 @@ export const CardDefault: React.FC<CardDefaultProps> = ({
           <h3 className='font-medium text-md lg:text-xl text-base-700 dark:text-slate-100'>
             {title}
           </h3>
-          {title === 'PODS' ? (
-            <RiDashboardLine className='text-lg lg:text-2xl dark:text-slate-100' />
-          ) : title === 'vCore' ? (
-            <BsCpu className='text-lg lg:text-2xl' />
-          ) : title === 'Memória' ? (
-            <MdOutlineSdStorage className='text-lg lg:text-2xl dark:text-slate-100' />
-          ) : title === 'CPU Física' ? (
-            <HiOutlineDesktopComputer className='text-lg lg:text-2xl dark:text-slate-100 ' />
-          ) : title === 'Nodes' ? (
-            <AiOutlineNodeIndex className='text-lg lg:text-2xl dark:text-slate-100 ' />
-          ) : (
-            <RiNodeTree className='text-lg lg:text-2xl dark:text-slate-100 ' />
-          )}
+          <div className='text-lg lg:text-2xl dark:text-slate-100 '>{icon}</div>
         </div>
         <div>
           <p className='text-sm md:text-md lg:text-lg leading-4 '>

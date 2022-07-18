@@ -94,7 +94,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message={translate('customerUser:customerCreated')}
+            message={translate('customersUser:customerCreated')}
             handleClose={handleOnClose}
           />
         </Portal>

@@ -1,4 +1,4 @@
-import LanguageSelector from '../Elements/LanguageSelector'
+import LanguageSelector from '../LanguageSelector'
 import { NavLinksHelpers } from '../Elements/Navigation/NavLinksHelpers'
 import '../../i18n'
 import { useTranslation } from 'react-i18next'

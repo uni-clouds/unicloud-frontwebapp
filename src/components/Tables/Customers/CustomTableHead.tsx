@@ -11,6 +11,7 @@ import { headCells } from './data'
 import { Data, TableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { stylesCheckboxTable } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 export function CustomTableHead(props: TableProps) {
   const {
@@ -25,6 +26,16 @@ export function CustomTableHead(props: TableProps) {
     (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property)
     }
+
+  const { t: translate } = useTranslation()
+
+  function translateLabel(label: string) {
+    if (label === 'Empresa') return translate('company')
+    if (label === 'CNPJ') return translate('cnpj')
+    if (label === 'Telefone') return translate('phone')
+    if (label === 'Cidade') return translate('city')
+    if (label === 'Status') return translate('status')
+  }
 
   return (
     <TableHead>
@@ -55,7 +66,7 @@ export function CustomTableHead(props: TableProps) {
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
-              {headCell.label}
+              {translateLabel(headCell.label)}
               {orderBy === headCell.id ? (
                 <Box component='span' sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}

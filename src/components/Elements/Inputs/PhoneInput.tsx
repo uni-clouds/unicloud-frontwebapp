@@ -53,7 +53,7 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           error ? 'visible' : 'invisible'
         }`}
       >
-        {error?.message}
+        {translate(error?.message)}
       </p>
     </>
   )
