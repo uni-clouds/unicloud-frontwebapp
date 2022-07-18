@@ -32,6 +32,7 @@
   "id-invalid": "Saisissez un ID valide",
   "url-required": "URL est requise.",
   "url-invalid": "Saisissez une URL valide",
+  "cnpj-required": "Saisissez le SIRET",
   "cnpj-invalid": "Saisissez un SIRET valide",
   "domainTenant-required": "Domain Tenant est requis."
 }

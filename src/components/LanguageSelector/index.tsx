@@ -13,7 +13,11 @@ import { colors } from '../../styles/colors'
 import { parseCookies } from 'nookies'
 import RenderFlag from './RenderFlag'
 import { languages } from './data'
-import { setLangAttribute, setCookieByKey } from './util'
+import {
+  setLangAttribute,
+  setCookieByKey,
+  translateMetaDescription
+} from './util'
 
 export default function LanguageSelector() {
   const { i18n, t: translate } = useTranslation()
@@ -26,6 +30,10 @@ export default function LanguageSelector() {
     } else {
       setCookieByKey('language', i18n.resolvedLanguage)
     }
+    translateMetaDescription(
+      translate('head-meta-description'),
+      translate('head-meta-ogdescription')
+    )
   }, [])
 
   useEffect(() => {
@@ -38,6 +46,10 @@ export default function LanguageSelector() {
     const newLanguage = event.target.value
     setLangAttribute(newLanguage)
     i18n.changeLanguage(newLanguage)
+    translateMetaDescription(
+      translate('head-meta-description'),
+      translate('head-meta-ogdescription')
+    )
   }
 
   const { palette } = useTheme()
