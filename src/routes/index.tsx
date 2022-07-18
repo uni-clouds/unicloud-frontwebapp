@@ -39,7 +39,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/nt-found'
+        path='/not-found'
         element={
           <Suspense fallback={<>...</>}>
             <NotFound />
