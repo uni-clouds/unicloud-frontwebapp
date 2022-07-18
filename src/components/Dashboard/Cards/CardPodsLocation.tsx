@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { PodsLocationsProps } from '../../../Templates/Dashboard/types'
+import { PodsLocationsProps } from '../../../templates/Dashboard/types'
 import { Loading } from '../../Elements/Loading'
 import { Title } from '../../Elements/TitleDashboard'
 import PodsLocation from '../Charts/Maps'

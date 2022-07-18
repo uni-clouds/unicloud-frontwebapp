@@ -5,7 +5,7 @@ import { HiOutlineDesktopComputer } from 'react-icons/hi'
 import { AiOutlineNodeIndex } from 'react-icons/ai'
 import { RiNodeTree } from 'react-icons/ri'
 
-import { CardDefaultProps } from '../../../Templates/Dashboard/types'
+import { CardDefaultProps } from '../../../templates/Dashboard/types'
 
 export const CardDefault: React.FC<CardDefaultProps> = ({
   title,

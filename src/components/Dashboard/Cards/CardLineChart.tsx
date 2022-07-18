@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { IoArrowUpOutline, IoArrowDownOutline } from 'react-icons/io5'
-import { CardLineProps } from '../../../Templates/Dashboard/types'
+import { CardLineProps } from '../../../templates/Dashboard/types'
 import { SingleLineChart } from '../Charts/SingleLineChart'
-
 
 export const CardLineChart: React.FC<CardLineProps> = ({
   title,
