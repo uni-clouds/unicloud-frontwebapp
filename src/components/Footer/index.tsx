@@ -29,7 +29,7 @@ export const Footer = ({ local }: { local: string }) => {
       <div className='text-base-400 dark:text-base-100 text-sm'>
         {translate('copyright')}
       </div>
-      <nav className='opacity-20'>
+      <nav className='opacity-0 pointer-events-none'>
         <NavLinksHelpers items={navItems} />
       </nav>
       <LanguageSelector />
