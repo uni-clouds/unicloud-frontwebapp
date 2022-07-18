@@ -9,15 +9,15 @@ export const Footer = ({ local }: { local: string }) => {
   const navItems = [
     {
       name: `${translate('terms')}`,
-      path: '/terms'
+      path: '/#'
     },
     {
       name: `${translate('privacy')}`,
-      path: '/policitys'
+      path: '/#'
     },
     {
       name: `${translate('help')}`,
-      path: '/help'
+      path: '/#'
     }
   ]
 
@@ -29,7 +29,7 @@ export const Footer = ({ local }: { local: string }) => {
       <div className='text-base-400 dark:text-base-100 text-sm'>
         {translate('copyright')}
       </div>
-      <nav>
+      <nav className='opacity-20'>
         <NavLinksHelpers items={navItems} />
       </nav>
       <LanguageSelector />
