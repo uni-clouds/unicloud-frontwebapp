@@ -1,14 +1,7 @@
 import { NavlinkProps } from '../Navlink/types'
 
 export interface NavItemProps {
-  menuItem: {
-    name: string
-    icon: React.ComponentType
-    url: string
-    id: string
-    depth: number
-    subItems?: MenuItem[]
-  }
+  options: Options
 }
 
 export interface ExpandIconPros {
@@ -16,11 +9,18 @@ export interface ExpandIconPros {
   handleClick: () => void
 }
 
+export type Options = {
+  name: string
+  icon: React.ComponentType
+  url: string
+  id?: string
+  depth?: number
+  subItems?: Options[]
+}
+
 export type MenuItem = {
   name: string
   icon: React.ComponentType
   url: string
-  id: string
-  depth: number
   subItems?: MenuItem[]
 }

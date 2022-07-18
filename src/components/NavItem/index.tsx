@@ -6,12 +6,12 @@ import { NavSubItem } from '../NavSubItem'
 import { NavItemProps } from './types'
 import * as Styled from './styles'
 
-export const NavItem: FC<NavItemProps> = ({ menuItem }) => {
+export const NavItem: FC<NavItemProps> = ({ options }) => {
   const [isExpanded, toggleExpanded] = useState(false)
 
   const { pathname } = useLocation()
-  const selected = pathname === menuItem.url
-  const isNested = menuItem.subItems && menuItem.subItems?.length > 0
+  const selected = pathname === options.url
+  const isNested = options.subItems && options.subItems?.length > 0
 
   const onClick = () => {
     toggleExpanded((prev) => !prev)
@@ -20,10 +20,10 @@ export const NavItem: FC<NavItemProps> = ({ menuItem }) => {
     <>
       <Styled.NavList className={selected ? 'selected' : ''}>
         <Navlink
-          path={menuItem.url}
-          Icon={menuItem.icon}
-          title={menuItem.name}
-          depth={menuItem.depth}
+          path={options.url}
+          Icon={options.icon}
+          title={options.name}
+          depth={options.depth}
         />
         {isNested ? (
           <ExpandIcon isExpanded={isExpanded} handleClick={onClick} />
@@ -31,7 +31,7 @@ export const NavItem: FC<NavItemProps> = ({ menuItem }) => {
       </Styled.NavList>
       {isExpanded && isNested ? (
         <NavSubItem
-          options={menuItem.subItems}
+          options={options.subItems}
           isExpanded={isExpanded}
           isNested={isNested}
         />

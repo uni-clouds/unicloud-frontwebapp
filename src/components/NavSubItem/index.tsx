@@ -14,7 +14,7 @@ export const NavSubItem: FC<MenuItemsListProps> = ({
       {isExpanded && isNested ? (
         <ListContainer>
           {options.map((option) => (
-            <NavItem menuItem={option} key={uuidv4()} />
+            <NavItem options={option} key={uuidv4()} />
           ))}
         </ListContainer>
       ) : null}

@@ -1,7 +1,7 @@
-import { MenuItem } from '../NavItem/types'
+import { Options } from '../NavItem/types'
 
 export interface MenuItemsListProps {
-  options: MenuItem[]
+  options: Options[]
   isExpanded: boolean
   isNested: boolean
 }

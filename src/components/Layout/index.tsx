@@ -4,7 +4,7 @@ import Navbar from '../Navbar'
 import * as Styled from './styles'
 import { Footer } from '../Footer'
 import { Header } from '../Sidebar/Header'
-import { Sidebar } from '../Sidebar/Sidebar'
+import { Sidebar } from '../Sidebar'
 
 import { LayoutProps } from './types'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   MdDashboard,
   MdShoppingCart,
@@ -10,8 +9,10 @@ import {
   MdHomeWork,
   MdPerson
 } from 'react-icons/md'
+import { Options } from '../NavItem/types'
+import { makeMenuLevel } from '../util/makeMenuLevel'
 
-const MENU_OPTIONS: MenuOption[] = [
+const MENU_OPTIONS = [
   {
     name: 'Dashboard',
     icon: MdDashboard,
@@ -65,32 +66,4 @@ const MENU_OPTIONS: MenuOption[] = [
   }
 ]
 
-export type MenuItem = {
-  name: string
-  icon: React.ComponentType
-  url: string
-  id: string
-  depth: number
-  subItems?: MenuItem[]
-}
-
-type MenuOption = {
-  name: string
-  icon: React.ComponentType
-  url: string
-  subItems?: MenuOption[]
-}
-
-function makeMenuLevel(options: MenuOption[], depth = 0): MenuItem[] {
-  return options.map((option, idx) => ({
-    ...option,
-    id: depth === 0 ? idx.toString() : `${depth}.${idx}`,
-    depth,
-    subItems:
-      option.subItems && option.subItems.length > 0
-        ? makeMenuLevel(option.subItems, depth + 1)
-        : undefined
-  }))
-}
-
-export const MENU_ITEMS: MenuItem[] = makeMenuLevel(MENU_OPTIONS)
+export const MENU_ITEMS: Options[] = makeMenuLevel(MENU_OPTIONS)
