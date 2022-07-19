@@ -35,7 +35,6 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   ]
 
   const createCustomerSubmit: SubmitHandler<PodType> = async (data) => {
-    console.log('🐼', data)
     try {
       const request = await api.post('/create-zadara-pod/', {
         name: data.name,

@@ -1,6 +1,9 @@
-import { createContext, useState, useMemo, ReactNode, useEffect } from "react"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
-import { ThemeContextType } from "./types"
+import { createContext, useState, useMemo, ReactNode, useEffect } from 'react'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ThemeContextType } from './types'
+
+import { ThemeProvider as StyledProvider } from 'styled-components'
+import { combineTheme, dark, light } from '../../styles/theme'
 
 export const ThemeContext = createContext<ThemeContextType>(
   {} as ThemeContextType
@@ -8,7 +11,8 @@ export const ThemeContext = createContext<ThemeContextType>(
 
 export function ThemeContextProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<'light' | 'dark'>(localStorage.theme)
-	const theme = useMemo(
+  const customTheme = combineTheme(light)
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
@@ -21,10 +25,10 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
-			}
+      }
     }),
-		[]
-	)
+    []
+  )
 
   useEffect(() => {
     if (
@@ -32,26 +36,19 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
       (!('theme' in localStorage) &&
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-			document.documentElement.classList.add('dark')
-			localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
     } else {
-			document.documentElement.classList.remove('dark')
-			localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
     }
   }, [theme])
 
-  // useEffect(()=>{
-  //    localStorage.setItem('theme', theme.palette.mode)
-  //       if ( localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  //       document.documentElement.classList.add('dark')
-  //     } else {
-  //       document.documentElement.classList.remove('dark')
-  //     }
-  //  }, [theme])
-
-	return (
+  return (
     <ThemeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <StyledProvider theme={customTheme}>{children}</StyledProvider>
+      </ThemeProvider>
     </ThemeContext.Provider>
   )
 }

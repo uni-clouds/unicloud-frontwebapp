@@ -1,13 +1,11 @@
 {
   "extends": [
+    "next/core-web-vitals",
     "eslint:recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "prettier/react"
   ],
   "env": {
     "browser": true,
@@ -19,44 +17,22 @@
       "jsx": true
     },
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "react/prop-types": "off",
     "space-before-function-paren": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
     "react/jsx-filename-extension": [
       "warn",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "import/prefer-default-export": "off",
-    "jsx-quotes": [2, "prefer-single"],
+    "jsx-quotes": ["errors", "prefer-single"],
     "indent": ["error", "tab"],
     "linebreak-style": ["error", "windows"],
-    "quotes": [1, "double"],
-    " semi": [0, "never"],
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
-  },
-  "settings": {
-    "version": "detect",
-    "import/resolver": {
-      "typescript": {}
-    },
-    "react": {
-      "pragma": "React",
-      "fragment": "Fragment",
-      "version": "detect"
-    }
+    "quotes": ["error", "double"],
+    " semi": ["error", "always"]
   }
 }
