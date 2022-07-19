@@ -1,16 +1,18 @@
 import {
-  MdDashboard,
-  MdShoppingCart,
-  MdPeople,
-  MdAttachMoney,
-  MdAddShoppingCart,
-  MdDone,
-  MdBusiness,
-  MdHomeWork,
-  MdPerson
-} from 'react-icons/md'
+  RiDashboardLine,
+  RiTeamLine,
+  RiNumbersLine,
+  RiGroup2Line
+} from 'react-icons/ri'
+import { MdDashboard, MdOutlineSettings } from 'react-icons/md'
+import { AiOutlineFileText } from 'react-icons/ai'
+
 import { Options } from '../../components/NavItem/types'
 import { makeMenuLevel } from '../../components/util/makeMenuLevel'
+
+import i18n from '../../i18n'
+
+const translate = i18n.t
 
 const MENU_OPTIONS = [
   {
@@ -19,50 +21,34 @@ const MENU_OPTIONS = [
     url: '/'
   },
   {
-    name: 'Orders',
-    icon: MdShoppingCart,
-    url: '/orders',
-    subItems: [
-      {
-        name: 'New',
-        icon: MdAddShoppingCart,
-        url: '/new-orders'
-      },
-      {
-        name: 'Completed',
-        icon: MdDone,
-        url: '/completed-orders'
-      }
-    ]
+    name: translate('customers'),
+    icon: RiGroup2Line,
+    url: '/customers'
   },
   {
-    name: 'Customers',
-    icon: MdPeople,
-    url: '/customers',
-    subItems: [
-      {
-        name: 'Corporate',
-        icon: MdBusiness,
-        url: '/corporate'
-      },
-      {
-        name: 'SMB',
-        icon: MdHomeWork,
-        url: '/smb',
-        subItems: [
-          {
-            name: 'Retail',
-            icon: MdPerson,
-            url: '/retail'
-          }
-        ]
-      }
-    ]
+    name: translate('pods'),
+    icon: RiDashboardLine,
+    url: '/unicloud-pods'
   },
   {
-    name: 'Inventory',
-    icon: MdAttachMoney,
-    url: '/inventory'
+    name: translate('monitoring'),
+    icon: RiNumbersLine,
+    url: '/monitor'
+  },
+  {
+    name: translate('resources'),
+    icon: MdOutlineSettings,
+    url: '/resources'
+  },
+  {
+    name: translate('contracts'),
+    icon: AiOutlineFileText,
+    url: '/contracts'
+  },
+  {
+    name: translate('users'),
+    icon: RiTeamLine,
+    url: '/user-list-default'
   }
 ]
 

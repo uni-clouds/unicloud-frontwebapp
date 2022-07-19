@@ -11,6 +11,8 @@ import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
 import Pods from '../pages/Pods'
 import UserProfilePage from '../pages/UserProfile'
+import Contracts from '../pages/Contracts'
+import Resources from '../pages/Resources'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -161,6 +163,24 @@ export default function MainRoutes() {
         element={
           <ProtectedRoute>
             <UserProfilePage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/contracts'
+        element={
+          <ProtectedRoute>
+            <Contracts />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/resources'
+        element={
+          <ProtectedRoute>
+            <Resources />
           </ProtectedRoute>
         }
       />
