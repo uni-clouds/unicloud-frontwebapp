@@ -1,5 +1,6 @@
 import Skeleton from '@mui/material/Skeleton'
 import { HeaderSkeleton } from './HeaderSkeleton'
+import { PaginationSkeleton } from './PaginationSkeleton'
 
 export const TableSkeleton: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ export const TableSkeleton: React.FC = () => {
         <Skeleton variant='rectangular' animation='wave' height={72} />
         <Skeleton variant='rectangular' animation='wave' height={72} />
       </div>
+      <PaginationSkeleton />
     </div>
   )
 }
