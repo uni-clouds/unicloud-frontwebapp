@@ -1,7 +1,7 @@
 import { MdMenu, MdChevronLeft } from 'react-icons/md'
 import { FC } from 'react'
 import { HeaderContainer, IconContainer } from './Header.styles'
-import { NavHeader } from '../../components/Navbar/NavHeader'
+import { NavHeader } from '../../components/Navbar-old/NavHeader'
 
 type HeaderProps = {
   isOpened: boolean

@@ -4,7 +4,11 @@ import {
   RiNumbersLine,
   RiGroup2Line
 } from 'react-icons/ri'
-import { MdDashboard, MdOutlineSettings } from 'react-icons/md'
+import {
+  MdDashboard,
+  MdOutlineSettings,
+  MdOutlineSettingsSuggest
+} from 'react-icons/md'
 import { AiOutlineFileText } from 'react-icons/ai'
 
 import { Options } from '../../components/NavItem/types'
@@ -38,7 +42,14 @@ const MENU_OPTIONS = [
   {
     name: translate('resources'),
     icon: MdOutlineSettings,
-    url: '/resources'
+    url: '/resources',
+    subItems: [
+      {
+        name: 'Painel',
+        icon: MdOutlineSettingsSuggest,
+        url: '/resources/settings'
+      }
+    ]
   },
   {
     name: translate('contracts'),
