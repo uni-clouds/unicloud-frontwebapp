@@ -25,7 +25,6 @@ export function translateMetaDescription(value: string, valueOG: string) {
   const OGDescription = document.querySelector(
     "meta[property='og:description']"
   )
-  console.log(description, OGDescription)
 
   description.setAttribute('content', value)
   OGDescription.setAttribute('content', valueOG)
