@@ -10,7 +10,7 @@ const defaultTheme = {
     xsm: '0.625em', //10px
     sm: '0.875em', //14px
     md: '1em', //16px
-    lg: '1.5em', //24px
+    lg: '1.25em', //24px
     xl: '2rem', //32px
     big: '3rem', //48px
     huge: '4rem' //64px

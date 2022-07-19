@@ -41,37 +41,37 @@ export const Dashboard: React.FC = () => {
       title: `${translate('dashboard:pods')}`,
       description: `${translate('dashboard:pods-active')}`,
       amount: query.data?.number_of_pods,
-      icon: <RiDashboardLine />
+      icon: RiDashboardLine
     },
     {
       title: `${translate('dashboard:physicalCPU')}`,
       description: `${translate('dashboard:physicalCPU-total')}`,
       amount: query.data?.total_fisical_cpu,
-      icon: <HiOutlineDesktopComputer />
+      icon: HiOutlineDesktopComputer
     },
     {
       title: `${translate('dashboard:memory')}`,
       description: `${translate('dashboard:memory-total')}`,
       amount: query.data?.total_memory,
-      icon: <MdOutlineSdStorage />
+      icon: MdOutlineSdStorage
     },
     {
       title: `${translate('dashboard:nodes')}`,
       description: `${translate('dashboard:nodes-total')}`,
       amount: query.data?.total_nodes,
-      icon: <AiOutlineNodeIndex />
+      icon: AiOutlineNodeIndex
     },
     {
       title: `${translate('dashboard:spareNodes')}`,
       description: `${translate('dashboard:spareNodes-total')}`,
       amount: query.data?.total_spare_nodes,
-      icon: <RiNodeTree />
+      icon: RiNodeTree
     },
     {
       title: `${translate('dashboard:vCore')}`,
       description: `${translate('dashboard:vCore-total')}`,
       amount: query.data?.total_vcores,
-      icon: <BsCpu />
+      icon: BsCpu
     }
   ]
 

@@ -11,7 +11,7 @@ export const Select = styled.select`
 export const SelectLabel = styled.label`
   ${({ theme }) => css`
     padding: 0.5rem;
-    font-size: ${theme.fontSize.md};
+    font-size: ${theme.fontSize.lg};
   `}
 `
 
