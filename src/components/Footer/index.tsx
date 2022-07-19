@@ -9,15 +9,15 @@ export const Footer = ({ local }: { local: string }) => {
   const navItems = [
     {
       name: `${translate('terms')}`,
-      path: '/#'
+      path: '/terms'
     },
     {
       name: `${translate('privacy')}`,
-      path: '/#'
+      path: '/policitys'
     },
     {
       name: `${translate('help')}`,
-      path: '/#'
+      path: '/help'
     }
   ]
 
