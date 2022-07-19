@@ -25,7 +25,6 @@ export const TableSkeleton: React.FC = () => {
         <Skeleton variant='rectangular' animation='wave' height={72} />
         <Skeleton variant='rectangular' animation='wave' height={72} />
       </div>
-      <PaginationSkeleton />
     </div>
   )
 }
