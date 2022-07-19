@@ -1,6 +1,6 @@
 import { InvitationModalProps } from '../UsersList/types'
 
-export interface ModalCreatePodProps extends InvitationModalProps {}
+export type ModalCreatePodProps = InvitationModalProps
 
 export interface HeaderPodsProps {
   pods: number

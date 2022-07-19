@@ -1,11 +1,11 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 
-let cookies = parseCookies()
+const cookies = parseCookies()
 let isRefreshing = false
 let failedRequestQueue: any = []
 
-let URL_BACKEND = 'https://unicloudbr.azurewebsites.net'
+const URL_BACKEND = "https://unicloudbr.azurewebsites.net"
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL

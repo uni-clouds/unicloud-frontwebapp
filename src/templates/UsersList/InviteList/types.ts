@@ -1,3 +1,3 @@
 import { InviteListTypes } from '../types'
 
-export interface HeaderProps extends InviteListTypes {}
+export type HeaderProps = InviteListTypes

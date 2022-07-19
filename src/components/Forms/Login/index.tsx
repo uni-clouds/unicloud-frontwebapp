@@ -82,7 +82,7 @@ export const Login: React.FC = () => {
         <PasswordField
           placeholder={translate('password-placeholder')}
           label={translate('password')}
-          type={!!passwordIsShow ? 'text' : 'password'}
+          type={passwordIsShow ? 'text' : 'password'}
           aria-invalid={errors.password ? 'true' : 'false'}
           isVisible={passwordIsShow}
           showVisibilityIcon={showPassword}
@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
           error={errors?.password}
         />
         <SubmitButton isDisabled={isSubmitting} isLogin>
-          {!!isSubmitting ? <Loading /> : translate('login:login')}
+          {isSubmitting ? <Loading /> : translate('login:login')}
         </SubmitButton>
       </form>
     </>

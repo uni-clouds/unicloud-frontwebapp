@@ -11,7 +11,7 @@ const CnpjField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   return (
     <>
       <label
-        aria-label={`input-cnpj`}
+        aria-label={'input-cnpj'}
         className='font-bold '
         htmlFor='Telefone'
       >

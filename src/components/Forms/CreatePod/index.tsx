@@ -208,7 +208,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
             {isSubmitting ? <Loading /> : translate('create')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? translate('close') : translate('cancel')}
+            {isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </Grid>
       </form>

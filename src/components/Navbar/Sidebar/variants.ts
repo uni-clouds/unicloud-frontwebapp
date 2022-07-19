@@ -25,7 +25,7 @@ export const AppBar = styled(MuiAppBar, {
   ...(open && {
     marginLeft: DRAWER_WIDTH,
     width: theme.breakpoints.down('lg')
-      ? `calc(100% - 210px)`
+      ? 'calc(100% - 210px)'
       : `calc(100% - ${DRAWER_WIDTH}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,

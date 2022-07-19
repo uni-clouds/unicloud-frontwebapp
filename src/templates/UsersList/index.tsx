@@ -16,7 +16,7 @@ export const UsersList: React.FC = () => {
           users?.length >= 7 ? 'h-full' : 'h-screen'
         } w-full flex flex-col gap-6 mx-auto p-6`}
       >
-        {!!isLoading ? (
+        {isLoading ? (
           <div className='grid place-content-center p-6 items-center gap-6 justify-center'>
             <TableSkeleton width={800} />
           </div>

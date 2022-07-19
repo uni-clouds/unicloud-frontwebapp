@@ -22,7 +22,7 @@ const Register: React.FC = () => {
     const query = window.location.search
     const urlParams = new URLSearchParams(query)
     const token = urlParams.get('token')
-    if (!!token) {
+    if (token) {
       validateInvite(token)
     }
   }, [])
