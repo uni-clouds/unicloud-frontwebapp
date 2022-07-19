@@ -9,8 +9,8 @@ import {
   MdHomeWork,
   MdPerson
 } from 'react-icons/md'
-import { Options } from '../NavItem/types'
-import { makeMenuLevel } from '../util/makeMenuLevel'
+import { Options } from '../../components/NavItem/types'
+import { makeMenuLevel } from '../../components/util/makeMenuLevel'
 
 const MENU_OPTIONS = [
   {

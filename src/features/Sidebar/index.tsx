@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { NavList } from '../NavList'
+import { NavList } from '../../components/NavList'
 import { MENU_ITEMS } from './data'
 import { SidebarContainer } from './Sidebar.styles'
 

@@ -1,8 +1,6 @@
-import { ComponentType } from 'react'
-
 export interface NavlinkProps {
   path: string
-  Icon?: ComponentType
+  Icon?: React.ComponentType
   title?: string
   depth?: number
 }

@@ -1,8 +1,8 @@
-import { colors } from '../../styles/colors'
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NavlinkProps } from './types'
 import * as Styled from './styles'
+import { colors } from '../../styles/colors'
 
 export const Navlink: FC<NavlinkProps> = ({ path, Icon, title, depth }) => {
   const activeStyle = {

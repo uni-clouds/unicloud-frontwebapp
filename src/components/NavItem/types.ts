@@ -1,5 +1,3 @@
-import { NavlinkProps } from '../Navlink/types'
-
 export interface NavItemProps {
   options: Options
 }
