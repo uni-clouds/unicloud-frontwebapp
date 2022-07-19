@@ -32,6 +32,7 @@
   "id-invalid": "Itroduzca un ID valido",
   "url-required": "URL requerido.",
   "url-invalid": "Itroduzca una URL valido",
+  "cnpj-required": "Itroduzca el RUC",
   "cnpj-invalid": "Itroduzca un RUC valido",
   "domainTenant-required": "Domain Tenant requerido."
 }

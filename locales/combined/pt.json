@@ -48,6 +48,7 @@
         "close": "Fechar",
         "filter": "Filtrar",
         "back": "Voltar",
+        "revalidate": "Revalidar",
         "selected-singular": "selecionado",
         "selected-plural": "selecionados",
 
@@ -61,24 +62,6 @@
         "error-something-unexpected-refresh": "Ocorreu um erro inesperado, recarregue a página e tente novamente.",
         "error-request-connection": "Ocorreu um erro na requisição, verifique sua conexão.",
         "error-invitation-expired": "Convite expirado, solicite um novo!",
-        "error-email-invalid": "Informe um e-mail válido",
-        "error-email-required": "Informe seu e-mail",
-        "error-phone-invalid": "Informe um telefone válido",
-        "error-phone-required": "Informe seu telefone",
-        "error-address-invalid": "Informe um endereço válido",
-        "error-address-required": "Informe seu endereço",
-        "error-password-invalid": "Senha deve conter no mínimo 6 caracteres",
-        "error-password-required": "Informe a senha",
-        "error-city-required": "Informe a cidade",
-        "error-city-invalid": "Informe uma cidade válida",
-        "error-state-required": "Informe o estado",
-        "error-state-invalid": "Informe um estado válido",
-        "error-country-required": "Informe o país",
-        "error-country-invalid": "Informe um país válido",
-        "error-firstName-required": "Informe seu nome",
-        "error-firstName-invalid": "Informe um nome válido",
-        "error-lastName-required": "Informe seu sobrenome",
-        "error-lastName-invalid": "Informe um sobrenome válido",
         "error-user-alreadyExists": "Usuário já cadastrado, verifique os dados e tente novamente.",
 
         "success-user-created": "Usuário criado com sucesso!",
@@ -110,7 +93,10 @@
         "expired": "Expirado",
         "linesPerPage": "Linhas por página",
 
-        "pageSubtitle-1": "Você tem "
+        "pageSubtitle-1": "Você tem ",
+
+        "head-meta-description": "A nossa língua é a Cloud Computing. Oferecemos soluções e serviços em Cloud para modernizar e impulsionar a sua empresa.",
+        "head-meta-ogdescription": "Broker Uni.Cloud. A nossa língua é a Cloud Computing. Oferecemos soluções e serviços em Cloud para modernizar e impulsionar a sua empresa."
       },
       "login": {
         "login": "Entrar",
@@ -199,6 +185,44 @@
         "general": "Geral",
         "lastLogin": "Último login",
         "userSince": "Usuário desde"
+      },
+      "validation": {
+        "required": "Campo obrigatório!",
+        "required_amount": "Digite a quantidade",
+        "min-chars_5": "No mínimo 5 caracteres",
+        "min-chars_6": "No mínimo 6 caracteres",
+        "max-chars_50": "No máximo 50 caracteres",
+        "format_integer": "Digite um número inteiro",
+
+        "select-type": "Selecione um tipo!",
+
+        "email-invalid": "Informe um e-mail válido",
+        "email-required": "Informe seu e-mail",
+        "phone-invalid": "Informe um telefone válido",
+        "phone-required": "Informe seu telefone",
+        "address-invalid": "Informe um endereço válido",
+        "address-required": "Informe seu endereço",
+        "password-invalid": "Senha deve conter no mínimo 6 caracteres",
+        "password-required": "Informe a senha",
+        "city-required": "Informe a cidade",
+        "city-invalid": "Informe uma cidade válida",
+        "state-required": "Informe o estado",
+        "state-invalid": "Informe um estado válido",
+        "country-required": "Informe o país",
+        "country-invalid": "Informe um país válido",
+        "firstName-required": "Informe seu nome",
+        "firstName-invalid": "Informe um nome válido",
+        "lastName-required": "Informe seu sobrenome",
+        "lastName-invalid": "Informe um sobrenome válido",
+        "name-required": "Informe seu nome",
+        "name-invalid": "Informe um nome válido",
+        "id-required": "Informe o ID",
+        "id-invalid": "Informe um ID válido",
+        "url-required": "Informe a URL",
+        "url-invalid": "Informe uma URL válido",
+        "cnpj-required": "Informe o CNPJ",
+        "cnpj-invalid": "Informe um CNPJ válido",
+        "domainTenant-required": "Informe o Domain Tenant"
       }
     }
   }

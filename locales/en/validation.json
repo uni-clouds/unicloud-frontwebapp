@@ -32,6 +32,7 @@
   "id-invalid": "Enter a valid ID",
   "url-required": "URL is required.",
   "url-invalid": "Enter a valid URL",
+  "cnpj-required": "EIN is required",
   "cnpj-invalid": "Enter a valid EIN",
   "domainTenant-required": "Domain Tenant is required."
 }

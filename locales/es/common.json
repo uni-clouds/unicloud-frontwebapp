@@ -86,5 +86,8 @@
   "pending": "Pendiente",
   "expired": "Caducado",
   "linesPerPage": "Lineas por pagina",
-  "pageSubtitle-1": "Tienes "
+  "pageSubtitle-1": "Tienes ",
+
+  "head-meta-description": "Nuestro lenguaje es el Cloud Computing. Somos una startup que ofrece soluciones y servicios en la Nube con el objetivo de modernizar y impulsar tu empresa.",
+  "head-meta-ogdescription": "Broker Uni.Cloud. Nuestro lenguaje es el Cloud Computing. Somos una startup que ofrece soluciones y servicios en la Nube con el objetivo de modernizar y impulsar tu empresa."
 }

@@ -18,3 +18,14 @@ export function addCountryToLanguage(lang: string) {
   if (lang === 'es') return 'es-ES'
   if (lang === 'fr') return 'fr-FR'
 }
+
+export function translateMetaDescription(value: string, valueOG: string) {
+  //description
+  const description = document.querySelector("meta[name='description']")
+  const OGDescription = document.querySelector(
+    "meta[property='og:description']"
+  )
+
+  description.setAttribute('content', value)
+  OGDescription.setAttribute('content', valueOG)
+}

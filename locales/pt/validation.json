@@ -10,7 +10,6 @@
 
   "email-invalid": "Informe um e-mail válido",
   "email-required": "Informe seu e-mail",
-  "cnpj-required": "Informe o CNPJ",
   "phone-invalid": "Informe um telefone válido",
   "phone-required": "Informe seu telefone",
   "address-invalid": "Informe um endereço válido",
@@ -33,6 +32,7 @@
   "id-invalid": "Informe um ID válido",
   "url-required": "Informe a URL",
   "url-invalid": "Informe uma URL válido",
+  "cnpj-required": "Informe o CNPJ",
   "cnpj-invalid": "Informe um CNPJ válido",
   "domainTenant-required": "Informe o Domain Tenant"
 }
