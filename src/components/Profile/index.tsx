@@ -1,5 +1,4 @@
 import { Avatar } from '../Avatar'
-import { MdMoreVert } from 'react-icons/md'
 import { NavigationItem } from './NavigationItem'
 import { useEffect, useMemo, useState } from 'react'
 import PersonalInformation from './PersonalInformation'
@@ -59,9 +58,6 @@ export const Profile: React.FC = () => {
               {currentUser ? renderData(currentUser.email) : ''}
             </h4>
           </div>
-          <button>
-            <MdMoreVert />
-          </button>
         </div>
         <div className='flex flex-col w-full p-8 border-t border-b dark:border-zinc-700'>
           <h4>{translate('profile:company')}</h4>
