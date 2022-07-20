@@ -3,6 +3,7 @@ import { useMediaQuery } from '@mui/material'
 import { CardPod } from '../../components/Cards/Pods'
 import { usePodsData } from '../../hooks/usePodsData'
 import { Header } from './Header'
+import { PodsSkeleton } from '../../components/Skeletons/PodsSkeleton'
 
 export const ZadaraPods: React.FC = () => {
   const { data } = usePodsData()
@@ -16,8 +17,14 @@ export const ZadaraPods: React.FC = () => {
         isFullScreen ? ' h-full' : 'h-screen'
       } px-12 flex flex-col gap-4`}
     >
-      <Header pods={Number(data?.length)} />
-      <CardPod />
+      {data ? (
+        <>
+          <Header pods={Number(data?.length)} />
+          <CardPod />
+        </>
+      ) : (
+        <PodsSkeleton />
+      )}
     </section>
   )
 }

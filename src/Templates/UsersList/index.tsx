@@ -3,7 +3,7 @@ import { Layout } from '../../components/Layout'
 import { UsersTable } from '../../components/Tables/Users'
 import { useInviteList } from '../../hooks/useInviteList'
 import { useUsersList } from '../../hooks/useUsersList'
-import { TableSkeleton } from '../../components/Tables/TableSkeleton'
+import { TableSkeleton } from '../../components/Skeletons/TableSkeleton'
 
 export const UsersList: React.FC = () => {
   const { data } = useInviteList()
@@ -17,8 +17,8 @@ export const UsersList: React.FC = () => {
         } w-full flex flex-col gap-6 mx-auto p-6`}
       >
         {!!isLoading ? (
-          <div className='grid place-content-center p-6 items-center gap-6 justify-center'>
-            <TableSkeleton width={800} />
+          <div className='w-full'>
+            <TableSkeleton />
           </div>
         ) : (
           <>
