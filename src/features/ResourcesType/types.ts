@@ -21,3 +21,9 @@ export interface ResourceTypesManagerProps {
   visibility?: boolean
   id: number
 }
+
+export interface ModalResourceUpdateProps {
+  isOpen: boolean
+  handleClose: () => void
+  id: number
+}

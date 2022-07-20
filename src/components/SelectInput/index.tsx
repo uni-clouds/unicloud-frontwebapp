@@ -27,7 +27,11 @@ const SelectInput: ForwardRefRenderFunction<
         }`}
       >
         {options.map((option) => (
-          <Styled.SelectOption value={option.toLocaleLowerCase()} key={option}>
+          <Styled.SelectOption
+            value={option.toLocaleLowerCase()}
+            key={option}
+            defaultValue=''
+          >
             {option}
           </Styled.SelectOption>
         ))}

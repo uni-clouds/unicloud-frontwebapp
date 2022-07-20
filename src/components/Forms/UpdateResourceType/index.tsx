@@ -7,39 +7,27 @@ import { ToastError } from '../../Elements/ToastError'
 import { useTranslation } from 'react-i18next'
 import { Portal } from '@mui/material'
 import { Select } from '../../SelectInput'
-import { CreateResourceTypeProps, TypeResource } from './types'
+import { UpdateResourceTypes, UpdateResourceTypeProps } from './types'
 
-import * as Styled from './styles'
+import * as Styled from '../CreateResourceType/styles'
 import { Heading } from '../../Heading'
+import {
+  handleUpdateResourceType,
+  responseUpdateResourceType
+} from '../../../util/resourcesType'
 
-const OPTIONS = ['', 'compute']
-export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
-  const { handleSubmit, control, reset } = useForm<TypeResource>()
+const OPTIONS = ['', 'compute', 'tomate', 'queijo']
+export const UpdateResourceType: FC<UpdateResourceTypeProps> = ({ id }) => {
+  const { handleSubmit, control } = useForm<UpdateResourceTypes>()
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [resourceType, setResourceType] = useState('')
   const { t: translate } = useTranslation()
 
-  const handleCreateResourceType: SubmitHandler<TypeResource> = async (
+  const onUpdateResourceType: SubmitHandler<UpdateResourceTypes> = async (
     data
   ) => {
-    try {
-      const request = await api.post('/resources-type/', {
-        resource_type: data.resource_type
-      })
-
-      if (request.status === 200) {
-        setIsSuccess(true)
-        setResourceType(request.data.resource_type)
-      }
-    } catch (error: any) {
-      if (error.response.status !== 409) {
-        setIsError(true)
-        console.error(error)
-      }
-    } finally {
-      reset()
-    }
+    handleUpdateResourceType(id, data.new_resource_type)
+    !!responseUpdateResourceType && setIsSuccess(true)
   }
 
   const handleOnClose = (
@@ -67,7 +55,7 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message={`Recurso tipo ${resourceType} criado com sucesso!`}
+            message={`Recurso atualizado com sucesso!`}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -75,12 +63,9 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
       <Heading size='normal' as='h3'>
         Tipos de Recurso
       </Heading>
-      <Styled.Form
-        onSubmit={handleSubmit(handleCreateResourceType)}
-        action='POST'
-      >
+      <Styled.Form onSubmit={handleSubmit(onUpdateResourceType)} action='PATCH'>
         <Controller
-          name='resource_type'
+          name='new_resource_type'
           control={control}
           rules={{ required: true }}
           render={({ field, fieldState: { error } }) => (
@@ -92,7 +77,7 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
             />
           )}
         />
-        <SubmitButton isForm>Criar </SubmitButton>
+        <SubmitButton isForm>Atualizar</SubmitButton>
       </Styled.Form>
     </Styled.Container>
   )

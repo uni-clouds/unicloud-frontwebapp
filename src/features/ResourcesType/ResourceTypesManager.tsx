@@ -7,9 +7,10 @@ import { ResourceTypesManagerProps } from './types'
 import {
   handleRemoveResourceType,
   responseRemoveResourceType
-} from '../../util/handleRemoveResourceType'
+} from '../../util/resourcesType'
 import { Portal } from '@mui/material'
 import { ToastSuccess } from '../../components/Elements/ToastSuccess'
+import { ModalUpdateResource } from './ModalUpdateResource'
 
 export const ResourcesTypesManager: FC<ResourceTypesManagerProps> = ({
   id
@@ -25,7 +26,12 @@ export const ResourcesTypesManager: FC<ResourceTypesManagerProps> = ({
   }
   return (
     <Styled.Box gap='2rem' justify='flex-end'>
-      <IconButton icon={FiEdit} size={20} title='Editar' />
+      <IconButton
+        icon={FiEdit}
+        size={20}
+        title='Editar'
+        onClick={() => setIsOpen(true)}
+      />
       <IconButton
         icon={BsTrash}
         size={20}
@@ -41,6 +47,11 @@ export const ResourcesTypesManager: FC<ResourceTypesManagerProps> = ({
           />
         </Portal>
       )}
+      <ModalUpdateResource
+        isOpen={isOpen}
+        handleClose={() => setIsOpen(false)}
+        id={id}
+      />
     </Styled.Box>
   )
 }
