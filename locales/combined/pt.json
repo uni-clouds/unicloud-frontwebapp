@@ -1,3 +1,215 @@
+<<<<<<< HEAD
+{
+  "PT": {
+    "namespaces": {
+      "common": {
+        "name": "Nome",
+        "name-placeholder": "Digite o seu nome",
+        "firstName": "Nome",
+        "firstName-placeholder": "Nome",
+        "lastName": "Sobrenome",
+        "lastName-placeholder": "Sobrenome",
+        "email": "E-mail",
+        "email-placeholder": "Digite seu endereço de e-mail",
+        "password": "Senha",
+        "password-placeholder": "Digite a sua senha",
+        "password-forgot": "Esqueceu sua senha?",
+        "cnpj": "CNPJ",
+        "cnpj-placeholder": "Número do CNPJ",
+        "phone": "Telefone",
+        "phone-placeholder": "Digite seu telefone",
+        "address": "Endereço",
+        "address-placeholder": "Digite seu endereço",
+        "streetNumber": "Número",
+        "district": "Bairro",
+        "zipCode": "CEP",
+        "city": "Cidade",
+        "city-placeholder": "Digite sua cidade",
+        "state": "Estado",
+        "state-placeholder": "Digite seu estado",
+        "country": "País",
+        "country-placeholder": "Digite seu país",
+        "status": "Status",
+        "user": "Usuário",
+        "user-placeholder": "Digite o usuário",
+        "id": "ID",
+        "id-placeholder": "Digite o ID",
+        "userName": "Nome de usuário",
+        "userName-placeholder": "Digite o nome de usuário",
+        "company": "Empresa",
+        "companyName": "Razão Social",
+        "companyTradingName": "Nome Fantasia",
+        "businessEntityType": "Natureza Jurídica",
+
+        "edit": "Editar",
+        "submit": "Enviar",
+        "cancel": "Cancelar",
+        "clear": "Limpar",
+        "confirm": "Confirmar",
+        "close": "Fechar",
+        "filter": "Filtrar",
+        "back": "Voltar",
+        "selected-singular": "selecionado",
+        "selected-plural": "selecionados",
+
+        "tooltip-showDetails": "Exibir detalhes",
+        "tooltip-oneUserAtATime": "Apenas um usuário por vez",
+        "tooltip-oneCustomerAtATime": "Apenas um cliente por vez",
+        "tooltip-oneInvitationAtATime": "Apenas um convite por vez",
+
+        "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
+        "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
+        "error-something-unexpected-refresh": "Ocorreu um erro inesperado, recarregue a página e tente novamente.",
+        "error-request-connection": "Ocorreu um erro na requisição, verifique sua conexão.",
+        "error-invitation-expired": "Convite expirado, solicite um novo!",
+        "error-email-invalid": "Informe um e-mail válido",
+        "error-email-required": "Informe seu e-mail",
+        "error-phone-invalid": "Informe um telefone válido",
+        "error-phone-required": "Informe seu telefone",
+        "error-address-invalid": "Informe um endereço válido",
+        "error-address-required": "Informe seu endereço",
+        "error-password-invalid": "Senha deve conter no mínimo 6 caracteres",
+        "error-password-required": "Informe a senha",
+        "error-city-required": "Informe a cidade",
+        "error-city-invalid": "Informe uma cidade válida",
+        "error-state-required": "Informe o estado",
+        "error-state-invalid": "Informe um estado válido",
+        "error-country-required": "Informe o país",
+        "error-country-invalid": "Informe um país válido",
+        "error-firstName-required": "Informe seu nome",
+        "error-firstName-invalid": "Informe um nome válido",
+        "error-lastName-required": "Informe seu sobrenome",
+        "error-lastName-invalid": "Informe um sobrenome válido",
+        "error-user-alreadyExists": "Usuário já cadastrado, verifique os dados e tente novamente.",
+
+        "success-user-created": "Usuário criado com sucesso!",
+
+        "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
+        "terms": "Termos & Condições",
+        "privacy": "Política de privacidade",
+        "help": "Ajuda",
+        "languageSelect": "Idioma",
+
+        "home": "Home",
+        "customers": "Clientes",
+        "pods": "Pods",
+        "monitoring": "Monitoramento",
+        "users": "Usuários",
+        "search-placeholder": "Buscar",
+        "partners": "Parceiros",
+        "invitations": "Convites",
+
+        "profile": "Perfil",
+        "preferences": "Preferências",
+        "activity": "Atividade",
+        "logout": "Sair",
+        "superAdmin": "Super Administrador",
+
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "pending": "Pendente",
+        "expired": "Expirado",
+        "linesPerPage": "Linhas por página",
+
+        "pageSubtitle-1": "Você tem "
+      },
+      "login": {
+        "login": "Entrar",
+        "subtitle": "Acesse o Broker com seu e-mail e senha.",
+        "noAccess": "Ainda não tem acesso?",
+        "noAccessLink": "Contate nossa equipe",
+        "or": "OU",
+        "commercial": "Comercial",
+        "help-desk": "Suporte técnico",
+
+        "createAccount": "Crie sua conta"
+      },
+      "dashboard": {
+        "pods": "PODS",
+        "pods-active": "Pods ativos",
+        "physicalCPU": "CPU Física",
+        "physicalCPU-total": "Total de CPU físicas",
+        "memory": "Memória",
+        "memory-total": "Total de memória",
+        "nodes": "Nodes",
+        "nodes-total": "Total de nodes",
+        "spareNodes": "Spare Nodes",
+        "spareNodes-total": "Total de spare nodes",
+        "vCore": "vCore",
+        "vCore-total": "Total de vCore",
+        "ourPods": "Nossos Pods",
+
+        "dashboard": "Dashboard",
+        "reports": "Reports"
+      },
+      "customersUsers": {
+        "table-subtitle-1": "Você tem",
+
+        "customers-subtitle-2-singular": "cliente",
+        "customers-subtitle-2-plural": "clientes",
+
+        "mainUserEmail": "E-mail do usuário principal",
+        "customerType-placeholder": "Selecione o tipo de cliente",
+        "addCustomer": "Adicionar cliente",
+        "customerCreated": "Cliente criado sucesso.",
+
+        "users-subtitle-2-singular": "usuário",
+        "users-subtitle-2-plural": "usuários",
+
+        "invitations-subtitle-2-singular": "convite enviado",
+        "invitations-subtitle-2-plural": "convites enviados",
+
+        "userInvitations": "Convites",
+        "invitationIsPending": "E-mail já possui um convite em espera!",
+        "invitationSent": "Convite enviado com sucesso.",
+        "sentAt": "Enviado em",
+
+        "addUser": "Adicionar usuário",
+        "userCreated": "Usuário criado sucesso."
+      },
+      "pods": {
+        "pods-subtitle-p2-singular": "POD",
+        "pods-subtitle-p2-plural": "PODS",
+        "addPod": "Adicionar POD",
+        "noPods": "Você não possui PODS cadastrados!",
+        "podName": "Nome do POD",
+        "podName-placeholder": "Digite o nome do POD",
+        "podLocation": "Localização",
+        "podLocation-placeholder": "Digite a Localização. Ex.: Curitiba",
+        "spareNode": "Spare node",
+        "spareNode-placeholder": "Informe a quantidade",
+        "domainTenant": "Domain Tenant",
+        "domainTenant-placeholder": "Informe o Domain Tenant",
+        "podType": "Selecione o tipo de POD",
+        "type": "Tipo",
+        "storage": "Storage",
+        "compute": "Compute",
+        "URL": "URL",
+        "baseURL": "URL de base",
+        "baseURL-placeholder": "Digite a URL. Ex.: https://www.pod.com",
+        "podCreated": "Pod criado com sucesso!"
+      },
+      "profile": {
+        "company": "Empresa",
+        "personalInformation": "Informações Pessoais",
+        "notifications": "Notificações",
+        "activity": "Atividade",
+        "safetyAdjusts": "Configurações de Segurança",
+        "personalInformation-subtitle": "Informações básicas de contato",
+        "contactData": "Dados de contato",
+        "general": "Geral",
+        "lastLogin": "Último login",
+        "userSince": "Usuário desde"
+      },
+      "resources": {
+        "create-label": "Selecione o tipo de recurso",
+        "created-type": "Recurso criado com sucesso!",
+        "btn-create": "Criar"
+      }
+    }
+  }
+}
+=======
 {
   "PT": {
     "namespaces": {
@@ -227,3 +439,4 @@
     }
   }
 }
+>>>>>>> 7a34557b1747a54d3c6bcf9787563ccfca31de46

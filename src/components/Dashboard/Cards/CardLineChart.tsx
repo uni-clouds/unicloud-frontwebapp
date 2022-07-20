@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { IoArrowUpOutline, IoArrowDownOutline } from 'react-icons/io5'
-import { CardLineProps } from '../../../Templates/Dashboard/types'
+import { CardLineProps } from '../../../templates/Dashboard/types'
 import { SingleLineChart } from '../Charts/SingleLineChart'
-
 
 export const CardLineChart: React.FC<CardLineProps> = ({
   title,
@@ -35,7 +34,7 @@ export const CardLineChart: React.FC<CardLineProps> = ({
           {type === 'number' ? currency : total}
         </p>
         <div className='text-sm flex-row gap-1 flex items-center'>
-          {!!isPositive ? (
+          {isPositive ? (
             <span className='text-green-custom font-medium flex flex-row items-center'>
               <IoArrowUpOutline /> {percentage}
             </span>

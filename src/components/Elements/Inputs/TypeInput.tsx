@@ -58,7 +58,7 @@ const TypeSelect: ForwardRefRenderFunction<
       <InputLabel
         id='type-customer'
         htmlFor='type-customer'
-        aria-label={`input-type-customer`}
+        aria-label={'input-type-customer'}
       >
         {label}
       </InputLabel>

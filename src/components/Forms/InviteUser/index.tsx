@@ -108,7 +108,7 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
             {isSubmitting ? <Loading /> : translate('customersUsers:addUser')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? translate('close') : translate('cancel')}
+            {isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </div>
       </form>

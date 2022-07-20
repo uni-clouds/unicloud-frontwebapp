@@ -5,6 +5,7 @@ export interface SubmitButtonProps {
   isDisabled?: boolean
   isLogin?: boolean
   isForm?: boolean
+  onclick?: () => void
 }
 
 export interface UnstyledButtonProps {

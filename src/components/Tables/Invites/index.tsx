@@ -80,7 +80,7 @@ export const InvitesTable: React.FC = () => {
         newSelected = newSelected.concat(selected.slice(1))
       } else if (selectedIndex === selected.length - 1) {
         newSelected = newSelected.concat(selected.slice(0, -1))
-      } else if (!!selectedIndex) {
+      } else if (selectedIndex) {
         if (selectedIndex > 0) {
           newSelected = newSelected.concat(
             selected.slice(0, selectedIndex),

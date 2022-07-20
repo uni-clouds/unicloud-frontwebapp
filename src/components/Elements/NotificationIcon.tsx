@@ -14,7 +14,7 @@ export const NotificationIcon: React.FC<NotificationIconProps> = ({
 
   return (
     <Tooltip title={message}>
-      <IconButton className={`text-base-500 dark:text-inherit text-3xl`}>
+      <IconButton className={'text-base-500 dark:text-inherit text-3xl'}>
         <Badge
           badgeContent={quantity}
           max={99}

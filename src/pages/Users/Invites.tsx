@@ -1,4 +1,4 @@
-import { InviteList } from '../../Templates/UsersList/InviteList'
+import { InviteList } from '../../templates/UsersList/InviteList'
 
 const InvitesPage: React.FC = () => {
   return <InviteList />
