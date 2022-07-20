@@ -12,7 +12,7 @@ import {
 import { AiOutlineFileText } from 'react-icons/ai'
 
 import { Options } from '../../components/NavItem/types'
-import { makeMenuLevel } from '../../components/util/makeMenuLevel'
+import { makeMenuLevel } from '../../util/makeMenuLevel'
 
 import i18n from '../../i18n'
 

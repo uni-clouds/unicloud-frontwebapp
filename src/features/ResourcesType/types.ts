@@ -1,9 +1,23 @@
-import { IconType } from 'react-icons'
-
 export interface ResourcesListProps {
   types: Array<{
-    icon: IconType
-    type: string
-    color: string
+    resource_type: string
+    id: number
   }>
+}
+
+export type ResourcesTypeList = {
+  resource_type: string
+  id: number
+}
+
+export interface BoxStyleProps {
+  justify?: string
+  gap?: string
+  align?: string
+  visibility?: string
+}
+
+export interface ResourceTypesManagerProps {
+  visibility?: boolean
+  id: number
 }

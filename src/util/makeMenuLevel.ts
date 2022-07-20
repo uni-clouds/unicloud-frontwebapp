@@ -1,4 +1,4 @@
-import { Options } from '../NavItem/types'
+import { Options } from '../components/NavItem/types'
 
 export function makeMenuLevel(options: Options[], depth = 0): Options[] {
   return options.map((option, idx) => ({
