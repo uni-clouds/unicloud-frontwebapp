@@ -48,37 +48,20 @@
         "close": "Close",
         "filter": "Filter",
         "back": "Back",
+        "revalidate": "Revalidate",
         "selected-singular": "selected",
         "selected-plural": "selected",
 
         "tooltip-showDetails": "Show details",
         "tooltip-oneUserAtATime": "Only one user at a time",
         "tooltip-oneCustomerAtATime": "Only one customer at a time",
-        "tooltip-oneInvitationAtATime": "Only one invitation at a time",
+        "tooltip-oneInvitationAtATime": "Only an invitation at a time",
 
         "error-invalid-credentials": "Invalid credentials. Try again.",
         "error-something-unexpected": "Something unexpected occurred. Try again",
         "error-something-unexpected-refresh": "Something unexpected occurred. Refresh and try again",
         "error-request-connection": "Error. Check your connection and try again.",
         "error-invitation-expired": "Invitation has expired. Request a new one.",
-        "error-email-invalid": "Enter a valid email",
-        "error-email-required": "Email is required.",
-        "error-phone-invalid": "Enter a valid phone",
-        "error-phone-required": "Phone is required.",
-        "error-address-invalid": "Enter a valid address",
-        "error-address-required": "Address is required.",
-        "error-password-invalid": "The password must contain at least 6 characters.",
-        "error-password-required": "Password required.",
-        "error-city-required": "City is required.",
-        "error-city-invalid": "Enter a valid city",
-        "error-state-required": "State is required.",
-        "error-state-invalid": "Enter a valid state",
-        "error-country-required": "Country is required.",
-        "error-country-invalid": "Enter a valid country",
-        "error-firstName-required": "First name is required.",
-        "error-firstName-invalid": "Enter a valid first name",
-        "error-lastName-required": "Last name is required.",
-        "error-lastName-invalid": "Enter a valid last name",
         "error-user-alreadyExists": "User already registered. Verify your data and try again.",
 
         "success-user-created": "Used successfully created.",
@@ -110,7 +93,10 @@
         "expired": "Expired",
         "linesPerPage": "Lines per page",
 
-        "pageSubtitle-1": "You have "
+        "pageSubtitle-1": "You have ",
+
+        "head-meta-description": "Our language is Cloud Computing. We are a startup that offers Cloud solutions and services with the aim of modernize and boost your company.",
+        "head-meta-ogdescription": "Broker Uni.Cloud. Our language is Cloud Computing. We are a startup that offers Cloud solutions and services with the aim of modernize and boost your company."
       },
       "login": {
         "login": "Login",
@@ -199,6 +185,44 @@
         "general": "General",
         "lastLogin": "Last login",
         "userSince": "User since"
+      },
+      "validation": {
+        "required": "Required field!",
+        "required_amount": "Enter the amount",
+        "min-chars_5": "At least 5 characters",
+        "min-chars_6": "At least 6 characters",
+        "max-chars_50": "At most 50 characters",
+        "format_integer": "Enter an integer",
+
+        "select-type": "Select a type",
+
+        "email-invalid": "Enter a valid email",
+        "email-required": "Email is required.",
+        "phone-invalid": "Enter a valid phone",
+        "phone-required": "Phone is required.",
+        "address-invalid": "Enter a valid address",
+        "address-required": "Address is required.",
+        "password-invalid": "The password must contain at least 6 characters.",
+        "password-required": "Password required.",
+        "city-required": "City is required.",
+        "city-invalid": "Enter a valid city",
+        "state-required": "State is required.",
+        "state-invalid": "Enter a valid state",
+        "country-required": "Country is required.",
+        "country-invalid": "Enter a valid country",
+        "firstName-required": "First name is required.",
+        "firstName-invalid": "Enter a valid first name",
+        "lastName-required": "Last name is required.",
+        "lastName-invalid": "Enter a valid last name",
+        "name-required": "Name is required.",
+        "name-invalid": "Enter a valid name",
+        "id-required": "ID is required.",
+        "id-invalid": "Enter a valid ID",
+        "url-required": "URL is required.",
+        "url-invalid": "Enter a valid URL",
+        "cnpj-required": "EIN is required",
+        "cnpj-invalid": "Enter a valid EIN",
+        "domainTenant-required": "Domain Tenant is required."
       }
     }
   }

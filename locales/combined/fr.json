@@ -48,6 +48,7 @@
         "close": "Fermer",
         "filter": "Filtrer",
         "back": "Retour",
+        "revalidate": "Revalider",
         "selected-singular": "sélectionné",
         "selected-plural": "sélectionnés",
 
@@ -61,24 +62,6 @@
         "error-something-unexpected-refresh": "Quelque chose d'inattendu s'est produit. Actualisez la page et réessayez",
         "error-request-connection": "Erreur. Vérifiez votre connexion et réessayez.",
         "error-invitation-expired": "L'invitation a expiré. Demandez une nouvelle.",
-        "error-email-invalid": "Entrez un adresse e-mail valide",
-        "error-email-required": "Veuillez saisir votre adresse e-mail",
-        "error-phone-invalid": "Entrez un numéro de téléphone valide",
-        "error-phone-required": "Veuillez saisir votre numéro de téléphone",
-        "error-address-invalid": "Entrez une adresse valide",
-        "error-address-required": "Veuillez saisir votre adresse.",
-        "error-password-invalid": "Le mot de passe doit contenir au moins 6 caractères",
-        "error-password-required": "Veuillez saisir votre mot de passe.",
-        "error-city-required": "Veuillez saisir la ville.",
-        "error-city-invalid": "Entrez une ville valide",
-        "error-state-required": "Veuillez saisir l'état.",
-        "error-state-invalid": "Entrez un état valide",
-        "error-country-required": "Veuillez saisir le pays.",
-        "error-pays-invalid": "Entrez un pays valide",
-        "error-firstName-required": "Veuillez saisir votre prénom.",
-        "error-firstName-invalid": "Entrez un prénom valide",
-        "error-lastName-required": "Veuillez saisir votre nom.",
-        "error-lastName-invalid": "Entrez un nom valide",
         "error-user-alreadyExists": "L'utilisateur est déjà enrigestré. Vérifiez les donnés et réessayez.",
 
         "success-user-created": "Utilisateur créé avec succès.",
@@ -110,7 +93,10 @@
         "expired": "Expiré",
         "linesPerPage": "Lignes par page",
 
-        "pageSubtitle-1": "Vous avez "
+        "pageSubtitle-1": "Vous avez ",
+
+        "head-meta-description": "Notre langue est Cloud Computing. Nous sommes une startup qui propose des solutions et services Cloud avec le but de moderniser et dynamiser votre entreprise",
+        "head-meta-ogdescription": "Broker Uni.Cloud. Notre langue est Cloud Computing. Nous sommes une startup qui propose des solitions et services Cloud avec le but de moderniser et dynamiser votre entreprise"
       },
       "login": {
         "login": "Connection",
@@ -199,6 +185,44 @@
         "general": "Général",
         "lastLogin": "Dernière connexion",
         "userSince": "Utilisateur depuis"
+      },
+      "validation": {
+        "required": "Champs requis!",
+        "required_amount": "Saisissez la quantité",
+        "min-chars_5": "Au moins 5 caractères",
+        "min-chars_6": "Au moins 6 caractères",
+        "max-chars_50": "Au plus 50 caractères",
+        "format_integer": "Saisissez un numéro entier",
+
+        "select-type": "Sélectionez un type!",
+
+        "email-invalid": "Saisissez un adresse e-mail valide",
+        "email-required": "Saisissez votre adresse e-mail",
+        "phone-invalid": "Saisissez un numéro de téléphone valide",
+        "phone-required": "Saisissez votre numéro de téléphone",
+        "address-invalid": "Saisissez une adresse valide",
+        "address-required": "Saisissez votre adresse.",
+        "password-invalid": "Le mot de passe doit contenir au moins 6 caractères",
+        "password-required": "Saisissez votre mot de passe.",
+        "city-required": "Saisissez la ville.",
+        "city-invalid": "Saisissez une ville valide",
+        "state-required": "Saisissez l'état.",
+        "state-invalid": "Saisissez un état valide",
+        "country-required": "Saisissez le pays.",
+        "country-invalid": "Saisissez un pays valide",
+        "firstName-required": "Saisissez votre prénom.",
+        "firstName-invalid": "Saisissez un prénom valide",
+        "lastName-required": "Saisissez votre nom.",
+        "lastName-invalid": "Saisissez un nom valide",
+        "name-required": "Nom est requis.",
+        "name-invalid": "Saisissez un nom valide",
+        "id-required": "ID est requis.",
+        "id-invalid": "Saisissez un ID valide",
+        "url-required": "URL est requise.",
+        "url-invalid": "Saisissez une URL valide",
+        "cnpj-required": "Saisissez le SIRET",
+        "cnpj-invalid": "Saisissez un SIRET valide",
+        "domainTenant-required": "Domain Tenant est requis."
       }
     }
   }

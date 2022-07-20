@@ -48,6 +48,7 @@
         "close": "Fechar",
         "filter": "Filtrar",
         "back": "Regressar",
+        "revalidate": "Revalidar",
         "selected-singular": "seleccionado",
         "selected-plural": "seleccionados",
 
@@ -61,24 +62,6 @@
         "error-something-unexpected-refresh": "Hubo um error inesperado en la pagina, intenta de nuevo.",
         "error-request-connection": "Hubo um error em la requisicion, checa tu coneccion.",
         "error-invitation-expired": "Solicitacion caducada, solicita una nueva.",
-        "error-email-invalid": "Itroduzca un correo valido",
-        "error-email-required": "Itroduzca tu correo",
-        "error-phone-invalid": "Itroduzca un teléfono válido",
-        "error-phone-required": "Itroduzca tu teléfono",
-        "error-address-invalid": "Itroduzca uma ubicacion valida",
-        "error-address-required": "Itroduzca tu ubicación",
-        "error-password-invalid": "La contraseña debe contener por lo menos 6 caracteres",
-        "error-password-required": "Itroduzca ya contraseña",
-        "error-city-required": " Itroduzca la ciudad",
-        "error-city-invalid": " Itroduzca una ciudad valida",
-        "error-state-required": " Itroduzca el estado",
-        "error-state-valid": " Itroduzca un estado valido",
-        "error-country-required": " Itroduzca el país",
-        "error-country-valid": " Itroduzca un país valido",
-        "error-firstName-required": " Itroduzca tu nombre",
-        "error-firstName-invalid": " Itroduzca un nombre valido",
-        "error-lastName-required": " Itroduzca tu apellido",
-        "error-lastName-invalid": " Itroduzca un apellido valido",
         "error-user-alreadyExists": "Usuario ya registrado, verifica tus datos y vuelve a intentarlo ",
 
         "success-user-created": "Usuario creado con éxito!",
@@ -88,7 +71,6 @@
         "privacy": "Política de privacidad",
         "help": "Ayuda",
         "languageSelect": "Idioma",
-
         "home": "Home",
         "customers": "Clientes",
         "pods": "Pods",
@@ -97,20 +79,20 @@
         "search-placeholder": "Busqueda",
         "partners": "Socios",
         "invitations": "Invitaciones",
-
         "profile": "Perfil",
         "preferences": "Preferencias",
         "activity": "Actividad",
         "logout": "Salir",
         "superAdmin": "Súper Administrador",
-
         "active": "Activo",
         "inactive": "Inactivo",
         "pending": "Pendiente",
         "expired": "Caducado",
         "linesPerPage": "Lineas por pagina",
+        "pageSubtitle-1": "Tienes ",
 
-        "pageSubtitle-1": "Tienes "
+        "head-meta-description": "Nuestro lenguaje es el Cloud Computing. Somos una startup que ofrece soluciones y servicios en la Nube con el objetivo de modernizar y impulsar tu empresa.",
+        "head-meta-ogdescription": "Broker Uni.Cloud. Nuestro lenguaje es el Cloud Computing. Somos una startup que ofrece soluciones y servicios en la Nube con el objetivo de modernizar y impulsar tu empresa."
       },
       "login": {
         "login": "Iniciar sesión",
@@ -199,6 +181,44 @@
         "general": "General",
         "lastLogin": "Último acceso",
         "userSince": "Usuario desde"
+      },
+      "validation": {
+        "required": "Campo requerido!",
+        "required_amount": "Introduzca la cantidad",
+        "min-chars_5": "Al menos 5 caracteres",
+        "min-chars_6": "Al menos 6 caracteres",
+        "max-chars_50": "Máximo 50 caracteres",
+        "format_integer": "Introduzca un número entero",
+
+        "select-type": "Seleccione un tipo!",
+
+        "email-invalid": "Itroduzca un correo valido",
+        "email-required": "Itroduzca tu correo",
+        "phone-invalid": "Itroduzca un teléfono válido",
+        "phone-required": "Itroduzca tu teléfono",
+        "address-invalid": "Itroduzca uma ubicacion valida",
+        "address-required": "Itroduzca tu ubicación",
+        "password-invalid": "La contraseña debe contener por lo menos 6 caracteres",
+        "password-required": "Itroduzca ya contraseña",
+        "city-required": "Itroduzca la ciudad",
+        "city-invalid": "Itroduzca una ciudad valida",
+        "state-required": "Itroduzca el estado",
+        "state-valid": "Itroduzca un estado valido",
+        "country-required": "Itroduzca el país",
+        "country-valid": "Itroduzca un país valido",
+        "firstName-required": "Itroduzca tu nombre",
+        "firstName-invalid": "Itroduzca un nombre valido",
+        "lastName-required": "Itroduzca tu apellido",
+        "lastName-invalid": "Itroduzca un apellido valido",
+        "name-required": "Itroduzca tu nombre",
+        "name-invalid": "Itroduzca un nombre valido",
+        "id-required": "ID requerido.",
+        "id-invalid": "Itroduzca un ID valido",
+        "url-required": "URL requerido.",
+        "url-invalid": "Itroduzca una URL valido",
+        "cnpj-required": "Itroduzca el RUC",
+        "cnpj-invalid": "Itroduzca un RUC valido",
+        "domainTenant-required": "Domain Tenant requerido."
       }
     }
   }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "PT": {
     "namespaces": {
@@ -208,3 +209,234 @@
     }
   }
 }
+=======
+{
+  "PT": {
+    "namespaces": {
+      "common": {
+        "name": "Nome",
+        "name-placeholder": "Digite o seu nome",
+        "firstName": "Nome",
+        "firstName-placeholder": "Nome",
+        "lastName": "Sobrenome",
+        "lastName-placeholder": "Sobrenome",
+        "email": "E-mail",
+        "email-placeholder": "Digite seu endereço de e-mail",
+        "password": "Senha",
+        "password-placeholder": "Digite a sua senha",
+        "password-forgot": "Esqueceu sua senha?",
+        "cnpj": "CNPJ",
+        "cnpj-placeholder": "Número do CNPJ",
+        "phone": "Telefone",
+        "phone-placeholder": "Digite seu telefone",
+        "address": "Endereço",
+        "address-placeholder": "Digite seu endereço",
+        "streetNumber": "Número",
+        "district": "Bairro",
+        "zipCode": "CEP",
+        "city": "Cidade",
+        "city-placeholder": "Digite sua cidade",
+        "state": "Estado",
+        "state-placeholder": "Digite seu estado",
+        "country": "País",
+        "country-placeholder": "Digite seu país",
+        "status": "Status",
+        "user": "Usuário",
+        "user-placeholder": "Digite o usuário",
+        "id": "ID",
+        "id-placeholder": "Digite o ID",
+        "userName": "Nome de usuário",
+        "userName-placeholder": "Digite o nome de usuário",
+        "company": "Empresa",
+        "companyName": "Razão Social",
+        "companyTradingName": "Nome Fantasia",
+        "businessEntityType": "Natureza Jurídica",
+
+        "edit": "Editar",
+        "submit": "Enviar",
+        "cancel": "Cancelar",
+        "clear": "Limpar",
+        "confirm": "Confirmar",
+        "close": "Fechar",
+        "filter": "Filtrar",
+        "back": "Voltar",
+        "revalidate": "Revalidar",
+        "selected-singular": "selecionado",
+        "selected-plural": "selecionados",
+
+        "tooltip-showDetails": "Exibir detalhes",
+        "tooltip-oneUserAtATime": "Apenas um usuário por vez",
+        "tooltip-oneCustomerAtATime": "Apenas um cliente por vez",
+        "tooltip-oneInvitationAtATime": "Apenas um convite por vez",
+
+        "error-invalid-credentials": "Credenciais inválidas, tente novamente.",
+        "error-something-unexpected": "Ocorreu algo inesperado, tente novamente.",
+        "error-something-unexpected-refresh": "Ocorreu um erro inesperado, recarregue a página e tente novamente.",
+        "error-request-connection": "Ocorreu um erro na requisição, verifique sua conexão.",
+        "error-invitation-expired": "Convite expirado, solicite um novo!",
+        "error-user-alreadyExists": "Usuário já cadastrado, verifique os dados e tente novamente.",
+
+        "success-user-created": "Usuário criado com sucesso!",
+
+        "copyright": "© 2022 Uni.Cloud. Todos os direitos reservados.",
+        "terms": "Termos & Condições",
+        "privacy": "Política de privacidade",
+        "help": "Ajuda",
+        "languageSelect": "Idioma",
+
+        "home": "Home",
+        "customers": "Clientes",
+        "pods": "Pods",
+        "monitoring": "Monitoramento",
+        "users": "Usuários",
+        "search-placeholder": "Buscar",
+        "partners": "Parceiros",
+        "invitations": "Convites",
+
+        "profile": "Perfil",
+        "preferences": "Preferências",
+        "activity": "Atividade",
+        "logout": "Sair",
+        "superAdmin": "Super Administrador",
+
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "pending": "Pendente",
+        "expired": "Expirado",
+        "linesPerPage": "Linhas por página",
+
+        "pageSubtitle-1": "Você tem ",
+
+        "head-meta-description": "A nossa língua é a Cloud Computing. Oferecemos soluções e serviços em Cloud para modernizar e impulsionar a sua empresa.",
+        "head-meta-ogdescription": "Broker Uni.Cloud. A nossa língua é a Cloud Computing. Oferecemos soluções e serviços em Cloud para modernizar e impulsionar a sua empresa."
+      },
+      "login": {
+        "login": "Entrar",
+        "subtitle": "Acesse o Broker com seu e-mail e senha.",
+        "noAccess": "Ainda não tem acesso?",
+        "noAccessLink": "Contate nossa equipe",
+        "or": "OU",
+        "commercial": "Comercial",
+        "help-desk": "Suporte técnico",
+
+        "createAccount": "Crie sua conta"
+      },
+      "dashboard": {
+        "pods": "PODS",
+        "pods-active": "Pods ativos",
+        "physicalCPU": "CPU Física",
+        "physicalCPU-total": "Total de CPU físicas",
+        "memory": "Memória",
+        "memory-total": "Total de memória",
+        "nodes": "Nodes",
+        "nodes-total": "Total de nodes",
+        "spareNodes": "Spare Nodes",
+        "spareNodes-total": "Total de spare nodes",
+        "vCore": "vCore",
+        "vCore-total": "Total de vCore",
+        "ourPods": "Nossos Pods",
+
+        "dashboard": "Dashboard",
+        "reports": "Reports"
+      },
+      "customersUsers": {
+        "table-subtitle-1": "Você tem",
+
+        "customers-subtitle-2-singular": "cliente",
+        "customers-subtitle-2-plural": "clientes",
+
+        "mainUserEmail": "E-mail do usuário principal",
+        "customerType-placeholder": "Selecione o tipo de cliente",
+        "addCustomer": "Adicionar cliente",
+        "customerCreated": "Cliente criado sucesso.",
+
+        "users-subtitle-2-singular": "usuário",
+        "users-subtitle-2-plural": "usuários",
+
+        "invitations-subtitle-2-singular": "convite enviado",
+        "invitations-subtitle-2-plural": "convites enviados",
+
+        "userInvitations": "Convites",
+        "invitationIsPending": "E-mail já possui um convite em espera!",
+        "invitationSent": "Convite enviado com sucesso.",
+        "sentAt": "Enviado em",
+
+        "addUser": "Adicionar usuário",
+        "userCreated": "Usuário criado sucesso."
+      },
+      "pods": {
+        "pods-subtitle-p2-singular": "POD",
+        "pods-subtitle-p2-plural": "PODS",
+        "addPod": "Adicionar POD",
+        "noPods": "Você não possui PODS cadastrados!",
+        "podName": "Nome do POD",
+        "podName-placeholder": "Digite o nome do POD",
+        "podLocation": "Localização",
+        "podLocation-placeholder": "Digite a Localização. Ex.: Curitiba",
+        "spareNode": "Spare node",
+        "spareNode-placeholder": "Informe a quantidade",
+        "domainTenant": "Domain Tenant",
+        "domainTenant-placeholder": "Informe o Domain Tenant",
+        "podType": "Selecione o tipo de POD",
+        "type": "Tipo",
+        "storage": "Storage",
+        "compute": "Compute",
+        "URL": "URL",
+        "baseURL": "URL de base",
+        "baseURL-placeholder": "Digite a URL. Ex.: https://www.pod.com",
+        "podCreated": "Pod criado com sucesso!"
+      },
+      "profile": {
+        "company": "Empresa",
+        "personalInformation": "Informações Pessoais",
+        "notifications": "Notificações",
+        "activity": "Atividade",
+        "safetyAdjusts": "Configurações de Segurança",
+        "personalInformation-subtitle": "Informações básicas de contato",
+        "contactData": "Dados de contato",
+        "general": "Geral",
+        "lastLogin": "Último login",
+        "userSince": "Usuário desde"
+      },
+      "validation": {
+        "required": "Campo obrigatório!",
+        "required_amount": "Digite a quantidade",
+        "min-chars_5": "No mínimo 5 caracteres",
+        "min-chars_6": "No mínimo 6 caracteres",
+        "max-chars_50": "No máximo 50 caracteres",
+        "format_integer": "Digite um número inteiro",
+
+        "select-type": "Selecione um tipo!",
+
+        "email-invalid": "Informe um e-mail válido",
+        "email-required": "Informe seu e-mail",
+        "phone-invalid": "Informe um telefone válido",
+        "phone-required": "Informe seu telefone",
+        "address-invalid": "Informe um endereço válido",
+        "address-required": "Informe seu endereço",
+        "password-invalid": "Senha deve conter no mínimo 6 caracteres",
+        "password-required": "Informe a senha",
+        "city-required": "Informe a cidade",
+        "city-invalid": "Informe uma cidade válida",
+        "state-required": "Informe o estado",
+        "state-invalid": "Informe um estado válido",
+        "country-required": "Informe o país",
+        "country-invalid": "Informe um país válido",
+        "firstName-required": "Informe seu nome",
+        "firstName-invalid": "Informe um nome válido",
+        "lastName-required": "Informe seu sobrenome",
+        "lastName-invalid": "Informe um sobrenome válido",
+        "name-required": "Informe seu nome",
+        "name-invalid": "Informe um nome válido",
+        "id-required": "Informe o ID",
+        "id-invalid": "Informe um ID válido",
+        "url-required": "Informe a URL",
+        "url-invalid": "Informe uma URL válido",
+        "cnpj-required": "Informe o CNPJ",
+        "cnpj-invalid": "Informe um CNPJ válido",
+        "domainTenant-required": "Informe o Domain Tenant"
+      }
+    }
+  }
+}
+>>>>>>> 7a34557b1747a54d3c6bcf9787563ccfca31de46

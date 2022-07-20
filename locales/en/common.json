@@ -74,8 +74,6 @@
   "pods": "Pods",
   "monitoring": "Monitoring",
   "users": "Users",
-  "contracts": "Contracts",
-  "resources": "Resources",
   "search-placeholder": "Search",
   "partners": "Partners",
   "invitations": "Invitations",
@@ -92,5 +90,8 @@
   "expired": "Expired",
   "linesPerPage": "Lines per page",
 
-  "pageSubtitle-1": "You have "
+  "pageSubtitle-1": "You have ",
+
+  "head-meta-description": "Our language is Cloud Computing. We are a startup that offers Cloud solutions and services with the aim of modernize and boost your company.",
+  "head-meta-ogdescription": "Broker Uni.Cloud. Our language is Cloud Computing. We are a startup that offers Cloud solutions and services with the aim of modernize and boost your company."
 }
