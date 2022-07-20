@@ -23,6 +23,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { BiDetail } from 'react-icons/bi'
 import { IconButton, Tooltip } from '@mui/material'
+import { ModalDetailsCustomer } from '../../../Templates/CustomersList/ModalDetailsCustomer'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -34,6 +35,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const [customers, setCustomers] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { t: translate } = useTranslation()
 
@@ -126,6 +128,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const getId = list
     ?.filter((e) => e.email === selected.toString())
     .map((item) => item.id)
+
+  const userSelected = list?.filter((f) => f.id === getId[0])
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -231,9 +235,16 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                             border: 'none'
                           }}
                         >
-                          <Tooltip title={translate('tooltip-showDetails')}>
+                          <Tooltip
+                            title={translate('tooltip-showDetails')}
+                            className={`${
+                              isItemSelected
+                                ? ''
+                                : 'opacity-10 pointer-events-none'
+                            }`}
+                          >
                             <IconButton
-                              // onClick={() => setIsModalOpen(!isModalOpen)}
+                              onClick={() => setIsModalOpen(!isModalOpen)}
                               sx={{ '& :hover': { color: colors.brand[600] } }}
                             >
                               <BiDetail
@@ -243,11 +254,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                                     : colors.brand[500]
                                 }
                                 opacity={!isItemSelected ? 70 : 100}
-                                className={`text-xl transition-all  ${
-                                  isItemSelected
-                                    ? ''
-                                    : 'opacity-10 pointer-events-none'
-                                } `}
+                                className={`text-xl transition-all   `}
                               />
                             </IconButton>
                           </Tooltip>
@@ -279,6 +286,11 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
           />
         </Paper>
       )}
+      <ModalDetailsCustomer
+        isOpen={!!isModalOpen}
+        handleClose={() => setIsModalOpen(!isModalOpen)}
+        data={userSelected}
+      />
     </Box>
   )
 }
