@@ -8,7 +8,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import Checkbox from '@mui/material/Checkbox'
 import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
@@ -19,6 +18,11 @@ import { colors } from '../../../styles/colors'
 import { TableSkeleton } from '../TableSkeleton'
 import { useTranslation } from 'react-i18next'
 import { addCountryToLanguage } from '../../LanguageSelector/util'
+import { IconButton, Tooltip } from '@mui/material'
+import { BsArrowCounterclockwise } from 'react-icons/bs'
+import { api } from '../../../services/api'
+import { ToastSuccess } from '../../Elements/ToastSuccess'
+import { TableText } from '../TableText'
 
 export const InvitesTable: React.FC = () => {
   const { data, isLoading, isError } = useInviteList()
@@ -28,6 +32,8 @@ export const InvitesTable: React.FC = () => {
   const [selected, setSelected] = useState<readonly string[] | undefined>([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  //Invitation sending success
+  const [isSuccess, setIsSuccess] = useState(false)
   const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
   const colorBgChecked =
@@ -39,6 +45,27 @@ export const InvitesTable: React.FC = () => {
     .filter((e) => e.email === selected.toString())
     .map((item) => item.id)
 
+  //INVITATION REVALIDATION FUNCTION
+  async function updateInvitation(id: string) {
+    try {
+      const update = await api.patch('/update-invitation/', { id: id })
+      if (update.data.status === 'sent') {
+        setIsSuccess(true)
+      }
+      return update.data
+    } catch (error: any) {
+      console.error(error)
+    }
+  }
+  //INVITATION TOASTY CLOSE
+  const handleOnClose = (reason?: string) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setIsSuccess(false)
+  }
+
+  // ROW DATA ARRAY CREATION
   const rows = data?.map((invite) =>
     createData(
       invite.email,
@@ -60,34 +87,15 @@ export const InvitesTable: React.FC = () => {
     setOrderBy(property)
   }
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      const newSelecteds = rows?.map((n) => n.email)
-      setSelected(newSelecteds)
-      return
-    }
-    setSelected([])
-  }
-
+  //SELECT A SINGLE ROW
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected?.indexOf(name)
-    let newSelected: readonly string[] = []
+    let newSelected: string[] = []
 
-    if (selected) {
-      if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, name)
-      } else if (selectedIndex === 0) {
-        newSelected = newSelected.concat(selected.slice(1))
-      } else if (selectedIndex === selected.length - 1) {
-        newSelected = newSelected.concat(selected.slice(0, -1))
-      } else if (selectedIndex) {
-        if (selectedIndex > 0) {
-          newSelected = newSelected.concat(
-            selected.slice(0, selectedIndex),
-            selected.slice(selectedIndex + 1)
-          )
-        }
-      }
+    if (newSelected.length === 0) {
+      newSelected.push(name)
+    } else {
+      newSelected.splice(0, newSelected.length)
+      newSelected.push(name)
     }
 
     setSelected(newSelected)
@@ -168,33 +176,6 @@ export const InvitesTable: React.FC = () => {
                         }}
                       >
                         <TableCell
-                          padding='checkbox'
-                          sx={{
-                            border: 'none',
-                            borderRadius: 2,
-                            borderTopRightRadius: 1,
-                            borderBottomRightRadius: 1
-                          }}
-                        >
-                          <Checkbox
-                            checked={isItemSelected}
-                            inputProps={{
-                              'aria-labelledby': labelId,
-                              'aria-label': labelId
-                            }}
-                            sx={{
-                              color: 'secondary',
-                              '&.Mui-checked': {
-                                color: colors.brand[600],
-                                backgroundColor: 'transparent',
-                                ':hover': {
-                                  backgroundColor: colorHover
-                                }
-                              }
-                            }}
-                          />
-                        </TableCell>
-                        <TableCell
                           component='th'
                           id={labelId}
                           scope='row'
@@ -203,7 +184,7 @@ export const InvitesTable: React.FC = () => {
                             border: 'none'
                           }}
                         >
-                          {row.email}
+                          <TableText>{row.email}</TableText>
                         </TableCell>
                         <TableCell
                           align='left'
@@ -212,16 +193,13 @@ export const InvitesTable: React.FC = () => {
                             width: 250
                           }}
                         >
-                          {row.created_at}
+                          <TableText>{row.created_at}</TableText>
                         </TableCell>
                         <TableCell
                           align='left'
                           sx={{
                             border: 'none',
                             width: 100,
-                            borderRadius: 2,
-                            borderTopLeftRadius: 0,
-                            borderBottomLeftRadius: 0,
                             textTransform: 'capitalize',
                             color:
                               row.status === 'expired'
@@ -229,9 +207,41 @@ export const InvitesTable: React.FC = () => {
                                 : colors.brand.ethereum
                           }}
                         >
-                          {row.status === 'pending'
-                            ? translate('pending')
-                            : translate('expired')}
+                          {row.status === 'pending' ? (
+                            <TableText>{translate('pending')}</TableText>
+                          ) : (
+                            <TableText>{translate('expired')}</TableText>
+                          )}
+                        </TableCell>
+                        <TableCell
+                          className='text-base-400'
+                          align='center'
+                          sx={{
+                            borderRadius: 2,
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none'
+                          }}
+                        >
+                          <Tooltip title={translate('revalidate')}>
+                            <IconButton
+                              onClick={() => updateInvitation(`${getId[0]}`)}
+                              sx={{ '& :hover': { color: colors.brand[600] } }}
+                              className={` ${
+                                isItemSelected ? '' : 'opacity-10'
+                              } `}
+                            >
+                              <BsArrowCounterclockwise
+                                color={
+                                  isItemSelected
+                                    ? colors.brand[600]
+                                    : colors.brand[500]
+                                }
+                                opacity={!isItemSelected ? 70 : 100}
+                                className={`text-xl transition-all `}
+                              />
+                            </IconButton>
+                          </Tooltip>
                         </TableCell>
                       </TableRow>
                     )
@@ -259,6 +269,13 @@ export const InvitesTable: React.FC = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Paper>
+      )}
+      {!!isSuccess && (
+        <ToastSuccess
+          message={translate('customersUsers:invitationSent')}
+          isSuccess={isSuccess}
+          handleClose={handleOnClose}
+        />
       )}
     </Box>
   )

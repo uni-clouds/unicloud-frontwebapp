@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import Checkbox from '@mui/material/Checkbox'
 import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
@@ -15,12 +14,12 @@ import { TableToolbar } from './TableToolbar'
 import { CustomersTableProps, Data, Order } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
-import {
-  checkboxCellUsers,
-  stylesCellUsers,
-  stylesLastCellUsers
-} from '../styles'
+import { stylesCellUsers, stylesLastCellUsers } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { BiDetail } from 'react-icons/bi'
+import { IconButton, Tooltip } from '@mui/material'
+import { ModalDetailsCustomer } from '../../../templates/CustomersList/ModalDetailsCustomer'
+import { TableText } from '../TableText'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -32,6 +31,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const [customers, setCustomers] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { t: translate } = useTranslation()
 
@@ -79,20 +79,13 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   }
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name)
-    let newSelected: readonly string[] = []
+    const newSelected: string[] = []
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
+    if (newSelected.length === 0) {
+      newSelected.push(name)
+    } else {
+      newSelected.splice(0, newSelected.length)
+      newSelected.push(name)
     }
 
     setSelected(newSelected)
@@ -117,6 +110,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const getId = list
     ?.filter((e) => e.email === selected.toString())
     .map((item) => item.id)
+
+  const customerSelected = list?.filter((f) => f.id === getId[0])
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -158,23 +153,13 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                         tabIndex={-1}
                         key={row.email}
                         selected={isItemSelected}
-                        className='shadow-md'
+                        className='shadow-md cursor-pointer'
                         sx={{
                           border: 'none',
                           backgroundColor: colorRow,
                           borderRadius: 2
                         }}
                       >
-                        <TableCell padding='checkbox' sx={stylesLastCellUsers}>
-                          <Checkbox
-                            checked={isItemSelected}
-                            inputProps={{
-                              'aria-labelledby': labelId,
-                              'aria-label': labelId
-                            }}
-                            sx={checkboxCellUsers}
-                          />
-                        </TableCell>
                         <TableCell
                           component='th'
                           id={labelId}
@@ -183,27 +168,26 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           sx={stylesCellUsers}
                         >
                           <div className='flex flex-col gap-1'>
-                            <span className='font-semibold'>{row.name}</span>
+                            <span className='font-semibold text-xs md:text-sm'>
+                              {row.name}
+                            </span>
                             <span className='text-xs text-base-400'>
                               {row.email}
                             </span>
                           </div>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.cnpj}
+                          <TableText>{row.cnpj}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.phone}
+                          <TableText>{row.phone}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.city}
+                          <TableText>{row.city}</TableText>
                         </TableCell>
                         <TableCell
                           align='left'
                           sx={{
-                            borderRadius: 2,
-                            borderTopLeftRadius: 1,
-                            borderBottomLeftRadius: 1,
                             border: 'none',
                             color:
                               row.status === 'Ativo'
@@ -211,9 +195,42 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                                 : colors.red.custom
                           }}
                         >
-                          {row.status === 'Ativo'
-                            ? translate('active')
-                            : translate('inactive')}
+                          {row.status === 'Ativo' ? (
+                            <TableText>{translate('active')}</TableText>
+                          ) : (
+                            <TableText>{translate('inactive')}</TableText>
+                          )}
+                        </TableCell>
+                        <TableCell
+                          className='text-base-400'
+                          align='center'
+                          sx={{
+                            borderRadius: 2,
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none',
+                            stylesLastCellUsers
+                          }}
+                        >
+                          <Tooltip title={translate('tooltip-showDetails')}>
+                            <IconButton
+                              onClick={() => setIsModalOpen(!isModalOpen)}
+                              sx={{ '& :hover': { color: colors.brand[600] } }}
+                              className={` ${
+                                isItemSelected ? '' : 'opacity-10'
+                              } `}
+                            >
+                              <BiDetail
+                                color={
+                                  isItemSelected
+                                    ? colors.brand[600]
+                                    : colors.brand[500]
+                                }
+                                opacity={!isItemSelected ? 70 : 100}
+                                className={`text-xl transition-all `}
+                              />
+                            </IconButton>
+                          </Tooltip>
                         </TableCell>
                       </TableRow>
                     )
@@ -242,6 +259,11 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
           />
         </Paper>
       )}
+      <ModalDetailsCustomer
+        isOpen={!!isModalOpen}
+        handleClose={() => setIsModalOpen(!isModalOpen)}
+        data={customerSelected}
+      />
     </Box>
   )
 }

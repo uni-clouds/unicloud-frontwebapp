@@ -12,7 +12,7 @@ const CustomersList: React.FC = () => {
       <section
         className={`${
           data?.length >= 5 ? 'h-full' : 'h-screen'
-        } w-full flex flex-col gap-6 lg:mx-auto p-6`}
+        } w-full flex flex-col gap-6 lg:mx-auto p-0 md:p-6`}
       >
         {!!isLoading || isError ? (
           <div className=' w-full '>

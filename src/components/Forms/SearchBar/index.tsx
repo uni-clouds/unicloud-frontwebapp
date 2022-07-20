@@ -19,7 +19,7 @@ export const SearchBar: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSearch)}
-      className='flex flex-row items-center w-full text-base-500 dark:text-base-100 text-sm '
+      className='flex flex-row items-center w-full text-base-500 dark:text-base-100 text-sm'
     >
       <label className='mr-2 absolute p-4' aria-label='search' role='search'>
         <BsSearch />

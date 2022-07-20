@@ -10,6 +10,7 @@ import { headCells } from './data'
 import { Data, TableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { useTranslation } from 'react-i18next'
+import { TableText } from '../TableText'
 
 export function CustomTableHead(props: TableProps) {
   const { order, orderBy, onRequestSort } = props
@@ -29,7 +30,6 @@ export function CustomTableHead(props: TableProps) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding='checkbox'></TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -44,7 +44,7 @@ export function CustomTableHead(props: TableProps) {
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
-              {translateLabel(headCell.label)}
+              <TableText>{translateLabel(headCell.label)}</TableText>
               {orderBy === headCell.id ? (
                 <Box component='span' sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -53,6 +53,7 @@ export function CustomTableHead(props: TableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell />
       </TableRow>
     </TableHead>
   )

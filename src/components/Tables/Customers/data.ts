@@ -34,14 +34,14 @@ export const headCells: readonly HeadCell[] = [
     numeric: false,
     disablePadding: false,
     label: 'CNPJ',
-    minWidth: 200
+    minWidth: 180
   },
   {
     id: 'phone',
     numeric: false,
     disablePadding: false,
     label: 'Telefone',
-    minWidth: 150
+    minWidth: 180
   },
   {
     id: 'city',
