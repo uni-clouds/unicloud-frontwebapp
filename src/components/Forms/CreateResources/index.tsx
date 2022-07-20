@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { SubmitHandler, useForm, Controller } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import { api } from '../../../services/api'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
@@ -7,14 +7,14 @@ import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { ToastError } from '../../Elements/ToastError'
 import { useTranslation } from 'react-i18next'
 import { Portal } from '@mui/material'
+import { Input } from '../../Elements/Inputs/Input'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { RadioButton } from '../../RadioButton'
 import { Heading } from '../../Heading'
 import { TypeResources, CreateResourcesFormProps } from './types'
 
 import * as Styled from './styles'
-import { Input } from '../../Elements/Inputs/Input'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { schemaResources } from './validation'
 
 export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
@@ -37,7 +37,7 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
     try {
       const request = await api.post('/resources/', {
         type_id: resourceType,
-        resource_name: data.resource_name
+        resource: data.resource
       })
 
       if (request.status === 200) {
@@ -77,7 +77,7 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
         <Portal>
           <ToastSuccess
             isSuccess={!!isSuccess}
-            message={`Recurso tipo ${resourceType} criado com sucesso!`}
+            message={`Novo recurso criado com sucesso!`}
             handleClose={handleOnClose}
           />
         </Portal>
@@ -90,6 +90,7 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
           <Styled.ListHeading>
             Em qual tipo deseja criar um novo recurso?
           </Styled.ListHeading>
+
           {data?.map((item) => (
             <Styled.ListItem key={uuidv4()} role='radiogroup'>
               <RadioButton
@@ -110,8 +111,8 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
           label='Novo recurso'
           placeholder='Informe o nome do recurso'
           type='text'
-          {...register('resource_name')}
-          error={errors.resource_name}
+          {...register('resource')}
+          error={errors.resource}
         />
         <SubmitButton isForm>Criar </SubmitButton>
       </Styled.Form>
