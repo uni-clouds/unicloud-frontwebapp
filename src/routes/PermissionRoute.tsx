@@ -20,17 +20,7 @@ export default function PermissionRoute(props: PermissionRouterProps) {
     return false
   }
 
-  const userIsLogged = () => {
-    if (
-      cookies.token !== undefined &&
-      cookies.token !== null &&
-      cookies.token !== ''
-    )
-      return true
-    return false
-  }
-
-  if (userHasPermission && userIsLogged) {
+  if (userHasPermission) {
     return children
   } else {
     return <Navigate to='/auth' replace={true} />
