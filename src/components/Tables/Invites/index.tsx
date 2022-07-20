@@ -22,6 +22,7 @@ import { addCountryToLanguage } from '../../LanguageSelector/util'
 import { IconButton, Tooltip } from '@mui/material'
 import { BsArrowCounterclockwise } from 'react-icons/bs'
 import { api } from '../../../services/api'
+import { ToastSuccess } from '../../Elements/ToastSuccess'
 
 export const InvitesTable: React.FC = () => {
   const { data, isLoading, isError } = useInviteList()
@@ -31,6 +32,7 @@ export const InvitesTable: React.FC = () => {
   const [selected, setSelected] = useState<readonly string[] | undefined>([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  //Invitation sending success
   const [isSuccess, setIsSuccess] = useState(false)
   const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
@@ -43,7 +45,7 @@ export const InvitesTable: React.FC = () => {
     .filter((e) => e.email === selected.toString())
     .map((item) => item.id)
 
-  //INVITATION REVALIDATION FUNCTIONS
+  //INVITATION REVALIDATION FUNCTION
   async function updateInvitation(id: string) {
     try {
       const update = await api.patch('/update-invitation/', { id: id })
@@ -55,6 +57,7 @@ export const InvitesTable: React.FC = () => {
       console.error(error)
     }
   }
+  //INVITATION TOASTY CLOSE
   const handleOnClose = (reason?: string) => {
     if (reason === 'clickaway') {
       return
@@ -319,6 +322,13 @@ export const InvitesTable: React.FC = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Paper>
+      )}
+      {!!isSuccess && (
+        <ToastSuccess
+          message={translate('customersUsers:invitationSent')}
+          isSuccess={isSuccess}
+          handleClose={handleOnClose}
+        />
       )}
     </Box>
   )

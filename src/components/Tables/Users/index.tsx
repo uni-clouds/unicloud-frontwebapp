@@ -25,7 +25,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { IconButton, Tooltip } from '@mui/material'
 import { BiDetail } from 'react-icons/bi'
-import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
+import { ModalDetails } from '../../../templates/UsersList/ModalDetails'
+import { TableText } from '../TableText'
 
 export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -211,13 +212,13 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           </div>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.email}
+                          <TableText>{row.email}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.phone}
+                          <TableText>{row.phone}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.country}
+                          <TableText>{row.country}</TableText>
                         </TableCell>
                         <TableCell
                           align='left'
@@ -229,9 +230,11 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                                 : colors.red.custom
                           }}
                         >
-                          {row.status === 'Ativo'
-                            ? translate('active')
-                            : translate('inactive')}
+                          {row.status === 'Ativo' ? (
+                            <TableText>{translate('active')}</TableText>
+                          ) : (
+                            <TableText>{translate('inactive')}</TableText>
+                          )}
                         </TableCell>
                         <TableCell
                           className='text-base-400'

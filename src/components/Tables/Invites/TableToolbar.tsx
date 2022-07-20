@@ -12,29 +12,29 @@ import { useTranslation } from 'react-i18next'
 import { SearchBar } from '../../Forms/SearchBar'
 
 export const TableToolbar = (props: TableToolbarProps) => {
-  const [isSuccess, setIsSuccess] = useState(false)
-  const { numSelected, id } = props
-  const selectedId = id.toString()
+  // const [isSuccess, setIsSuccess] = useState(false)
+  // const { numSelected, id } = props
+  // const selectedId = id.toString()
 
-  const { t: translate } = useTranslation()
+  // const { t: translate } = useTranslation()
 
-  async function updateInvitation(id: string) {
-    try {
-      const update = await api.patch('/update-invitation/', { id: id })
-      if (update.data.status === 'sent') {
-        setIsSuccess(true)
-      }
-      return update.data
-    } catch (error: any) {
-      console.error(error)
-    }
-  }
-  const handleOnClose = (reason?: string) => {
-    if (reason === 'clickaway') {
-      return
-    }
-    setIsSuccess(false)
-  }
+  // async function updateInvitation(id: string) {
+  //   try {
+  //     const update = await api.patch('/update-invitation/', { id: id })
+  //     if (update.data.status === 'sent') {
+  //       setIsSuccess(true)
+  //     }
+  //     return update.data
+  //   } catch (error: any) {
+  //     console.error(error)
+  //   }
+  // }
+  // const handleOnClose = (reason?: string) => {
+  //   if (reason === 'clickaway') {
+  //     return
+  //   }
+  //   setIsSuccess(false)
+  // }
   return (
     <>
       {/* {!!isSuccess && (

@@ -23,7 +23,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { BiDetail } from 'react-icons/bi'
 import { IconButton, Tooltip } from '@mui/material'
-import { ModalDetailsCustomer } from '../../../Templates/CustomersList/ModalDetailsCustomer'
+import { ModalDetailsCustomer } from '../../../templates/CustomersList/ModalDetailsCustomer'
+import { TableText } from '../TableText'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -196,20 +197,22 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           sx={stylesCellUsers}
                         >
                           <div className='flex flex-col gap-1'>
-                            <span className='font-semibold'>{row.name}</span>
+                            <span className='font-semibold text-xs md:text-sm'>
+                              {row.name}
+                            </span>
                             <span className='text-xs text-base-400'>
                               {row.email}
                             </span>
                           </div>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.cnpj}
+                          <TableText>{row.cnpj}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.phone}
+                          <TableText>{row.phone}</TableText>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          {row.city}
+                          <TableText>{row.city}</TableText>
                         </TableCell>
                         <TableCell
                           align='left'
@@ -221,9 +224,11 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                                 : colors.red.custom
                           }}
                         >
-                          {row.status === 'Ativo'
-                            ? translate('active')
-                            : translate('inactive')}
+                          {row.status === 'Ativo' ? (
+                            <TableText>{translate('active')}</TableText>
+                          ) : (
+                            <TableText>{translate('inactive')}</TableText>
+                          )}
                         </TableCell>
                         <TableCell
                           className='text-base-400'
