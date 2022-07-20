@@ -1,35 +1,42 @@
 import { FC, useState } from 'react'
-import { SubmitHandler, useForm, Controller } from 'react-hook-form'
-import { api } from '../../../services/api'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { ToastError } from '../../Elements/ToastError'
 import { useTranslation } from 'react-i18next'
 import { Portal } from '@mui/material'
-import { Select } from '../../SelectInput'
-import { UpdateResourceTypes, UpdateResourceTypeProps } from './types'
-
-import * as Styled from '../CreateResourceType/styles'
+import { Input } from '../../Elements/Inputs/Input'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Heading } from '../../Heading'
+import { TypeUpdateResources, UpdateResourcesProps } from './types'
+import { schemaUpdateResources } from './validation'
 import {
-  handleUpdateResourceType,
-  responseUpdateResourceType
-} from '../../../util/resourcesType'
-import { OPTIONS_RESOURCES_TYPES } from '../../../constants/selectOptions'
+  handleUpdateResource,
+  responseUpdateResource
+} from '../../../util/resources'
 
-export const UpdateResourceType: FC<UpdateResourceTypeProps> = ({ id }) => {
-  const { handleSubmit, control } = useForm<UpdateResourceTypes>()
+import * as Styled from './styles'
+
+export const UpdateResource: FC<UpdateResourcesProps> = ({ id }) => {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors }
+  } = useForm<TypeUpdateResources>({
+    resolver: yupResolver(schemaUpdateResources)
+  })
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const { t: translate } = useTranslation()
 
-  const onUpdateResourceType: SubmitHandler<UpdateResourceTypes> = async (
+  const handleUpdateResources: SubmitHandler<TypeUpdateResources> = async (
     data
   ) => {
-    handleUpdateResourceType(id, data.new_resource_type)
-    !!responseUpdateResourceType && setIsSuccess(true)
+    handleUpdateResource(id, data.new_resource_name)
+    !!responseUpdateResource && setIsSuccess(true)
+    reset()
   }
-
   const handleOnClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -61,21 +68,18 @@ export const UpdateResourceType: FC<UpdateResourceTypeProps> = ({ id }) => {
         </Portal>
       )}
       <Heading size='normal' as='h3'>
-        Tipos de Recurso
+        Gerencie seus recursos
       </Heading>
-      <Styled.Form onSubmit={handleSubmit(onUpdateResourceType)} action='PATCH'>
-        <Controller
-          name='new_resource_type'
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState: { error } }) => (
-            <Select
-              options={OPTIONS_RESOURCES_TYPES}
-              label='Selecione o tipo de recurso'
-              error={error}
-              {...field}
-            />
-          )}
+      <Styled.Form
+        onSubmit={handleSubmit(handleUpdateResources)}
+        action='PATCH'
+      >
+        <Input
+          label='Atualize o recurso'
+          placeholder='Informe o nome do recurso'
+          type='text'
+          {...register('new_resource_name')}
+          error={errors.new_resource_name}
         />
         <SubmitButton isForm>Atualizar</SubmitButton>
       </Styled.Form>

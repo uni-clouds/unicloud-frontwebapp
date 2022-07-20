@@ -5,7 +5,7 @@ import { Logo } from '../../components/Logo'
 import { NavList } from '../../components/NavList'
 import { api } from '../../services/api'
 import { ToggleTheme } from '../ToggleTheme'
-import { MENU_ITEMS } from './data'
+import { MENU_ITEMS } from '../../constants/navigation'
 import { SidebarContainer, LogoBox } from './styles'
 import { SidebarContainerProps } from './types'
 

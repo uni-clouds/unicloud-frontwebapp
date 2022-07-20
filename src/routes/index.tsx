@@ -13,7 +13,8 @@ import Pods from '../pages/Pods'
 import UserProfilePage from '../pages/UserProfile'
 import Contracts from '../pages/Contracts'
 import Resources from '../pages/Resources'
-import ResourcesPanel from '../pages/Resources/Panel'
+import ResourcesManager from '../pages/Resources/Manager'
+import ResourcesType from '../pages/Resources/ResourcesTypes'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -186,10 +187,18 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/resources/settings'
+        path='/resources-settings'
         element={
           <ProtectedRoute>
-            <ResourcesPanel />
+            <ResourcesManager />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/resources-types'
+        element={
+          <ProtectedRoute>
+            <ResourcesType />
           </ProtectedRoute>
         }
       />
