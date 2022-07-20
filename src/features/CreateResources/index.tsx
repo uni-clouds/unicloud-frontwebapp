@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react'
+import { FC } from 'react'
 import { useGetResourcesType } from '../../hooks/useGetResourcesType'
 import { CreateResources as CreateResourcesForm } from '../../components/Forms/CreateResources'
 

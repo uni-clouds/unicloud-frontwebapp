@@ -23,7 +23,7 @@ export const Form = styled.form`
     padding: 0.5rem;
 
     & input {
-      width: 100%;
+      width: 80%;
     }
   `}
 `
