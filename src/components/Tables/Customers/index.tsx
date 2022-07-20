@@ -21,6 +21,8 @@ import {
   stylesLastCellUsers
 } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { BiDetail } from 'react-icons/bi'
+import { IconButton, Tooltip } from '@mui/material'
 
 export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -80,19 +82,26 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name)
-    let newSelected: readonly string[] = []
+    const newSelected: string[] = []
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
+    // if (selectedIndex === -1) {
+    //   newSelected = newSelected.concat(selected, name)
+    // } else if (selectedIndex === 0) {
+    //   newSelected = newSelected.concat(selected.slice(1))
+    // } else if (selectedIndex === selected.length - 1) {
+    //   newSelected = newSelected.concat(selected.slice(0, -1))
+    // } else if (selectedIndex > 0) {
+    //   newSelected = newSelected.concat(
+    //     selected.slice(0, selectedIndex),
+    //     selected.slice(selectedIndex + 1)
+    //   )
+    // }
+
+    if (newSelected.length === 0) {
+      newSelected.push(name)
+    } else {
+      newSelected.splice(0, newSelected.length)
+      newSelected.push(name)
     }
 
     setSelected(newSelected)
@@ -158,14 +167,14 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                         tabIndex={-1}
                         key={row.email}
                         selected={isItemSelected}
-                        className='shadow-md'
+                        className='shadow-md cursor-pointer'
                         sx={{
                           border: 'none',
                           backgroundColor: colorRow,
                           borderRadius: 2
                         }}
                       >
-                        <TableCell padding='checkbox' sx={stylesLastCellUsers}>
+                        {/* <TableCell padding='checkbox' sx={stylesLastCellUsers}>
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{
@@ -174,7 +183,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                             }}
                             sx={checkboxCellUsers}
                           />
-                        </TableCell>
+                        </TableCell> */}
                         <TableCell
                           component='th'
                           id={labelId}
@@ -201,9 +210,6 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                         <TableCell
                           align='left'
                           sx={{
-                            borderRadius: 2,
-                            borderTopLeftRadius: 1,
-                            borderBottomLeftRadius: 1,
                             border: 'none',
                             color:
                               row.status === 'Ativo'
@@ -214,6 +220,37 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           {row.status === 'Ativo'
                             ? translate('active')
                             : translate('inactive')}
+                        </TableCell>
+                        <TableCell
+                          className='text-base-400'
+                          align='center'
+                          sx={{
+                            borderRadius: 2,
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none'
+                          }}
+                        >
+                          <Tooltip title={translate('tooltip-showDetails')}>
+                            <IconButton
+                              // onClick={() => setIsModalOpen(!isModalOpen)}
+                              sx={{ '& :hover': { color: colors.brand[600] } }}
+                            >
+                              <BiDetail
+                                color={
+                                  isItemSelected
+                                    ? colors.brand[600]
+                                    : colors.brand[500]
+                                }
+                                opacity={!isItemSelected ? 70 : 100}
+                                className={`text-xl transition-all  ${
+                                  isItemSelected
+                                    ? ''
+                                    : 'opacity-10 pointer-events-none'
+                                } `}
+                              />
+                            </IconButton>
+                          </Tooltip>
                         </TableCell>
                       </TableRow>
                     )
