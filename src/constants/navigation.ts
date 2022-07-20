@@ -61,17 +61,17 @@ export const MENU_ITEMS: Options[] = makeMenuLevel(MENU_OPTIONS)
 export const RESOURCES_TYPES_LINKS = [
   {
     name: 'Painel',
-    icon: MdOutlineSettingsSuggest,
+    icon: 'ph:table-thin',
     path: '/resources'
   },
   {
     name: 'Tipos',
-    icon: MdOutlineSettingsSuggest,
+    icon: 'ph:codepen-logo-thin',
     path: '/resources-types'
   },
   {
     name: 'Gerenciamento',
-    icon: MdOutlineSettingsSuggest,
+    icon: 'ph:chart-bar-horizontal-thin',
     path: '/resources-settings'
   }
 ]

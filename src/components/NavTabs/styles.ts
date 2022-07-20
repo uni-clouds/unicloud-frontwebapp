@@ -7,7 +7,6 @@ export const TabsContainer = styled.div<{ isActive: boolean }>`
     flex-flow: row wrap;
     align-items: center;
     padding: 0.5rem 1rem;
-    gap: 0.5rem;
 
     border-top-left-radius: ${theme.radius.sm};
     border-top-right-radius: ${theme.radius.sm};
@@ -29,5 +28,9 @@ export const TabsContainer = styled.div<{ isActive: boolean }>`
   `}
 `
 export const LinkBox = styled.span`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+    display: grid;
+    place-content: center;
+    padding: 0 0.25rem;
+  `}
 `

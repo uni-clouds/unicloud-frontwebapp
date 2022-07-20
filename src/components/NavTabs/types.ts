@@ -1,7 +1,5 @@
-import { IconType } from 'react-icons'
-
 export interface NavTabsProps {
   path: string
-  icon?: IconType
+  icon?: string
   name: string
 }

@@ -3,6 +3,8 @@ import { Layout } from '../../components/Layout'
 import { Header } from './Header'
 import { Paper } from '../../components/Paper'
 
+import { Icon } from '@iconify-icon/react'
+
 export const ResourcesTypesDashboard: FC = () => {
   return (
     <Layout>
@@ -10,6 +12,7 @@ export const ResourcesTypesDashboard: FC = () => {
         <Header />
         <Paper>
           <h1>Dashboard aqui 🥸!!</h1>
+          <Icon icon='mdi-light:alert' />
         </Paper>
       </section>
     </Layout>
