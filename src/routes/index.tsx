@@ -14,6 +14,7 @@ import UserProfilePage from '../pages/UserProfile'
 import Contracts from '../pages/Contracts'
 import Resources from '../pages/Resources'
 import ResourcesPanel from '../pages/Resources/Panel'
+import PermissionRoute from './PermissionRoute'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -119,9 +120,9 @@ export default function MainRoutes() {
       <Route
         path='/customers'
         element={
-          <ProtectedRoute>
+          <PermissionRoute permission='partner'>
             <Customers />
-          </ProtectedRoute>
+          </PermissionRoute>
         }
       />
 
