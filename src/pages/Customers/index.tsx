@@ -1,13 +1,10 @@
 import { Navigate } from 'react-router-dom'
-import { useCanAccess } from '../../hooks/useCanAccess'
+import { useAccessLevelOne } from '../../hooks/useAccessLevelOne'
 import CustomersList from '../../templates/CustomersList'
 
 const Customers: React.FC = () => {
   document.title = 'Uni.Cloud | Clientes'
-  const accessLevelOne = useCanAccess({
-    role: ['root', 'partner']
-  })
-
+  const accessLevelOne = useAccessLevelOne(['root', 'partner'])
   if (accessLevelOne) {
     return <CustomersList />
   }
