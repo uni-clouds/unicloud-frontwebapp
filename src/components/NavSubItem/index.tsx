@@ -7,6 +7,7 @@ import { MenuItemsListProps } from './types'
 export const NavSubItem: FC<MenuItemsListProps> = ({
   options,
   isExpanded,
+  isOpened,
   isNested
 }) => {
   return (
@@ -14,7 +15,7 @@ export const NavSubItem: FC<MenuItemsListProps> = ({
       {isExpanded && isNested ? (
         <ListContainer>
           {options.map((option) => (
-            <NavItem options={option} key={uuidv4()} />
+            <NavItem options={option} key={uuidv4()} isOpened={isOpened} />
           ))}
         </ListContainer>
       ) : null}

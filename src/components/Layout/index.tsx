@@ -10,7 +10,7 @@ import { Sidebar } from '../../features/Sidebar'
 import { LayoutProps } from './types'
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [isOpened, setOpened] = useState(false)
+  const [isOpened, setOpened] = useState(true)
   const toggleDrawer = () => {
     setOpened((prev) => !prev)
   }

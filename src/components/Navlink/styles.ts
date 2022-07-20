@@ -3,27 +3,26 @@ import styled, { css } from 'styled-components'
 export const ListItem = styled.li`
   ${({ theme }) => css`
     padding: 0.5rem;
-    &:hover {
-    }
-    transition: ;
   `}
 `
 
 export const IconBox = styled.span<{ depth: number }>`
   ${({ theme, depth }) => css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: ${(depth) => `${depth}rem`};
+    margin-left: ${depth ? `${depth}ch` : 0};
   `}
 `
-export const LinkBox = styled.span`
-  ${({ theme }) => css``}
+export const LinkBox = styled.span<{ isOpened: boolean }>`
+  ${({ theme, isOpened }) => css`
+    transition: ${theme.transition};
+    visibility: ${isOpened ? 'visible' : 'hidden'};
+  `}
 `
 export const Container = styled.div`
   ${({ theme }) => css`
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
   `}
 `

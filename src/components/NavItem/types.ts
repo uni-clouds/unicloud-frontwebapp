@@ -1,5 +1,8 @@
+import { IconType } from 'react-icons'
+
 export interface NavItemProps {
   options: Options
+  isOpened: boolean
 }
 
 export interface ExpandIconPros {
@@ -9,7 +12,7 @@ export interface ExpandIconPros {
 
 export type Options = {
   name: string
-  icon: React.ComponentType
+  icon: IconType
   url: string
   id?: string
   depth?: number
@@ -18,7 +21,7 @@ export type Options = {
 
 export type MenuItem = {
   name: string
-  icon: React.ComponentType
+  icon: IconType
   url: string
   subItems?: MenuItem[]
 }

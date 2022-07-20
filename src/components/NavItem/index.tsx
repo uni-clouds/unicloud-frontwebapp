@@ -6,7 +6,7 @@ import { NavSubItem } from '../NavSubItem'
 import { NavItemProps } from './types'
 import * as Styled from './styles'
 
-export const NavItem: FC<NavItemProps> = ({ options }) => {
+export const NavItem: FC<NavItemProps> = ({ options, isOpened }) => {
   const [isExpanded, toggleExpanded] = useState(false)
 
   const { pathname } = useLocation()
@@ -24,16 +24,18 @@ export const NavItem: FC<NavItemProps> = ({ options }) => {
           Icon={options.icon}
           title={options.name}
           depth={options.depth}
+          nested={isNested}
+          expanded={isExpanded}
+          onClick={onClick}
+          isOpened={isOpened}
         />
-        {isNested ? (
-          <ExpandIcon isExpanded={isExpanded} handleClick={onClick} />
-        ) : null}
       </Styled.NavList>
       {isExpanded && isNested ? (
         <NavSubItem
           options={options.subItems}
           isExpanded={isExpanded}
           isNested={isNested}
+          isOpened={isOpened}
         />
       ) : null}
     </>

@@ -1,14 +1,26 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { colors } from '../../styles/colors'
 
-type SidebarContainerProps = {
-  isOpened: boolean
-}
-export const SidebarContainer = styled.aside<SidebarContainerProps>`
-  background: ${colors.neutral[50]};
-  width: ${(props) => (props.isOpened ? '20vw' : '0vw')};
-  transition: width 0.5s;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+export const SidebarContainer = styled.aside<{ isOpened: boolean }>`
+  ${({ theme, isOpened }) => css`
+    background: ${colors.neutral[50]};
+    width: ${isOpened ? '13rem' : '3.6vw'};
+    transition: ${theme.transition};
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+
+    box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
+  `}
+`
+export const LogoBox = styled.div`
+  ${({ theme }) => css`
+    width: 7rem;
+    max-height: 2.5rem;
+    margin: 0 auto;
+  `}
 `

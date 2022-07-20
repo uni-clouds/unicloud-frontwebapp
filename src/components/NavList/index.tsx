@@ -4,11 +4,11 @@ import { NavItem } from '../NavItem'
 import * as Styled from './styles'
 import { NavListProps } from './types'
 
-export const NavList: FC<NavListProps> = ({ options }) => {
+export const NavList: FC<NavListProps> = ({ options, isOpened }) => {
   return (
     <Styled.List>
       {options.map((option) => (
-        <NavItem options={option} key={uuidv4()} />
+        <NavItem options={option} key={uuidv4()} isOpened={isOpened} />
       ))}
     </Styled.List>
   )

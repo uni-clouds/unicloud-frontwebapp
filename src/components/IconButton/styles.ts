@@ -1,10 +1,27 @@
 import styled, { css } from 'styled-components'
+import { colors } from '../../styles/colors'
 
 export const Button = styled.button`
   ${({ theme }) => css`
     position: relative;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    display: grid;
+    place-content: center;
+    border-radius: ${theme.radius.full};
+    transition: ${theme.transition};
+    outline: 0;
+    border: 0;
 
-    span:hover {
+    &:focus,
+    :hover {
+      background: ${colors.brand[100]};
+      outline-offset: 1px;
+      outline: 1px solid ${colors.brand[200]};
+      transition: ${theme.transition};
+    }
+
+    & span:hover {
       visibility: visible;
       transition: ${theme.transition};
     }
