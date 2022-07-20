@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Modal } from '../../components/Elements/ModalDefault'
-import { UpdateResourceType } from '../../components/Forms/UpdateResourceType'
+import { UpdateResource } from '../../components/Forms/UpdateResource'
 import { ModalResourcesUpdateProps } from './types'
 
 export const ModalUpdateResources: FC<ModalResourcesUpdateProps> = ({
@@ -9,8 +9,8 @@ export const ModalUpdateResources: FC<ModalResourcesUpdateProps> = ({
   handleClose
 }) => {
   return (
-    <Modal isOpen={isOpen} handleClose={handleClose} width='sm' height={300}>
-      <UpdateResourceType id={id} />
+    <Modal isOpen={isOpen} handleClose={handleClose} width='sm' height={350}>
+      <UpdateResource id={id} />
     </Modal>
   )
 }

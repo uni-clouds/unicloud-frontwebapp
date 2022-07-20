@@ -31,9 +31,7 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
   const [resourceType, setResourceType] = useState(null)
   const { t: translate } = useTranslation()
 
-  const handleCreateResourceType: SubmitHandler<TypeResources> = async (
-    data
-  ) => {
+  const handleCreateResources: SubmitHandler<TypeResources> = async (data) => {
     try {
       const request = await api.post('/resources/', {
         type_id: resourceType,
@@ -103,10 +101,7 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
           ))}
         </Styled.List>
       </Styled.ContainerList>
-      <Styled.Form
-        onSubmit={handleSubmit(handleCreateResourceType)}
-        action='POST'
-      >
+      <Styled.Form onSubmit={handleSubmit(handleCreateResources)} action='POST'>
         <Input
           label='Novo recurso'
           placeholder='Informe o nome do recurso'

@@ -9,7 +9,7 @@ import { ResourcesList } from '../../features/ResourcesList'
 
 export const ResourcesManager: FC = () => {
   const { data } = useGetResources()
-  console.log('🐼', data)
+
   return (
     <Layout>
       <section className='w-full h-screen flex flex-col mx-auto'>

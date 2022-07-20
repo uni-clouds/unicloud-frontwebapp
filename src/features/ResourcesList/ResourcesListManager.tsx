@@ -5,9 +5,9 @@ import * as Styled from './styles'
 import { IconButton } from '../../components/IconButton'
 import { ResourcesListManagerProps } from './types'
 import {
-  handleRemoveResourceType,
-  responseRemoveResourceType
-} from '../../util/resourcesType'
+  handleRemoveResource,
+  responseRemoveResource
+} from '../../util/resources'
 import { Portal } from '@mui/material'
 import { ToastSuccess } from '../../components/Elements/ToastSuccess'
 import { ModalUpdateResources } from './ModalUpdateResources'
@@ -34,13 +34,13 @@ export const ResourcesListManager: FC<ResourcesListManagerProps> = ({ id }) => {
         icon={BsTrash}
         size={20}
         title='Excluir'
-        onClick={() => handleRemoveResourceType(id)}
+        onClick={() => handleRemoveResource(id)}
       />
-      {!!responseRemoveResourceType && (
+      {!!responseRemoveResource && (
         <Portal>
           <ToastSuccess
-            isSuccess={!!responseRemoveResourceType}
-            message={responseRemoveResourceType}
+            isSuccess={!!responseRemoveResource}
+            message={responseRemoveResource}
             handleClose={handleOnClose}
           />
         </Portal>
