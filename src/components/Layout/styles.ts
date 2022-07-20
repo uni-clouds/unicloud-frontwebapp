@@ -14,7 +14,7 @@ export const Content = styled.div`
   flex: 1;
 `
 
-export const PageContainer = styled.div`
-  padding: 20px;
-  width: 80vw;
+export const PageContainer = styled.main`
+  padding: 2.5rem;
+  width: 100vw;
 `

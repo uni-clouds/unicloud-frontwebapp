@@ -4,7 +4,7 @@ import { colors } from '../../styles/colors'
 export const SidebarContainer = styled.aside<{ isOpened: boolean }>`
   ${({ theme, isOpened }) => css`
     background: ${colors.neutral[50]};
-    width: ${isOpened ? '13rem' : '3.6vw'};
+    width: ${isOpened ? '15rem' : '3.6vw'};
     transition: ${theme.transition};
     overflow: hidden;
     display: flex;
@@ -21,6 +21,6 @@ export const LogoBox = styled.div`
   ${({ theme }) => css`
     width: 7rem;
     max-height: 2.5rem;
-    margin: 0 auto;
+    margin: 0.5rem auto 0 auto;
   `}
 `

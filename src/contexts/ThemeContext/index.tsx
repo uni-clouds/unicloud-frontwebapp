@@ -30,18 +30,19 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
     []
   )
 
+  //todo aguardar refactor do css para reativar!!
   useEffect(() => {
-    if (
-      theme.palette.mode === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
+    // if (
+    //   theme.palette.mode === 'dark' ||
+    //   (!('theme' in localStorage) &&
+    //     window.matchMedia('(prefers-color-scheme: dark)').matches)
+    // ) {
+    //   document.documentElement.classList.add('dark')
+    //   localStorage.setItem('theme', 'dark')
+    // } else {
+    //   document.documentElement.classList.remove('dark')
+    //   localStorage.setItem('theme', 'light')
+    // }
   }, [theme])
 
   return (
