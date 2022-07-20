@@ -35,7 +35,6 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
   ]
 
   const createCustomerSubmit: SubmitHandler<PodType> = async (data) => {
-    console.log('🐼', data)
     try {
       const request = await api.post('/create-zadara-pod/', {
         name: data.name,
@@ -208,7 +207,7 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
             {isSubmitting ? <Loading /> : translate('create')}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? translate('close') : translate('cancel')}
+            {isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </Grid>
       </form>

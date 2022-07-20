@@ -35,7 +35,7 @@ export interface ToastWarningProps {
 
 export interface ModalProps {
   handleClose: () => void
-  isOpen: boolean
+  isOpen?: boolean
   children: ReactNode
   height: number
   width: Breakpoint | false

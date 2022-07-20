@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom'
 import { Layout } from '../../components/Layout'
 import { useCanAccess } from '../../hooks/useCanAccess'
-import { ZadaraPods } from '../../Templates/ZadaraPods'
+import { ZadaraPods } from '../../templates/ZadaraPods'
 
 const Pods: React.FC = () => {
   document.title = 'Uni.cloud | Pods'

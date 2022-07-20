@@ -1,8 +1,8 @@
-import { Login } from "../../Templates/Login"
+import { Login } from '../../templates/Login'
 
 const AuthPage: React.FC = () => {
   document.title = 'Uni.Cloud | Login'
 
-  return <Login/>
+  return <Login />
 }
 export default AuthPage

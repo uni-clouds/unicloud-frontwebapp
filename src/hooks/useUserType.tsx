@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { userType } from '../components/Navbar/NavHeader/MenuDropdown/types'
+import { userType } from '../components/Navbar-old/NavHeader/MenuDropdown/types'
 import { api } from '../services/api'
 
 async function getUserType(): Promise<userType> {

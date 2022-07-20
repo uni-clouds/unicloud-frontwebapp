@@ -11,7 +11,7 @@ const PhoneField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   return (
     <>
       <label
-        aria-label={`input-phone`}
+        aria-label={'input-phone'}
         className='font-bold '
         htmlFor='Telefone'
       >

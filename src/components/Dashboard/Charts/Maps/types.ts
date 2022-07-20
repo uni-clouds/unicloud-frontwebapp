@@ -1,8 +1,3 @@
-
-
 export interface MapProps {
-  coordinates?:Array<[number, number][]>
+  coordinates?: Array<[number, number][]>
 }
-
-
-

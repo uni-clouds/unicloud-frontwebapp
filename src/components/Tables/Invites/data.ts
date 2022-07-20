@@ -13,21 +13,21 @@ export const headCells: readonly HeadCell[] = [
     id: 'email',
     numeric: false,
     disablePadding: true,
-    label: `E-mail`,
+    label: 'E-mail',
     minWidth: 180
   },
   {
     id: 'created_at',
     numeric: false,
     disablePadding: false,
-    label: `Enviado em`,
+    label: 'Enviado em',
     minWidth: 80
   },
   {
     id: 'status',
     numeric: false,
     disablePadding: false,
-    label: `Status`,
+    label: 'Status',
     minWidth: 80
   }
 ]

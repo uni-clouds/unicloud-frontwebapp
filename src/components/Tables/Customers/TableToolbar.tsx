@@ -6,7 +6,7 @@ import { BiDetail } from 'react-icons/bi'
 import { TableToolbarProps } from './types'
 import { colors } from '../../../styles/colors'
 
-import { ModalDetailsCustomer } from '../../../Templates/CustomersList/ModalDetailsCustomer'
+import { ModalDetailsCustomer } from '../../../templates/CustomersList/ModalDetailsCustomer'
 import { useCustomersList } from '../../../hooks/useCustomersList'
 import { stylesToolbar } from '../styles'
 import { useTranslation } from 'react-i18next'

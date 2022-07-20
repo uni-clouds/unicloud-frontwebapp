@@ -20,6 +20,8 @@ import {
   stylesTableClients
 } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { DashboardTableSkeleton } from '../../Skeletons/DashboardTableSkeleton'
+import { PaginationSkeleton } from '../../Skeletons/PaginationSkeleton'
 
 export const ClientTable: React.FC<TableDataProps> = ({
   data,
@@ -63,7 +65,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
         >
           {isLoading || isError !== 'success' ? (
             <div className='p-6 flex flex-col gap-6 justify-between items-center w-full'>
-              <TableSkeleton width={450} />
+              <DashboardTableSkeleton />
             </div>
           ) : (
             <>
@@ -114,7 +116,7 @@ export const ClientTable: React.FC<TableDataProps> = ({
           )}
         </TableContainer>
         {loading || error !== 'success' ? (
-          <Skeleton variant='text' animation='wave' />
+          <PaginationSkeleton />
         ) : (
           <TablePagination
             rowsPerPageOptions={[10, 25]}

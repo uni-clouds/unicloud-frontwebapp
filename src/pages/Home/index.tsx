@@ -1,4 +1,4 @@
-import { Dashboard } from '../../Templates/Dashboard'
+import { Dashboard } from '../../templates/Dashboard'
 import { Layout } from '../../components/Layout'
 
 const HomePage: React.FC = () => {

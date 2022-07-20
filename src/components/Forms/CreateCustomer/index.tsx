@@ -149,7 +149,7 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
             )}
           </SubmitButton>
           <OutlineButton name='close-modal' onclick={handleClose}>
-            {!!isSuccess ? translate('close') : translate('cancel')}
+            {isSuccess ? translate('close') : translate('cancel')}
           </OutlineButton>
         </div>
       </form>
