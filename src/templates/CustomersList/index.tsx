@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import { Layout } from '../../components/Layout'
 import { CustomersTable } from '../../components/Tables/Customers'
-import { TableSkeleton } from '../../components/Tables/TableSkeleton'
+import { TableSkeleton } from '../../components/Skeletons/TableSkeleton'
 import { useCustomersList } from '../../hooks/useCustomersList'
 
 const CustomersList: React.FC = () => {
@@ -15,8 +15,8 @@ const CustomersList: React.FC = () => {
         } w-full flex flex-col gap-6 lg:mx-auto p-6`}
       >
         {!!isLoading || isError ? (
-          <div className='grid place-content-center p-6 items-center gap-6 justify-center'>
-            <TableSkeleton width={800} />
+          <div className=' w-full '>
+            <TableSkeleton />
           </div>
         ) : (
           <>

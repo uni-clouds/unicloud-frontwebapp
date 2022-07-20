@@ -14,7 +14,7 @@ import UserProfilePage from '../pages/UserProfile'
 import Contracts from '../pages/Contracts'
 import Resources from '../pages/Resources'
 import ResourcesManager from '../pages/Resources/Manager'
-import ResourcesType from '../pages/Resources'
+import ResourcesType from '../pages/Resources/ResourcesTypes'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -187,7 +187,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/resources/settings'
+        path='/resources-settings'
         element={
           <ProtectedRoute>
             <ResourcesManager />
@@ -195,7 +195,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/resources/types'
+        path='/resources-types'
         element={
           <ProtectedRoute>
             <ResourcesType />

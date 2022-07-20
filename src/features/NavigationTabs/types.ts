@@ -1,3 +1,5 @@
+import { NavTabsProps } from '../../components/NavTabs/types'
+
 export interface NavigationTabsProps {
-  links: string[]
+  links: Array<NavTabsProps>
 }

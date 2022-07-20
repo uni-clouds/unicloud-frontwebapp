@@ -11,14 +11,14 @@ import {
 } from 'react-icons/md'
 import { AiOutlineFileText } from 'react-icons/ai'
 
-import { Options } from '../../components/NavItem/types'
-import { makeMenuLevel } from '../../util/makeMenuLevel'
+import { Options } from '../components/NavItem/types'
+import { makeMenuLevel } from '../util/makeMenuLevel'
 
-import i18n from '../../i18n'
+import i18n from '../i18n'
 
 const translate = i18n.t
 
-const MENU_OPTIONS = [
+export const MENU_OPTIONS = [
   {
     name: 'Dashboard',
     icon: MdDashboard,
@@ -57,3 +57,21 @@ const MENU_OPTIONS = [
 ]
 
 export const MENU_ITEMS: Options[] = makeMenuLevel(MENU_OPTIONS)
+
+export const RESOURCES_TYPES_LINKS = [
+  {
+    name: 'Painel',
+    icon: MdOutlineSettingsSuggest,
+    path: '/resources'
+  },
+  {
+    name: 'Tipos',
+    icon: MdOutlineSettingsSuggest,
+    path: '/resources-types'
+  },
+  {
+    name: 'Gerenciamento',
+    icon: MdOutlineSettingsSuggest,
+    path: '/resources-settings'
+  }
+]

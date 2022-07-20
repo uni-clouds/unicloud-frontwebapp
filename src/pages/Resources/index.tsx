@@ -1,19 +1,7 @@
 import { FC } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useCanAccess } from '../../hooks/useCanAccess'
-import { ResourcesTypesPage } from '../../templates/ResourcesTypes'
-// subItems: [
-//   {
-//     name: 'Tipos',
-//     icon: MdOutlineSettingsSuggest,
-//     url: '/resources/types'
-//   },
-//   {
-//     name: 'Gerenciamento',
-//     icon: MdOutlineSettingsSuggest,
-//     url: '/resources/settings'
-//   }
-// ]
+import { ResourcesTypesDashboard } from '../../templates/ResourcesTypes'
 
 const Resources: FC = () => {
   document.title = 'Uni.cloud | Recursos'
@@ -22,7 +10,7 @@ const Resources: FC = () => {
   })
 
   if (accessLevelZero) {
-    return <ResourcesTypesPage />
+    return <ResourcesTypesDashboard />
   }
 
   return <Navigate to='/not-found' replace />

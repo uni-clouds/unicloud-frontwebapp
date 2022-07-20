@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useCanAccess } from '../../hooks/useCanAccess'
-import { ResourcesTypesPage } from '../../templates/ResourcesTypes'
+import { ResourcesTypesPage } from '../../templates/ResourcesTypes/ResourcesTypes'
 
 const ResourcesTypes: FC = () => {
   document.title = 'Uni.cloud | Recursos'

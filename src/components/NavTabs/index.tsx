@@ -1,16 +1,14 @@
 import { FC } from 'react'
-import { NavLink } from 'react-router-dom'
-import { ACTIVE_STYLE } from '../../constants/styles'
+import { NavLink, useLocation } from 'react-router-dom'
 import * as Styled from './styles'
 import { NavTabsProps } from './types'
 
 export const NavTab: FC<NavTabsProps> = ({ name, path, icon: Icon }) => {
+  const { pathname } = useLocation()
+  const activePath = pathname === path ? true : false
   return (
-    <NavLink
-      to={path}
-      style={({ isActive }) => (isActive ? ACTIVE_STYLE : undefined)}
-    >
-      <Styled.TabsContainer>
+    <NavLink to={path}>
+      <Styled.TabsContainer isActive={activePath}>
         <Styled.LinkBox>
           <Icon />
         </Styled.LinkBox>
