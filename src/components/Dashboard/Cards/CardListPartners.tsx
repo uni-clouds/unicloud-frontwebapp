@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { v4 as uuidv4 } from 'uuid'
-import { PartnersProps } from '../../../Templates/Dashboard/types'
+import { PartnersProps } from '../../../templates/Dashboard/types'
 import { ListSkeleton } from '../../Elements/ListSkeleton'
 import { Title } from '../../Elements/TitleDashboard'
 

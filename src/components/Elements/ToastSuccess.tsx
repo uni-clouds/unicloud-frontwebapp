@@ -10,7 +10,7 @@ const Alert: ForwardRefRenderFunction<HTMLDivElement, ToastSuccessProps> = (
   return (
     <Snackbar
       open={isSuccess}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       onClose={handleClose}
     >

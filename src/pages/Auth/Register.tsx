@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { ToastError } from '../../components/Elements/ToastError'
 import { ToastWarning } from '../../components/Elements/ToastWarning'
 import { api } from '../../services/api'
-import { AuthRegister } from '../../Templates/AuthRegister'
-import { LoadingValidation } from '../../Templates/AuthRegister/LoadingValidation'
+import { AuthRegister } from '../../templates/AuthRegister'
+import { LoadingValidation } from '../../templates/AuthRegister/LoadingValidation'
 
 const NotValid = lazy(() => import('../Error/GatewayTimeout'))
 
@@ -22,7 +22,7 @@ const Register: React.FC = () => {
     const query = window.location.search
     const urlParams = new URLSearchParams(query)
     const token = urlParams.get('token')
-    if (!!token) {
+    if (token) {
       validateInvite(token)
     }
   }, [])

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useCanAccess } from '../../hooks/useCanAccess'
-import CustomersList from '../../Templates/CustomersList'
+import CustomersList from '../../templates/CustomersList'
 
 const Customers: React.FC = () => {
   document.title = 'Uni.Cloud | Clientes'
