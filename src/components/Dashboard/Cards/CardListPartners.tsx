@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { PartnersProps } from '../../../templates/Dashboard/types'
 import { ListSkeleton } from '../../Elements/ListSkeleton'
 import { Title } from '../../Elements/TitleDashboard'
+import { DashboardTableSkeleton } from '../../Skeletons/DashboardTableSkeleton'
+import { PaginationSkeleton } from '../../Skeletons/PaginationSkeleton'
 
 export const CardListPartners: React.FC<PartnersProps> = ({
   partners,
@@ -13,8 +15,10 @@ export const CardListPartners: React.FC<PartnersProps> = ({
   return (
     <div className='h-[34rem]  flex flex-col items-start bg-white custom-dark py-4 px-6 rounded-md shadow w-full'>
       {isLoading || isError !== 'success' ? (
-        <div className='flex flex-col justify-between gap-4 items-center w-full'>
-          <ListSkeleton />
+        <div className='flex flex-col w-full'>
+          <Title text={translate('partners')} />
+          <DashboardTableSkeleton />
+          <PaginationSkeleton />
         </div>
       ) : (
         <>
