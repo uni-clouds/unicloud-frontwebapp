@@ -4,7 +4,7 @@ import { Header } from './Header'
 import { Paper } from '../../components/Paper'
 import { ResourcesType } from '../../features/ResourcesType'
 
-export const ResourcesPage: FC = () => {
+export const ResourcesTypesPage: FC = () => {
   return (
     <Layout>
       <section className='w-full h-screen flex flex-col mx-auto p-6'>

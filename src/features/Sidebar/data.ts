@@ -42,14 +42,7 @@ const MENU_OPTIONS = [
   {
     name: translate('resources'),
     icon: MdOutlineSettings,
-    url: '/resources',
-    subItems: [
-      {
-        name: 'Painel',
-        icon: MdOutlineSettingsSuggest,
-        url: '/resources/settings'
-      }
-    ]
+    url: '/resources'
   },
   {
     name: translate('contracts'),

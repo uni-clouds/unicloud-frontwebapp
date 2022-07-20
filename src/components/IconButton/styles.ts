@@ -19,6 +19,7 @@ export const Button = styled.button`
       outline-offset: 1px;
       outline: 1px solid ${colors.brand[200]};
       transition: ${theme.transition};
+      border: 0;
     }
 
     & span:hover {
