@@ -81,10 +81,6 @@ export const Dashboard: React.FC = () => {
         <h1 className='font-bold leading-10 text-3xl text-base-700 dark:text-base-100 drop-shadow-xl'>
           {translate('dashboard:dashboard')}
         </h1>
-        <PurpleButton onclick={() => {}} name='reports'>
-          <HiOutlineDocumentReport />
-          {translate('dashboard:reports')}
-        </PurpleButton>
       </div>
       <Grid container spacing={2}>
         {dataCard.map((data) => (
