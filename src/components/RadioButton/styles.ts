@@ -7,6 +7,7 @@ export const Container = styled.div`
     gap: 0.5rem;
     padding: 0.5rem;
     align-items: center;
+    cursor: pointer;
   `}
 `
 export const Radio = styled.input`
