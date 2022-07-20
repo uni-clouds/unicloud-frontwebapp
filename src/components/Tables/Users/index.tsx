@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import Checkbox from '@mui/material/Checkbox'
 import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
@@ -17,7 +16,6 @@ import { Data, Order, UsersTableProps } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
 import {
-  checkboxCellUsers,
   stylesCellUsers,
   stylesLastCellUsers,
   stylesTableUsers
@@ -92,21 +90,8 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   }
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name)
     let newSelected: string[] = []
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
     if (newSelected.length === 0) {
       newSelected.push(name)
     } else {
@@ -186,16 +171,6 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           borderRadius: 2
                         }}
                       >
-                        {/* <TableCell padding='checkbox' sx={stylesLastCellUsers}>
-                          <Checkbox
-                            checked={isItemSelected}
-                            inputProps={{
-                              'aria-labelledby': labelId,
-                              'aria-label': labelId
-                            }}
-                            sx={checkboxCellUsers}
-                          />
-                        </TableCell> */}
                         <TableCell
                           component='th'
                           id={labelId}
@@ -243,7 +218,8 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                             borderRadius: 2,
                             borderTopLeftRadius: 1,
                             borderBottomLeftRadius: 1,
-                            border: 'none'
+                            border: 'none',
+                            stylesLastCellUsers
                           }}
                         >
                           <Tooltip title={translate('tooltip-showDetails')}>
@@ -261,7 +237,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                                     : colors.brand[500]
                                 }
                                 opacity={!isItemSelected ? 70 : 100}
-                                className={`text-xl transition-all `}
+                                className={`text-xl  `}
                               />
                             </IconButton>
                           </Tooltip>

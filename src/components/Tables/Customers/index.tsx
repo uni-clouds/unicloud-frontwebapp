@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import Checkbox from '@mui/material/Checkbox'
 import { useTheme } from '@mui/system'
 import { CustomTableHead } from './CustomTableHead'
 import { getComparator, stableSort } from './utils'
@@ -15,11 +14,7 @@ import { TableToolbar } from './TableToolbar'
 import { CustomersTableProps, Data, Order } from './types'
 import { colors } from '../../../styles/colors'
 import { createData } from './data'
-import {
-  checkboxCellUsers,
-  stylesCellUsers,
-  stylesLastCellUsers
-} from '../styles'
+import { stylesCellUsers, stylesLastCellUsers } from '../styles'
 import { useTranslation } from 'react-i18next'
 import { BiDetail } from 'react-icons/bi'
 import { IconButton, Tooltip } from '@mui/material'
@@ -84,21 +79,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
   }
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    // const selectedIndex = selected.indexOf(name)
     const newSelected: string[] = []
-
-    // if (selectedIndex === -1) {
-    //   newSelected = newSelected.concat(selected, name)
-    // } else if (selectedIndex === 0) {
-    //   newSelected = newSelected.concat(selected.slice(1))
-    // } else if (selectedIndex === selected.length - 1) {
-    //   newSelected = newSelected.concat(selected.slice(0, -1))
-    // } else if (selectedIndex > 0) {
-    //   newSelected = newSelected.concat(
-    //     selected.slice(0, selectedIndex),
-    //     selected.slice(selectedIndex + 1)
-    //   )
-    // }
 
     if (newSelected.length === 0) {
       newSelected.push(name)
@@ -179,16 +160,6 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                           borderRadius: 2
                         }}
                       >
-                        {/* <TableCell padding='checkbox' sx={stylesLastCellUsers}>
-                          <Checkbox
-                            checked={isItemSelected}
-                            inputProps={{
-                              'aria-labelledby': labelId,
-                              'aria-label': labelId
-                            }}
-                            sx={checkboxCellUsers}
-                          />
-                        </TableCell> */}
                         <TableCell
                           component='th'
                           id={labelId}
@@ -237,7 +208,8 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({ list }) => {
                             borderRadius: 2,
                             borderTopLeftRadius: 1,
                             borderBottomLeftRadius: 1,
-                            border: 'none'
+                            border: 'none',
+                            stylesLastCellUsers
                           }}
                         >
                           <Tooltip title={translate('tooltip-showDetails')}>
