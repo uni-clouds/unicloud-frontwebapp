@@ -9,6 +9,7 @@ import { api } from '../../../services/api'
 import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { stylesToolbar } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { SearchBar } from '../../Forms/SearchBar'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -36,15 +37,16 @@ export const TableToolbar = (props: TableToolbarProps) => {
   }
   return (
     <>
-      {!!isSuccess && (
+      {/* {!!isSuccess && (
         <ToastSuccess
           message={translate('customersUsers:invitationSent')}
           isSuccess={isSuccess}
           handleClose={handleOnClose}
         />
-      )}
+      )} */}
       <Toolbar sx={stylesToolbar}>
-        {numSelected > 0 && (
+        <SearchBar />
+        {/* {numSelected > 0 && (
           <Typography
             sx={{ flex: '1 1 100%' }}
             color='inherit'
@@ -80,7 +82,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
               <MdFilterList />
             </IconButton>
           </Tooltip>
-        )}
+        )} */}
       </Toolbar>
     </>
   )

@@ -23,6 +23,9 @@ import {
   stylesTableUsers
 } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { IconButton, Tooltip } from '@mui/material'
+import { BiDetail } from 'react-icons/bi'
+import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
 
 export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [order, setOrder] = useState<Order>('asc')
@@ -33,6 +36,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const theme = useTheme()
   const colorRow = theme.palette.mode === 'dark' ? '#27272A' : '#faf8fc'
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { t: translate } = useTranslation()
 
@@ -88,7 +92,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name)
-    let newSelected: readonly string[] = []
+    let newSelected: string[] = []
 
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name)
@@ -101,6 +105,12 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
       )
+    }
+    if (newSelected.length === 0) {
+      newSelected.push(name)
+    } else {
+      newSelected.splice(0, newSelected.length)
+      newSelected.push(name)
     }
 
     setSelected(newSelected)
@@ -130,6 +140,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
   const getId = list
     ?.filter((e) => e.email === selected.toString())
     .map((item) => item.id)
+  const userSelected = list?.filter((f) => f.id === getId[0])
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -174,7 +185,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           borderRadius: 2
                         }}
                       >
-                        <TableCell padding='checkbox' sx={stylesLastCellUsers}>
+                        {/* <TableCell padding='checkbox' sx={stylesLastCellUsers}>
                           <Checkbox
                             checked={isItemSelected}
                             inputProps={{
@@ -183,7 +194,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                             }}
                             sx={checkboxCellUsers}
                           />
-                        </TableCell>
+                        </TableCell> */}
                         <TableCell
                           component='th'
                           id={labelId}
@@ -211,9 +222,6 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                         <TableCell
                           align='left'
                           sx={{
-                            borderRadius: 2,
-                            borderTopLeftRadius: 1,
-                            borderBottomLeftRadius: 1,
                             border: 'none',
                             color:
                               row.status === 'Ativo'
@@ -224,6 +232,36 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
                           {row.status === 'Ativo'
                             ? translate('active')
                             : translate('inactive')}
+                        </TableCell>
+                        <TableCell
+                          className='text-base-400'
+                          align='center'
+                          sx={{
+                            borderRadius: 2,
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none'
+                          }}
+                        >
+                          <Tooltip title={translate('tooltip-showDetails')}>
+                            <IconButton
+                              onClick={() => setIsModalOpen(!isModalOpen)}
+                              sx={{ '& :hover': { color: colors.brand[600] } }}
+                              className={` ${
+                                isItemSelected ? '' : 'opacity-10'
+                              } `}
+                            >
+                              <BiDetail
+                                color={
+                                  isItemSelected
+                                    ? colors.brand[600]
+                                    : colors.brand[500]
+                                }
+                                opacity={!isItemSelected ? 70 : 100}
+                                className={`text-xl transition-all `}
+                              />
+                            </IconButton>
+                          </Tooltip>
                         </TableCell>
                       </TableRow>
                     )
@@ -252,6 +290,11 @@ export const UsersTable: React.FC<UsersTableProps> = ({ list, isLoading }) => {
           />
         </Paper>
       )}
+      <ModalDetails
+        isOpen={!!isModalOpen}
+        handleClose={() => setIsModalOpen(!isModalOpen)}
+        data={userSelected}
+      />
     </Box>
   )
 }

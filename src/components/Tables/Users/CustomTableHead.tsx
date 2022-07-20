@@ -40,7 +40,7 @@ export function CustomTableHead(props: TableProps) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding='checkbox'>
+        {/* <TableCell padding='checkbox'>
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -51,7 +51,7 @@ export function CustomTableHead(props: TableProps) {
             }}
             sx={stylesCheckboxTable}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -75,6 +75,7 @@ export function CustomTableHead(props: TableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell />
       </TableRow>
     </TableHead>
   )

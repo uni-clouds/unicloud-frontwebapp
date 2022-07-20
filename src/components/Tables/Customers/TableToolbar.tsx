@@ -10,6 +10,8 @@ import { ModalDetailsCustomer } from '../../../Templates/CustomersList/ModalDeta
 import { useCustomersList } from '../../../hooks/useCustomersList'
 import { stylesToolbar } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { Input } from '../../Elements/Inputs/Input'
+import { SearchBar } from '../../Forms/SearchBar'
 
 export const TableToolbar = (props: TableToolbarProps) => {
   const { numSelected, id } = props
@@ -21,7 +23,8 @@ export const TableToolbar = (props: TableToolbarProps) => {
 
   return (
     <Toolbar sx={stylesToolbar}>
-      {numSelected > 0 && (
+      <SearchBar />
+      {/* {numSelected > 0 && (
         <Typography
           sx={{ flex: '1 1 100%' }}
           color='inherit'
@@ -33,9 +36,9 @@ export const TableToolbar = (props: TableToolbarProps) => {
             ? translate('selected-singular')
             : translate('selected-plural')}
         </Typography>
-      )}
+      )} */}
 
-      {numSelected === 1 ? (
+      {/* {numSelected === 1 ? (
         <Tooltip title={translate('tooltip-showDetails')}>
           <IconButton
             onClick={() => setIsModalOpen(!isModalOpen)}
@@ -66,7 +69,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         isOpen={!!isModalOpen}
         handleClose={() => setIsModalOpen(!isModalOpen)}
         data={userSelected}
-      />
+      /> */}
     </Toolbar>
   )
 }

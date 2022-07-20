@@ -1,25 +1,25 @@
-import { IconButton, Tooltip, Typography, Toolbar } from '@mui/material'
+import { Toolbar } from '@mui/material'
 import { useState } from 'react'
-import { CgDanger } from 'react-icons/cg'
-import { MdFilterList } from 'react-icons/md'
-import { BiDetail } from 'react-icons/bi'
 import { TableToolbarProps } from './types'
 import { useUsersList } from '../../../hooks/useUsersList'
-import { colors } from '../../../styles/colors'
-import { ModalDetails } from '../../../Templates/UsersList/ModalDetails'
 import { stylesToolbar } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { SearchBar } from '../../Forms/SearchBar'
 
 export const TableToolbar = (props: TableToolbarProps) => {
-  const { numSelected, id } = props
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const { data } = useUsersList()
-  const userSelected = data?.filter((f) => f.id === id)
-  const { t: translate } = useTranslation()
+  // const { numSelected, id } = props
+  // const [isModalOpen, setIsModalOpen] = useState(false)
+  // const { data } = useUsersList()
+  // const userSelected = data?.filter((f) => f.id === id)
+  // const { t: translate } = useTranslation()
 
   return (
     <Toolbar sx={stylesToolbar}>
-      {numSelected > 0 && (
+      <div className='xs:w-full md:w-1/2'>
+        <SearchBar />
+      </div>
+
+      {/* {numSelected > 0 && (
         <Typography
           sx={{ flex: '1 1 100%' }}
           color='inherit'
@@ -64,7 +64,7 @@ export const TableToolbar = (props: TableToolbarProps) => {
         isOpen={!!isModalOpen}
         handleClose={() => setIsModalOpen(!isModalOpen)}
         data={userSelected}
-      />
+      /> */}
     </Toolbar>
   )
 }

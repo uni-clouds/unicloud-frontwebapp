@@ -75,7 +75,7 @@ export function CustomTableHead(props: TableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
-        <TableCell>Hi</TableCell>
+        <TableCell></TableCell>
       </TableRow>
     </TableHead>
   )

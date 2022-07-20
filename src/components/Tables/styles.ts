@@ -9,9 +9,9 @@ export const stylesCheckboxTable = {
   }
 }
 export const stylesToolbar = {
-  pl: { sm: 2 },
-  pr: { xs: 1, sm: 1 },
-  justifyContent: 'flex-end'
+  pl: { sm: 0 },
+  pr: { xs: 0 },
+  justifyContent: 'flex-start'
 }
 
 export const stylesCellUsers = {

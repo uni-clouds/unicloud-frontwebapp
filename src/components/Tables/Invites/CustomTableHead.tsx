@@ -53,6 +53,7 @@ export function CustomTableHead(props: TableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell />
       </TableRow>
     </TableHead>
   )

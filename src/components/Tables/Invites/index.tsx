@@ -19,6 +19,9 @@ import { colors } from '../../../styles/colors'
 import { TableSkeleton } from '../TableSkeleton'
 import { useTranslation } from 'react-i18next'
 import { addCountryToLanguage } from '../../LanguageSelector/util'
+import { IconButton, Tooltip } from '@mui/material'
+import { BsArrowCounterclockwise } from 'react-icons/bs'
+import { api } from '../../../services/api'
 
 export const InvitesTable: React.FC = () => {
   const { data, isLoading, isError } = useInviteList()
@@ -28,6 +31,7 @@ export const InvitesTable: React.FC = () => {
   const [selected, setSelected] = useState<readonly string[] | undefined>([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [isSuccess, setIsSuccess] = useState(false)
   const colorRow = palette.mode === 'dark' ? '#27272A' : '#faf8fc'
   const colorHover = palette.mode === 'dark' ? 'inherit' : colors.brand[300]
   const colorBgChecked =
@@ -39,6 +43,26 @@ export const InvitesTable: React.FC = () => {
     .filter((e) => e.email === selected.toString())
     .map((item) => item.id)
 
+  //INVITATION REVALIDATION FUNCTIONS
+  async function updateInvitation(id: string) {
+    try {
+      const update = await api.patch('/update-invitation/', { id: id })
+      if (update.data.status === 'sent') {
+        setIsSuccess(true)
+      }
+      return update.data
+    } catch (error: any) {
+      console.error(error)
+    }
+  }
+  const handleOnClose = (reason?: string) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setIsSuccess(false)
+  }
+
+  // ROW DATA ARRAY CREATION
   const rows = data?.map((invite) =>
     createData(
       invite.email,
@@ -60,34 +84,43 @@ export const InvitesTable: React.FC = () => {
     setOrderBy(property)
   }
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      const newSelecteds = rows?.map((n) => n.email)
-      setSelected(newSelecteds)
-      return
-    }
-    setSelected([])
-  }
+  //SELECT ALL ROWS
+  // const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = rows?.map((n) => n.email)
+  //     setSelected(newSelecteds)
+  //     return
+  //   }
+  //   setSelected([])
+  // }
 
+  //SELECT A SINGLE ROW
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected?.indexOf(name)
-    let newSelected: readonly string[] = []
+    // const selectedIndex = selected?.indexOf(name)
+    let newSelected: string[] = []
 
-    if (selected) {
-      if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, name)
-      } else if (selectedIndex === 0) {
-        newSelected = newSelected.concat(selected.slice(1))
-      } else if (selectedIndex === selected.length - 1) {
-        newSelected = newSelected.concat(selected.slice(0, -1))
-      } else if (!!selectedIndex) {
-        if (selectedIndex > 0) {
-          newSelected = newSelected.concat(
-            selected.slice(0, selectedIndex),
-            selected.slice(selectedIndex + 1)
-          )
-        }
-      }
+    // if (selected) {
+    //   if (selectedIndex === -1) {
+    //     newSelected = newSelected.concat(selected, name)
+    //   } else if (selectedIndex === 0) {
+    //     newSelected = newSelected.concat(selected.slice(1))
+    //   } else if (selectedIndex === selected.length - 1) {
+    //     newSelected = newSelected.concat(selected.slice(0, -1))
+    //   } else if (!!selectedIndex) {
+    //     if (selectedIndex > 0) {
+    //       newSelected = newSelected.concat(
+    //         selected.slice(0, selectedIndex),
+    //         selected.slice(selectedIndex + 1)
+    //       )
+    //     }
+    //   }
+    // }
+
+    if (newSelected.length === 0) {
+      newSelected.push(name)
+    } else {
+      newSelected.splice(0, newSelected.length)
+      newSelected.push(name)
     }
 
     setSelected(newSelected)
@@ -219,9 +252,6 @@ export const InvitesTable: React.FC = () => {
                           sx={{
                             border: 'none',
                             width: 100,
-                            borderRadius: 2,
-                            borderTopLeftRadius: 0,
-                            borderBottomLeftRadius: 0,
                             textTransform: 'capitalize',
                             color:
                               row.status === 'expired'
@@ -232,6 +262,36 @@ export const InvitesTable: React.FC = () => {
                           {row.status === 'pending'
                             ? translate('pending')
                             : translate('expired')}
+                        </TableCell>
+                        <TableCell
+                          className='text-base-400'
+                          align='center'
+                          sx={{
+                            borderRadius: 2,
+                            borderTopLeftRadius: 1,
+                            borderBottomLeftRadius: 1,
+                            border: 'none'
+                          }}
+                        >
+                          <Tooltip title={translate('revalidate')}>
+                            <IconButton
+                              onClick={() => updateInvitation(`${getId[0]}`)}
+                              sx={{ '& :hover': { color: colors.brand[600] } }}
+                              className={` ${
+                                isItemSelected ? '' : 'opacity-10'
+                              } `}
+                            >
+                              <BsArrowCounterclockwise
+                                color={
+                                  isItemSelected
+                                    ? colors.brand[600]
+                                    : colors.brand[500]
+                                }
+                                opacity={!isItemSelected ? 70 : 100}
+                                className={`text-xl transition-all `}
+                              />
+                            </IconButton>
+                          </Tooltip>
                         </TableCell>
                       </TableRow>
                     )
