@@ -7,25 +7,26 @@ import { ToastError } from '../../Elements/ToastError'
 import { useTranslation } from 'react-i18next'
 import { Portal } from '@mui/material'
 import { Select } from '../../SelectInput'
-import { CreateResourceTypeProps, TypeResource } from './types'
+import { TypeResources, CreateResourcesFormProps } from './types'
 
 import * as Styled from './styles'
 import { Heading } from '../../Heading'
 import { OPTIONS_RESOURCES_TYPES } from '../../../constants/selectOptions'
 
-export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
-  const { handleSubmit, control, reset } = useForm<TypeResource>()
+export const CreateResources: FC<CreateResourcesFormProps> = ({ id }) => {
+  const { handleSubmit, control, reset } = useForm<TypeResources>()
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [resourceType, setResourceType] = useState('')
   const { t: translate } = useTranslation()
 
-  const handleCreateResourceType: SubmitHandler<TypeResource> = async (
+  const handleCreateResourceType: SubmitHandler<TypeResources> = async (
     data
   ) => {
     try {
-      const request = await api.post('/resources-type/', {
-        resource_type: data.resource_type
+      const request = await api.post('/resources/', {
+        type_id: data.type_id,
+        resource_name: data.resource_name
       })
 
       if (request.status === 200) {
@@ -41,7 +42,6 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
       reset()
     }
   }
-
   const handleOnClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -73,25 +73,12 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
         </Portal>
       )}
       <Heading size='normal' as='h3'>
-        Tipos de Recurso
+        Gerencie seus recursos
       </Heading>
       <Styled.Form
         onSubmit={handleSubmit(handleCreateResourceType)}
         action='POST'
       >
-        <Controller
-          name='resource_type'
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState: { error } }) => (
-            <Select
-              options={OPTIONS_RESOURCES_TYPES}
-              label='Selecione o tipo de recurso'
-              error={error}
-              {...field}
-            />
-          )}
-        />
         <SubmitButton isForm>Criar </SubmitButton>
       </Styled.Form>
     </Styled.Container>

@@ -11,10 +11,14 @@ export const SidebarContainer = styled.aside<{ isOpened: boolean }>`
     flex-direction: column;
     gap: 1.5rem;
     padding: 1rem 0;
+    height: 100vh;
+    border-right: 1px solid ${colors.light[200]};
 
-    box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: ${isOpened ? '' : '0px 2px 7px -1px rgba(0, 0, 0, 0.2)'};
+    -webkit-box-shadow: ${isOpened
+      ? ''
+      : '0px 2px 7px -1px rgba(0, 0, 0, 0.2)'};
+    -moz-box-shadow: ${isOpened ? '' : '0px 2px 7px -1px rgba(0, 0, 0, 0.2)'};
   `}
 `
 export const LogoBox = styled.div`

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Heading } from '../../components/Heading'
 import { RESOURCES_TYPES_LINKS } from '../../constants/navigation'
-import { NavigationTabs } from '../../features/NavigationTabs'
-import { HeaderProps } from './types'
+import { NavigationTabs } from '../NavigationTabs'
+import { HeaderProps } from '../../templates/ResourcesTypes/types'
 
 export const Header: React.FC<HeaderProps> = () => {
   const { t: translate } = useTranslation()

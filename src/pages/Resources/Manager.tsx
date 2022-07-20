@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Panel } from '../../templates/ResourcesTypes/Manager'
+import { ResourcesManager as Panel } from '../../templates/ResourcesManager'
 
 const ResourcesManager: FC = () => {
   //todo lv zero
