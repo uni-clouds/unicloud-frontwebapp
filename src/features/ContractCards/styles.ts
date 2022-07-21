@@ -16,7 +16,6 @@ export const Card = styled.div`
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;
-    padding: 1rem;
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
@@ -25,7 +24,26 @@ export const Card = styled.div`
   `}
 `
 export const CardItem = styled.div`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+    width: 100%;
+    padding: 0.2rem 1.35rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+    align-content: center;
+    align-items: center;
+
+    &:last-child {
+      border-top: 1px solid ${colors.light[200]};
+      padding: 1rem;
+      margin-top: 0.5rem;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    &:first-child {
+      padding-top: 1.35rem;
+    }
+  `}
 `
 
 export const CardTopic = styled.span`

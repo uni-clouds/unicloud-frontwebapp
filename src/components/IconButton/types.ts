@@ -1,8 +1,7 @@
-import { IconType } from 'react-icons/lib'
-
 export interface IconButtonProps {
-  icon: IconType
+  icon: string
   title: string
-  size: number | string
+  size?: string
+  color?: string
   onClick?: () => void
 }
