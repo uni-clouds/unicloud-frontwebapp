@@ -12,7 +12,7 @@ export interface ExpandIconPros {
 
 export type Options = {
   name: string
-  icon: IconType
+  icon: string
   url: string
   id?: string
   depth?: number
@@ -21,7 +21,7 @@ export type Options = {
 
 export type MenuItem = {
   name: string
-  icon: IconType
+  icon: string
   url: string
   subItems?: MenuItem[]
 }

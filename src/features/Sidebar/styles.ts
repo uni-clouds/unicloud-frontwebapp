@@ -4,13 +4,15 @@ import { colors } from '../../styles/colors'
 export const SidebarContainer = styled.aside<{ isOpened: boolean }>`
   ${({ theme, isOpened }) => css`
     background: ${colors.neutral[50]};
-    width: ${isOpened ? '15rem' : '3.6vw'};
+    width: ${isOpened ? '15rem' : '5vw'};
     transition: ${theme.transition};
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 1rem 0;
+    border-top: 1px solid ${colors.light[200]};
+    padding-top: 1rem;
+
     height: 100vh;
     border-right: 1px solid ${colors.light[200]};
 
@@ -25,6 +27,6 @@ export const LogoBox = styled.div`
   ${({ theme }) => css`
     width: 7rem;
     max-height: 2.5rem;
-    margin: 0.5rem auto 0 auto;
+    margin: 0 auto;
   `}
 `

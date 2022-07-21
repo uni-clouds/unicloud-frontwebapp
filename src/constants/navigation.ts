@@ -1,16 +1,3 @@
-import {
-  RiDashboardLine,
-  RiTeamLine,
-  RiNumbersLine,
-  RiGroup2Line
-} from 'react-icons/ri'
-import {
-  MdDashboard,
-  MdOutlineSettings,
-  MdOutlineSettingsSuggest
-} from 'react-icons/md'
-import { AiOutlineFileText } from 'react-icons/ai'
-
 import { Options } from '../components/NavItem/types'
 import { makeMenuLevel } from '../util/makeMenuLevel'
 
@@ -21,37 +8,39 @@ const translate = i18n.t
 export const MENU_OPTIONS = [
   {
     name: 'Dashboard',
-    icon: MdDashboard,
+    icon: 'carbon:dashboard',
     url: '/'
   },
   {
-    name: translate('customers'),
-    icon: RiGroup2Line,
-    url: '/customers'
-  },
-  {
-    name: translate('pods'),
-    icon: RiDashboardLine,
-    url: '/unicloud-pods'
-  },
-  {
-    name: translate('monitoring'),
-    icon: RiNumbersLine,
-    url: '/monitor'
-  },
-  {
     name: translate('resources'),
-    icon: MdOutlineSettings,
+    icon: 'clarity:resource-pool-outline-badged',
     url: '/resources'
   },
   {
+    name: translate('pods'),
+    icon: 'eos-icons:pod-outlined',
+    url: '/unicloud-pods'
+  },
+  //codicon:graph
+  {
+    name: translate('monitoring'),
+    icon: 'system-uicons:graph-box',
+    url: '/monitor'
+  },
+
+  {
+    name: translate('customers'),
+    icon: 'wpf:business-contact',
+    url: '/customers'
+  },
+  {
     name: translate('contracts'),
-    icon: AiOutlineFileText,
+    icon: 'clarity:contract-line',
     url: '/contracts'
   },
   {
     name: translate('users'),
-    icon: RiTeamLine,
+    icon: 'ph:users-three-thin',
     url: '/user-list-default'
   }
 ]

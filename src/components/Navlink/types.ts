@@ -1,8 +1,6 @@
-import { IconType } from 'react-icons'
-
 export interface NavlinkProps {
   path: string
-  Icon?: IconType
+  icon?: string
   title?: string
   depth?: number
   nested: boolean
