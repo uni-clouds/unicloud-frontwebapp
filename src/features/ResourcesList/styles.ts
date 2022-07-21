@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components'
+import {
+  Box as NewBox,
+  ContainerList,
+  CardResourcesTypes
+} from '../ResourcesType/styles'
 
-import { BoxStyleProps } from './types'
-
-export const Container = styled.section`
+export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
     width: 100%;
@@ -14,7 +17,7 @@ export const Container = styled.section`
   `}
 `
 
-export const ContainerList = styled.div`
+export const ListBox = styled(ContainerList)`
   ${({ theme }) => css`
     max-width: 25rem;
     width: 100%;
@@ -23,7 +26,7 @@ export const ContainerList = styled.div`
   `}
 `
 
-export const CardResourcesTypes = styled.div`
+export const CardResources = styled(CardResourcesTypes)`
   ${({ theme }) => css`
     padding: 1.5rem 2rem;
     width: 100%;
@@ -40,7 +43,7 @@ export const CardResourcesTypes = styled.div`
     }
   `}
 `
-export const Box = styled.div<BoxStyleProps>`
+export const Box = styled(NewBox)`
   ${({ theme, justify, gap, align }) => css`
     width: 100%;
     display: flex;
