@@ -28,6 +28,8 @@ export const Title = styled.h1<HeadingStyleProps>`
       ? theme.fontSize.lg
       : size === 'big'
       ? theme.fontSize.xl
+      : size === 'small'
+      ? theme.fontSize.md
       : theme.fontSize.huge};
   color: ${colors.base[700]};
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};

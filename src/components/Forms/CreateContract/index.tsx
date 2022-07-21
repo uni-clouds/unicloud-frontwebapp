@@ -19,6 +19,7 @@ import { schemaContract } from './validation'
 
 import * as Styled from './styles'
 import { useCustomersList } from '../../../hooks/useCustomersList'
+import { useNavigate } from 'react-router-dom'
 
 export const CreateContract: React.FC<CreateContractFormProps> = () => {
   const {
@@ -31,13 +32,12 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
   } = useForm<CreateContractType>({
     //resolver: yupResolver(schemaContract)
   })
+  const navigate = useNavigate()
+  const { data: customers } = useCustomersList()
+  const { t: translate } = useTranslation()
   const [isDisabled, setIsDisabled] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [isPending, setIsPending] = useState(false)
   const [options, setOptions] = useState([])
-  const { t: translate } = useTranslation()
-  const { data: customers } = useCustomersList()
 
   const selectedCustomer = getValues('customer_id')
 
@@ -49,9 +49,6 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
       }
     })
     setOptions(getCustomerList)
-    const getId = customers?.filter(
-      (customer) => customer.razao_social == selectedCustomer
-    )
   }, [selectedCustomer, customers])
 
   const onSubmitContract: SubmitHandler<CreateContractType> = async (data) => {
@@ -70,13 +67,10 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
       })
       setIsDisabled(true)
       if (request.status === 200) {
-        setIsSuccess(true)
+        navigate('/contracts/assets')
       }
     } catch (error: any) {
-      if (error.response.status === 409) {
-        setIsPending(true)
-      }
-      if (error.response.status !== 409) {
+      if (error) {
         setIsError(true)
         console.error(error)
       }
@@ -107,25 +101,6 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
           />
         </Portal>
       )}
-      {!!isPending && (
-        <Portal>
-          <ToastWarning
-            isWarning={!!isPending}
-            message={translate('consumersUsers:invitationIsPending')}
-            handleClose={handleOnClose}
-          />
-        </Portal>
-      )}
-      {!!isSuccess && (
-        <Portal>
-          <ToastSuccess
-            isSuccess={!!isSuccess}
-            message={translate('consumersUsers:invitationSent')}
-            handleClose={handleOnClose}
-          />
-        </Portal>
-      )}
-
       <Styled.Title>
         Preencha as informações abaixo para criar o contrato:
       </Styled.Title>
@@ -133,22 +108,24 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
         <Styled.InputGroup>
           <Styled.InputBox>
             <Input
-              placeholder={'Digite o nome'}
-              label='Nome'
+              placeholder={'Digite o titular do contrato'}
+              label='Cliente'
               type='text'
               error={errors?.name}
               aria-invalid={errors.name ? 'true' : 'false'}
               {...register('name')}
             />
           </Styled.InputBox>
-          <Controller
-            control={control}
-            name='customer_id'
-            rules={{ required: true }}
-            render={({ field, fieldState: { error } }) => (
-              <Select options={options} {...field} label='Cliente' />
-            )}
-          />
+          <Styled.InputBox>
+            <Controller
+              control={control}
+              name='customer_id'
+              rules={{ required: true }}
+              render={({ field, fieldState: { error } }) => (
+                <Select options={options} {...field} label='Cliente' />
+              )}
+            />
+          </Styled.InputBox>
         </Styled.InputGroup>
         <Styled.InputGroup>
           <Styled.InputBox>
@@ -239,23 +216,36 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
           </Styled.InputBox>
         </Styled.InputGroup>
         <Styled.InputGroup>
+          <OutlineButton name='clean' onclick={() => reset()} fullWidth>
+            <Styled.Span>
+              <Icon icon='carbon:clean' style={{ fontSize: '1.5rem' }} />
+              Limpar
+            </Styled.Span>
+          </OutlineButton>
           <SubmitButton isDisabled={isDisabled} isLogin={false}>
             {isSubmitting ? (
               <Loading />
             ) : (
               <Styled.Span>
+                Próximo passo
                 <Icon
-                  icon='bi:file-earmark-plus'
+                  icon='carbon:arrow-right'
                   style={{ fontSize: '1.5rem' }}
                 />
-                Criar contrato
               </Styled.Span>
             )}
           </SubmitButton>
-          <OutlineButton name='clean' onclick={() => reset()} fullWidth>
+
+          <OutlineButton
+            name='clean'
+            onclick={() => navigate('/contracts/assets')}
+            fullWidth
+          >
             <Styled.Span>
-              <Icon icon='carbon:clean' style={{ fontSize: '1.5rem' }} />
-              Limpar
+              <Icon
+                icon='bi:file-earmark-plus'
+                style={{ fontSize: '1.5rem' }}
+              />
             </Styled.Span>
           </OutlineButton>
         </Styled.InputGroup>
