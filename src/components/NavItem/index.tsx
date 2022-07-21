@@ -9,8 +9,6 @@ import * as Styled from './styles'
 export const NavItem: FC<NavItemProps> = ({ options, isOpened }) => {
   const [isExpanded, toggleExpanded] = useState(false)
 
-  const { pathname } = useLocation()
-  const selected = pathname === options.url
   const isNested = options.subItems && options.subItems?.length > 0
 
   const onClick = () => {
@@ -18,10 +16,10 @@ export const NavItem: FC<NavItemProps> = ({ options, isOpened }) => {
   }
   return (
     <>
-      <Styled.NavList className={selected ? 'selected' : ''}>
+      <Styled.NavList isOpened={isOpened}>
         <Navlink
           path={options.url}
-          Icon={options.icon}
+          icon={options.icon}
           title={options.name}
           depth={options.depth}
           nested={isNested}

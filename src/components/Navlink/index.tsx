@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Icon } from '@iconify-icon/react'
 import { ExpandIcon } from '../NavItem/ExpandedIcon'
+
 import { ACTIVE_STYLE } from '../../constants/styles'
 import { NavlinkProps } from './types'
 
@@ -15,7 +17,7 @@ export const Navlink: FC<NavlinkProps> = ({ ...props }) => {
       >
         <Styled.Container>
           <Styled.IconBox depth={props.depth}>
-            <props.Icon size={23} />
+            <Icon icon={props.icon} />
           </Styled.IconBox>
           {props.isOpened && (
             <Styled.LinkBox isOpened={props.isOpened}>

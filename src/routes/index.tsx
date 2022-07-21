@@ -11,7 +11,8 @@ import InvitesPage from '../pages/Users/Invites'
 import Customers from '../pages/Customers'
 import Pods from '../pages/Pods'
 import UserProfilePage from '../pages/UserProfile'
-import Contracts from '../pages/Contracts'
+import ContractsListPage from '../pages/Contracts/ContractsList'
+import CreatingContracts from '../pages/Contracts/CreatingContracts'
 import Resources from '../pages/Resources'
 import ResourcesManager from '../pages/Resources/Manager'
 import ResourcesType from '../pages/Resources/ResourcesTypes'
@@ -170,10 +171,18 @@ export default function MainRoutes() {
       />
 
       <Route
+        path='/contracts-list'
+        element={
+          <ProtectedRoute>
+            <ContractsListPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path='/contracts'
         element={
           <ProtectedRoute>
-            <Contracts />
+            <CreatingContracts />
           </ProtectedRoute>
         }
       />

@@ -15,15 +15,15 @@ export const TabsContainer = styled.div<{ isActive: boolean }>`
     transition: ${theme.transition};
 
     transform: ${isActive ? 'translateY(-2px)' : 'none'};
-    border: ${isActive ? 'none' : '1px solid #f0eaff'};
+    border: ${isActive ? 'none' : `1px solid ${colors.light[200]}`};
     box-shadow: ${isActive
-      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.5)'
+      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.40)'
       : '-1px 0px 7px 1px rgba(0, 0, 0, 0)'};
     -webkit-box-shadow: ${isActive
-      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.5)'
+      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.40)'
       : '-1px 0px 7px 1px rgba(0, 0, 0, 0)'};
     -moz-box-shadow: ${isActive
-      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.5)'
+      ? '-1px 0px 7px 1px rgba(212, 194, 255, 0.40)'
       : '-1px 0px 7px 1px rgba(0, 0, 0, 0)'};
   `}
 `
