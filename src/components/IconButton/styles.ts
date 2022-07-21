@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components'
 import { colors } from '../../styles/colors'
+import { IconButtonStyleProps } from './types'
 
-export const Button = styled.button`
-  ${({ theme }) => css`
+export const Button = styled.button<IconButtonStyleProps>`
+  ${({ theme, outline, rounded, borderColor }) => css`
     position: relative;
     min-width: 2.5rem;
     min-height: 2.5rem;
     display: grid;
     place-content: center;
-    border-radius: ${theme.radius.full};
+    border-radius: ${rounded ? theme.radius.full : theme.radius.sm};
     transition: ${theme.transition};
     outline: 0;
-    border: 0;
+    border: ${outline ? `2px solid ${borderColor}` : 0};
 
     &:focus,
     :hover {

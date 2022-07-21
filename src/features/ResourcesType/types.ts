@@ -27,3 +27,7 @@ export interface ModalResourceUpdateProps {
   handleClose: () => void
   id: number
 }
+
+export interface ResourcesButtonProps {
+  onClick: () => void
+}
