@@ -31,4 +31,5 @@ export const Title = styled.h1<HeadingStyleProps>`
       : theme.fontSize.huge};
   color: ${colors.base[700]};
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
+  text-align: ${({ align }) => (align ? align : 'left')};
 `

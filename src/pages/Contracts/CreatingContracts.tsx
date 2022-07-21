@@ -1,17 +1,17 @@
 import { FC } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useAccessLevelZero } from '../../hooks/useAccessLevelZero'
-import { ContractsPage } from '../../templates/Contracts'
+import { ContractsCreation } from '../../templates/ContractsCreation'
 
-const Contracts: FC = () => {
-  document.title = 'Uni.cloud | Recursos'
+const CreatingContracts: FC = () => {
+  document.title = 'Uni.cloud | Contratos'
   const accessLevelZero = useAccessLevelZero('root')
 
   if (accessLevelZero) {
-    return <ContractsPage />
+    return <ContractsCreation />
   }
 
   return <Navigate to='/not-found' replace />
 }
 
-export default Contracts
+export default CreatingContracts

@@ -64,3 +64,16 @@ export const RESOURCES_TYPES_LINKS = [
     path: '/resources-settings'
   }
 ]
+
+export const CONTRACTS_LINKS = [
+  {
+    name: 'Criar',
+    icon: 'bi:file-earmark-plus',
+    path: '/contracts'
+  },
+  {
+    name: 'Lista',
+    icon: 'carbon:list',
+    path: '/contracts-list'
+  }
+]
