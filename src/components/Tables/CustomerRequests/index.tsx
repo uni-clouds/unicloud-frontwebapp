@@ -51,7 +51,7 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
         request_by:
           request?.request_by === undefined || null
             ? ' - '
-            : formatDate(request?.request_by),
+            : request?.request_by,
         created_at:
           request?.created_at === undefined || null
             ? ' - '
@@ -68,12 +68,12 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
 
   const rows = requests?.map((d) =>
     createData(
-      d.name,
-      d.resources,
-      d.email,
       d.request_by,
+      d.name,
+      d.email,
       d.created_at,
       d.expires_at,
+      d.resources,
       d.status
     )
   )
@@ -131,6 +131,15 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
 
   const requestSelected = list?.filter((f) => f.id === getId[0])
 
+  const resourcesTypes = (resources) => {
+    if (resources === 'storage')
+      return translate('customersUsers:request-resources_storage')
+    if (resources === 'compute')
+      return translate('customersUsers:request-resources_compute')
+    if (resources === 'daas')
+      return translate('customersUsers:request-resources_daas')
+  }
+
   return (
     <Box sx={{ width: '100%' }}>
       {!!requests && (
@@ -161,7 +170,7 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, index) => {
                     const isItemSelected = isSelected(row.email)
-                    const labelId = `user-list-table-${index}`
+                    const labelId = `request-table-${index}`
                     return (
                       <TableRow
                         hover
@@ -195,11 +204,11 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
                           </div>
                         </TableCell>
                         <TableCell align='left' sx={stylesCellUsers}>
-                          <TableText>{row.resources}</TableText>
+                          <TableText>{resourcesTypes(row.resources)}</TableText>
                           {/* <div className='flex flex-col gap-1'>
                             {row.resources.map((resource) => (
                               <TableText key={`${row.email}-${resource}`}>
-                                {resource}
+                                {resourcesTypes(resource)}
                               </TableText>
                             ))}
                           </div> */}
@@ -219,8 +228,8 @@ export const CustomerRequestsTable: React.FC<RequestTableProps> = ({
                             border: 'none',
                             color:
                               row.status === 'Pending'
-                                ? colors.teal.custom
-                                : colors.red.custom
+                                ? colors.brand.ethereum
+                                : colors.brand.bitcoin
                           }}
                         >
                           {row.status === 'Pending' ? (

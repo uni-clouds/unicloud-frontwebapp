@@ -1,5 +1,5 @@
 import { HeadCell, Data } from './types'
-import i18n from '../../../i18n'
+import { RequestTimelineCardProps } from '../../Forms/DetailsRequest/types'
 
 export function createData(
   request_by: string,

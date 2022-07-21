@@ -6,6 +6,7 @@ import { Input } from '../../Elements/Inputs/Input'
 import { RequestDetailsType, RequestDetailsProps } from './types'
 import { styleGrid } from '../styles'
 import { useTranslation } from 'react-i18next'
+import { RequestTimeline } from './RequestTimeline'
 
 export const DetailsRequest: React.FC<RequestDetailsProps> = ({
   handleClose,
@@ -53,11 +54,11 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
     <>
       <form
         action='POST'
-        className='w-full h-full flex flex-col lg:p-8 p-6 custom-dark dark:border-transparent border border-light-200 rounded-md '
+        className='w-full h-fit flex flex-col lg:p-8 p-6 custom-dark dark:border-transparent border border-light-200 rounded-md '
         onSubmit={() => {}}
       >
-        <Grid container spacing={1}>
-          <Grid item sx={styleGrid} sm={5}>
+        <Grid container spacing={1} className='mb-2'>
+          <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
               label={translate('companyName')}
@@ -66,7 +67,7 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
               {...register('razao_social')}
             />
           </Grid>
-          <Grid item sx={styleGrid} sm={4}>
+          <Grid item sx={styleGrid} sm={6}>
             <Input
               type='text'
               label={translate('cnpj')}
@@ -85,19 +86,19 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} md={5} sm={5}>
+          <Grid item sx={styleGrid} md={6} sm={5}>
             <Input
               type='text'
-              label={translate('resources')}
+              label={translate('customersUsers:request-resources')}
               disabled={isDisabled}
               error={errors?.resources}
               {...register('resources')}
             />
           </Grid>
-          <Grid item sx={styleGrid} md={2} sm={2}>
+          <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
-              label={translate('created_at')}
+              label={translate('customersUsers:request-created_at')}
               disabled={isDisabled}
               error={errors?.created_at}
               {...register('created_at')}
@@ -106,23 +107,23 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
           <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
-              label={translate('expires_at')}
+              label={translate('customersUsers:request-expires_at')}
               disabled={isDisabled}
               error={errors?.expires_at}
               {...register('expires_at')}
             />
           </Grid>
 
-          <Grid item sx={styleGrid} md={2} sm={3}>
+          <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
-              label={translate('request_by')}
+              label={translate('customersUsers:request-request_by')}
               disabled={isDisabled}
               error={errors?.request_by}
               {...register('request_by')}
             />
           </Grid>
-          <Grid item sx={styleGrid} md={2} sm={3}>
+          <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
               label={translate('status')}
@@ -131,7 +132,12 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
               {...register('status')}
             />
           </Grid>
+
+          <Grid item sx={styleGrid} sm={12}>
+            {data && <RequestTimeline timeline={data[0].timeline} />}
+          </Grid>
         </Grid>
+
         <div className=' flex flex-row gap-6 justify-end items-center '>
           <OutlineButton name='clear-form' onclick={handleClose}>
             {translate('close')}

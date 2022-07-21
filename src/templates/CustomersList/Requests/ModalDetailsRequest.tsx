@@ -8,7 +8,7 @@ export const ModalDetailsRequest: React.FC<ModalDetailsRequestProps> = ({
   data
 }) => {
   return (
-    <Modal height={600} isOpen={isOpen} handleClose={handleClose} width='lg'>
+    <Modal height={800} isOpen={isOpen} handleClose={handleClose} width='lg'>
       <DetailsRequestForm handleClose={handleClose} data={data} />
     </Modal>
   )

@@ -11,25 +11,69 @@ const CustomerRequestsList: React.FC = () => {
   const dataMock = [
     {
       cnpj: '11111111111111',
-      razao_social: 'Razao Social',
+      razao_social: 'Razao Social 1',
       email: 'email1@email.com',
       request_by: 'Usuário A',
-      resources: 'storage',
+      resources: 'compute',
       created_at: '1997-07-16T19:20+01:00',
       expires_at: '1997-10-16T19:20+01:00',
       is_pending: true,
-      id: '1'
+      id: '1',
+      timeline: [
+        {
+          type: 'request',
+          user: 'Usuário A',
+          date: '1997-07-17T19:20+01:00'
+        },
+        {
+          type: 'disapproval',
+          user: 'Usuário Root',
+          date: '1997-07-21T19:20+01:00'
+        },
+        {
+          type: 'request',
+          user: 'Usuário A',
+          date: '1997-07-23T19:20+01:00'
+        },
+        {
+          type: 'approval',
+          user: 'Usuário Root B',
+          date: '1997-07-27T19:20+01:00'
+        }
+      ]
     },
     {
       cnpj: '22222222222222',
-      razao_social: 'Razao Social',
+      razao_social: 'Razao Social 2',
       email: 'email2@email.com',
-      request_by: 'Usuário A',
+      request_by: 'Usuário B',
       resources: 'storage',
       created_at: '1997-07-17T19:20+01:00',
       expires_at: '1997-10-17T19:20+01:00',
-      is_pending: true,
-      id: '2'
+      is_pending: false,
+      id: '2',
+      timeline: [
+        {
+          type: 'request',
+          user: 'Usuário A',
+          date: '1997-07-17T19:20+01:00'
+        },
+        {
+          type: 'disapproval',
+          user: 'Usuário Root',
+          date: '1997-07-21T19:20+01:00'
+        },
+        {
+          type: 'request',
+          user: 'Usuário A',
+          date: '1997-07-23T19:20+01:00'
+        },
+        {
+          type: 'approval',
+          user: 'Usuário Root B',
+          date: '1997-07-27T19:20+01:00'
+        }
+      ]
     }
   ]
 
@@ -47,7 +91,7 @@ const CustomerRequestsList: React.FC = () => {
         ) : ( */}
         <>
           <Header totalUsers={dataMock?.length} data={dataMock} />
-          <CustomerRequestsTable list={data} />
+          <CustomerRequestsTable list={dataMock} />
         </>
         {/* )} */}
       </section>

@@ -16,3 +16,13 @@ export interface RequestDetailsProps {
   handleClose: () => void
   data: RequestTableType[]
 }
+
+export interface RequestTimelineCardProps {
+  type: 'request' | 'approval' | 'disapproval'
+  user: string
+  date: string
+}
+
+export interface RequestTimelineProps {
+  timeline: [RequestTimelineCardProps]
+}

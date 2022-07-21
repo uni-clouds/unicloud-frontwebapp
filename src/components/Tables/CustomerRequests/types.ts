@@ -1,3 +1,5 @@
+import { RequestTimelineCardProps } from '../../Forms/DetailsRequest/types'
+
 export interface RequestTableProps {
   list: RequestTableType[]
   isLoading?: boolean
@@ -13,6 +15,7 @@ export interface RequestTableType {
   expires_at: string
   is_pending: boolean
   id: string
+  timeline?: [RequestTimelineCardProps]
 }
 export interface Data {
   name: string

@@ -23,10 +23,14 @@ export function CustomTableHead(props: TableProps) {
 
   function translateLabel(label: string) {
     if (label === 'Empresa') return translate('company')
-    if (label === 'Recursos') return translate('resources')
-    if (label === 'Requerido por') return translate('requested-by')
-    if (label === 'Requerido em') return translate('requested-at')
-    if (label === 'Expira em') return translate('expires-at')
+    if (label === 'Recursos')
+      return translate('customersUsers:request-resources')
+    if (label === 'Requerido por')
+      return translate('customersUsers:request-request_by')
+    if (label === 'Requerido em')
+      return translate('customersUsers:request-created_at')
+    if (label === 'Expira em')
+      return translate('customersUsers:request-expires_at')
     if (label === 'Status') return translate('status')
   }
 
@@ -41,7 +45,6 @@ export function CustomTableHead(props: TableProps) {
             sortDirection={orderBy === headCell.id ? order : false}
             style={{ minWidth: headCell.minWidth }}
             sx={{ color: colors.base[500] }}
-            className='border'
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -57,6 +60,7 @@ export function CustomTableHead(props: TableProps) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell sx={{ textAlign: 'center' }}>+</TableCell>
       </TableRow>
     </TableHead>
   )

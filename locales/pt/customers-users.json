@@ -24,5 +24,20 @@
   "sentAt": "Enviado em",
 
   "addUser": "Adicionar usuário",
-  "userCreated": "Usuário criado sucesso."
+  "userCreated": "Usuário criado sucesso.",
+
+  "requests-subtitle-2-singular": "requisição",
+  "requests-subtitle-2-plural": "requisições",
+  "request-timeline": "Linha do tempo da requisição",
+  "request-created_at": "Criado em",
+  "request-expires_at": "Expira em",
+  "request-request_by": "Recursos",
+  "request-resources": "Recursos",
+  "request-resources_storage": "Storage",
+  "request-resources_compute": "Compute",
+  "request-resources_daas": "Daas",
+
+  "madeRequest": "fez a requisição do cliente.",
+  "madeApproval": "aprovou a requisição do cliente.",
+  "madeDisapproval": "reprovou a requisição do cliente."
 }
