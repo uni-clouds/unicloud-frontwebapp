@@ -14,16 +14,16 @@ const CustomersList: React.FC = () => {
           data?.length >= 5 ? 'h-full' : 'h-screen'
         } w-full flex flex-col gap-6 lg:mx-auto p-0 md:p-6`}
       >
-        {!!isLoading || isError ? (
+        {/* {!!isLoading || isError ? (
           <div className=' w-full '>
             <TableSkeleton />
           </div>
-        ) : (
-          <>
-            <Header totalUsers={data?.length} data={data} />
-            <CustomersTable list={data} />
-          </>
-        )}
+        ) : ( */}
+        <>
+          <Header totalUsers={data?.length} data={data} />
+          <CustomersTable list={data} />
+        </>
+        {/* )} */}
       </section>
     </Layout>
   )

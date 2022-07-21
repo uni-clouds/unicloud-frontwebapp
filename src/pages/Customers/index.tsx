@@ -8,10 +8,10 @@ const Customers: React.FC = () => {
     role: ['root', 'partner']
   })
 
-  if (accessLevelOne) {
-    return <CustomersList />
-  }
+  // if (accessLevelOne) {
+  return <CustomersList />
+  // }
 
-  return <Navigate to='/not-found' replace />
+  // return <Navigate to='/not-found' replace />
 }
 export default Customers

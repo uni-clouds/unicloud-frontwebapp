@@ -14,6 +14,7 @@ import UserProfilePage from '../pages/UserProfile'
 import Contracts from '../pages/Contracts'
 import Resources from '../pages/Resources'
 import ResourcesPanel from '../pages/Resources/Panel'
+import CustomerRequests from '../pages/Customers/requests'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -119,9 +120,17 @@ export default function MainRoutes() {
       <Route
         path='/customers'
         element={
-          <ProtectedRoute>
-            <Customers />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          <Customers />
+          // </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/customers/requests'
+        element={
+          // <ProtectedRoute>
+          <CustomerRequests />
+          // </ProtectedRoute>
         }
       />
 

@@ -1,14 +1,13 @@
 import { Tooltip } from '@mui/material'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { HiPlus } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 import { PurpleButton } from '../../components/Elements/Buttons/PurpleButton'
-import { ModalNewCustomer } from './ModalNewCustomer'
 import { HeaderProps } from './types'
 
 export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
-  const [openModal, setOpenModal] = useState(false)
+  // const [openModal, setOpenModal] = useState(false)
   const { t: translate } = useTranslation()
+  const navigate = useNavigate()
 
   return (
     <div className='w-full flex flex-row justify-between px-4'>
@@ -29,15 +28,13 @@ export const Header: React.FC<HeaderProps> = ({ totalUsers }) => {
           aria-haspopup
           role='alert'
         >
-          <PurpleButton name='add-customer' onclick={() => setOpenModal(true)}>
-            <HiPlus fontSize={20} />
-            {translate('customersUsers:customers-subtitle-2-singular')}
+          <PurpleButton
+            name='add-customer'
+            onclick={() => navigate('/customers/requests')}
+          >
+            {translate('requests')}
           </PurpleButton>
         </Tooltip>
-        <ModalNewCustomer
-          isOpen={openModal}
-          handleClose={() => setOpenModal(false)}
-        />
       </div>
     </div>
   )

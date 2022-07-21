@@ -1,8 +1,13 @@
 import { CustomerTableType } from '../../components/Tables/Customers/types'
+import { RequestTableType } from '../../components/Tables/CustomerRequests/types'
 
 export interface HeaderProps {
   totalUsers: number
   data: CustomerTableType[]
+}
+export interface RequestHeaderProps {
+  totalUsers: number
+  data: RequestTableType[]
 }
 
 export interface CreateCustomerModalProps {
@@ -22,4 +27,7 @@ export type Invite = {
 
 export interface ModalDetailsCustomerProps extends CreateCustomerModalProps {
   data: CustomerTableType[]
+}
+export interface ModalDetailsRequestProps extends CreateCustomerModalProps {
+  data: RequestTableType[]
 }
