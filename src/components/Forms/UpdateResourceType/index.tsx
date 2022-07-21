@@ -15,8 +15,8 @@ import {
   handleUpdateResourceType,
   responseUpdateResourceType
 } from '../../../util/resourcesType'
+import { OPTIONS_RESOURCES_TYPES } from '../../../constants/selectOptions'
 
-const OPTIONS = ['', 'compute', 'tomate', 'queijo']
 export const UpdateResourceType: FC<UpdateResourceTypeProps> = ({ id }) => {
   const { handleSubmit, control } = useForm<UpdateResourceTypes>()
   const [isError, setIsError] = useState(false)
@@ -70,7 +70,7 @@ export const UpdateResourceType: FC<UpdateResourceTypeProps> = ({ id }) => {
           rules={{ required: true }}
           render={({ field, fieldState: { error } }) => (
             <Select
-              options={OPTIONS}
+              options={OPTIONS_RESOURCES_TYPES}
               label='Selecione o tipo de recurso'
               error={error}
               {...field}

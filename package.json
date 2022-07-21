@@ -54,6 +54,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@iconify-icon/react": "^1.0.0-beta.2",
     "@swc/core": "^1.2.189",
     "@swc/jest": "^0.2.21",
     "@tailwindcss/forms": "^0.5.1",

@@ -1,5 +1,5 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import { Paper } from '../../components/Paper'
+import styled, { css } from 'styled-components'
+
 import { BoxStyleProps } from './types'
 
 export const Container = styled.section`

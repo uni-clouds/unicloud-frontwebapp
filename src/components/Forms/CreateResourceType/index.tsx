@@ -11,8 +11,8 @@ import { CreateResourceTypeProps, TypeResource } from './types'
 
 import * as Styled from './styles'
 import { Heading } from '../../Heading'
+import { OPTIONS_RESOURCES_TYPES } from '../../../constants/selectOptions'
 
-const OPTIONS = ['', 'compute']
 export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
   const { handleSubmit, control, reset } = useForm<TypeResource>()
   const [isError, setIsError] = useState(false)
@@ -79,19 +79,21 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
         onSubmit={handleSubmit(handleCreateResourceType)}
         action='POST'
       >
-        <Controller
-          name='resource_type'
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState: { error } }) => (
-            <Select
-              options={OPTIONS}
-              label='Selecione o tipo de recurso'
-              error={error}
-              {...field}
-            />
-          )}
-        />
+        <Styled.Box>
+          <Controller
+            name='resource_type'
+            control={control}
+            rules={{ required: true }}
+            render={({ field, fieldState: { error } }) => (
+              <Select
+                options={OPTIONS_RESOURCES_TYPES}
+                label='Selecione o tipo de recurso'
+                error={error}
+                {...field}
+              />
+            )}
+          />
+        </Styled.Box>
         <SubmitButton isForm>Criar </SubmitButton>
       </Styled.Form>
     </Styled.Container>
