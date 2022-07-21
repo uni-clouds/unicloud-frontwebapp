@@ -22,3 +22,9 @@ export const Form = styled.form`
     align-items: center;
   `}
 `
+export const Box = styled.div`
+  ${({ theme }) => css`
+    display: block;
+    margin-bottom: 0.5rem;
+  `}
+`

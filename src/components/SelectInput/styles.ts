@@ -30,6 +30,6 @@ export const SelectBox = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    // margin-bottom: 1.5rem;
   `}
 `

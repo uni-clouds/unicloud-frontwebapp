@@ -79,19 +79,21 @@ export const CreateResourceType: FC<CreateResourceTypeProps> = () => {
         onSubmit={handleSubmit(handleCreateResourceType)}
         action='POST'
       >
-        <Controller
-          name='resource_type'
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState: { error } }) => (
-            <Select
-              options={OPTIONS_RESOURCES_TYPES}
-              label='Selecione o tipo de recurso'
-              error={error}
-              {...field}
-            />
-          )}
-        />
+        <Styled.Box>
+          <Controller
+            name='resource_type'
+            control={control}
+            rules={{ required: true }}
+            render={({ field, fieldState: { error } }) => (
+              <Select
+                options={OPTIONS_RESOURCES_TYPES}
+                label='Selecione o tipo de recurso'
+                error={error}
+                {...field}
+              />
+            )}
+          />
+        </Styled.Box>
         <SubmitButton isForm>Criar </SubmitButton>
       </Styled.Form>
     </Styled.Container>
