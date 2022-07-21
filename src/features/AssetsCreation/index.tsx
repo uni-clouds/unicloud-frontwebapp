@@ -13,23 +13,31 @@ import { useGetResources } from '../../hooks/useGetResources'
 
 import { AssetsCreationProps, AssetsCreationType } from './types'
 import * as Styled from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export const AssetsCreation: FC<AssetsCreationProps> = () => {
   const {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm<AssetsCreationType>()
+  const navigate = useNavigate()
   const { data: resources } = useGetResources()
   const { data: contracts } = useContracts()
   const [isDisabled, setIsDisabled] = useState(false)
 
   const onSubmit: SubmitHandler<AssetsCreationType> = (data) => {
     console.log('🍒 submit assets data', data)
+    //todo reset()
+    //todo const redirect = setTimeout(() => navigate('/contracts/list'), 2000)
   }
   return (
     <Paper>
+      <Heading as='h3' size='normal'>
+        Escolha os assets do seu contrato
+      </Heading>
       <Styled.Container as='form' onSubmit={handleSubmit(onSubmit)}>
         <Styled.ContainerList>
           <Heading size='small' as='h4'>
