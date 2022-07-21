@@ -4,8 +4,8 @@
   "customers-subtitle-2-plural": "clientes",
   "mainUserEmail": "Correo del usuário principal",
   "customerType-placeholder": "Seleccionar tipo de usuario",
-  "addCustomer": "Añadir cliente",
-  "customerCreated": "Cliente creado con éxito.",
+  "addCustomer": "Requerir cliente",
+  "customerCreated": "Cliente requerido con éxito.",
   "users-subtitle-2-singular": "usuario",
   "users-subtitle-2-plural": "usuarios",
   "invitations-subtitle-2-singular": "invitación enviada",
@@ -17,5 +17,21 @@
   "invitationSent": "Invitación enviada con éxito.",
   "sentAt": "Enviado en",
   "addUser": "Agregar usuario",
-  "userCreated": "Usuario creado con éxito."
+  "userCreated": "Usuario creado con éxito.",
+
+  "requests-subtitle-2-singular": "solicitud",
+  "requests-subtitle-2-plural": "solicitudes",
+  "request-timeline": "Cronograma de la solicitud",
+  "request-created_at": "Creado el",
+  "request-expires_at": "Vence el",
+  "request-request_by": "Solicitante",
+  "request-Recursos": "Resources",
+  "request-resources_storage": "Storage",
+  "request-resources_compute": "Compute",
+  "request-resources_daas": "Daas",
+  "request-description": "Descripción",
+
+  "madeRequest": "solicitó la oportunidade del cliente.",
+  "madeApproval": "aprobó la solucitud de este cliente.",
+  "madeDisapproval": "desaprobó the request for the customer."
 }

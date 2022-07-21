@@ -6,8 +6,8 @@
 
   "mainUserEmail": "E-mail do usuário principal",
   "customerType-placeholder": "Selecione o tipo de cliente",
-  "addCustomer": "Adicionar cliente",
-  "customerCreated": "Cliente criado sucesso.",
+  "addCustomer": "Requerer cliente",
+  "customerCreated": "Cliente requerido sucesso.",
 
   "users-subtitle-2-singular": "usuário",
   "users-subtitle-2-plural": "usuários",
@@ -31,13 +31,14 @@
   "request-timeline": "Linha do tempo da requisição",
   "request-created_at": "Criado em",
   "request-expires_at": "Expira em",
-  "request-request_by": "Recursos",
+  "request-request_by": "Requerente",
   "request-resources": "Recursos",
   "request-resources_storage": "Storage",
   "request-resources_compute": "Compute",
   "request-resources_daas": "Daas",
+  "request-description": "Descrição",
 
-  "madeRequest": "fez a requisição do cliente.",
-  "madeApproval": "aprovou a requisição do cliente.",
-  "madeDisapproval": "reprovou a requisição do cliente."
+  "madeRequest": "fez a requisição de oportunidade para este cliente.",
+  "madeApproval": "aprovou a requisição de cliente.",
+  "madeDisapproval": "reprovou a requisição de cliente."
 }

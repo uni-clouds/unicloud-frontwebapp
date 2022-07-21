@@ -7,7 +7,7 @@
   "mainUserEmail": "Main user email",
   "customerType-placeholder": "Select user type",
   "addCustomer": "Add customer",
-  "customerCreated": "Customer successfully created.",
+  "customerCreated": "Customer successfully requested.",
 
   "users-subtitle-2-singular": "User",
   "users-subtitle-2-plural": "Users",
@@ -24,5 +24,21 @@
   "sentAt": "Sent on",
 
   "addUser": "Add user",
-  "userCreated": "User created"
+  "userCreated": "User created",
+
+  "requests-subtitle-2-singular": "request",
+  "requests-subtitle-2-plural": "requests",
+  "request-timeline": "Request timeline",
+  "request-created_at": "Created on",
+  "request-expires_at": "Expires on",
+  "request-request_by": "Applicant",
+  "request-resources": "Resources",
+  "request-resources_storage": "Storage",
+  "request-resources_compute": "Compute",
+  "request-resources_daas": "Daas",
+  "request-description": "Description",
+
+  "madeRequest": "requested the customer opportunity.",
+  "madeApproval": "approved the request for the customer.",
+  "madeDisapproval": "disapproved the request for the customer."
 }

@@ -6,8 +6,8 @@
 
   "mainUserEmail": "Adresse e-mail de l'utilisateur principal",
   "customerType-placeholder": "Type de client",
-  "addCustomer": "Ajouter un client",
-  "customerCreated": "Client crée avez succès",
+  "addCustomer": "Demander client",
+  "customerCreated": "Client requis avez succès",
 
   "users-subtitle-2-singular": "utilisateur",
   "users-subtitle-2-plural": "utilisateurs",
@@ -24,5 +24,21 @@
   "sentAt": "Envoyée le",
 
   "addUser": "Ajouter utilisateur",
-  "userCreated": "Utilisateur crée avec succès."
+  "userCreated": "Utilisateur crée avec succès.",
+
+  "requests-subtitle-2-singular": "réquisition",
+  "requests-subtitle-2-plural": "réquisitions",
+  "request-timeline": "Chronologie de la réquisition",
+  "request-created_at": "Crée le",
+  "request-expires_at": "Expire le",
+  "request-request_by": "Requérant(e)",
+  "request-resources": "Ressources",
+  "request-resources_storage": "Storage",
+  "request-resources_compute": "Compute",
+  "request-resources_daas": "Daas",
+  "request-description": "Description",
+
+  "madeRequest": "a requis l'opportunité de ce client.",
+  "madeApproval": "a approuvé la réquisition de ce client.",
+  "madeDisapproval": "a disapprouvé la réquisition de ce client."
 }
