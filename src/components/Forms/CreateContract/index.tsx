@@ -241,12 +241,7 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
             onclick={() => navigate('/contracts/assets')}
             fullWidth
           >
-            <Styled.Span>
-              <Icon
-                icon='bi:file-earmark-plus'
-                style={{ fontSize: '1.5rem' }}
-              />
-            </Styled.Span>
+            Acesso temporário
           </OutlineButton>
         </Styled.InputGroup>
       </Styled.Form>
