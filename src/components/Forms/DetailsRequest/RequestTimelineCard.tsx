@@ -34,10 +34,16 @@ export function RequestTimelineCard(props: RequestTimelineCardProps) {
 
   return (
     <div
-      className={` flex w-full gap-4 items-center py-2 px-4  dark:bg-light-600 rounded-lg bg-light-50`}
+      className={` flex flex-col md:flex-row w-full gap-4 items-left md:items-center p-3 md:py-2 md:px-4  dark:bg-light-600 rounded-lg border border-${iconColor()} `}
     >
-      <div className={`text-${iconColor()}`}>{returnTypeIcon()}</div>
-      {formatDate(date)}
+      <div
+        className={`w-full md:w-fit flex flex-row-reverse md:flex-row justify-between`}
+      >
+        <div className={` text-${iconColor()} text-2xl md:mr-4`}>
+          {returnTypeIcon()}
+        </div>
+        {formatDate(date)}
+      </div>
       <p>
         <span className='font-bold'>{user}</span>{' '}
         <span>{returnTypeText()}</span>

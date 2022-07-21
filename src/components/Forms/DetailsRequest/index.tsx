@@ -7,6 +7,7 @@ import { RequestDetailsType, RequestDetailsProps } from './types'
 import { styleGrid } from '../styles'
 import { useTranslation } from 'react-i18next'
 import { RequestTimeline } from './RequestTimeline'
+import { formatDate } from '../../Tables/CustomerRequests/utils'
 
 export const DetailsRequest: React.FC<RequestDetailsProps> = ({
   handleClose,
@@ -35,11 +36,11 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
     )
     setValue(
       'created_at',
-      data ? data?.map((d) => d.created_at).toString() : '-'
+      data ? formatDate(data?.map((d) => d.created_at).toString()) : '-'
     )
     setValue(
       'expires_at',
-      data ? data?.map((d) => d.expires_at).toString() : '-'
+      data ? formatDate(data?.map((d) => d.expires_at).toString()) : '-'
     )
     setValue('resources', data ? data?.map((d) => d.resources).toString() : '-')
     setValue(
@@ -67,13 +68,22 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
               {...register('razao_social')}
             />
           </Grid>
-          <Grid item sx={styleGrid} sm={6}>
+          <Grid item sx={styleGrid} sm={3}>
             <Input
               type='text'
               label={translate('cnpj')}
               disabled={isDisabled}
               error={errors?.cnpj}
               {...register('cnpj')}
+            />
+          </Grid>
+          <Grid item sx={styleGrid} sm={3}>
+            <Input
+              type='text'
+              label={translate('customersUsers:request-resources')}
+              disabled={isDisabled}
+              error={errors?.resources}
+              {...register('resources')}
             />
           </Grid>
           <Grid item sx={styleGrid} sm={6}>
@@ -86,15 +96,6 @@ export const DetailsRequest: React.FC<RequestDetailsProps> = ({
             />
           </Grid>
 
-          <Grid item sx={styleGrid} md={6} sm={5}>
-            <Input
-              type='text'
-              label={translate('customersUsers:request-resources')}
-              disabled={isDisabled}
-              error={errors?.resources}
-              {...register('resources')}
-            />
-          </Grid>
           <Grid item sx={styleGrid} md={3} sm={4}>
             <Input
               type='text'
