@@ -52,12 +52,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
     const getId = customers?.filter(
       (customer) => customer.razao_social == selectedCustomer
     )
-
-    console.log('🍄', selectedCustomer)
   }, [selectedCustomer, customers])
 
   const onSubmitContract: SubmitHandler<CreateContractType> = async (data) => {
-    console.log('🐑', data)
     try {
       const request = await api.post('/contracts/', {
         name: data.name,

@@ -15,6 +15,7 @@ import { useGetResources } from '../../hooks/useGetResources'
 import { useGetResourcesType } from '../../hooks/useGetResourcesType'
 import { useUserData } from '../../hooks/useUserData'
 import { usePodsData } from '../../hooks/usePodsData'
+import { useContracts } from '../../hooks/useContracts'
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isOpened, setOpened] = useState(true)
@@ -25,6 +26,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const resourcesType = useGetResourcesType()
   const userData = useUserData()
   const pods = usePodsData()
+  const contracts = useContracts()
   const toggleDrawer = () => {
     setOpened((prev) => !prev)
   }
@@ -36,7 +38,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     resourcesType.data
     userData.data
     pods.data
-  }, [clients, decode, user, resources, resourcesType, userData, pods])
+    contracts.data
+  }, [
+    clients,
+    decode,
+    user,
+    resources,
+    resourcesType,
+    userData,
+    pods,
+    contracts
+  ])
   return (
     <Styled.Container>
       <Header isOpened={isOpened} toggleDrawer={toggleDrawer} />
