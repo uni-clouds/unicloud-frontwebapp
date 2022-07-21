@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { SelectInputProps } from './types'
 
 import * as Styled from './styles'
+import { checkTypeValue } from '../../util/checkType'
 
 const SelectInput: ForwardRefRenderFunction<
   HTMLInputElement,
@@ -28,11 +29,11 @@ const SelectInput: ForwardRefRenderFunction<
       >
         {options.map((option) => (
           <Styled.SelectOption
-            value={option.toLocaleLowerCase()}
-            key={option}
-            defaultValue=''
+            value={checkTypeValue(option.value)}
+            key={option.value}
+            defaultValue=' '
           >
-            {option}
+            {option.name}
           </Styled.SelectOption>
         ))}
       </Styled.Select>

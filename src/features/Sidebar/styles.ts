@@ -13,7 +13,7 @@ export const SidebarContainer = styled.aside<{ isOpened: boolean }>`
     border-top: 1px solid ${colors.light[200]};
     padding-top: 1rem;
 
-    height: 100vh;
+    height: 100%;
     border-right: 1px solid ${colors.light[200]};
 
     box-shadow: ${isOpened ? '' : '0px 2px 7px -1px rgba(0, 0, 0, 0.2)'};

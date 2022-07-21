@@ -42,35 +42,51 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
   const selectedCustomer = getValues('customer_id')
 
   useEffect(() => {
-    const getCustomerList = customers?.map((customer) => customer.razao_social)
+    const getCustomerList = customers?.map((customer) => {
+      return {
+        name: customer.razao_social,
+        value: customer.id
+      }
+    })
     setOptions(getCustomerList)
     const getId = customers?.filter(
       (customer) => customer.razao_social == selectedCustomer
     )
 
-    console.log('🐑', selectedCustomer, getId)
+    console.log('🍄', selectedCustomer)
   }, [selectedCustomer, customers])
 
   const onSubmitContract: SubmitHandler<CreateContractType> = async (data) => {
     console.log('🐑', data)
-    // try {
-    //   const request = await api.post('/contracts/', {})
-    //   setIsDisabled(true)
-    //   if (request.status === 200) {
-    //     setIsSuccess(true)
-    //   }
-    // } catch (error: any) {
-    //   if (error.response.status === 409) {
-    //     setIsPending(true)
-    //   }
-    //   if (error.response.status !== 409) {
-    //     setIsError(true)
-    //     console.error(error)
-    //   }
-    // } finally {
-    //   reset()
-    //   setIsDisabled(false)
-    // }
+    try {
+      const request = await api.post('/contracts/', {
+        name: data.name,
+        start_date: data.start_date,
+        end_date: data.end_date,
+        term: data.term,
+        readjust_cycle: data.readjust_cycle,
+        amount: data.amount,
+        note: data.note,
+        customer_id: data.customer_id,
+        intermediary: data.intermediary,
+        contract: data.contract
+      })
+      setIsDisabled(true)
+      if (request.status === 200) {
+        setIsSuccess(true)
+      }
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        setIsPending(true)
+      }
+      if (error.response.status !== 409) {
+        setIsError(true)
+        console.error(error)
+      }
+    } finally {
+      reset()
+      setIsDisabled(false)
+    }
   }
 
   const handleOnClose = (
@@ -162,7 +178,7 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
             <Input
               placeholder={'Ex. 12 meses'}
               label='Prazo'
-              type='text'
+              type='number'
               error={errors?.term}
               aria-invalid={errors.term ? 'true' : 'false'}
               {...register('term')}
@@ -174,7 +190,7 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
             <Input
               placeholder={'Ex. mensal'}
               label='Período de reajuste'
-              type='text'
+              type='number'
               error={errors?.readjust_cycle}
               aria-invalid={errors.readjust_cycle ? 'true' : 'false'}
               {...register('readjust_cycle')}

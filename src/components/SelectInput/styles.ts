@@ -1,17 +1,12 @@
-import styled, { css, DefaultTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Select = styled.select`
-  ${({ theme }) => css`
-    width: 100%;
-    padding: 1rem;
-    text-transform: capitalize;
-  `}
+  ${({ theme }) => css``}
 `
 
 export const SelectLabel = styled.label`
   ${({ theme }) => css`
-    padding: 0.5rem;
-    font-size: ${theme.fontSize.lg};
+    font-weight: ${theme.fontWeight.semibold};
   `}
 `
 
