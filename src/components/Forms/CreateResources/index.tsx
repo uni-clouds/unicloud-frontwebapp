@@ -7,7 +7,7 @@ import { ToastSuccess } from '../../Elements/ToastSuccess'
 import { ToastError } from '../../Elements/ToastError'
 import { useTranslation } from 'react-i18next'
 import { Portal } from '@mui/material'
-import { Input } from '../../Elements/Inputs/Input'
+import { Input } from '../../Input/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { RadioButton } from '../../RadioButton'

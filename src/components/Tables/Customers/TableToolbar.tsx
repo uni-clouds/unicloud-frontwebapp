@@ -10,7 +10,7 @@ import { ModalDetailsCustomer } from '../../../templates/CustomersList/ModalDeta
 import { useCustomersList } from '../../../hooks/useCustomersList'
 import { stylesToolbar } from '../styles'
 import { useTranslation } from 'react-i18next'
-import { Input } from '../../Elements/Inputs/Input'
+import { Input } from '../../Input/Input'
 import { SearchBar } from '../../Forms/SearchBar'
 
 export const TableToolbar = (props: TableToolbarProps) => {

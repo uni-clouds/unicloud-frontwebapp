@@ -6,7 +6,7 @@ import { Portal } from '@mui/material'
 import { Icon } from '@iconify-icon/react'
 import { OutlineButton } from '../../Elements/Buttons/OutlineButton'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
-import { Input } from '../../Elements/Inputs/Input'
+import { Input } from '../../Input/Input'
 import { Loading } from '../../Elements/Loading'
 import { api } from '../../../services/api'
 import { ToastError } from '../../Elements/ToastError'
@@ -219,6 +219,7 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
             <Input
               placeholder={''}
               label='Arquivo'
+              accept='application/pdf'
               type='file'
               error={errors?.contract}
               aria-invalid={errors.contract ? 'true' : 'false'}

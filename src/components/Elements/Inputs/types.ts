@@ -1,6 +1,5 @@
 import { FormEvent } from 'react'
 import { ControllerRenderProps, FieldError } from 'react-hook-form'
-import { CreateCustomerType } from '../../Forms/CreateCustomer/types'
 
 export interface InputProps {
   placeholder?: string
@@ -10,6 +9,7 @@ export interface InputProps {
   disabled?: boolean
   showVisibilityIcon?: (event: FormEvent) => void
   isVisible?: boolean
+  accept?: string
 }
 
 export interface SelectInputProps extends ControllerRenderProps {

@@ -1,9 +1,9 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { useTranslation } from 'react-i18next'
-import { InputProps } from './types'
+import { InputProps } from '../Elements/Inputs/types'
 
 const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { placeholder, label, type, error, ...rest },
+  { accept, placeholder, label, type, error, ...rest },
   ref
 ) => {
   const { t: translate } = useTranslation()
@@ -21,6 +21,7 @@ const InputField: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         placeholder={placeholder}
         role='textbox'
         aria-labelledby={label}
+        accept={accept}
         {...rest}
         ref={ref}
         id={label}

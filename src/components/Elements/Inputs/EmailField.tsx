@@ -1,5 +1,5 @@
 import { forwardRef, ForwardRefRenderFunction } from 'react'
-import { Input } from './Input'
+import { Input } from '../../Input/Input'
 import { InputProps } from './types'
 
 const EmailInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
