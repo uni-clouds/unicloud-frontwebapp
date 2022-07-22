@@ -7,13 +7,14 @@ import { Loading } from '../../components/Elements/Loading'
 import { Paper } from '../../components/Paper'
 import { RadioButton } from '../../components/RadioButton'
 import { Heading } from '../../components/Heading'
-import { Input } from '../../components/Elements/Inputs/Input'
+
 import { useContracts } from '../../hooks/useContracts'
 import { useGetResources } from '../../hooks/useGetResources'
 
 import { AssetsCreationProps, AssetsCreationType } from './types'
 import * as Styled from './styles'
 import { useNavigate } from 'react-router-dom'
+import { Input } from '../../components/Input'
 
 export const AssetsCreation: FC<AssetsCreationProps> = () => {
   const {

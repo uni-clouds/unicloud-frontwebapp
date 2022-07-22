@@ -28,8 +28,8 @@ const defaultTheme = {
   },
   radius: {
     sm: '8px',
-    normal: '16px',
-    md: '25px',
+    md: '13px',
+    pill: '25px',
     full: '50%'
   },
   transition: 'all 0.2s ease-in-out'

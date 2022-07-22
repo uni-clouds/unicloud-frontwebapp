@@ -39,8 +39,8 @@ declare module 'styled-components' {
     }
     radius: {
       sm: string
-      normal: string
       md: string
+      pill: string
       full: string
     }
     transition: string

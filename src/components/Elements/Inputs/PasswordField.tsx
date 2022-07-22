@@ -2,8 +2,8 @@ import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { VisibilityIcon } from '../../Elements/VisibilityIcon'
-import { Input } from '../../Input/Input'
-import { InputProps } from './types'
+import { Input } from '../../Input'
+import { InputProps } from '../../Input/types'
 
 const PasswordInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { type, error, label, placeholder, isVisible, showVisibilityIcon, ...rest },

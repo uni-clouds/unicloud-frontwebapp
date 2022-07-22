@@ -67,7 +67,7 @@ export const colors = {
     custom: '#816bff'
   },
   red: {
-    custom: '#e85347'
+    custom: '#f1867e'
   },
   teal: {
     custom: '#20c997'
