@@ -31,9 +31,9 @@ export const CardResourcesTypes = styled.div`
     flex-flow: column wrap;
     gap: 1.25rem;
     border-radius: ${theme.radius.sm};
-    box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
 
     & h3 {
       text-align: left;

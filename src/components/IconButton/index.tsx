@@ -6,7 +6,10 @@ import { IconButtonProps } from './types'
 const ButtonIcon: ForwardRefRenderFunction<
   HTMLButtonElement,
   IconButtonProps
-> = ({ icon, onClick, size, title, color, ...rest }, ref) => {
+> = (
+  { icon, onClick, size, title, rounded, outline, color, borderColor, ...rest },
+  ref
+) => {
   return (
     <Styled.Tooltip title={title}>
       <Styled.Button
@@ -15,6 +18,9 @@ const ButtonIcon: ForwardRefRenderFunction<
         ref={ref}
         role='icon'
         aria-describedby={title}
+        outline={outline}
+        rounded={rounded}
+        borderColor={borderColor}
       >
         <Icon icon={icon} style={{ fontSize: `${size}`, color: `${color}` }} />
       </Styled.Button>

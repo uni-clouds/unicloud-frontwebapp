@@ -32,6 +32,14 @@ export const InputGroup = styled.div`
     flex-flow: row nowrap;
     gap: 1.5rem;
     width: 100%;
+    transition: ${theme.transition};
+
+    & button[type='submit']:hover {
+      span {
+        transform: translateX(10px);
+        transition: ${theme.transition};
+      }
+    }
   `}
 `
 
