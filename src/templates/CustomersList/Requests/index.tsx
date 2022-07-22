@@ -3,14 +3,19 @@ import { Layout } from '../../../components/Layout'
 import { CustomersTable } from '../../../components/Tables/Customers'
 import { TableSkeleton } from '../../../components/Skeletons/TableSkeleton'
 import { useCustomersList } from '../../../hooks/useCustomersList'
-import { CustomerRequestsTable } from '../../../components/Tables/CustomerRequests'
+import {
+  CustomerRequestTable,
+  RequestObject,
+  requestTableCells
+} from '../../../components/NewTables/CustomerRequestTable'
+// import { CustomerRequestsTable } from '../../../components/Tables/CustomerRequests'
 
 const CustomerRequestsList: React.FC = () => {
   const { data, isLoading, isError } = useCustomersList()
 
-  const dataMock = [
+  const dataMock: RequestObject[] = [
     {
-      id: '1',
+      id: 1,
       customer: 'PREFEITURA MUNICIPAL DE PINHAIS',
       opportunity_name:
         'Licitação de compute e storage da Prefeitura de Pinhais.',
@@ -53,7 +58,7 @@ const CustomerRequestsList: React.FC = () => {
       ]
     },
     {
-      id: '2',
+      id: 2,
       customer: 'ASSOCIAÇÃO PARANENSE DO ESCRITÓRIOS DE ARQUITETURA - ASPEA',
       opportunity_name: 'Projeto de computing para escritórios associados',
       opportunity_description:
@@ -105,7 +110,12 @@ const CustomerRequestsList: React.FC = () => {
         ) : (
           <>
             <Header totalUsers={dataMock?.length} data={dataMock} />
-            <CustomerRequestsTable list={dataMock} />
+            {/* <CustomerRequestsTable list={dataMock} /> */}
+            <CustomerRequestTable
+              cells={requestTableCells}
+              data={dataMock}
+              modalCell
+            />
           </>
         )}
       </section>
