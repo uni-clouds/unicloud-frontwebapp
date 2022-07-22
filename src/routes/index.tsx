@@ -16,6 +16,7 @@ import CreatingContracts from '../pages/Contracts/CreatingContracts'
 import Resources from '../pages/Resources'
 import ResourcesManager from '../pages/Resources/Manager'
 import ResourcesType from '../pages/Resources/ResourcesTypes'
+import CreatingAssets from '../pages/Contracts/CreatingAssets'
 
 export default function MainRoutes() {
   const Error = lazy(() => import('../pages/Error'))
@@ -109,7 +110,6 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path='/notifications'
         element={
@@ -135,7 +135,6 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path='/monitor'
         element={
@@ -144,7 +143,6 @@ export default function MainRoutes() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path='/user-list-default'
         element={
@@ -171,7 +169,15 @@ export default function MainRoutes() {
       />
 
       <Route
-        path='/contracts-list'
+        path='/contracts'
+        element={
+          <ProtectedRoute>
+            <CreatingContracts />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/contracts/list'
         element={
           <ProtectedRoute>
             <ContractsListPage />
@@ -179,10 +185,10 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/contracts'
+        path='/contracts/assets'
         element={
           <ProtectedRoute>
-            <CreatingContracts />
+            <CreatingAssets />
           </ProtectedRoute>
         }
       />
@@ -196,7 +202,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/resources-settings'
+        path='/resources/settings'
         element={
           <ProtectedRoute>
             <ResourcesManager />
@@ -204,7 +210,7 @@ export default function MainRoutes() {
         }
       />
       <Route
-        path='/resources-types'
+        path='/resources/types'
         element={
           <ProtectedRoute>
             <ResourcesType />
