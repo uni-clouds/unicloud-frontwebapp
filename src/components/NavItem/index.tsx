@@ -22,6 +22,8 @@ export const NavItem: FC<NavItemProps> = ({ options, isOpened }) => {
           icon={options.icon}
           title={options.name}
           depth={options.depth}
+          fontSize={options.fontSize}
+          fontWeight={options.fontWeight}
           nested={isNested}
           expanded={isExpanded}
           onClick={onClick}

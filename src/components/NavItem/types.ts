@@ -15,6 +15,8 @@ export type Options = {
   icon: string
   url: string
   id?: string
+  fontWeight?: string
+  fontSize?: string
   depth?: number
   subItems?: Options[]
 }

@@ -17,7 +17,13 @@ export const Navlink: FC<NavlinkProps> = ({ ...props }) => {
       >
         <Styled.Container>
           <Styled.IconBox depth={props.depth}>
-            <Icon icon={props.icon} />
+            <Icon
+              icon={props.icon}
+              style={{
+                fontSize: `${props.fontSize}`,
+                fontWeight: `${props.fontWeight}`
+              }}
+            />
           </Styled.IconBox>
           {props.isOpened && (
             <Styled.LinkBox isOpened={props.isOpened}>

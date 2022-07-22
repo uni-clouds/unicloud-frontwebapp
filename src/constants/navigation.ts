@@ -9,39 +9,43 @@ export const MENU_OPTIONS = [
   {
     name: 'Dashboard',
     icon: 'carbon:dashboard',
+    fontSize: '1.45rem',
     url: '/'
   },
   {
     name: translate('resources'),
     icon: 'clarity:resource-pool-outline-badged',
+    fontSize: '1.4rem',
     url: '/resources'
   },
   {
     name: translate('pods'),
-    icon: 'eos-icons:pod-outlined',
+    icon: 'iconoir:antenna',
+    fontSize: '1.5rem',
     url: '/unicloud-pods'
   },
-  //codicon:graph
   {
     name: translate('monitoring'),
     icon: 'system-uicons:graph-box',
+    fontSize: '1.65rem',
     url: '/monitor'
   },
-
   {
     name: translate('customers'),
-    icon: 'wpf:business-contact',
+    icon: 'typcn:business-card',
+    fontSize: '1.45rem',
     url: '/customers'
   },
   {
     name: translate('contracts'),
-    icon: 'clarity:contract-line',
+    icon: 'teenyicons:contract-outline',
     url: '/contracts'
   },
   {
     name: translate('users'),
-    icon: 'ph:users-three-thin',
-    url: '/user-list-default'
+    icon: 'ph:users-three',
+    url: '/user-list-default',
+    fontSize: '1.5rem'
   }
 ]
 
