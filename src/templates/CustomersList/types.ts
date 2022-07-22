@@ -7,7 +7,7 @@ export interface HeaderProps {
 }
 export interface RequestHeaderProps {
   totalUsers: number
-  data: RequestTableType[]
+  // data: RequestTableType[]
 }
 
 export interface CreateCustomerModalProps {

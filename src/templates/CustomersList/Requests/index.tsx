@@ -3,11 +3,11 @@ import { Layout } from '../../../components/Layout'
 import { CustomersTable } from '../../../components/Tables/Customers'
 import { TableSkeleton } from '../../../components/Skeletons/TableSkeleton'
 import { useCustomersList } from '../../../hooks/useCustomersList'
+import { CustomerRequestTable } from '../../../components/NewTables/CustomerRequest/CustomerRequestTable'
 import {
-  CustomerRequestTable,
   RequestObject,
   requestTableCells
-} from '../../../components/NewTables/CustomerRequestTable'
+} from '../../../components/NewTables/CustomerRequest/types'
 // import { CustomerRequestsTable } from '../../../components/Tables/CustomerRequests'
 
 const CustomerRequestsList: React.FC = () => {
@@ -109,7 +109,7 @@ const CustomerRequestsList: React.FC = () => {
           </div>
         ) : (
           <>
-            <Header totalUsers={dataMock?.length} data={dataMock} />
+            <Header totalUsers={dataMock?.length} />
             {/* <CustomerRequestsTable list={dataMock} /> */}
             <CustomerRequestTable
               cells={requestTableCells}
