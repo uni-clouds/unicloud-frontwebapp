@@ -56,12 +56,12 @@ export const RESOURCES_TYPES_LINKS = [
   {
     name: 'Tipos',
     icon: 'ph:codepen-logo-thin',
-    path: '/resources-types'
+    path: '/resources/types'
   },
   {
     name: 'Gerenciamento',
     icon: 'ph:chart-bar-horizontal-thin',
-    path: '/resources-settings'
+    path: '/resources/settings'
   }
 ]
 
@@ -74,6 +74,6 @@ export const CONTRACTS_LINKS = [
   {
     name: 'Lista',
     icon: 'carbon:list',
-    path: '/contracts-list'
+    path: '/contracts/list'
   }
 ]

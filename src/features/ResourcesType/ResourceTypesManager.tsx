@@ -1,16 +1,15 @@
 import { FC, useState } from 'react'
-import { FiEdit } from 'react-icons/fi'
-import { BsTrash } from 'react-icons/bs'
-import * as Styled from './styles'
-import { IconButton } from '../../components/IconButton'
-import { ResourceTypesManagerProps } from './types'
+import { Portal } from '@mui/material'
+import { ButtonEdit } from './ButtonEdit'
+import { ButtonDelete } from './ButtonDelete'
+import { ToastSuccess } from '../../components/Elements/ToastSuccess'
 import {
   handleRemoveResourceType,
   responseRemoveResourceType
 } from '../../util/resourcesType'
-import { Portal } from '@mui/material'
-import { ToastSuccess } from '../../components/Elements/ToastSuccess'
 import { ModalUpdateResource } from './ModalUpdateResource'
+import { ResourceTypesManagerProps } from './types'
+import * as Styled from './styles'
 
 export const ResourcesTypesManager: FC<ResourceTypesManagerProps> = ({
   id
@@ -26,18 +25,8 @@ export const ResourcesTypesManager: FC<ResourceTypesManagerProps> = ({
   }
   return (
     <Styled.Box gap='2rem' justify='flex-end'>
-      <IconButton
-        icon={FiEdit}
-        size={20}
-        title='Editar'
-        onClick={() => setIsOpen(true)}
-      />
-      <IconButton
-        icon={BsTrash}
-        size={20}
-        title='Excluir'
-        onClick={() => handleRemoveResourceType(id)}
-      />
+      <ButtonEdit onClick={() => setIsOpen(true)} />
+      <ButtonDelete onClick={() => handleRemoveResourceType(id)} />
       {!!responseRemoveResourceType && (
         <Portal>
           <ToastSuccess
