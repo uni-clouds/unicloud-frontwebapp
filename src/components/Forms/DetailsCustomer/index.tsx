@@ -54,6 +54,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('companyName')}
               disabled={isDisabled}
               error={errors?.razao_social}
+              arias='company-name'
+              id='company-name'
+              role='input-field'
               {...register('razao_social')}
             />
           </Grid>
@@ -63,6 +66,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('companyTradingName')}
               disabled={isDisabled}
               error={errors?.nome_fantasia}
+              arias='company-trading-name'
+              id='company-trading-name'
+              role='input-field'
               {...register('nome_fantasia')}
             />
           </Grid>
@@ -72,6 +78,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('cnpj')}
               disabled={isDisabled}
               error={errors?.cnpj}
+              arias='cnpj'
+              id='cnpj'
+              role='input-field'
               {...register('cnpj')}
             />
           </Grid>
@@ -82,6 +91,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('email')}
               disabled={isDisabled}
               error={errors?.email}
+              arias='email'
+              id='email'
+              role='input-field'
               {...register('email')}
             />
           </Grid>
@@ -90,6 +102,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               type='text'
               label={translate('businessEntityType')}
               disabled={isDisabled}
+              arias='busines_entity'
+              id='busines_entity'
+              role='input-field'
               error={errors?.natureza_juridica}
               {...register('natureza_juridica')}
             />
@@ -100,6 +115,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('phone')}
               disabled={isDisabled}
               error={errors?.telefone}
+              arias='phone-number'
+              id='phone-number'
+              role='input-field'
               {...register('telefone')}
             />
           </Grid>
@@ -110,6 +128,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('address')}
               disabled={isDisabled}
               error={errors?.logradouro}
+              arias='address'
+              id='address'
+              role='input-field'
               {...register('logradouro')}
             />
           </Grid>
@@ -119,6 +140,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('streetNumber')}
               disabled={isDisabled}
               error={errors?.numero}
+              arias='street-number'
+              id='street-number'
+              role='input-field'
               {...register('numero')}
             />
           </Grid>
@@ -128,6 +152,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('district')}
               disabled={isDisabled}
               error={errors?.bairro}
+              arias='district'
+              id='district'
+              role='input-field'
               {...register('bairro')}
             />
           </Grid>
@@ -137,6 +164,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('zipCode')}
               disabled={isDisabled}
               error={errors?.cep}
+              arias='zip-code'
+              id='zip-code'
+              role='input-field'
               {...register('cep')}
             />
           </Grid>
@@ -147,6 +177,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('city')}
               disabled={isDisabled}
               error={errors?.municipio}
+              arias='city'
+              id='city'
+              role='input-field'
               {...register('municipio')}
             />
           </Grid>
@@ -156,6 +189,9 @@ export const DetailsCustomer: React.FC<CustomerDetailsProps> = ({
               label={translate('state')}
               disabled={isDisabled}
               error={errors?.estado}
+              arias='state'
+              id='state'
+              role='input-field'
               {...register('estado')}
             />
           </Grid>

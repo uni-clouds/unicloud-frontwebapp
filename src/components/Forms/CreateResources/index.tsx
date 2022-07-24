@@ -106,6 +106,9 @@ export const CreateResources: FC<CreateResourcesFormProps> = ({ data }) => {
           label='Novo recurso'
           placeholder='Informe o nome do recurso'
           type='text'
+          arias='new-resource'
+          id='new-resource'
+          role='input-field'
           {...register('resource')}
           error={errors.resource}
         />

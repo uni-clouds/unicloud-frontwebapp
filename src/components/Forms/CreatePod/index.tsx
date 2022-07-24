@@ -105,6 +105,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('pods:podName')}
               type='text'
               error={errors?.name}
+              arias={translate('pods:podName')}
+              id={translate('pods:podName')}
+              role={translate('pods:podName')}
               {...register('name')}
             />
           </Grid>
@@ -114,6 +117,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('pods:podLocation')}
               type='text'
               error={errors?.location}
+              arias={translate('pods:podLocation')}
+              id={translate('pods:podLocation')}
+              role={translate('pods:podLocation')}
               {...register('location')}
             />
           </Grid>
@@ -123,6 +129,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('user-placeholder')}
               type='text'
               error={errors?.pod_user}
+              arias={translate('user-placeholder')}
+              id={translate('user-placeholder')}
+              role={translate('user-placeholder')}
               {...register('pod_user')}
             />
           </Grid>
@@ -132,6 +141,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('password')}
               type='password'
               error={errors?.pod_password}
+              arias={translate('password')}
+              id={translate('password')}
+              role={translate('password')}
               {...register('pod_password')}
             />
           </Grid>
@@ -141,6 +153,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('pods:spareNode')}
               type='number'
               error={errors?.spare_nodes}
+              arias={translate('pods:spareNode')}
+              id={translate('pods:spareNode')}
+              role={translate('pods:spareNode')}
               {...register('spare_nodes')}
             />
           </Grid>
@@ -150,6 +165,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('pods:domainTenant')}
               type='text'
               error={errors?.domain_tenant}
+              arias={translate('pods:domainTenant')}
+              id={translate('pods:domainTenant')}
+              role={translate('pods:domainTenant')}
               {...register('domain_tenant')}
             />
           </Grid>
@@ -177,6 +195,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               placeholder={translate('pods:baseURL-placeholder')}
               label={translate('pods:baseURL')}
               type='url'
+              arias={translate('pods:baseURL')}
+              id={translate('pods:baseURL')}
+              role={translate('pods:baseURL')}
               error={errors?.url_base}
               {...register('url_base')}
             />
@@ -187,6 +208,9 @@ export const CreatePod: React.FC<CreatePodProps> = ({ handleClose }) => {
               label={translate('id-placeholder')}
               type='text'
               error={errors?.project_id}
+              arias={translate('id-placeholder')}
+              id={translate('id-placeholder')}
+              role={translate('id-placeholder')}
               {...register('project_id')}
             />
           </Grid>

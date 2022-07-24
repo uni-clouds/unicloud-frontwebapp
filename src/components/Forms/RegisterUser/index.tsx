@@ -97,7 +97,9 @@ export const RegisterUser: React.FC = () => {
               type='text'
               placeholder={translate('firstName-placeholder')}
               label={translate('firstName')}
-              aria-invalid={errors.first_name ? 'true' : 'false'}
+              arias='first-name'
+              role='text-field'
+              id='first-name'
               error={errors?.first_name}
               {...register('first_name')}
             />
@@ -106,8 +108,10 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder={translate('lastName-placeholder')}
-              aria-invalid={errors.last_name ? 'true' : 'false'}
               label={translate('lastName')}
+              arias='last-name'
+              role='text-field'
+              id='last-name'
               error={errors?.last_name}
               {...register('last_name')}
             />
@@ -116,7 +120,9 @@ export const RegisterUser: React.FC = () => {
         <Input
           type='email'
           placeholder={translate('email-placeholder')}
-          aria-invalid={errors.username ? 'true' : 'false'}
+          arias='email'
+          role='text-field'
+          id='email'
           label={translate('email')}
           error={errors?.username}
           {...register('username')}
@@ -126,7 +132,9 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='password'
               placeholder={translate('password-placeholder')}
-              aria-invalid={errors.password ? 'true' : 'false'}
+              arias='password'
+              role='text-field'
+              id='password'
               label={translate('password')}
               error={errors?.password}
               {...register('password')}
@@ -150,7 +158,9 @@ export const RegisterUser: React.FC = () => {
           type='text'
           placeholder={translate('address-placeholder')}
           label={translate('address')}
-          aria-invalid={errors.address ? 'true' : 'false'}
+          arias='address'
+          role='text-field'
+          id='address'
           error={errors?.address}
           {...register('address')}
         />
@@ -159,7 +169,9 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder={translate('city-placeholder')}
-              aria-invalid={errors.city ? 'true' : 'false'}
+              arias='city'
+              role='text-field'
+              id='city'
               label={translate('city')}
               error={errors?.city}
               {...register('city')}
@@ -169,7 +181,9 @@ export const RegisterUser: React.FC = () => {
             <Input
               type='text'
               placeholder={translate('state-placeholder')}
-              aria-invalid={errors.state ? 'true' : 'false'}
+              arias='state'
+              role='text-field'
+              id='state'
               label={translate('state')}
               error={errors?.state}
               {...register('state')}
@@ -181,7 +195,9 @@ export const RegisterUser: React.FC = () => {
               placeholder={translate('country-placeholder')}
               label={translate('country')}
               error={errors?.country}
-              aria-invalid={errors.country ? 'true' : 'false'}
+              arias='country'
+              role='text-field'
+              id='country'
               {...register('country')}
             />
           </div>

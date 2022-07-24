@@ -108,6 +108,9 @@ export const CreateCustomer: React.FC<CreateCustomerFormProps> = ({
           placeholder={translate('email-placeholder')}
           label={translate('email')}
           type='email'
+          arias='email'
+          role='email-field'
+          id='email'
           error={errors?.email}
           {...register('email')}
         />

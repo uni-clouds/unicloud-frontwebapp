@@ -100,7 +100,9 @@ export const InviteUser: React.FC<InviteUserFormProps> = ({ handleClose }) => {
           label={translate('email')}
           type='email'
           error={errors?.email}
-          aria-invalid={errors.email ? 'true' : 'false'}
+          arias='email'
+          id='email'
+          role='input-field'
           {...register('email')}
         />
         <div className='flex gap-6 items-center w-1/2'>

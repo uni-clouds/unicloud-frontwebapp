@@ -7,7 +7,7 @@ export type Theme = typeof defaultTheme
 const defaultTheme = {
   font: "'DM Sans', sans-serif",
   fontSize: {
-    xsm: '0.625em', //10px
+    xsm: '0.725em', //10px
     sm: '0.875em', //14px
     md: '1em', //16px
     lg: '1.25em', //24px

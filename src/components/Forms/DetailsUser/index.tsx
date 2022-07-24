@@ -51,6 +51,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
             label={translate('firstName')}
             disabled={isDisabled}
             error={errors?.first_name}
+            arias='first_name'
+            id='first_name'
+            role='input-field'
             {...register('first_name')}
           />
         </div>
@@ -60,6 +63,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
             label={translate('lastName')}
             disabled={isDisabled}
             error={errors?.last_name}
+            arias='last_name'
+            id='last_name'
+            role='input-field'
             {...register('last_name')}
           />
         </div>
@@ -69,6 +75,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         label={translate('email')}
         disabled={isDisabled}
         error={errors?.username}
+        arias='email'
+        id='email'
+        role='input-field'
         {...register('username')}
       />
       <Input
@@ -76,6 +85,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
         label={translate('address')}
         disabled={isDisabled}
         error={errors?.address}
+        arias='address'
+        id='address'
+        role='input-field'
         {...register('address')}
       />
       <div className='flex flex-row gap-4 my-2'>
@@ -85,6 +97,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
             label={translate('city')}
             disabled={isDisabled}
             error={errors?.city}
+            arias='city'
+            id='city'
+            role='input-field'
             {...register('city')}
           />
         </div>
@@ -109,6 +124,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
             label={translate('state')}
             disabled={isDisabled}
             error={errors?.state}
+            arias='state'
+            id='state'
+            role='input-field'
             {...register('state')}
           />
         </div>
@@ -118,6 +136,9 @@ export const DetailsUser: React.FC<DetailsUserProps> = ({
             label={translate('country')}
             disabled={isDisabled}
             error={errors?.country}
+            arias='country'
+            id='country'
+            role='input-field'
             {...register('country')}
           />
         </div>

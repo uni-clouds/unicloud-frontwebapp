@@ -1,8 +1,11 @@
 export interface InputLabelProps {
   label: React.ReactNode
-  htmlFor: string
   arias: string
-  id?: string
+  hasLink?: boolean
+  events?: boolean
+  id: string
 }
 
-export interface LabelStyleProps {}
+export interface LabelStyleProps {
+  events?: boolean
+}

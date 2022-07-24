@@ -1,17 +1,18 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitButton } from '../../Elements/Buttons/SubmitButton'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { EmailField } from '../../Elements/Inputs/EmailField'
+import { useTranslation } from 'react-i18next'
+import { Input } from '../../../components/Input'
+import { PasswordField } from '../../../features/PasswordInput'
+
 import { schemaLogin } from './validation'
 import { Loading } from '../../Elements/Loading'
 import { ToastError } from '../../Elements/ToastError'
 
 import { useAuth } from '../../../hooks/useAuth'
 import { LoginFormProps } from './types'
-import { PasswordField } from '../../Elements/Inputs/PasswordField'
-import { useTranslation } from 'react-i18next'
 
 export const Login: React.FC = () => {
   const { t: translate } = useTranslation()
@@ -19,6 +20,7 @@ export const Login: React.FC = () => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isSubmitting }
   } = useForm<LoginFormProps>({
     resolver: yupResolver(schemaLogin)
@@ -71,23 +73,22 @@ export const Login: React.FC = () => {
         className='w-full flex-col flex gap-2'
         action='POST'
       >
-        <EmailField
+        <Input
           placeholder={translate('email-placeholder')}
-          aria-invalid={errors.email ? 'true' : 'false'}
           label={translate('email')}
           type='text'
-          {...register('email')}
+          arias='email'
+          id='email'
+          role='input-field'
           error={errors?.email}
+          {...register('email')}
         />
         <PasswordField
-          placeholder={translate('password-placeholder')}
-          label={translate('password')}
-          type={passwordIsShow ? 'text' : 'password'}
-          aria-invalid={errors.password ? 'true' : 'false'}
           isVisible={passwordIsShow}
           showVisibilityIcon={showPassword}
-          {...register('password')}
-          error={errors?.password}
+          isError={!!errors?.password}
+          name='password'
+          control={control}
         />
         <SubmitButton isDisabled={isSubmitting} isLogin>
           {isSubmitting ? <Loading /> : translate('login:login')}

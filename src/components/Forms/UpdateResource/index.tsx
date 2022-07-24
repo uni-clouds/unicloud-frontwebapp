@@ -78,6 +78,9 @@ export const UpdateResource: FC<UpdateResourcesProps> = ({ id }) => {
           label='Atualize o recurso'
           placeholder='Informe o nome do recurso'
           type='text'
+          arias='update'
+          role='text-field'
+          id='update'
           {...register('new_resource_name')}
           error={errors.new_resource_name}
         />

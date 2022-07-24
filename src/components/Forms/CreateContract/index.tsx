@@ -111,6 +111,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Digite o titular do contrato'}
               label='Cliente'
               type='text'
+              arias='client'
+              role='client-field'
+              id='client'
               error={errors?.name}
               aria-invalid={errors.name ? 'true' : 'false'}
               {...register('name')}
@@ -133,6 +136,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'_/_/_'}
               label='Data de início'
               type='date'
+              arias='start-date'
+              role='date-field'
+              id='start-date'
               error={errors?.start_date}
               aria-invalid={errors.start_date ? 'true' : 'false'}
               {...register('start_date')}
@@ -143,6 +149,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'_/_/_'}
               label='Data de término'
               type='date'
+              arias='end-date'
+              role='date-field'
+              id='end-date'
               error={errors?.end_date}
               aria-invalid={errors.end_date ? 'true' : 'false'}
               {...register('end_date')}
@@ -153,6 +162,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Ex. 12 meses'}
               label='Prazo'
               type='number'
+              arias='term'
+              role='number-field'
+              id='term'
               error={errors?.term}
               aria-invalid={errors.term ? 'true' : 'false'}
               {...register('term')}
@@ -165,6 +177,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Ex. mensal'}
               label='Período de reajuste'
               type='number'
+              arias='readjust'
+              role='number-field'
+              id='readjust'
               error={errors?.readjust_cycle}
               aria-invalid={errors.readjust_cycle ? 'true' : 'false'}
               {...register('readjust_cycle')}
@@ -175,6 +190,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Valor'}
               label='Valor'
               type='number'
+              arias='amount'
+              role='number-field'
+              id='amount'
               error={errors?.amount}
               aria-invalid={errors.amount ? 'true' : 'false'}
               {...register('amount')}
@@ -185,6 +203,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Ex.Telecom S/A'}
               label='Intermediário'
               type='text'
+              arias='intermediary'
+              role='text-field'
+              id='intermediary'
               error={errors?.intermediary}
               aria-invalid={errors.intermediary ? 'true' : 'false'}
               {...register('intermediary')}
@@ -198,6 +219,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               label='Arquivo'
               accept='application/pdf'
               type='file'
+              arias='upload-file'
+              role='file-field'
+              id='upload-file'
               error={errors?.contract}
               aria-invalid={errors.contract ? 'true' : 'false'}
               {...register('contract')}
@@ -210,6 +234,9 @@ export const CreateContract: React.FC<CreateContractFormProps> = () => {
               placeholder={'Observação...'}
               label='Observações'
               type='text'
+              arias='notes'
+              role='text-field'
+              id='notes'
               error={errors?.note}
               aria-invalid={errors.note ? 'true' : 'false'}
               {...register('note')}

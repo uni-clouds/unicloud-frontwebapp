@@ -11,6 +11,7 @@ export interface InputProps extends InputLabelProps {
   isVisible?: boolean
   accept?: string
   role: string
+  id: string
 }
 
 export interface InputStylesProps {
@@ -18,5 +19,5 @@ export interface InputStylesProps {
   borderColor?: string
   color?: string
   gap?: string
-  error: boolean
+  hasError?: boolean
 }
